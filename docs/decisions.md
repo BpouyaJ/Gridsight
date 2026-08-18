@@ -16,6 +16,7 @@
 | D-012 | 2026-08-18 | Exclude Streamlit, backend APIs, streaming, cloud deployment, and deep learning. | These technologies duplicate existing projects or add scope without improving the target-job evidence. | Accepted |
 | D-013 | 2026-08-18 | Add weather only after the load-only baseline is complete. | Weather adds sourcing and leakage complexity and must prove measurable value. | Accepted |
 | D-014 | 2026-08-19 | Standardize local development on Python 3.13 with a project-local virtual environment and `pyproject.toml` dependency groups. | Python 3.13 is installed locally and supported by the selected analytics, forecasting, database, test, and lint packages; an isolated environment makes the setup reproducible. | Accepted |
+| D-015 | 2026-08-19 | Run PostgreSQL 17.10 from the official Alpine Docker image and separate its integration test from the default fast test suite. | PostgreSQL 17 is supported through 2029, Compose makes the local runtime reproducible, and an explicit integration marker keeps normal development checks usable when Docker is stopped. | Accepted |
 
 ## How to update this log
 

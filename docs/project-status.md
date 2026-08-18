@@ -6,7 +6,7 @@ Last updated: 2026-08-19
 
 Phase 1 - Foundation
 
-Current step: 1.2 - Python environment, package configuration, and smoke test
+Current step: 1.3 - PostgreSQL runtime and Python connection smoke test
 
 Status: completed
 
@@ -28,14 +28,18 @@ Status: completed
 - Added Windows development-environment instructions.
 - Passed the initial package smoke test with pytest.
 - Passed the Ruff code-quality check.
+- Added a healthy PostgreSQL 17.10 service using Docker Compose.
+- Added an ignored local `.env` credential workflow and persistent database volume.
+- Added validated database settings and a SQLAlchemy/Psycopg connection factory.
+- Passed the Python-to-PostgreSQL connection command.
+- Passed the marked PostgreSQL integration test while keeping it out of the default fast test suite.
 
 ## In progress
 
-None. Step 1.2 is ready for its Git checkpoint.
+None. Step 1.3 and Phase 1 are ready for their Git checkpoint.
 
 ## Not started
 
-- PostgreSQL runtime
 - SMARD downloads
 - Pipeline implementation
 - Forecasting
@@ -44,7 +48,7 @@ None. Step 1.2 is ready for its Git checkpoint.
 
 ## Next bounded step
 
-After Step 1.2 is committed and pushed, start Step 1.3: configure the local PostgreSQL runtime and verify a Python-to-PostgreSQL connection.
+After Step 1.3 is committed and pushed, start Step 2.1: create the source-manifest schema and reproducible SMARD raw-data intake workflow before downloading the first snapshot.
 
 ## Current blockers
 

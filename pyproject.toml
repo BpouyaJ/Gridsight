@@ -32,7 +32,10 @@ dev = [
 where = ["src"]
 
 [tool.pytest.ini_options]
-addopts = "-ra --strict-markers"
+addopts = "-ra --strict-markers -m 'not integration'"
+markers = [
+    "integration: requires a running external service such as PostgreSQL",
+]
 testpaths = ["tests"]
 
 [tool.ruff]
