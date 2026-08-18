@@ -15,8 +15,8 @@
 | D-011 | 2026-08-18 | Use Docker Compose only for PostgreSQL if available. | It improves reproducibility without making Docker part of GridSight's main portfolio story. | Accepted |
 | D-012 | 2026-08-18 | Exclude Streamlit, backend APIs, streaming, cloud deployment, and deep learning. | These technologies duplicate existing projects or add scope without improving the target-job evidence. | Accepted |
 | D-013 | 2026-08-18 | Add weather only after the load-only baseline is complete. | Weather adds sourcing and leakage complexity and must prove measurable value. | Accepted |
+| D-014 | 2026-08-19 | Standardize local development on Python 3.13 with a project-local virtual environment and `pyproject.toml` dependency groups. | Python 3.13 is installed locally and supported by the selected analytics, forecasting, database, test, and lint packages; an isolated environment makes the setup reproducible. | Accepted |
 
 ## How to update this log
 
 Add a new row when a choice changes the project's scope, data contract, architecture, forecasting contract, KPI meaning, or final deliverables. Do not silently rewrite an accepted decision; add a superseding decision and reference the earlier ID.
-

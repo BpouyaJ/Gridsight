@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gridsight"
+version = "0.1.0"
+description = "Renewable energy analytics and load-forecasting platform."
+readme = "README.md"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "numpy>=2.4,<3.0",
+    "pandas>=3.0,<4.0",
+    "psycopg[binary]>=3.2,<4.0",
+    "python-dotenv>=1.2,<2.0",
+    "scikit-learn>=1.8,<2.0",
+    "SQLAlchemy>=2.0,<3.0",
+]
+
+[project.optional-dependencies]
+analysis = [
+    "jupyterlab>=4.0,<5.0",
+    "matplotlib>=3.9,<4.0",
+]
+dev = [
+    "pytest>=9.0,<10.0",
+    "pytest-cov>=7.0,<8.0",
+    "ruff>=0.14,<1.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-markers"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 88
+src = ["src", "tests"]
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["B", "E", "F", "I", "UP"]
+
+[tool.coverage.run]
+branch = true
+source = ["gridsight"]
+
+[tool.coverage.report]
+show_missing = true

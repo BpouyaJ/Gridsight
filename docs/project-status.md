@@ -1,12 +1,12 @@
 # Project status
 
-Last updated: 2026-08-18
+Last updated: 2026-08-19
 
 ## Current phase
 
 Phase 1 - Foundation
 
-Current step: 1.1 - Repository and project-control documentation
+Current step: 1.2 - Python environment, package configuration, and smoke test
 
 Status: completed
 
@@ -22,14 +22,19 @@ Status: completed
 - Created the Git repository and approved folder structure.
 - Persisted the roadmap, decision log, source contract, data policy, and agent workflow.
 - Verified local Markdown links, ignored-data rules, and the absence of implementation code.
+- Created a Python 3.13 virtual environment under `.venv`.
+- Added `pyproject.toml` with runtime, analysis, and development dependency groups.
+- Installed GridSight as an editable package with its approved analytics and database dependencies.
+- Added Windows development-environment instructions.
+- Passed the initial package smoke test with pytest.
+- Passed the Ruff code-quality check.
 
 ## In progress
 
-None. Step 1.1 is ready for its Git checkpoint.
+None. Step 1.2 is ready for its Git checkpoint.
 
 ## Not started
 
-- Python environment and dependencies
 - PostgreSQL runtime
 - SMARD downloads
 - Pipeline implementation
@@ -39,7 +44,7 @@ None. Step 1.1 is ready for its Git checkpoint.
 
 ## Next bounded step
 
-After Step 1.1 is verified and committed, start Step 1.2: create the Python package configuration, local virtual environment instructions, and a minimal smoke test.
+After Step 1.2 is committed and pushed, start Step 1.3: configure the local PostgreSQL runtime and verify a Python-to-PostgreSQL connection.
 
 ## Current blockers
 

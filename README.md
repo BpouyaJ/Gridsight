@@ -61,11 +61,12 @@ SMARD source snapshots
 
 ## Current status
 
-Phase 1.1 has established the repository and its project-control documentation. No data has been downloaded and no implementation pipeline has been written yet. The next step is the Python environment and smoke test.
+Phase 1.2 has established the repository, project-control documentation, Python 3.13 environment, installable package, declared dependencies, and initial automated smoke test. No data has been downloaded and no implementation pipeline has been written yet. The next step is the PostgreSQL runtime and connection smoke test.
 
 See:
 
 - [Roadmap](docs/roadmap.md)
+- [Development setup](docs/development-setup.md)
 - [Project status](docs/project-status.md)
 - [Decision log](docs/decisions.md)
 - [Source contract](docs/source-contract.md)
