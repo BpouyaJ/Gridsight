@@ -1,0 +1,22 @@
+# Decision log
+
+| ID | Date | Decision | Reason | Status |
+|---|---|---|---|---|
+| D-001 | 2026-08-18 | Focus GridSight on Energy Analytics, BI, and forecasting. | It complements the existing analytics/data-quality and backend projects. | Accepted |
+| D-002 | 2026-08-18 | Use Germany for load/generation and DE/LU for day-ahead price. | This is coherent with the selected official source and target jobs. | Accepted |
+| D-003 | 2026-08-18 | Use 2022-2025 at an hourly analytical grain. | Four complete years are meaningful but manageable and support train/validation/test separation. | Accepted |
+| D-004 | 2026-08-18 | Use Bundesnetzagentur SMARD CSV snapshots as the essential data source. | It is authoritative, accessible, validated, and licensed under CC BY 4.0. | Accepted |
+| D-005 | 2026-08-18 | Preserve raw snapshots and maintain a source manifest. | SMARD values can be revised; reproducibility requires immutable inputs and checksums. | Accepted |
+| D-006 | 2026-08-18 | Use UTC as the canonical timestamp and retain Europe/Berlin reporting attributes. | This prevents ambiguous or missing keys at daylight-saving transitions. | Accepted |
+| D-007 | 2026-08-18 | Forecast only Germany-wide hourly load for the next 24 hours. | It is relevant to target roles and avoids an inflated multi-target ML scope. | Accepted |
+| D-008 | 2026-08-18 | Compare daily/weekly baselines, Ridge, and HistGradientBoostingRegressor. | This teaches interpretable and nonlinear modeling without adding another ML framework. | Accepted |
+| D-009 | 2026-08-18 | Use PostgreSQL schemas `staging`, `analytics`, and `reporting`. | The separation is sufficient for lineage and BI without enterprise-style overengineering. | Accepted |
+| D-010 | 2026-08-18 | Use a Power BI star model and a separate Excel monthly analyst pack. | The deliverables demonstrate distinct BI and business-user workflows rather than duplicate dashboards. | Accepted |
+| D-011 | 2026-08-18 | Use Docker Compose only for PostgreSQL if available. | It improves reproducibility without making Docker part of GridSight's main portfolio story. | Accepted |
+| D-012 | 2026-08-18 | Exclude Streamlit, backend APIs, streaming, cloud deployment, and deep learning. | These technologies duplicate existing projects or add scope without improving the target-job evidence. | Accepted |
+| D-013 | 2026-08-18 | Add weather only after the load-only baseline is complete. | Weather adds sourcing and leakage complexity and must prove measurable value. | Accepted |
+
+## How to update this log
+
+Add a new row when a choice changes the project's scope, data contract, architecture, forecasting contract, KPI meaning, or final deliverables. Do not silently rewrite an accepted decision; add a superseding decision and reference the earlier ID.
+
