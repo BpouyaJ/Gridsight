@@ -6,7 +6,7 @@ Last updated: 2026-08-19
 
 Phase 3 - Validation and transformation
 
-Current step: 3.2 - Canonical actual-consumption transformation
+Current step: 3.3 - Canonical long-form generation transformation
 
 Status: completed
 
@@ -91,10 +91,17 @@ Status: completed
 - Added a reproducible atomic build for the ignored clean consumption CSV.
 - Verified 35,064 continuous rows, 24 columns, complete UTC coverage, and processed SHA-256 `4a0107f087fdd5d87e584c913c6e73187f6e2c81057053964250cf3f1f9316a5`.
 - Passed all 15 fast tests, Ruff, and the processed-file Git-ignore check after completing Step 3.2.
+- Defined 12 stable generation technology IDs with renewable, conventional, or storage classification.
+- Implemented one interval/technology row with numeric MWh/MW and preserved source value text.
+- Represented only the Nuclear `-` marker as unavailable with missing numeric values.
+- Extracted shared source-lineage handling for consumption, generation, and later category transformations.
+- Verified 420,768 rows, 35,064 intervals, 12 technologies, 403,932 numeric rows, and 16,836 unavailable Nuclear rows.
+- Recorded processed generation SHA-256 `9106f24f0e793a2807d4116edb1454490b5f9fc9a340c75c36e450634a3b328f`.
+- Passed all 20 fast tests, Ruff, and the generation-output Git-ignore check after completing Step 3.3.
 
 ## In progress
 
-None. Step 3.2 is ready for its Git checkpoint.
+None. Step 3.3 is ready for its Git checkpoint.
 
 ## Not started
 
@@ -106,7 +113,7 @@ None. Step 3.2 is ready for its Git checkpoint.
 
 ## Next bounded step
 
-After Step 3.2 is committed and pushed, start Step 3.3: define and implement the canonical generation dataset, including explicit technology names, renewable groupings, lineage, and preservation of the Nuclear unavailable markers.
+After Step 3.3 is committed and pushed, start Step 3.4: build the canonical DE/LU day-ahead-price dataset by selecting the exact target column, retaining negative prices, attaching lineage, and combining both source periods.
 
 ## Current blockers
 

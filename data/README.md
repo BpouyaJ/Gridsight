@@ -31,6 +31,11 @@ The first Phase 3 generated output is
 `processed/actual_consumption_hourly.csv`. It is rebuilt from immutable raw
 snapshots and is never committed.
 
+The second generated output is the long-form
+`processed/actual_generation_hourly.csv`, with one interval/technology row and
+explicit reported-versus-unavailable status. It is also ignored and rebuilt
+from immutable raw snapshots.
+
 All six approved source snapshots have been registered locally: both Germany
 actual-consumption periods, both Germany actual-generation periods, and both
 DE/LU day-ahead-price periods. Their raw CSVs are ignored, while their

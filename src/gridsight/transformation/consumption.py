@@ -1,29 +1,25 @@
 """Canonical transformation for SMARD actual-consumption snapshots."""
 
-from dataclasses import dataclass
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
 from gridsight.ingestion.snapshot_registry import (
-    ExportDefinition,
     load_export_definitions,
     read_manifest,
     sha256_file,
 )
+from gridsight.transformation.lineage import (
+    LINEAGE_COLUMNS,
+    SourceLineage,
+    attach_source_lineage,
+)
 from gridsight.transformation.time_normalization import (
-    INTERVAL_END_LOCAL_COLUMN,
-    INTERVAL_END_UTC_COLUMN,
-    INTERVAL_START_LOCAL_COLUMN,
+    DATASET_TIME_COLUMNS,
     INTERVAL_START_UTC_COLUMN,
-    IS_DST_COLUMN,
-    LOCAL_FOLD_COLUMN,
     SOURCE_END_COLUMN,
-    SOURCE_END_TEXT_COLUMN,
     SOURCE_START_COLUMN,
-    SOURCE_START_TEXT_COLUMN,
-    UTC_OFFSET_MINUTES_COLUMN,
     normalize_hourly_timestamps,
 )
 
@@ -55,37 +51,12 @@ NONNEGATIVE_MEASURES = (
 )
 ARITHMETIC_TOLERANCE_MWH = 0.011
 
-SOURCE_EXPORT_ID_COLUMN = "source_export_id"
-SOURCE_CATEGORY_COLUMN = "source_category"
-SOURCE_GEOGRAPHY_COLUMN = "source_geography"
-SOURCE_RESOLUTION_COLUMN = "source_resolution"
-SOURCE_PERIOD_START_COLUMN = "source_period_start"
-SOURCE_PERIOD_END_COLUMN = "source_period_end"
-SOURCE_ORIGINAL_FILENAME_COLUMN = "source_original_filename"
-SOURCE_FILENAME_COLUMN = "source_filename"
-SOURCE_SHA256_COLUMN = "source_sha256"
 INTERVAL_DURATION_HOURS_COLUMN = "interval_duration_hours"
 GRID_LOAD_MW_COLUMN = "grid_load_mw"
 
 CANONICAL_CONSUMPTION_COLUMNS = (
-    INTERVAL_START_UTC_COLUMN,
-    INTERVAL_END_UTC_COLUMN,
-    INTERVAL_START_LOCAL_COLUMN,
-    INTERVAL_END_LOCAL_COLUMN,
-    UTC_OFFSET_MINUTES_COLUMN,
-    IS_DST_COLUMN,
-    LOCAL_FOLD_COLUMN,
-    SOURCE_START_TEXT_COLUMN,
-    SOURCE_END_TEXT_COLUMN,
-    SOURCE_EXPORT_ID_COLUMN,
-    SOURCE_CATEGORY_COLUMN,
-    SOURCE_GEOGRAPHY_COLUMN,
-    SOURCE_RESOLUTION_COLUMN,
-    SOURCE_PERIOD_START_COLUMN,
-    SOURCE_PERIOD_END_COLUMN,
-    SOURCE_ORIGINAL_FILENAME_COLUMN,
-    SOURCE_FILENAME_COLUMN,
-    SOURCE_SHA256_COLUMN,
+    *DATASET_TIME_COLUMNS,
+    *LINEAGE_COLUMNS,
     INTERVAL_DURATION_HOURS_COLUMN,
     "grid_load_mwh",
     GRID_LOAD_MW_COLUMN,
@@ -96,57 +67,8 @@ CANONICAL_CONSUMPTION_COLUMNS = (
 _ONE_HOUR = pd.Timedelta(hours=1)
 
 
-@dataclass(frozen=True)
-class SnapshotLineage:
-    """Row-level source lineage copied from an approved manifest record."""
-
-    export_id: str
-    source_category: str
-    source_geography: str
-    source_resolution: str
-    period_start: str
-    period_end: str
-    original_filename: str
-    local_filename: str
-    sha256: str
-
-    @classmethod
-    def from_record(
-        cls,
-        definition: ExportDefinition,
-        record: dict[str, str],
-    ) -> "SnapshotLineage":
-        """Create validated transformation lineage from config and manifest."""
-        matching_fields = (
-            "export_id",
-            "source_category",
-            "source_geography",
-            "source_resolution",
-            "period_start",
-            "period_end",
-            "local_filename",
-        )
-        for field in matching_fields:
-            if record[field] != getattr(definition, field):
-                raise ValueError(
-                    f"Manifest {field} mismatch for {definition.export_id}"
-                )
-
-        return cls(
-            export_id=record["export_id"],
-            source_category=record["source_category"],
-            source_geography=record["source_geography"],
-            source_resolution=record["source_resolution"],
-            period_start=record["period_start"],
-            period_end=record["period_end"],
-            original_filename=record["original_filename"],
-            local_filename=record["local_filename"],
-            sha256=record["sha256"],
-        )
-
-
 def _parse_numeric_measure(values: pd.Series, column_name: str) -> pd.Series:
-    raw_values = values.astype("string").str.strip()
+    raw_values = values.astype("string").fillna("").str.strip()
     numeric_values = pd.to_numeric(
         raw_values.str.replace(",", "", regex=False),
         errors="coerce",
@@ -161,25 +83,12 @@ def _parse_numeric_measure(values: pd.Series, column_name: str) -> pd.Series:
     return numeric_values
 
 
-def _validate_lineage(lineage: SnapshotLineage) -> None:
-    if lineage.source_category != "actual_consumption":
-        raise ValueError("Consumption transformation requires its source category")
-    if lineage.source_geography != "DE":
-        raise ValueError("Consumption transformation requires DE geography")
-    if lineage.source_resolution != "hour":
-        raise ValueError("Consumption transformation requires hourly resolution")
-    if len(lineage.sha256) != 64 or any(
-        character not in "0123456789abcdef" for character in lineage.sha256
-    ):
-        raise ValueError("Consumption lineage requires a lowercase SHA-256")
-
-
 def transform_consumption_snapshot(
     frame: pd.DataFrame,
-    lineage: SnapshotLineage,
+    lineage: SourceLineage,
 ) -> pd.DataFrame:
     """Transform one source-compatible consumption frame into clean columns."""
-    _validate_lineage(lineage)
+    lineage.validate_for("actual_consumption", "DE")
     observed_columns = tuple(str(column) for column in frame.columns)
     if observed_columns != RAW_CONSUMPTION_COLUMNS:
         raise ValueError("Actual-consumption source columns changed")
@@ -210,15 +119,7 @@ def transform_consumption_snapshot(
         transformed["grid_load_mwh"]
         / transformed[INTERVAL_DURATION_HOURS_COLUMN]
     )
-    transformed[SOURCE_EXPORT_ID_COLUMN] = lineage.export_id
-    transformed[SOURCE_CATEGORY_COLUMN] = lineage.source_category
-    transformed[SOURCE_GEOGRAPHY_COLUMN] = lineage.source_geography
-    transformed[SOURCE_RESOLUTION_COLUMN] = lineage.source_resolution
-    transformed[SOURCE_PERIOD_START_COLUMN] = lineage.period_start
-    transformed[SOURCE_PERIOD_END_COLUMN] = lineage.period_end
-    transformed[SOURCE_ORIGINAL_FILENAME_COLUMN] = lineage.original_filename
-    transformed[SOURCE_FILENAME_COLUMN] = lineage.local_filename
-    transformed[SOURCE_SHA256_COLUMN] = lineage.sha256
+    attach_source_lineage(transformed, lineage)
 
     return transformed.loc[:, list(CANONICAL_CONSUMPTION_COLUMNS)]
 
@@ -286,7 +187,7 @@ def load_consumption_dataset(
             dtype="string",
             keep_default_na=False,
         )
-        lineage = SnapshotLineage.from_record(definition, record)
+        lineage = SourceLineage.from_record(definition, record)
         transformed_snapshots.append(
             transform_consumption_snapshot(frame, lineage)
         )

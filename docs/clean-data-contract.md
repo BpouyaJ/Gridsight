@@ -128,3 +128,73 @@ The Step 3.2 verification produced:
 
 The processed file passed its strict measure, arithmetic, lineage, uniqueness,
 continuity, atomic-write, and Git-ignore checks.
+
+## Actual-generation clean dataset
+
+Step 3.3 combines both actual-generation snapshots into the long-form dataset
+`data/processed/actual_generation_hourly.csv`. Each row represents one unique
+UTC interval and technology combination. The generated file remains outside
+Git.
+
+### Technology contract
+
+| Technology ID | Display name | Group | Renewable |
+|---|---|---|---|
+| `biomass` | Biomass | renewable | yes |
+| `hydropower` | Hydropower | renewable | yes |
+| `wind_offshore` | Wind offshore | renewable | yes |
+| `wind_onshore` | Wind onshore | renewable | yes |
+| `solar_photovoltaic` | Solar photovoltaic | renewable | yes |
+| `other_renewable` | Other renewable | renewable | yes |
+| `nuclear` | Nuclear | conventional | no |
+| `lignite` | Lignite | conventional | no |
+| `hard_coal` | Hard coal | conventional | no |
+| `fossil_gas` | Fossil gas | conventional | no |
+| `hydro_pumped_storage` | Hydro pumped storage | storage | no |
+| `other_conventional` | Other conventional | conventional | no |
+
+Pumped-storage generation is classified separately as storage. It is not
+included in renewable generation merely because the technology uses water.
+
+### Value and availability rules
+
+- Parse every reported technology value strictly as non-negative MWh.
+- Derive average `generation_mw` from `generation_mwh` and the explicit
+  one-hour duration.
+- Preserve the original measure header and value text on every long-form row.
+- Use `value_status = reported` for numeric source values.
+- Allow `value_status = unavailable` only for the Nuclear source marker `-`.
+- Store unavailable Nuclear MWh and MW as missing values, never as measured
+  zero.
+- Reject markers in every other technology and reject blank, invalid, infinite,
+  or negative reported values.
+
+Every UTC interval must contain exactly 12 unique technology rows. Both source
+periods must combine into continuous interval coverage without duplicate
+interval/technology keys. Shared manifest lineage columns use the same contract
+as the actual-consumption dataset.
+
+### Build command
+
+```powershell
+python -m gridsight.transformation.build_generation
+```
+
+The command rechecks both raw hashes, builds the long-form file atomically, and
+prints interval, technology, numeric, unavailable, UTC-coverage, output-path,
+and SHA-256 results.
+
+### Verified build
+
+The Step 3.3 verification produced:
+
+- 420,768 interval/technology rows across 35,064 hourly intervals;
+- 29 canonical columns and 12 technologies per interval;
+- 403,932 numeric rows and 16,836 unavailable Nuclear rows;
+- UTC coverage from 2021-12-31 23:00 through 2025-12-31 23:00;
+- output SHA-256
+  `9106f24f0e793a2807d4116edb1454490b5f9fc9a340c75c36e450634a3b328f`.
+
+The output passed technology classification, allowed-marker, non-negative
+generation, complete-key, continuity, shared-lineage, atomic-write, and
+Git-ignore checks.

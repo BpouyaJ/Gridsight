@@ -61,7 +61,7 @@ SMARD source snapshots
 
 ## Current status
 
-Phases 1 and 2 are complete, and Phase 3 is in progress. UTC normalization and the 35,064-row canonical actual-consumption dataset are verified with lineage and strict measure rules. The next step builds the generation dataset with explicit technologies, renewable groupings, and preserved unavailable-value evidence.
+Phases 1 and 2 are complete, and Phase 3 is in progress. UTC normalization, canonical consumption, and 420,768-row long-form generation are verified with shared lineage and explicit source-value status. The next step builds the exact DE/LU day-ahead-price dataset while retaining valid negative prices.
 
 See:
 

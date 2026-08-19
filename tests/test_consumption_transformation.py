@@ -12,12 +12,14 @@ from gridsight.transformation.consumption import (
     RAW_GRID_LOAD_INCLUDING_PUMPED_COLUMN,
     RAW_PUMPED_STORAGE_COLUMN,
     RAW_RESIDUAL_LOAD_COLUMN,
-    SOURCE_EXPORT_ID_COLUMN,
-    SOURCE_ORIGINAL_FILENAME_COLUMN,
-    SnapshotLineage,
     combine_consumption_snapshots,
     transform_consumption_snapshot,
     write_consumption_csv,
+)
+from gridsight.transformation.lineage import (
+    SOURCE_EXPORT_ID_COLUMN,
+    SOURCE_ORIGINAL_FILENAME_COLUMN,
+    SourceLineage,
 )
 
 _TIME_LABELS = (
@@ -29,8 +31,8 @@ _TIME_LABELS = (
 )
 
 
-def _lineage(export_id: str) -> SnapshotLineage:
-    return SnapshotLineage(
+def _lineage(export_id: str) -> SourceLineage:
+    return SourceLineage(
         export_id=export_id,
         source_category="actual_consumption",
         source_geography="DE",
