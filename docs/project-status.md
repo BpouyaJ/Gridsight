@@ -6,7 +6,7 @@ Last updated: 2026-08-19
 
 Phase 2 - Data acquisition and profiling
 
-Current step: 2.4 - First actual-generation snapshot registration and profile
+Current step: 2.5 - Second actual-generation snapshot registration and compatibility profile
 
 Status: completed
 
@@ -55,14 +55,20 @@ Status: completed
 - Confirmed 17,520 rows, 14 columns, and 12 explicit generation-technology measures.
 - Confirmed the generation file shares the consumption files' encoding, delimiter, numeric format, timestamp format, and DST behavior.
 - Confirmed no missing or non-numeric generation measure markers in the snapshot.
+- Registered the 2024-2025 Germany actual-generation snapshot with matching raw and manifest SHA-256 values.
+- Confirmed its 14-column schema, encoding, delimiter, units, timestamp representation, and DST behavior match the 2022-2023 generation snapshot.
+- Confirmed 17,544 rows, including the expected 24 leap-day hours from 2024.
+- Identified 16,836 `-` source markers in the Nuclear measure beginning at 2024-01-30 12:00, after 708 numeric zero values.
+- Defined `-` as missing/unavailable during parsing rather than silently treating it as measured zero.
+- Verified that both actual-generation snapshots can use one structural ingestion schema with a column-aware missing-marker rule.
 
 ## In progress
 
-None. Step 2.4 is ready for its Git checkpoint.
+None. Step 2.5 is ready for its Git checkpoint.
 
 ## Not started
 
-- Remaining three SMARD snapshots
+- Remaining two SMARD day-ahead-price snapshots
 - Pipeline implementation
 - Forecasting
 - Power BI
@@ -70,7 +76,7 @@ None. Step 2.4 is ready for its Git checkpoint.
 
 ## Next bounded step
 
-After Step 2.4 is committed and pushed, start Step 2.5: download and register the 2024-2025 actual-generation CSV, then verify schema compatibility with the first generation snapshot.
+After Step 2.5 is committed and pushed, start Step 2.6: download and register the 2022-2023 DE/LU day-ahead-price CSV, then profile its price schema, unit, negative values, and source markers.
 
 ## Current blockers
 

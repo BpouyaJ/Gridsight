@@ -88,6 +88,7 @@ Every snapshot must record:
 - Convert timestamps to timezone-aware UTC before joining datasets.
 - Retain Europe/Berlin local timestamp and DST attributes for reporting.
 - Never fill repeated or missing daylight-saving hours without an explicit rule and a quality result.
+- Preserve SMARD `-` measure markers in raw data and parse them as missing/unavailable with a quality flag; they are not measured zeroes.
 - Never sum prices.
 - Never label MWh as MW. Average MW is derived from energy divided by interval duration.
 - Retain market/source geography so DE/LU prices are not presented as Germany-only measurements.

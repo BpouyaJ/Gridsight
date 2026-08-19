@@ -150,3 +150,44 @@ The generation and consumption files share the same local-time grain and can
 eventually use one UTC-normalization strategy. The generation columns will be
 retained explicitly; their analytical shape will be decided during the
 transformation and database-model phases.
+
+## 2024-2025 actual-generation compatibility check
+
+- Export ID: `actual_generation_de_2024_2025`
+- Original filename: `Actual_generation_202401010000_202601010000_Hour.csv`
+- Normalized raw filename: `smard_actual_generation_de_2024_2025.csv`
+- Size: 2,435,894 bytes
+- SHA-256: `8118719a1cd35b8bac2f3933ca90094fc3fdbe4eaf8b653e88e4097514ae2f64`
+- Data rows: 17,544
+- Columns: 14
+- Unique start-timestamp strings: 17,542
+
+The column names and order match the 2022-2023 generation snapshot exactly.
+Encoding, delimiter, timestamp representation, numeric formatting, units, and
+daylight-saving behavior also remain compatible. The extra 24 rows are expected
+because 2024 is a leap year. Both generation hashes match their manifest
+records.
+
+### Nuclear source-marker change
+
+Eleven generation measures remain numeric in every row. The `Nuclear` measure
+changes representation during this snapshot:
+
+- 708 rows from 2024-01-01 00:00 through 2024-01-30 11:00 contain numeric
+  `0.00` values.
+- 16,836 rows from 2024-01-30 12:00 through 2025-12-31 23:00 contain the
+  non-numeric source marker `-`.
+- No non-zero numeric nuclear values occur in this snapshot.
+
+The marker is not assumed to equal a measured zero. The immutable raw value is
+preserved, and the transformation layer will parse `-` as missing/unavailable
+while retaining a quality flag. Any later contextual conversion to zero would
+require a separate, documented analytical rule.
+
+### Compatibility conclusion
+
+The two generation snapshots can use one structural ingestion schema, with a
+column-aware missing-marker rule for generation measures. Later validation must
+test the allowed marker, UTC uniqueness, interval continuity, non-negative
+generation, and the expected availability pattern rather than applying an
+unqualified all-numeric rule.

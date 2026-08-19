@@ -61,7 +61,7 @@ SMARD source snapshots
 
 ## Current status
 
-Phase 1 is complete, and Phase 2 is in progress. Both Germany actual-consumption snapshots and the first actual-generation snapshot are registered with tracked lineage. The generation profile identified 12 technology measures with no missing markers. The next step acquires the matching 2024-2025 generation snapshot and verifies schema compatibility.
+Phase 1 is complete, and Phase 2 is in progress. Both Germany actual-consumption snapshots and both actual-generation snapshots are registered with tracked lineage. The generation schemas match; profiling also identified an explicit `-` missing/unavailable marker in the later Nuclear series. The next step acquires and profiles the 2022-2023 DE/LU day-ahead-price snapshot.
 
 See:
 
