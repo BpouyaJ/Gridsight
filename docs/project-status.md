@@ -6,7 +6,7 @@ Last updated: 2026-08-19
 
 Phase 2 - Data acquisition and profiling
 
-Current step: 2.5 - Second actual-generation snapshot registration and compatibility profile
+Current step: 2.6 - First DE/LU day-ahead-price snapshot registration and profile
 
 Status: completed
 
@@ -61,14 +61,19 @@ Status: completed
 - Identified 16,836 `-` source markers in the Nuclear measure beginning at 2024-01-30 12:00, after 708 numeric zero values.
 - Defined `-` as missing/unavailable during parsing rather than silently treating it as measured zero.
 - Verified that both actual-generation snapshots can use one structural ingestion schema with a column-aware missing-marker rule.
+- Registered the 2022-2023 DE/LU day-ahead-price snapshot with matching raw and manifest SHA-256 values.
+- Selected `Germany/Luxembourg [€/MWh] Calculated resolutions` from the 19-column multi-market export as the exact GridSight price measure.
+- Confirmed all 17,520 target-price rows are numeric, with 370 negative values, 30 zeroes, and no source markers.
+- Recorded the observed target-price range from -500.00 to 871.00 EUR/MWh and classified negative wholesale prices as valid observations.
+- Confirmed the price snapshot shares the other sources' encoding, delimiter, local timestamp representation, and DST behavior.
 
 ## In progress
 
-None. Step 2.5 is ready for its Git checkpoint.
+None. Step 2.6 is ready for its Git checkpoint.
 
 ## Not started
 
-- Remaining two SMARD day-ahead-price snapshots
+- Remaining 2024-2025 SMARD day-ahead-price snapshot
 - Pipeline implementation
 - Forecasting
 - Power BI
@@ -76,7 +81,7 @@ None. Step 2.5 is ready for its Git checkpoint.
 
 ## Next bounded step
 
-After Step 2.5 is committed and pushed, start Step 2.6: download and register the 2022-2023 DE/LU day-ahead-price CSV, then profile its price schema, unit, negative values, and source markers.
+After Step 2.6 is committed and pushed, start Step 2.7: download and register the 2024-2025 DE/LU day-ahead-price CSV, then verify schema and value compatibility with the first price snapshot.
 
 ## Current blockers
 

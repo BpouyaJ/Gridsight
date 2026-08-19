@@ -191,3 +191,40 @@ column-aware missing-marker rule for generation measures. Later validation must
 test the allowed marker, UTC uniqueness, interval continuity, non-negative
 generation, and the expected availability pattern rather than applying an
 unqualified all-numeric rule.
+
+## 2022-2023 DE/LU day-ahead-price profile
+
+- Export ID: `day_ahead_price_de_lu_2022_2023`
+- Original filename: `Day-ahead_prices_202201010000_202401010000_Hour.csv`
+- Normalized raw filename: `smard_day_ahead_price_de_lu_2022_2023.csv`
+- Size: 2,654,222 bytes
+- SHA-256: `ce3c8c83e55168ba15eea8b8ce6979e1a5601954051b8186f0c42fbd436bc17c`
+- Data rows: 17,520
+- Columns: 19
+- Target column: `Germany/Luxembourg [€/MWh] Calculated resolutions`
+- Unique start-timestamp strings: 17,518
+
+The export includes price columns for multiple European bidding zones. Only the
+exact Germany/Luxembourg column is in GridSight's approved analytical scope;
+the other market columns will not be mistaken for features or targets merely
+because they occur in the same source file.
+
+### Target-price values
+
+- All 17,520 Germany/Luxembourg values are numeric; no blank or non-numeric
+  source markers occur.
+- 17,120 values are positive, 30 are zero, and 370 are negative.
+- The observed minimum is -500.00 EUR/MWh at 2023-07-02 14:00 local time.
+- The observed maximum is 871.00 EUR/MWh at 2022-08-29 19:00 local time.
+
+Negative wholesale prices are legitimate market observations. Validation must
+retain them and use documented plausible bounds rather than reject all values
+below zero.
+
+### Physical and time compatibility
+
+The file uses UTF-8 with BOM, a semicolon delimiter, two-decimal values, and the
+same local timestamp representation as the load and generation snapshots. Its
+spring transition dates contain 23 rows, and its autumn transition dates
+contain 25 rows with repeated local 02:00 labels. Price data therefore uses the
+same required Europe/Berlin-to-UTC normalization strategy.

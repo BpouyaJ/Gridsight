@@ -20,6 +20,7 @@
 | D-016 | 2026-08-19 | Define six approved SMARD exports before acquisition and register raw snapshots through an immutable SHA-256 manifest workflow. | Fixed filters prevent scope drift, tracked lineage makes source claims auditable, and checksum-based overwrite protection preserves reproducibility when SMARD values are revised. | Accepted |
 | D-017 | 2026-08-19 | Use the SMARD column `grid load [MWh] Calculated resolutions` as the load measure and treat local timestamp text as non-unique input. | The first real export distinguishes grid load from load including pumped storage, skips the spring 02:00 hour, and repeats the autumn 02:00 label; explicit column selection and UTC conversion prevent semantic and key errors. | Accepted |
 | D-018 | 2026-08-19 | Parse SMARD `-` generation markers as missing/unavailable and never silently convert them to measured zero. | The 2024-2025 generation snapshot contains 16,836 dash markers in Nuclear after 708 explicit numeric zeroes, so the source itself distinguishes the two states. | Accepted |
+| D-019 | 2026-08-19 | Select the exact `Germany/Luxembourg [€/MWh] Calculated resolutions` price column and retain negative values as valid market observations. | The SMARD export contains 17 market columns, while the approved target has 370 negative hours and an observed minimum of -500 EUR/MWh; selection by position or non-negative validation would corrupt the analysis. | Accepted |
 
 ## How to update this log
 

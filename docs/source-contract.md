@@ -45,8 +45,10 @@ Processed measure: hourly energy generation in MWh.
 ### Day-ahead price
 
 - DE/LU day-ahead wholesale price
+- Observed source column: `Germany/Luxembourg [€/MWh] Calculated resolutions`
 - Unit: EUR/MWh
 - Hourly prices are averaged only when source intervals require aggregation; prices are never summed.
+- Negative wholesale prices are valid observations and must not be removed by a generic non-negative rule.
 
 ## Planned raw filenames
 
@@ -90,6 +92,7 @@ Every snapshot must record:
 - Never fill repeated or missing daylight-saving hours without an explicit rule and a quality result.
 - Preserve SMARD `-` measure markers in raw data and parse them as missing/unavailable with a quality flag; they are not measured zeroes.
 - Never sum prices.
+- Select the DE/LU price column by exact name because the source export contains other bidding-zone price columns.
 - Never label MWh as MW. Average MW is derived from energy divided by interval duration.
 - Retain market/source geography so DE/LU prices are not presented as Germany-only measurements.
 
