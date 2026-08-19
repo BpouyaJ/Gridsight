@@ -61,7 +61,7 @@ SMARD source snapshots
 
 ## Current status
 
-Phases 1 and 2 are complete, and Phase 3 is in progress. UTC normalization, canonical consumption, and 420,768-row long-form generation are verified with shared lineage and explicit source-value status. The next step builds the exact DE/LU day-ahead-price dataset while retaining valid negative prices.
+Phases 1 and 2 are complete, and Phase 3 is in progress. All three canonical datasets now cover the same 35,064 UTC hours with tested lineage and domain-specific value rules. The next step consolidates validation issues and machine-readable run summaries across the clean outputs.
 
 See:
 

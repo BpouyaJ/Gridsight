@@ -36,6 +36,10 @@ The second generated output is the long-form
 explicit reported-versus-unavailable status. It is also ignored and rebuilt
 from immutable raw snapshots.
 
+The third generated output is
+`processed/day_ahead_price_hourly.csv`. It contains only the approved DE/LU
+price series from the wider market export and remains ignored.
+
 All six approved source snapshots have been registered locally: both Germany
 actual-consumption periods, both Germany actual-generation periods, and both
 DE/LU day-ahead-price periods. Their raw CSVs are ignored, while their

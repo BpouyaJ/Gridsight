@@ -198,3 +198,57 @@ The Step 3.3 verification produced:
 The output passed technology classification, allowed-marker, non-negative
 generation, complete-key, continuity, shared-lineage, atomic-write, and
 Git-ignore checks.
+
+## DE/LU day-ahead-price clean dataset
+
+Step 3.4 combines both price snapshots into
+`data/processed/day_ahead_price_hourly.csv`, with one row per canonical UTC
+interval. The generated file remains outside Git.
+
+### Selection and schema rules
+
+- Require the profiled 19-column SMARD market-export schema in its exact order.
+- Select only `Germany/Luxembourg [€/MWh] Calculated resolutions`.
+- Exclude every other bidding-zone column from the clean dataset.
+- Record `market_area = DE-LU`, `currency = EUR`, and
+  `price_unit = EUR/MWh` explicitly.
+- Preserve the exact selected source header and value text with shared manifest
+  lineage.
+
+Other market columns are excluded because they are outside the approved scope
+and could become accidental analytical or forecasting leakage. Their presence
+in the raw snapshot remains protected by the raw-file SHA-256.
+
+### Value rules
+
+- Parse every selected target value strictly as finite numeric EUR/MWh.
+- Preserve negative prices as legitimate wholesale-market observations.
+- Preserve zero prices distinctly from positive and negative values.
+- Reject blank or nonnumeric target markers rather than imputing them.
+- Require both periods to form one unique, continuous UTC hourly series.
+- Never sum prices; any later aggregation must use a documented average.
+
+### Build command
+
+```powershell
+python -m gridsight.transformation.build_price
+```
+
+The command rechecks both raw hashes, selects and combines the exact DE/LU
+series, writes the clean file atomically, and prints sign counts, range, UTC
+coverage, path, and SHA-256.
+
+### Verified build
+
+The Step 3.4 verification produced:
+
+- 35,064 continuous hourly rows and 25 canonical columns;
+- 1,400 negative, 174 zero, and 33,490 positive prices;
+- a range from -500.00 to 936.28 EUR/MWh;
+- UTC coverage from 2021-12-31 23:00 through 2025-12-31 23:00;
+- output SHA-256
+  `a9a66c7f69900289c944ec72bcc1a62e26fbb3c37839e3ad34f7f405a622e53e`.
+
+The output passed exact-target selection, finite numeric parsing, negative-price
+retention, uniqueness, continuity, shared-lineage, atomic-write, and Git-ignore
+checks.

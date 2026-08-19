@@ -56,9 +56,9 @@ Deliverables:
 
 Skills: data quality, time-series cleaning, plausibility checks, Python testing.
 
-Status: in progress. Steps 3.1 through 3.3 established the canonical UTC time
-contract and verified complete consumption and long-form generation datasets;
-price transformation and consolidated validation outputs remain.
+Status: in progress. Steps 3.1 through 3.4 established the canonical UTC time
+contract and verified complete consumption, long-form generation, and DE/LU
+price datasets; consolidated validation issues and run summaries remain.
 
 ### Phase 4 - PostgreSQL analytical model
 

@@ -6,7 +6,7 @@ Last updated: 2026-08-19
 
 Phase 3 - Validation and transformation
 
-Current step: 3.3 - Canonical long-form generation transformation
+Current step: 3.4 - Canonical DE/LU day-ahead-price transformation
 
 Status: completed
 
@@ -98,10 +98,16 @@ Status: completed
 - Verified 420,768 rows, 35,064 intervals, 12 technologies, 403,932 numeric rows, and 16,836 unavailable Nuclear rows.
 - Recorded processed generation SHA-256 `9106f24f0e793a2807d4116edb1454490b5f9fc9a340c75c36e450634a3b328f`.
 - Passed all 20 fast tests, Ruff, and the generation-output Git-ignore check after completing Step 3.3.
+- Required the exact profiled 19-column market-export schema and selected only the Germany/Luxembourg series.
+- Implemented strict finite numeric parsing while retaining negative and zero prices.
+- Added explicit market-area, currency, unit, source-text, and shared lineage columns.
+- Verified 35,064 continuous rows, 25 columns, 1,400 negative prices, 174 zero prices, and a -500.00 to 936.28 EUR/MWh range.
+- Recorded processed price SHA-256 `a9a66c7f69900289c944ec72bcc1a62e26fbb3c37839e3ad34f7f405a622e53e`.
+- Passed all 25 fast tests, Ruff, and the price-output Git-ignore check after completing Step 3.4.
 
 ## In progress
 
-None. Step 3.3 is ready for its Git checkpoint.
+None. Step 3.4 is ready for its Git checkpoint.
 
 ## Not started
 
@@ -113,7 +119,7 @@ None. Step 3.3 is ready for its Git checkpoint.
 
 ## Next bounded step
 
-After Step 3.3 is committed and pushed, start Step 3.4: build the canonical DE/LU day-ahead-price dataset by selecting the exact target column, retaining negative prices, attaching lineage, and combining both source periods.
+After Step 3.4 is committed and pushed, start Step 3.5: produce structured validation issues and a machine-readable run summary that reconcile UTC coverage, row counts, keys, units, availability, and output hashes across all three clean datasets.
 
 ## Current blockers
 
