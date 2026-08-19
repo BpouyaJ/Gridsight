@@ -25,6 +25,7 @@ SMARD limits a market-data export to two years. Each category will therefore be 
 
 - Grid load
 - Source meaning: electricity taken from the grid, as defined by SMARD
+- Observed source column: `grid load [MWh] Calculated resolutions`
 - Processed measures: hourly energy in MWh and derived average hourly load in MW
 
 ### Actual generation

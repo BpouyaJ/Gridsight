@@ -61,13 +61,14 @@ SMARD source snapshots
 
 ## Current status
 
-Phase 1 is complete, and Phase 2 has started. The repository now has six approved SMARD export definitions, a tracked source-manifest schema, and a tested immutable raw-data registration command. No source snapshot has been downloaded yet. The next step acquires and profiles only the first 2022-2023 grid-load CSV before the remaining downloads.
+Phase 1 is complete, and Phase 2 is in progress. The first real SMARD snapshot—Germany actual consumption for 2022-2023—has been registered with tracked lineage and profiled without modifying its raw bytes. The next step acquires the matching 2024-2025 snapshot and verifies schema compatibility before moving to generation data.
 
 See:
 
 - [Roadmap](docs/roadmap.md)
 - [Development setup](docs/development-setup.md)
 - [Local PostgreSQL setup](docs/database-setup.md)
+- [Initial SMARD source profile](docs/initial-source-profile.md)
 - [Project status](docs/project-status.md)
 - [Decision log](docs/decisions.md)
 - [Source contract](docs/source-contract.md)

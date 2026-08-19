@@ -38,6 +38,7 @@ def _print_export(definition: ExportDefinition) -> None:
     print(definition.export_id)
     print(f"  Period: {definition.period_start} to {definition.period_end}")
     print(f"  Geography: {definition.source_geography}")
+    print(f"  Expected series: {definition.expected_series}")
     print(f"  Output: {definition.local_filename}")
     for name, value in definition.smard_filters.items():
         label = name.replace("_", " ").title()

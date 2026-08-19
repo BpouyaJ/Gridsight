@@ -6,7 +6,7 @@ Last updated: 2026-08-19
 
 Phase 2 - Data acquisition and profiling
 
-Current step: 2.1 - SMARD source manifest and immutable raw-data intake
+Current step: 2.2 - First actual-consumption snapshot registration and profile
 
 Status: completed
 
@@ -38,14 +38,21 @@ Status: completed
 - Added an immutable, SHA-256-based raw-snapshot registration command.
 - Verified idempotent registration and protection against different-content overwrites.
 - Passed all four fast tests and the Ruff code-quality check.
+- Registered the 2022-2023 Germany actual-consumption snapshot with matching raw and manifest SHA-256 values.
+- Confirmed 17,520 hourly rows, six columns, UTF-8 BOM encoding, semicolon delimiter, and MWh measures.
+- Selected `grid load [MWh] Calculated resolutions` as the primary load measure.
+- Confirmed no missing or non-numeric measure markers in the initial snapshot.
+- Documented 23-hour spring and 25-hour autumn daylight-saving behavior and repeated local timestamp text.
+- Corrected the export configuration to distinguish expected output series from selectable SMARD filters.
+- Re-ran all four fast tests and Ruff successfully after profiling updates.
 
 ## In progress
 
-None. Step 2.1 is ready for its Git checkpoint.
+None. Step 2.2 is ready for its Git checkpoint.
 
 ## Not started
 
-- SMARD downloads
+- Remaining five SMARD snapshots
 - Pipeline implementation
 - Forecasting
 - Power BI
@@ -53,7 +60,7 @@ None. Step 2.1 is ready for its Git checkpoint.
 
 ## Next bounded step
 
-After Step 2.1 is committed and pushed, start Step 2.2: download and register only the 2022-2023 actual-consumption grid-load CSV, then inspect its real structure before acquiring the remaining snapshots.
+After Step 2.2 is committed and pushed, start Step 2.3: download and register the 2024-2025 actual-consumption CSV, then verify that its schema is compatible with the first snapshot.
 
 ## Current blockers
 

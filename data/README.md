@@ -27,5 +27,6 @@ The exact filters, period, units, time handling, filenames, and manifest require
 5. Store generated files in `data/processed/`.
 6. Include source attribution with every committed sample or exported public artifact.
 
-No source snapshots have been registered yet. The empty manifest header and
-approved export definitions are tracked before the first download.
+One of six approved source snapshots has been registered locally: Germany
+actual consumption for 2022-2023. Its raw CSV is ignored, while its checksum
+and lineage record are tracked in the manifest.

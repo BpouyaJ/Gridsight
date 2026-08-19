@@ -18,6 +18,7 @@
 | D-014 | 2026-08-19 | Standardize local development on Python 3.13 with a project-local virtual environment and `pyproject.toml` dependency groups. | Python 3.13 is installed locally and supported by the selected analytics, forecasting, database, test, and lint packages; an isolated environment makes the setup reproducible. | Accepted |
 | D-015 | 2026-08-19 | Run PostgreSQL 17.10 from the official Alpine Docker image and separate its integration test from the default fast test suite. | PostgreSQL 17 is supported through 2029, Compose makes the local runtime reproducible, and an explicit integration marker keeps normal development checks usable when Docker is stopped. | Accepted |
 | D-016 | 2026-08-19 | Define six approved SMARD exports before acquisition and register raw snapshots through an immutable SHA-256 manifest workflow. | Fixed filters prevent scope drift, tracked lineage makes source claims auditable, and checksum-based overwrite protection preserves reproducibility when SMARD values are revised. | Accepted |
+| D-017 | 2026-08-19 | Use the SMARD column `grid load [MWh] Calculated resolutions` as the load measure and treat local timestamp text as non-unique input. | The first real export distinguishes grid load from load including pumped storage, skips the spring 02:00 hour, and repeats the autumn 02:00 label; explicit column selection and UTC conversion prevent semantic and key errors. | Accepted |
 
 ## How to update this log
 

@@ -26,6 +26,7 @@ def _definition() -> ExportDefinition:
         period_start="2022-01-01",
         period_end="2023-12-31",
         local_filename="smard_actual_consumption_de_2022_2023.csv",
+        expected_series="grid load",
         licence="CC BY 4.0",
         attribution="Bundesnetzagentur | SMARD.de",
         smard_filters={"file_type": "CSV"},

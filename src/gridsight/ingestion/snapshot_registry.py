@@ -47,6 +47,7 @@ class ExportDefinition:
     period_start: str
     period_end: str
     local_filename: str
+    expected_series: str
     licence: str
     attribution: str
     smard_filters: dict[str, str]
@@ -146,6 +147,7 @@ def load_export_definitions(config_path: Path) -> dict[str, ExportDefinition]:
             period_start=_required_text(export, "period_start"),
             period_end=_required_text(export, "period_end"),
             local_filename=_required_text(export, "local_filename"),
+            expected_series=_required_text(export, "expected_series"),
             licence=_required_text(source, "licence"),
             attribution=_required_text(source, "attribution"),
             smard_filters=filters,
@@ -194,7 +196,11 @@ def _append_manifest(manifest_path: Path, record: SnapshotRecord) -> None:
     write_header = not manifest_path.exists() or manifest_path.stat().st_size == 0
 
     with manifest_path.open("a", encoding="utf-8", newline="") as manifest_file:
-        writer = csv.DictWriter(manifest_file, fieldnames=MANIFEST_FIELDS)
+        writer = csv.DictWriter(
+            manifest_file,
+            fieldnames=MANIFEST_FIELDS,
+            lineterminator="\n",
+        )
         if write_header:
             writer.writeheader()
         writer.writerow(asdict(record))

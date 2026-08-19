@@ -7,8 +7,9 @@ The raw CSV remains outside Git; its small metadata record remains in Git.
 
 `configs/smard_exports.json` is the machine-readable source of truth for the
 six approved exports. It fixes the category, geography, period, hourly
-resolution, output filename, licence, attribution, and corresponding SMARD
-download filters.
+resolution, expected output series, output filename, licence, attribution, and
+corresponding SMARD download filters. Expected series are output columns, not
+additional controls in the SMARD download form.
 
 ## Manifest schema
 
