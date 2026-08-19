@@ -6,7 +6,7 @@ Last updated: 2026-08-19
 
 Phase 2 - Data acquisition and profiling
 
-Current step: 2.7 - Second DE/LU day-ahead-price snapshot registration and compatibility profile
+Current step: 2.8 - Reproducible source profiler and notebook
 
 Status: completed
 
@@ -72,22 +72,28 @@ Status: completed
 - Recorded the later target-price range from -250.32 to 936.28 EUR/MWh.
 - Confirmed the expected leap-day and daylight-saving row behavior.
 - Completed registration and documented read-only profiling for all six approved SMARD snapshots.
+- Added a reusable Pandas-based profiler for every registered raw snapshot.
+- Added automated checks for manifest hashes, expected hourly row counts, exact targets, category schemas, source markers, and repeated local hours.
+- Added a read-only command that reproduced all documented source-profile results and completed with `Source profiling: OK`.
+- Added the reproducible `01_smard_source_profile.ipynb` notebook as a thin presentation layer over tested package code.
+- Added focused tests for leap-year/DST interval counts and numeric-versus-marker profiling.
+- Passed all six fast tests and Ruff after completing the Phase 2 profiling artifacts.
+- Completed the Phase 2 gate with all required acquisition, lineage, profiling, notebook, documentation, and verification deliverables.
 
 ## In progress
 
-None. Step 2.7 is ready for its Git checkpoint.
+None. Step 2.8 and the Phase 2 gate are ready for their Git checkpoint.
 
 ## Not started
 
-- Reproducible source-profile notebook and automated profile checks
-- Pipeline implementation
+- Phase 3 validation and transformation pipeline
 - Forecasting
 - Power BI
 - Excel/Power Query
 
 ## Next bounded step
 
-After Step 2.7 is committed and pushed, start Step 2.8: add the reproducible source-profile notebook and automated checks required by the Phase 2 gate, then reconcile its results with the documented observations.
+After the Phase 2 checkpoint is committed and pushed, start Step 3.1: define the canonical clean-data contracts and implement tested Europe/Berlin-to-UTC timestamp normalization without dropping or merging repeated local hours.
 
 ## Current blockers
 

@@ -59,6 +59,15 @@ The command copies the bytes to the approved `data/raw/` filename, calculates
 SHA-256, and appends one manifest record. Registering the same bytes again is
 idempotent. Different bytes can never replace an existing normalized raw file.
 
+After all approved snapshots are registered, reproduce the read-only source
+profile and its Phase 2 contract checks:
+
+```powershell
+python -m gridsight.ingestion.profile_snapshots
+```
+
+See `docs/source-profiling.md` for the automated checks and notebook workflow.
+
 ## Revision rule
 
 If SMARD publishes revised values, add a new approved export definition with a

@@ -41,8 +41,9 @@ Deliverables:
 
 Skills: real-world energy data, Pandas, NumPy, lineage, source assessment.
 
-Status: in progress. All six snapshots are registered and documented; the
-reproducible source-profile notebook remains before the phase gate closes.
+Status: completed. All six snapshots are registered with immutable raw files,
+tracked lineage, reproducible automated profiles, a source-profile notebook,
+documented observations, and passing tests.
 
 ### Phase 3 - Validation and transformation
 
