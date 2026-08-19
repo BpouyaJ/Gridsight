@@ -61,7 +61,7 @@ SMARD source snapshots
 
 ## Current status
 
-Phase 1 is complete. The repository now has project-control documentation, a Python 3.13 environment, installable package, declared dependencies, automated checks, a healthy PostgreSQL 17 runtime, and a verified Python-to-PostgreSQL connection. No data has been downloaded and no implementation pipeline has been written yet. The next step begins Phase 2 with the SMARD source-manifest and raw-data intake workflow.
+Phase 1 is complete, and Phase 2 has started. The repository now has six approved SMARD export definitions, a tracked source-manifest schema, and a tested immutable raw-data registration command. No source snapshot has been downloaded yet. The next step acquires and profiles only the first 2022-2023 grid-load CSV before the remaining downloads.
 
 See:
 

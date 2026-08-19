@@ -4,9 +4,9 @@ Last updated: 2026-08-19
 
 ## Current phase
 
-Phase 1 - Foundation
+Phase 2 - Data acquisition and profiling
 
-Current step: 1.3 - PostgreSQL runtime and Python connection smoke test
+Current step: 2.1 - SMARD source manifest and immutable raw-data intake
 
 Status: completed
 
@@ -33,10 +33,15 @@ Status: completed
 - Added validated database settings and a SQLAlchemy/Psycopg connection factory.
 - Passed the Python-to-PostgreSQL connection command.
 - Passed the marked PostgreSQL integration test while keeping it out of the default fast test suite.
+- Defined the six approved SMARD exports with exact filters, periods, geographies, and normalized filenames.
+- Added the tracked source-manifest schema before downloading data.
+- Added an immutable, SHA-256-based raw-snapshot registration command.
+- Verified idempotent registration and protection against different-content overwrites.
+- Passed all four fast tests and the Ruff code-quality check.
 
 ## In progress
 
-None. Step 1.3 and Phase 1 are ready for their Git checkpoint.
+None. Step 2.1 is ready for its Git checkpoint.
 
 ## Not started
 
@@ -48,7 +53,7 @@ None. Step 1.3 and Phase 1 are ready for their Git checkpoint.
 
 ## Next bounded step
 
-After Step 1.3 is committed and pushed, start Step 2.1: create the source-manifest schema and reproducible SMARD raw-data intake workflow before downloading the first snapshot.
+After Step 2.1 is committed and pushed, start Step 2.2: download and register only the 2022-2023 actual-consumption grid-load CSV, then inspect its real structure before acquiring the remaining snapshots.
 
 ## Current blockers
 

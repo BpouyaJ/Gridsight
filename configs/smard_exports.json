@@ -1,0 +1,107 @@
+{
+  "source": {
+    "source_name": "Bundesnetzagentur SMARD",
+    "source_url": "https://www.smard.de/en/downloadcenter/download-market-data/",
+    "source_resolution": "hour",
+    "licence": "CC BY 4.0",
+    "attribution": "Bundesnetzagentur | SMARD.de"
+  },
+  "exports": [
+    {
+      "export_id": "actual_consumption_de_2022_2023",
+      "source_category": "actual_consumption",
+      "source_geography": "DE",
+      "period_start": "2022-01-01",
+      "period_end": "2023-12-31",
+      "local_filename": "smard_actual_consumption_de_2022_2023.csv",
+      "smard_filters": {
+        "main_category": "Electricity consumption",
+        "data_category": "Actual consumption",
+        "data_series": "Grid load",
+        "country_or_bidding_zone": "Germany",
+        "resolution": "Hour",
+        "file_type": "CSV"
+      }
+    },
+    {
+      "export_id": "actual_consumption_de_2024_2025",
+      "source_category": "actual_consumption",
+      "source_geography": "DE",
+      "period_start": "2024-01-01",
+      "period_end": "2025-12-31",
+      "local_filename": "smard_actual_consumption_de_2024_2025.csv",
+      "smard_filters": {
+        "main_category": "Electricity consumption",
+        "data_category": "Actual consumption",
+        "data_series": "Grid load",
+        "country_or_bidding_zone": "Germany",
+        "resolution": "Hour",
+        "file_type": "CSV"
+      }
+    },
+    {
+      "export_id": "actual_generation_de_2022_2023",
+      "source_category": "actual_generation",
+      "source_geography": "DE",
+      "period_start": "2022-01-01",
+      "period_end": "2023-12-31",
+      "local_filename": "smard_actual_generation_de_2022_2023.csv",
+      "smard_filters": {
+        "main_category": "Electricity generation",
+        "data_category": "Actual generation",
+        "data_series": "All available generation types",
+        "country_or_bidding_zone": "Germany",
+        "resolution": "Hour",
+        "file_type": "CSV"
+      }
+    },
+    {
+      "export_id": "actual_generation_de_2024_2025",
+      "source_category": "actual_generation",
+      "source_geography": "DE",
+      "period_start": "2024-01-01",
+      "period_end": "2025-12-31",
+      "local_filename": "smard_actual_generation_de_2024_2025.csv",
+      "smard_filters": {
+        "main_category": "Electricity generation",
+        "data_category": "Actual generation",
+        "data_series": "All available generation types",
+        "country_or_bidding_zone": "Germany",
+        "resolution": "Hour",
+        "file_type": "CSV"
+      }
+    },
+    {
+      "export_id": "day_ahead_price_de_lu_2022_2023",
+      "source_category": "day_ahead_price",
+      "source_geography": "DE-LU",
+      "period_start": "2022-01-01",
+      "period_end": "2023-12-31",
+      "local_filename": "smard_day_ahead_price_de_lu_2022_2023.csv",
+      "smard_filters": {
+        "main_category": "Market",
+        "data_category": "Day-ahead prices",
+        "data_series": "Germany/Luxembourg",
+        "country_or_bidding_zone": "DE/LU",
+        "resolution": "Hour",
+        "file_type": "CSV"
+      }
+    },
+    {
+      "export_id": "day_ahead_price_de_lu_2024_2025",
+      "source_category": "day_ahead_price",
+      "source_geography": "DE-LU",
+      "period_start": "2024-01-01",
+      "period_end": "2025-12-31",
+      "local_filename": "smard_day_ahead_price_de_lu_2024_2025.csv",
+      "smard_filters": {
+        "main_category": "Market",
+        "data_category": "Day-ahead prices",
+        "data_series": "Germany/Luxembourg",
+        "country_or_bidding_zone": "DE/LU",
+        "resolution": "Hour",
+        "file_type": "CSV"
+      }
+    }
+  ]
+}

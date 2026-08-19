@@ -64,6 +64,7 @@ The actual downloaded names will be preserved. These normalized names may be use
 
 Every snapshot must record:
 
+- `export_id`
 - `source_name`
 - `source_url`
 - `source_category`

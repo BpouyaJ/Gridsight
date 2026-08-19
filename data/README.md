@@ -5,6 +5,7 @@ GridSight uses real public electricity-market data. Full raw and processed datas
 ## Directories
 
 - `raw/`: immutable local source snapshots; ignored by Git
+- `manifests/`: tracked source lineage, filenames, filters, and checksums
 - `processed/`: generated clean and analytical files; ignored by Git
 - `samples/`: small, attributed recruiter/test samples that may be committed
 
@@ -26,4 +27,5 @@ The exact filters, period, units, time handling, filenames, and manifest require
 5. Store generated files in `data/processed/`.
 6. Include source attribution with every committed sample or exported public artifact.
 
-No data have been downloaded yet.
+No source snapshots have been registered yet. The empty manifest header and
+approved export definitions are tracked before the first download.
