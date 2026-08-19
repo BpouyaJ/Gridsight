@@ -27,6 +27,7 @@ The exact filters, period, units, time handling, filenames, and manifest require
 5. Store generated files in `data/processed/`.
 6. Include source attribution with every committed sample or exported public artifact.
 
-Two of six approved source snapshots have been registered locally: Germany
-actual consumption for 2022-2023 and 2024-2025. Their raw CSVs are ignored,
-while their checksums and lineage records are tracked in the manifest.
+Three of six approved source snapshots have been registered locally: both
+Germany actual-consumption periods and Germany actual generation for
+2022-2023. Their raw CSVs are ignored, while their checksums and lineage
+records are tracked in the manifest.

@@ -103,3 +103,50 @@ row-level values, UTC uniqueness, interval continuity, and plausible ranges.
 
 The second snapshot confirms that UTC conversion is a required transformation,
 not an edge case unique to the first file.
+
+## 2022-2023 actual-generation profile
+
+- Export ID: `actual_generation_de_2022_2023`
+- Original filename: `Actual_generation_202201010000_202401010000_Hour.csv`
+- Normalized raw filename: `smard_actual_generation_de_2022_2023.csv`
+- Size: 2,538,427 bytes
+- SHA-256: `77175f940312421b40520ed2bc8de70d502ab4ab45ee68aee01ac8c085ebfab9`
+- Data rows: 17,520
+- Columns: 14
+- Unique start-timestamp strings: 17,518
+
+The file uses the same UTF-8 BOM, semicolon delimiter, English local timestamp
+format, comma thousands separator, period decimal separator, two-decimal
+precision, and hourly MWh unit as the consumption exports.
+
+### Generation measures
+
+1. Biomass
+2. Hydropower
+3. Wind offshore
+4. Wind onshore
+5. Photovoltaics
+6. Other renewable
+7. Nuclear
+8. Lignite
+9. Hard coal
+10. Fossil gas
+11. Hydro pumped storage
+12. Other conventional
+
+Every measure header follows the observed pattern
+`<technology> [MWh] Calculated resolutions`. No blank or non-numeric measure
+markers were observed in this snapshot.
+
+### Time behavior
+
+- First interval: 2022-01-01 00:00 to 01:00 local time
+- Last interval: 2023-12-31 23:00 to 2024-01-01 00:00 local time
+- The two spring transition dates contain 23 intervals.
+- The two autumn transition dates contain 25 intervals with one repeated 02:00
+  label per date.
+
+The generation and consumption files share the same local-time grain and can
+eventually use one UTC-normalization strategy. The generation columns will be
+retained explicitly; their analytical shape will be decided during the
+transformation and database-model phases.

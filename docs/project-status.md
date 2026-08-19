@@ -6,7 +6,7 @@ Last updated: 2026-08-19
 
 Phase 2 - Data acquisition and profiling
 
-Current step: 2.3 - Second actual-consumption snapshot and schema compatibility
+Current step: 2.4 - First actual-generation snapshot registration and profile
 
 Status: completed
 
@@ -51,14 +51,18 @@ Status: completed
 - Confirmed the same spring/fall daylight-saving behavior and no missing or non-numeric measure markers.
 - Verified that both actual-consumption snapshots can use one ingestion schema.
 - Re-ran all four fast tests and Ruff successfully after the compatibility update.
+- Registered the 2022-2023 Germany actual-generation snapshot with matching raw and manifest SHA-256 values.
+- Confirmed 17,520 rows, 14 columns, and 12 explicit generation-technology measures.
+- Confirmed the generation file shares the consumption files' encoding, delimiter, numeric format, timestamp format, and DST behavior.
+- Confirmed no missing or non-numeric generation measure markers in the snapshot.
 
 ## In progress
 
-None. Step 2.3 is ready for its Git checkpoint.
+None. Step 2.4 is ready for its Git checkpoint.
 
 ## Not started
 
-- Remaining four SMARD snapshots
+- Remaining three SMARD snapshots
 - Pipeline implementation
 - Forecasting
 - Power BI
@@ -66,7 +70,7 @@ None. Step 2.3 is ready for its Git checkpoint.
 
 ## Next bounded step
 
-After Step 2.3 is committed and pushed, start Step 2.4: download and register only the 2022-2023 actual-generation CSV, then profile its wider generation-source schema before acquiring the matching second file.
+After Step 2.4 is committed and pushed, start Step 2.5: download and register the 2024-2025 actual-generation CSV, then verify schema compatibility with the first generation snapshot.
 
 ## Current blockers
 

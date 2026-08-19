@@ -61,7 +61,7 @@ SMARD source snapshots
 
 ## Current status
 
-Phase 1 is complete, and Phase 2 is in progress. Both Germany actual-consumption snapshots for 2022-2025 are registered with tracked lineage and verified to share one source schema. The next step acquires and profiles only the first actual-generation snapshot before downloading its matching second file.
+Phase 1 is complete, and Phase 2 is in progress. Both Germany actual-consumption snapshots and the first actual-generation snapshot are registered with tracked lineage. The generation profile identified 12 technology measures with no missing markers. The next step acquires the matching 2024-2025 generation snapshot and verifies schema compatibility.
 
 See:
 
