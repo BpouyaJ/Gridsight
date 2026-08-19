@@ -49,6 +49,10 @@ def test_approved_config_contains_six_unique_exports() -> None:
         "day_ahead_price_de_lu_2024_2025",
     }
     assert len({item.local_filename for item in definitions.values()}) == 6
+    assert all(item.expected_series for item in definitions.values())
+    assert all(
+        "data_series" not in item.smard_filters for item in definitions.values()
+    )
 
 
 def test_registration_preserves_bytes_and_is_idempotent(tmp_path: Path) -> None:

@@ -6,7 +6,7 @@ Last updated: 2026-08-19
 
 Phase 2 - Data acquisition and profiling
 
-Current step: 2.2 - First actual-consumption snapshot registration and profile
+Current step: 2.3 - Second actual-consumption snapshot and schema compatibility
 
 Status: completed
 
@@ -45,14 +45,20 @@ Status: completed
 - Documented 23-hour spring and 25-hour autumn daylight-saving behavior and repeated local timestamp text.
 - Corrected the export configuration to distinguish expected output series from selectable SMARD filters.
 - Re-ran all four fast tests and Ruff successfully after profiling updates.
+- Registered the 2024-2025 Germany actual-consumption snapshot with matching raw and manifest SHA-256 values.
+- Confirmed its six-column schema, encoding, delimiter, and numeric format match the 2022-2023 snapshot.
+- Confirmed 17,544 rows, with the expected extra leap-day hours from 2024.
+- Confirmed the same spring/fall daylight-saving behavior and no missing or non-numeric measure markers.
+- Verified that both actual-consumption snapshots can use one ingestion schema.
+- Re-ran all four fast tests and Ruff successfully after the compatibility update.
 
 ## In progress
 
-None. Step 2.2 is ready for its Git checkpoint.
+None. Step 2.3 is ready for its Git checkpoint.
 
 ## Not started
 
-- Remaining five SMARD snapshots
+- Remaining four SMARD snapshots
 - Pipeline implementation
 - Forecasting
 - Power BI
@@ -60,7 +66,7 @@ None. Step 2.2 is ready for its Git checkpoint.
 
 ## Next bounded step
 
-After Step 2.2 is committed and pushed, start Step 2.3: download and register the 2024-2025 actual-consumption CSV, then verify that its schema is compatible with the first snapshot.
+After Step 2.3 is committed and pushed, start Step 2.4: download and register only the 2022-2023 actual-generation CSV, then profile its wider generation-source schema before acquiring the matching second file.
 
 ## Current blockers
 

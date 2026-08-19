@@ -64,3 +64,42 @@ joining or enforcing uniqueness.
 - Preserve the original timestamp strings for lineage and quality evidence.
 - Do not drop or merge repeated local hours.
 - Select the exact grid-load column explicitly rather than by position alone.
+
+## 2024-2025 compatibility check
+
+The second approved actual-consumption snapshot was registered and compared
+read-only with the first snapshot.
+
+- Original filename: `Actual_consumption_202401010000_202601010000_Hour.csv`
+- Normalized raw filename: `smard_actual_consumption_de_2024_2025.csv`
+- Size: 1,407,837 bytes
+- SHA-256: `ab06c20d5a437b1f1570f5dc26b5e423e9d9b2043b845269faee105dffd19fd2`
+- Data rows: 17,544
+- First interval start: 2024-01-01 00:00 local time
+- Last interval end: 2026-01-01 00:00 local time
+- Unique start-timestamp strings: 17,542
+
+The additional 24 rows relative to 2022-2023 are expected because 2024 is a
+leap year.
+
+### Compatibility result
+
+- The six column names and order match exactly.
+- Encoding remains UTF-8 with BOM.
+- The delimiter remains semicolon.
+- Numeric formatting and two-decimal precision remain unchanged.
+- No blank or non-numeric measure markers were observed.
+- Both raw-file hashes match their tracked manifest records.
+
+The two consumption snapshots can therefore use one ingestion schema. This is
+a source-profile conclusion only; the later validation phase will still test
+row-level values, UTC uniqueness, interval continuity, and plausible ranges.
+
+### Daylight-saving confirmation
+
+- 2024-03-31 and 2025-03-30 each contain 23 intervals.
+- 2024-10-27 and 2025-10-26 each contain 25 intervals with a repeated 02:00
+  local timestamp label.
+
+The second snapshot confirms that UTC conversion is a required transformation,
+not an edge case unique to the first file.
