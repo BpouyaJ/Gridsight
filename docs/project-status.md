@@ -4,9 +4,9 @@ Last updated: 2026-08-19
 
 ## Current phase
 
-Phase 2 - Data acquisition and profiling
+Phase 3 - Validation and transformation
 
-Current step: 2.8 - Reproducible source profiler and notebook
+Current step: 3.1 - Canonical time contract and UTC normalization
 
 Status: completed
 
@@ -79,21 +79,28 @@ Status: completed
 - Added focused tests for leap-year/DST interval counts and numeric-versus-marker profiling.
 - Passed all six fast tests and Ruff after completing the Phase 2 profiling artifacts.
 - Completed the Phase 2 gate with all required acquisition, lineage, profiling, notebook, documentation, and verification deliverables.
+- Defined the canonical UTC and Europe/Berlin time columns while preserving raw source labels.
+- Implemented locale-independent SMARD timestamp parsing and ordered autumn-hour disambiguation.
+- Derived canonical ends from UTC starts plus one hour to handle both DST boundaries safely.
+- Added a read-only six-snapshot timestamp-normalization check and focused spring, autumn, and real-gap tests.
+- Verified all six snapshots become continuous unique UTC hours with CET/CEST offsets and two second-fold rows per two-year file.
+- Passed all nine fast tests and Ruff after completing Step 3.1.
 
 ## In progress
 
-None. Step 2.8 and the Phase 2 gate are ready for their Git checkpoint.
+None. Step 3.1 is ready for its Git checkpoint.
 
 ## Not started
 
-- Phase 3 validation and transformation pipeline
+- Category-specific measure parsing and clean datasets
+- Validation-error output and run summaries
 - Forecasting
 - Power BI
 - Excel/Power Query
 
 ## Next bounded step
 
-After the Phase 2 checkpoint is committed and pushed, start Step 3.1: define the canonical clean-data contracts and implement tested Europe/Berlin-to-UTC timestamp normalization without dropping or merging repeated local hours.
+After Step 3.1 is committed and pushed, start Step 3.2: implement the tested actual-consumption parser with canonical measure names, numeric MWh values, lineage fields, and safe concatenation of both source periods.
 
 ## Current blockers
 

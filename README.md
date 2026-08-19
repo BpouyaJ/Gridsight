@@ -61,7 +61,7 @@ SMARD source snapshots
 
 ## Current status
 
-Phases 1 and 2 are complete. All six approved SMARD snapshots are registered with tracked lineage, tested automated profiles, and a reproducible notebook. The source contract preserves DST behavior, generation markers, and valid negative DE/LU prices. The next step begins Phase 3 with canonical clean-data contracts and tested Europe/Berlin-to-UTC timestamp normalization.
+Phases 1 and 2 are complete, and Phase 3 is in progress. All six approved SMARD snapshots are registered with tracked lineage and reproducible profiles. Step 3.1 established tested, continuous UTC intervals without losing repeated local hours or raw timestamp evidence. The next step builds the canonical actual-consumption parser across both source periods.
 
 See:
 
@@ -70,6 +70,7 @@ See:
 - [Local PostgreSQL setup](docs/database-setup.md)
 - [Initial SMARD source profile](docs/initial-source-profile.md)
 - [Reproducible source profiling](docs/source-profiling.md)
+- [Clean-data contract](docs/clean-data-contract.md)
 - [Project status](docs/project-status.md)
 - [Decision log](docs/decisions.md)
 - [Source contract](docs/source-contract.md)
