@@ -40,6 +40,12 @@ The third generated output is
 `processed/day_ahead_price_hourly.csv`. It contains only the approved DE/LU
 price series from the wider market export and remains ignored.
 
+The consolidated clean-data gate also creates
+`processed/validation_issues.csv` and `processed/validation_summary.json`.
+The issue file is header-only when validation passes. The JSON summary records
+stable check results, dataset metrics, output paths, and output SHA-256 values.
+Both artifacts are deterministic generated files and remain ignored.
+
 All six approved source snapshots have been registered locally: both Germany
 actual-consumption periods, both Germany actual-generation periods, and both
 DE/LU day-ahead-price periods. Their raw CSVs are ignored, while their

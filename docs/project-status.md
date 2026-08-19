@@ -6,7 +6,7 @@ Last updated: 2026-08-19
 
 Phase 3 - Validation and transformation
 
-Current step: 3.4 - Canonical DE/LU day-ahead-price transformation
+Current step: 3.5 - Consolidated clean-data validation gate
 
 Status: completed
 
@@ -104,22 +104,42 @@ Status: completed
 - Verified 35,064 continuous rows, 25 columns, 1,400 negative prices, 174 zero prices, and a -500.00 to 936.28 EUR/MWh range.
 - Recorded processed price SHA-256 `a9a66c7f69900289c944ec72bcc1a62e26fbb3c37839e3ad34f7f405a622e53e`.
 - Passed all 25 fast tests, Ruff, and the price-output Git-ignore check after completing Step 3.4.
+- Added stable structured checks for clean schemas, counts, keys, measures,
+  units, generation availability, lineage, and cross-dataset UTC alignment.
+- Added deterministic validation-issue CSV and machine-readable JSON run-summary
+  writers.
+- Added one command that validates before publishing and preserves the last
+  known-good canonical outputs on validation failure.
+- Added focused passing, failing, actionable-issue, and artifact-reproducibility
+  tests for the Phase 3 gate.
+- Passed all 29 consolidated clean-data checks with zero validation issues.
+- Reproduced the verified consumption, generation, and price output hashes in
+  one clean-data run.
+- Recorded validation-issues SHA-256
+  `f71d51df4b07a9d80be883432a59eabec1c957b0c8627e499de5c853d06eaecf`.
+- Recorded validation-summary SHA-256
+  `5fc1af559d4ebb46712a86d7cff3f5780a0af2c24ce480c0e7016767176de766`.
+- Passed all 29 fast tests with one PostgreSQL integration test deselected.
+- Passed Ruff after applying its deterministic import-order correction.
+- Completed the Phase 3 gate with canonical clean datasets, structured
+  failures, reproducible summaries, tests, and documentation.
 
 ## In progress
 
-None. Step 3.4 is ready for its Git checkpoint.
+None. Step 3.5 is ready for its Git checkpoint.
 
 ## Not started
 
-- Category-specific measure parsing and clean datasets
-- Validation-error output and run summaries
 - Forecasting
 - Power BI
 - Excel/Power Query
+- PostgreSQL analytical model
 
 ## Next bounded step
 
-After Step 3.4 is committed and pushed, start Step 3.5: produce structured validation issues and a machine-readable run summary that reconcile UTC coverage, row counts, keys, units, availability, and output hashes across all three clean datasets.
+After Step 3.5 is committed and pushed, begin Step 4.1 by defining the
+PostgreSQL `staging`, `analytics`, and `reporting` schemas and their table
+contracts.
 
 ## Current blockers
 

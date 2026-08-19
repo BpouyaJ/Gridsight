@@ -252,3 +252,37 @@ The Step 3.4 verification produced:
 The output passed exact-target selection, finite numeric parsing, negative-price
 retention, uniqueness, continuity, shared-lineage, atomic-write, and Git-ignore
 checks.
+
+## Consolidated Phase 3 validation gate
+
+Step 3.5 rebuilds all three canonical frames from the immutable raw snapshots
+before publishing them together. It validates column contracts, row counts,
+keys, units, numeric domains, generation availability semantics, lineage, and
+the common UTC spine.
+
+```powershell
+python -m gridsight.validation.run_validation
+```
+
+If any structured error is found, the command returns a nonzero exit code and
+does not replace the last known-good canonical CSVs. It still writes an
+actionable `data/processed/validation_issues.csv` and a machine-readable
+`data/processed/validation_summary.json`. On success, it atomically replaces
+the three canonical CSVs and records their new SHA-256 values in the summary.
+
+The artifact schemas and stable check-ID conventions are defined in
+`docs/data-quality.md`.
+
+### Verified consolidated run
+
+The Step 3.5 run passed all 29 validation checks with zero issues and reproduced
+the three previously verified canonical CSV hashes. It produced:
+
+- issues SHA-256
+  `f71d51df4b07a9d80be883432a59eabec1c957b0c8627e499de5c853d06eaecf`;
+- summary SHA-256
+  `5fc1af559d4ebb46712a86d7cff3f5780a0af2c24ce480c0e7016767176de766`.
+
+The issue file contained only its defined header. The complete fast suite
+passed 29 tests with the PostgreSQL integration test deselected, and Ruff
+passed after formatting the new validation imports.
