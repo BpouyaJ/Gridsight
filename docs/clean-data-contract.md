@@ -67,3 +67,64 @@ UTC intervals. Focused tests separately cover the spring gap, both autumn
 
 Measure parsing, category-specific names, missing-value flags, and clean-output
 storage are defined in later Phase 3 steps.
+
+## Actual-consumption clean dataset
+
+Step 3.2 combines both registered actual-consumption snapshots into one
+canonical dataset at `data/processed/actual_consumption_hourly.csv`. The file is
+generated reproducibly and remains outside Git.
+
+### Measure mapping
+
+| SMARD source column | Canonical column | Unit |
+|---|---|---|
+| `grid load [MWh] Calculated resolutions` | `grid_load_mwh` | MWh |
+| `Grid load incl. hydro pumped storage [MWh] Calculated resolutions` | `grid_load_including_pumped_storage_mwh` | MWh |
+| `Hydro pumped storage [MWh] Calculated resolutions` | `hydro_pumped_storage_mwh` | MWh |
+| `Residual load [MWh] Calculated resolutions` | `residual_load_mwh` | MWh |
+
+`grid_load_mw` is the primary forecasting measure. It is derived as
+`grid_load_mwh / interval_duration_hours`; for these one-hour intervals the two
+columns are numerically equal but have different physical meanings.
+
+### Measure rules
+
+- Remove source thousands commas and parse every measure strictly as numeric.
+- Reject blank, marker, infinite, or otherwise non-numeric consumption values.
+- Require grid load, grid load including pumped storage, and pumped storage to
+  be non-negative.
+- Preserve negative residual load as a valid observation.
+- Require grid load including pumped storage to equal grid load plus pumped
+  storage within 0.011 MWh, allowing the observed 0.01 MWh rounding difference.
+- Never relabel MWh as MW; derive average MW using the explicit one-hour
+  duration.
+
+### Row-level lineage
+
+Every row carries its export ID, category, geography, resolution, source
+period, original filename, normalized raw filename, and raw SHA-256. The two
+periods are sorted by UTC start and must form one unique, continuous hourly
+series.
+
+### Build command
+
+```powershell
+python -m gridsight.transformation.build_consumption
+```
+
+The command rechecks both raw hashes, transforms both snapshots, writes the
+clean CSV atomically, and prints its row count, UTC coverage, path, and
+SHA-256. Re-running it safely replaces only the generated processed output.
+
+### Verified build
+
+The Step 3.2 verification produced:
+
+- 35,064 continuous hourly rows;
+- 24 canonical columns;
+- UTC coverage from 2021-12-31 23:00 through 2025-12-31 23:00;
+- output SHA-256
+  `4a0107f087fdd5d87e584c913c6e73187f6e2c81057053964250cf3f1f9316a5`.
+
+The processed file passed its strict measure, arithmetic, lineage, uniqueness,
+continuity, atomic-write, and Git-ignore checks.

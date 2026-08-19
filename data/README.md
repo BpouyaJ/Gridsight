@@ -27,6 +27,10 @@ The exact filters, period, units, time handling, filenames, and manifest require
 5. Store generated files in `data/processed/`.
 6. Include source attribution with every committed sample or exported public artifact.
 
+The first Phase 3 generated output is
+`processed/actual_consumption_hourly.csv`. It is rebuilt from immutable raw
+snapshots and is never committed.
+
 All six approved source snapshots have been registered locally: both Germany
 actual-consumption periods, both Germany actual-generation periods, and both
 DE/LU day-ahead-price periods. Their raw CSVs are ignored, while their

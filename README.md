@@ -61,7 +61,7 @@ SMARD source snapshots
 
 ## Current status
 
-Phases 1 and 2 are complete, and Phase 3 is in progress. All six approved SMARD snapshots are registered with tracked lineage and reproducible profiles. Step 3.1 established tested, continuous UTC intervals without losing repeated local hours or raw timestamp evidence. The next step builds the canonical actual-consumption parser across both source periods.
+Phases 1 and 2 are complete, and Phase 3 is in progress. UTC normalization and the 35,064-row canonical actual-consumption dataset are verified with lineage and strict measure rules. The next step builds the generation dataset with explicit technologies, renewable groupings, and preserved unavailable-value evidence.
 
 See:
 

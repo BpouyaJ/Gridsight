@@ -22,6 +22,7 @@
 | D-018 | 2026-08-19 | Parse SMARD `-` generation markers as missing/unavailable and never silently convert them to measured zero. | The 2024-2025 generation snapshot contains 16,836 dash markers in Nuclear after 708 explicit numeric zeroes, so the source itself distinguishes the two states. | Accepted |
 | D-019 | 2026-08-19 | Select the exact `Germany/Luxembourg [€/MWh] Calculated resolutions` price column and retain negative values as valid market observations. | The SMARD export contains 17 market columns, while the approved target has 370 negative hours and an observed minimum of -500 EUR/MWh; selection by position or non-negative validation would corrupt the analysis. | Accepted |
 | D-020 | 2026-08-19 | Preserve SMARD start/end text, disambiguate ordered Europe/Berlin starts, and derive every canonical interval end as UTC start plus one hour. | The spring source includes a nonexistent 02:00 end label, while both repeated autumn 02:00 starts show 03:00 as their end; independently localizing end text would create invalid or two-hour intervals. | Accepted |
+| D-021 | 2026-08-19 | Keep the four actual-consumption measures in a canonical wide dataset, derive the forecast target `grid_load_mw` from hourly MWh, and retain negative residual load. | The source measures have distinct meanings, hourly MWh converts explicitly to average MW, and the real snapshots contain valid negative residual-load observations while the other consumption measures remain non-negative. | Accepted |
 
 ## How to update this log
 

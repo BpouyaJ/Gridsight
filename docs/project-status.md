@@ -6,7 +6,7 @@ Last updated: 2026-08-19
 
 Phase 3 - Validation and transformation
 
-Current step: 3.1 - Canonical time contract and UTC normalization
+Current step: 3.2 - Canonical actual-consumption transformation
 
 Status: completed
 
@@ -85,10 +85,16 @@ Status: completed
 - Added a read-only six-snapshot timestamp-normalization check and focused spring, autumn, and real-gap tests.
 - Verified all six snapshots become continuous unique UTC hours with CET/CEST offsets and two second-fold rows per two-year file.
 - Passed all nine fast tests and Ruff after completing Step 3.1.
+- Mapped all four actual-consumption measures to explicit canonical MWh columns and derived the primary `grid_load_mw` measure.
+- Implemented strict numeric parsing while preserving valid negative residual load.
+- Added row-level manifest lineage and continuous combination of both consumption periods.
+- Added a reproducible atomic build for the ignored clean consumption CSV.
+- Verified 35,064 continuous rows, 24 columns, complete UTC coverage, and processed SHA-256 `4a0107f087fdd5d87e584c913c6e73187f6e2c81057053964250cf3f1f9316a5`.
+- Passed all 15 fast tests, Ruff, and the processed-file Git-ignore check after completing Step 3.2.
 
 ## In progress
 
-None. Step 3.1 is ready for its Git checkpoint.
+None. Step 3.2 is ready for its Git checkpoint.
 
 ## Not started
 
@@ -100,7 +106,7 @@ None. Step 3.1 is ready for its Git checkpoint.
 
 ## Next bounded step
 
-After Step 3.1 is committed and pushed, start Step 3.2: implement the tested actual-consumption parser with canonical measure names, numeric MWh values, lineage fields, and safe concatenation of both source periods.
+After Step 3.2 is committed and pushed, start Step 3.3: define and implement the canonical generation dataset, including explicit technology names, renewable groupings, lineage, and preservation of the Nuclear unavailable markers.
 
 ## Current blockers
 
