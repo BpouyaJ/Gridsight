@@ -61,17 +61,18 @@ SMARD source snapshots
 
 ## Current status
 
-Phases 1 through 3 are complete. All three canonical datasets cover the same
-35,064 UTC hours with tested lineage and domain-specific value rules. The final
-Phase 3 gate rebuilds and reconciles them through 29 structured checks and
-produces deterministic issue and run-summary artifacts. Phase 4 will load this
-clean layer into the PostgreSQL analytical model.
+Phases 1 through 3 are complete, and Phase 4 is in progress. All three
+canonical datasets cover the same 35,064 UTC hours with tested lineage and
+domain-specific value rules. Step 4.1 established verified PostgreSQL staging
+contracts, conformed dimensions, and two fact-table grains. Step 4.2 will load
+and reconcile the validated clean data.
 
 See:
 
 - [Roadmap](docs/roadmap.md)
 - [Development setup](docs/development-setup.md)
 - [Local PostgreSQL setup](docs/database-setup.md)
+- [PostgreSQL analytical model](docs/database-model.md)
 - [Initial SMARD source profile](docs/initial-source-profile.md)
 - [Reproducible source profiling](docs/source-profiling.md)
 - [Clean-data contract](docs/clean-data-contract.md)

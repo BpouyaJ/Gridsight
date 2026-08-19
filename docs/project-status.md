@@ -4,9 +4,9 @@ Last updated: 2026-08-19
 
 ## Current phase
 
-Phase 3 - Validation and transformation
+Phase 4 - PostgreSQL analytical model
 
-Current step: 3.5 - Consolidated clean-data validation gate
+Current step: 4.1 - Database schemas and table contracts
 
 Status: completed
 
@@ -123,23 +123,45 @@ Status: completed
 - Passed Ruff after applying its deterministic import-order correction.
 - Completed the Phase 3 gate with canonical clean datasets, structured
   failures, reproducible summaries, tests, and documentation.
+- Defined `staging`, `analytics`, and `reporting` PostgreSQL schemas through
+  ordered idempotent SQL files.
+- Mirrored all 24 consumption, 29 generation, and 25 price canonical columns in
+  three constrained staging tables.
+- Defined conformed date, hour, and 12-member generation-technology dimensions.
+- Defined separate hourly electricity and interval/technology generation fact
+  contracts with explicit grains, units, keys, lineage, and foreign keys.
+- Added database constraints for UTC duration, domains, arithmetic identities,
+  SHA-256 lineage, and reported-versus-unavailable semantics.
+- Added a transactional DDL runner and live database contract inspector.
+- Added fast SQL-contract tests and an idempotence/live-contract integration
+  test.
+- Applied all 14 DDL statements successfully and matched the live database to
+  all eight declared table contracts.
+- Verified three staging, five analytics, and zero reporting tables in their
+  expected schemas.
+- Proved the schema application is idempotent by applying it twice inside the
+  live PostgreSQL integration test.
+- Passed all 33 fast tests with two integration tests deselected.
+- Passed both live PostgreSQL integration tests with 33 fast tests deselected.
+- Passed Ruff after completing the Step 4.1 implementation.
 
 ## In progress
 
-None. Step 3.5 is ready for its Git checkpoint.
+None. Step 4.1 is ready for its Git checkpoint.
 
 ## Not started
 
 - Forecasting
 - Power BI
 - Excel/Power Query
-- PostgreSQL analytical model
+- Idempotent PostgreSQL data loading and reconciliation
+- SQL reporting views
 
 ## Next bounded step
 
-After Step 3.5 is committed and pushed, begin Step 4.1 by defining the
-PostgreSQL `staging`, `analytics`, and `reporting` schemas and their table
-contracts.
+After Step 4.1 is committed and pushed, begin Step 4.2 by loading the validated
+clean datasets transactionally and reconciling staging, dimensions, and facts
+with the Phase 3 summary.
 
 ## Current blockers
 

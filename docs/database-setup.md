@@ -38,6 +38,20 @@ docker compose exec postgres postgres --version
 The query must show the `gridsight` database and user. The second command must
 show a PostgreSQL 17 server version.
 
+## Apply the analytical schema contract
+
+After the service is healthy, create and inspect the empty Step 4.1 database
+model:
+
+```powershell
+python -m gridsight.database.apply_schema
+```
+
+The command is transactional and idempotent. It must report three schemas,
+three staging tables, five analytics tables, zero reporting tables, and
+`Database contract: OK`. Table grains, keys, constraints, and the next loading
+step are documented in `docs/database-model.md`.
+
 ## Stop and restart
 
 Stop the database without deleting its data:
