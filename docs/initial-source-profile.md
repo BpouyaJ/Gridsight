@@ -228,3 +228,28 @@ same local timestamp representation as the load and generation snapshots. Its
 spring transition dates contain 23 rows, and its autumn transition dates
 contain 25 rows with repeated local 02:00 labels. Price data therefore uses the
 same required Europe/Berlin-to-UTC normalization strategy.
+
+## 2024-2025 DE/LU day-ahead-price compatibility check
+
+- Export ID: `day_ahead_price_de_lu_2024_2025`
+- Original filename: `Day-ahead_prices_202401010000_202601010000_Hour.csv`
+- Normalized raw filename: `smard_day_ahead_price_de_lu_2024_2025.csv`
+- Size: 2,556,101 bytes
+- SHA-256: `300309f929fd3ff100a61c792456df47ba5fef85f2a2cc0567146a219f9c485b`
+- Data rows: 17,544
+- Columns: 19
+- Unique start-timestamp strings: 17,542
+
+The 19 column names and order match the 2022-2023 price snapshot exactly. The
+Germany/Luxembourg target remains fully numeric with no blank or non-numeric
+markers:
+
+- 16,370 values are positive, 144 are zero, and 1,030 are negative.
+- The observed minimum is -250.32 EUR/MWh at 2025-05-11 13:00 local time.
+- The observed maximum is 936.28 EUR/MWh at 2024-12-12 17:00 local time.
+
+The additional 24 rows relative to the first period are expected from the 2024
+leap day. Encoding, delimiter, units, timestamp representation, and daylight-
+saving behavior are also compatible. Both price-file hashes match the tracked
+manifest, so one structural ingestion schema and exact-name target selection
+can cover both snapshots.

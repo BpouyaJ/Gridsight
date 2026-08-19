@@ -41,6 +41,9 @@ Deliverables:
 
 Skills: real-world energy data, Pandas, NumPy, lineage, source assessment.
 
+Status: in progress. All six snapshots are registered and documented; the
+reproducible source-profile notebook remains before the phase gate closes.
+
 ### Phase 3 - Validation and transformation
 
 Deliverables:

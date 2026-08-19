@@ -6,7 +6,7 @@ Last updated: 2026-08-19
 
 Phase 2 - Data acquisition and profiling
 
-Current step: 2.6 - First DE/LU day-ahead-price snapshot registration and profile
+Current step: 2.7 - Second DE/LU day-ahead-price snapshot registration and compatibility profile
 
 Status: completed
 
@@ -66,14 +66,20 @@ Status: completed
 - Confirmed all 17,520 target-price rows are numeric, with 370 negative values, 30 zeroes, and no source markers.
 - Recorded the observed target-price range from -500.00 to 871.00 EUR/MWh and classified negative wholesale prices as valid observations.
 - Confirmed the price snapshot shares the other sources' encoding, delimiter, local timestamp representation, and DST behavior.
+- Registered the 2024-2025 DE/LU day-ahead-price snapshot with matching raw and manifest SHA-256 values.
+- Confirmed its 19-column schema exactly matches the 2022-2023 price snapshot and contains the same Germany/Luxembourg target.
+- Confirmed all 17,544 later target-price rows are numeric, with 1,030 negative values, 144 zeroes, and no source markers.
+- Recorded the later target-price range from -250.32 to 936.28 EUR/MWh.
+- Confirmed the expected leap-day and daylight-saving row behavior.
+- Completed registration and documented read-only profiling for all six approved SMARD snapshots.
 
 ## In progress
 
-None. Step 2.6 is ready for its Git checkpoint.
+None. Step 2.7 is ready for its Git checkpoint.
 
 ## Not started
 
-- Remaining 2024-2025 SMARD day-ahead-price snapshot
+- Reproducible source-profile notebook and automated profile checks
 - Pipeline implementation
 - Forecasting
 - Power BI
@@ -81,7 +87,7 @@ None. Step 2.6 is ready for its Git checkpoint.
 
 ## Next bounded step
 
-After Step 2.6 is committed and pushed, start Step 2.7: download and register the 2024-2025 DE/LU day-ahead-price CSV, then verify schema and value compatibility with the first price snapshot.
+After Step 2.7 is committed and pushed, start Step 2.8: add the reproducible source-profile notebook and automated checks required by the Phase 2 gate, then reconcile its results with the documented observations.
 
 ## Current blockers
 
