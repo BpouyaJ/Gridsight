@@ -6,7 +6,7 @@ Last updated: 2026-08-20
 
 Phase 5 - Exploratory analysis and KPIs
 
-Current step: 5.1 - KPI definitions and analytical query contract
+Current step: 5.2 - Focused exploratory analysis and findings
 
 Status: completed
 
@@ -206,10 +206,36 @@ Status: completed
 - Passed all 43 fast tests with five live tests deselected.
 - Passed all five live PostgreSQL tests with 43 fast tests deselected.
 - Passed Ruff and `git diff --check` after completing Step 5.1.
+- Defined monthly, local-hour/day-type, and daily EDA query contracts covering
+  48 months, 48 load-shape groups, and 1,461 days.
+- Reconciled every EDA grain to 35,064 hours and both aggregate availability
+  grains to 16,836 unavailable generation values.
+- Added deterministic daily correlations, four load-shape extrema, and six
+  explicit unusual-day ranking rules.
+- Changed daily load-extreme ranking from GWh to average GW after visual review
+  exposed the unfair duration effect on 23/25-hour DST dates.
+- Added four deterministic, visually reviewed PNG figures without dual axes or
+  causal claims.
+- Added the thin `02_energy_market_eda.ipynb` presentation notebook over tested
+  package logic.
+- Reproduced the EDA JSON and all four figure hashes across two consecutive
+  builds.
+- Recorded the -0.631 all-period daily renewable-share/price association and
+  separate yearly coefficients from -0.637 to -0.882.
+- Recorded the 2022-2025 renewable-share increase from 46.66% to 58.86%, the
+  price decrease from 235.45 to 89.32 EUR/MWh, and the increase from 69 to 573
+  negative-price hours.
+- Documented seasonal load movement, weekday/weekend hourly shapes, six
+  rule-selected unusual days, missing-generation context, and causal limits.
+- Passed all 47 fast tests with six live tests deselected.
+- Passed all six live PostgreSQL tests with 47 fast tests deselected.
+- Passed Ruff, `git diff --check`, artifact determinism, and visual review.
+- Completed the Phase 5 gate with KPI definitions, SQL queries, focused EDA,
+  reproducible artifacts, documented findings, and limitations.
 
 ## In progress
 
-None. Step 5.1 is ready for its Git checkpoint.
+None. Step 5.2 and the Phase 5 gate are ready for their Git checkpoint.
 
 ## Not started
 
@@ -219,9 +245,8 @@ None. Step 5.1 is ready for its Git checkpoint.
 
 ## Next bounded step
 
-After Step 5.1 is committed and pushed, begin Step 5.2 with focused exploratory
-analysis, figures, and carefully limited findings about load, renewables,
-prices, and unusual periods.
+After Step 5.2 is committed and pushed, begin Phase 6 Step 6.1 with the
+forecast-origin, chronological split, and evaluation contract.
 
 ## Current blockers
 

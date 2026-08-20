@@ -16,3 +16,26 @@ and query-contract metadata suitable for Git and portfolio review.
 
 The verified Step 5.1 artifact has SHA-256
 `fa03ee1af919027634aeb45a524c713274bd9effcac9955052d3be449c8395fc`.
+
+`eda_snapshot.json` and the four files under `reports/figures/` are generated
+by:
+
+```powershell
+python -m gridsight.reporting.build_eda
+```
+
+The EDA builder verifies the KPI dependency and all monthly, local-hour, and
+daily grains before publishing descriptive results.
+
+The verified Step 5.2 artifacts have these SHA-256 values:
+
+- `eda_snapshot.json`:
+  `8e2aed814ed1178dd6107974761d571dbae512bf7b6943fd72dee81b4ca7944d`;
+- `01_annual_kpis.png`:
+  `faca9bc2cd26474d2bafefb39ae0037ab4e5334fc4f8d5e49bd09fc82b515118`;
+- `02_monthly_energy_market.png`:
+  `5b6889398b1bd01a9a37caf911264d923be336608376f4c62fd3cee5c34d7411`;
+- `03_weekday_weekend_load_shape.png`:
+  `c4dd6cd2e0e1c997cc859be740b5b90021076cffcd73a36193d9312b292c909b`;
+- `04_renewable_share_vs_price.png`:
+  `e7c9ac69b8ccd56ad4c90054152f6800845e7a61d21d7d84be7d7ebc6e217af9`.
