@@ -107,8 +107,10 @@ Skills: NumPy, scikit-learn, feature engineering, time-series validation, model 
 
 Status: in progress. Step 6.1 completed the local-midnight forecast schedule,
 24-real-hour horizon, information cutoff, chronological train/validation/test
-splits, baseline-source timestamps, and evaluation metrics. Step 6.2 will
-implement and compare the frozen daily and weekly seasonal-naive baselines.
+splits, baseline-source timestamps, and evaluation metrics. Step 6.2 is
+complete with frozen daily and weekly seasonal-naive baselines, aggregate
+overall/horizon metrics, and zero scored test rows. Step 6.3 will implement
+leakage-safe calendar, lag, and rolling features.
 
 ### Phase 7 - Reporting marts
 

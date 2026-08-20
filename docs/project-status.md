@@ -6,7 +6,7 @@ Last updated: 2026-08-20
 
 Phase 6 - Forecasting
 
-Current step: 6.1 - Forecast-origin, split, leakage, and evaluation contract
+Current step: 6.2 - Daily and weekly seasonal-naive baselines
 
 Status: completed
 
@@ -257,21 +257,40 @@ Status: completed
 - Passed all 51 fast tests with six live tests deselected, including the four
   new forecasting-contract tests.
 - Passed Ruff and `git diff --check` after completing Step 6.1.
+- Added hash-gated loading of the frozen Step 6.1 contract and forecast index.
+- Added exact 24-hour and 168-hour source lookups against validated canonical
+  load observations.
+- Limited baseline evaluation to 17,352 training and 8,784 validation rows,
+  with an explicit rejection rule for any scored test row.
+- Added MAE, RMSE, and MAPE reporting overall and by all 24 horizon steps.
+- Added a deterministic aggregate baseline snapshot and validation comparison.
+- Added fast tests for source lookup, test exclusion, leakage rejection,
+  frozen-input hashes, horizon coverage, and deterministic output.
+- Evaluated 17,352 training and 8,784 validation rows while scoring zero test
+  rows.
+- Recorded validation MAE of 3,945.112 MW for daily seasonal naive and
+  2,657.167 MW for weekly seasonal naive.
+- Selected weekly seasonal naive as the stronger validation benchmark, with a
+  32.647% MAE improvement over daily seasonal naive.
+- Reproduced the aggregate baseline artifact twice with SHA-256
+  `311513a0405761aa6a30db6a956b53c29b3cc38dfd03dc4e74efa62902a4b717`.
+- Passed all 55 fast tests with six live tests deselected, including all four
+  new baseline tests.
+- Passed Ruff and `git diff --check` after completing Step 6.2.
 
 ## In progress
 
-None. Step 6.1 is ready for its Git checkpoint.
+None. Step 6.2 is ready for its Git checkpoint.
 
 ## Not started
 
-- Forecasting
 - Power BI
 - Excel/Power Query
 
 ## Next bounded step
 
-After the Step 6.1 Git checkpoint, implement Step 6.2 daily and weekly
-seasonal-naive baselines using only the recorded available source timestamps.
+After the Step 6.2 Git checkpoint, implement Step 6.3 leakage-safe calendar,
+lag, and rolling features.
 
 ## Current blockers
 

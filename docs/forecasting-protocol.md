@@ -137,7 +137,8 @@ JSON summary contains only protocol metadata, counts, paths, and hashes.
 
 ## Step boundary
 
-Step 6.1 does not calculate baseline predictions, create forecasting features,
-fit learned models, or evaluate the 2025 test set. Step 6.2 will implement and
-compare the two seasonal-naive baselines on training and validation data under
-this frozen contract.
+Step 6.1 froze this contract without calculating predictions. Step 6.2 applies
+the two declared seasonal-naive baselines to training and validation only, as
+documented in [Seasonal-naive baseline evaluation](baseline-evaluation.md).
+It does not create learned-model features, fit models, or evaluate the 2025
+test set.

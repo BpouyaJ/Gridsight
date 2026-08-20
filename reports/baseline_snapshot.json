@@ -1,0 +1,767 @@
+{
+  "evaluation": {
+    "excluded_split": "test",
+    "included_splits": [
+      "train",
+      "validation"
+    ],
+    "primary_metric": "MAE_MW",
+    "reporting_grains": [
+      "overall",
+      "horizon_step"
+    ],
+    "test_forecast_rows_scored": 0
+  },
+  "results": {
+    "train": {
+      "baselines": {
+        "daily_seasonal_naive": {
+          "by_horizon": [
+            {
+              "horizon_step": 1,
+              "mae_mw": 2107.593,
+              "mape_percent": 4.745,
+              "observations": 723,
+              "rmse_mw": 2685.057
+            },
+            {
+              "horizon_step": 2,
+              "mae_mw": 2133.797,
+              "mape_percent": 4.994,
+              "observations": 723,
+              "rmse_mw": 2659.43
+            },
+            {
+              "horizon_step": 3,
+              "mae_mw": 2193.884,
+              "mape_percent": 5.249,
+              "observations": 723,
+              "rmse_mw": 2687.125
+            },
+            {
+              "horizon_step": 4,
+              "mae_mw": 2298.103,
+              "mape_percent": 5.511,
+              "observations": 723,
+              "rmse_mw": 2807.724
+            },
+            {
+              "horizon_step": 5,
+              "mae_mw": 2575.487,
+              "mape_percent": 6.102,
+              "observations": 723,
+              "rmse_mw": 3180.379
+            },
+            {
+              "horizon_step": 6,
+              "mae_mw": 3392.076,
+              "mape_percent": 7.725,
+              "observations": 723,
+              "rmse_mw": 4443.892
+            },
+            {
+              "horizon_step": 7,
+              "mae_mw": 5198.291,
+              "mape_percent": 10.906,
+              "observations": 723,
+              "rmse_mw": 7559.006
+            },
+            {
+              "horizon_step": 8,
+              "mae_mw": 6161.493,
+              "mape_percent": 12.014,
+              "observations": 723,
+              "rmse_mw": 9227.887
+            },
+            {
+              "horizon_step": 9,
+              "mae_mw": 6082.114,
+              "mape_percent": 11.166,
+              "observations": 723,
+              "rmse_mw": 9097.369
+            },
+            {
+              "horizon_step": 10,
+              "mae_mw": 5484.054,
+              "mape_percent": 9.708,
+              "observations": 723,
+              "rmse_mw": 8077.734
+            },
+            {
+              "horizon_step": 11,
+              "mae_mw": 5131.01,
+              "mape_percent": 8.861,
+              "observations": 723,
+              "rmse_mw": 7477.566
+            },
+            {
+              "horizon_step": 12,
+              "mae_mw": 4804.591,
+              "mape_percent": 8.13,
+              "observations": 723,
+              "rmse_mw": 7004.162
+            },
+            {
+              "horizon_step": 13,
+              "mae_mw": 4785.231,
+              "mape_percent": 8.134,
+              "observations": 723,
+              "rmse_mw": 6944.619
+            },
+            {
+              "horizon_step": 14,
+              "mae_mw": 5000.501,
+              "mape_percent": 8.673,
+              "observations": 723,
+              "rmse_mw": 7224.277
+            },
+            {
+              "horizon_step": 15,
+              "mae_mw": 4997.59,
+              "mape_percent": 8.865,
+              "observations": 723,
+              "rmse_mw": 7208.511
+            },
+            {
+              "horizon_step": 16,
+              "mae_mw": 4899.211,
+              "mape_percent": 8.806,
+              "observations": 723,
+              "rmse_mw": 7053.75
+            },
+            {
+              "horizon_step": 17,
+              "mae_mw": 4605.934,
+              "mape_percent": 8.32,
+              "observations": 723,
+              "rmse_mw": 6628.409
+            },
+            {
+              "horizon_step": 18,
+              "mae_mw": 4266.451,
+              "mape_percent": 7.561,
+              "observations": 723,
+              "rmse_mw": 6128.009
+            },
+            {
+              "horizon_step": 19,
+              "mae_mw": 3879.581,
+              "mape_percent": 6.768,
+              "observations": 723,
+              "rmse_mw": 5574.907
+            },
+            {
+              "horizon_step": 20,
+              "mae_mw": 3743.347,
+              "mape_percent": 6.558,
+              "observations": 723,
+              "rmse_mw": 5366.73
+            },
+            {
+              "horizon_step": 21,
+              "mae_mw": 3396.752,
+              "mape_percent": 6.177,
+              "observations": 723,
+              "rmse_mw": 4841.71
+            },
+            {
+              "horizon_step": 22,
+              "mae_mw": 2976.739,
+              "mape_percent": 5.662,
+              "observations": 723,
+              "rmse_mw": 4158.614
+            },
+            {
+              "horizon_step": 23,
+              "mae_mw": 2480.806,
+              "mape_percent": 4.955,
+              "observations": 723,
+              "rmse_mw": 3288.278
+            },
+            {
+              "horizon_step": 24,
+              "mae_mw": 2220.191,
+              "mape_percent": 4.725,
+              "observations": 723,
+              "rmse_mw": 2898.775
+            }
+          ],
+          "lag_hours": 24,
+          "meaning": "load observed 24 real hours before the target interval",
+          "overall": {
+            "mae_mw": 3950.618,
+            "mape_percent": 7.513,
+            "observations": 17352,
+            "rmse_mw": 5979.072
+          }
+        },
+        "weekly_seasonal_naive": {
+          "by_horizon": [
+            {
+              "horizon_step": 1,
+              "mae_mw": 1977.129,
+              "mape_percent": 4.425,
+              "observations": 723,
+              "rmse_mw": 2742.102
+            },
+            {
+              "horizon_step": 2,
+              "mae_mw": 1965.751,
+              "mape_percent": 4.568,
+              "observations": 723,
+              "rmse_mw": 2736.446
+            },
+            {
+              "horizon_step": 3,
+              "mae_mw": 1964.259,
+              "mape_percent": 4.656,
+              "observations": 723,
+              "rmse_mw": 2718.674
+            },
+            {
+              "horizon_step": 4,
+              "mae_mw": 1928.605,
+              "mape_percent": 4.571,
+              "observations": 723,
+              "rmse_mw": 2711.174
+            },
+            {
+              "horizon_step": 5,
+              "mae_mw": 1956.815,
+              "mape_percent": 4.572,
+              "observations": 723,
+              "rmse_mw": 2810.847
+            },
+            {
+              "horizon_step": 6,
+              "mae_mw": 2138.029,
+              "mape_percent": 4.79,
+              "observations": 723,
+              "rmse_mw": 3305.595
+            },
+            {
+              "horizon_step": 7,
+              "mae_mw": 2522.462,
+              "mape_percent": 5.232,
+              "observations": 723,
+              "rmse_mw": 4420.5
+            },
+            {
+              "horizon_step": 8,
+              "mae_mw": 2676.936,
+              "mape_percent": 5.208,
+              "observations": 723,
+              "rmse_mw": 4977.263
+            },
+            {
+              "horizon_step": 9,
+              "mae_mw": 2644.434,
+              "mape_percent": 4.863,
+              "observations": 723,
+              "rmse_mw": 4882.19
+            },
+            {
+              "horizon_step": 10,
+              "mae_mw": 2583.285,
+              "mape_percent": 4.587,
+              "observations": 723,
+              "rmse_mw": 4539.988
+            },
+            {
+              "horizon_step": 11,
+              "mae_mw": 2624.132,
+              "mape_percent": 4.552,
+              "observations": 723,
+              "rmse_mw": 4395.508
+            },
+            {
+              "horizon_step": 12,
+              "mae_mw": 2649.978,
+              "mape_percent": 4.5,
+              "observations": 723,
+              "rmse_mw": 4248.284
+            },
+            {
+              "horizon_step": 13,
+              "mae_mw": 2670.152,
+              "mape_percent": 4.561,
+              "observations": 723,
+              "rmse_mw": 4246.751
+            },
+            {
+              "horizon_step": 14,
+              "mae_mw": 2739.831,
+              "mape_percent": 4.788,
+              "observations": 723,
+              "rmse_mw": 4408.218
+            },
+            {
+              "horizon_step": 15,
+              "mae_mw": 2769.6,
+              "mape_percent": 4.956,
+              "observations": 723,
+              "rmse_mw": 4426.777
+            },
+            {
+              "horizon_step": 16,
+              "mae_mw": 2783.406,
+              "mape_percent": 5.043,
+              "observations": 723,
+              "rmse_mw": 4401.96
+            },
+            {
+              "horizon_step": 17,
+              "mae_mw": 2696.942,
+              "mape_percent": 4.899,
+              "observations": 723,
+              "rmse_mw": 4222.219
+            },
+            {
+              "horizon_step": 18,
+              "mae_mw": 2599.317,
+              "mape_percent": 4.625,
+              "observations": 723,
+              "rmse_mw": 4035.466
+            },
+            {
+              "horizon_step": 19,
+              "mae_mw": 2412.663,
+              "mape_percent": 4.241,
+              "observations": 723,
+              "rmse_mw": 3755.872
+            },
+            {
+              "horizon_step": 20,
+              "mae_mw": 2307.15,
+              "mape_percent": 4.098,
+              "observations": 723,
+              "rmse_mw": 3611.678
+            },
+            {
+              "horizon_step": 21,
+              "mae_mw": 2180.904,
+              "mape_percent": 4.016,
+              "observations": 723,
+              "rmse_mw": 3355.832
+            },
+            {
+              "horizon_step": 22,
+              "mae_mw": 2048.142,
+              "mape_percent": 3.92,
+              "observations": 723,
+              "rmse_mw": 3063.123
+            },
+            {
+              "horizon_step": 23,
+              "mae_mw": 1995.433,
+              "mape_percent": 3.979,
+              "observations": 723,
+              "rmse_mw": 2841.747
+            },
+            {
+              "horizon_step": 24,
+              "mae_mw": 2004.089,
+              "mape_percent": 4.249,
+              "observations": 723,
+              "rmse_mw": 2753.193
+            }
+          ],
+          "lag_hours": 168,
+          "meaning": "load observed 168 real hours before the target interval",
+          "overall": {
+            "mae_mw": 2368.31,
+            "mape_percent": 4.579,
+            "observations": 17352,
+            "rmse_mw": 3811.77
+          }
+        }
+      },
+      "forecast_row_count": 17352,
+      "origin_count": 723
+    },
+    "validation": {
+      "baselines": {
+        "daily_seasonal_naive": {
+          "by_horizon": [
+            {
+              "horizon_step": 1,
+              "mae_mw": 2092.329,
+              "mape_percent": 4.748,
+              "observations": 366,
+              "rmse_mw": 2608.443
+            },
+            {
+              "horizon_step": 2,
+              "mae_mw": 2160.878,
+              "mape_percent": 5.084,
+              "observations": 366,
+              "rmse_mw": 2646.238
+            },
+            {
+              "horizon_step": 3,
+              "mae_mw": 2176.566,
+              "mape_percent": 5.234,
+              "observations": 366,
+              "rmse_mw": 2666.142
+            },
+            {
+              "horizon_step": 4,
+              "mae_mw": 2319.936,
+              "mape_percent": 5.605,
+              "observations": 366,
+              "rmse_mw": 2844.683
+            },
+            {
+              "horizon_step": 5,
+              "mae_mw": 2572.656,
+              "mape_percent": 6.135,
+              "observations": 366,
+              "rmse_mw": 3172.334
+            },
+            {
+              "horizon_step": 6,
+              "mae_mw": 3397.852,
+              "mape_percent": 7.788,
+              "observations": 366,
+              "rmse_mw": 4435.401
+            },
+            {
+              "horizon_step": 7,
+              "mae_mw": 5249.999,
+              "mape_percent": 11.077,
+              "observations": 366,
+              "rmse_mw": 7534.471
+            },
+            {
+              "horizon_step": 8,
+              "mae_mw": 6225.413,
+              "mape_percent": 12.211,
+              "observations": 366,
+              "rmse_mw": 9163.709
+            },
+            {
+              "horizon_step": 9,
+              "mae_mw": 6197.743,
+              "mape_percent": 11.442,
+              "observations": 366,
+              "rmse_mw": 9110.516
+            },
+            {
+              "horizon_step": 10,
+              "mae_mw": 5569.661,
+              "mape_percent": 9.924,
+              "observations": 366,
+              "rmse_mw": 8027.48
+            },
+            {
+              "horizon_step": 11,
+              "mae_mw": 5199.281,
+              "mape_percent": 9.072,
+              "observations": 366,
+              "rmse_mw": 7336.826
+            },
+            {
+              "horizon_step": 12,
+              "mae_mw": 4843.227,
+              "mape_percent": 8.353,
+              "observations": 366,
+              "rmse_mw": 6848.881
+            },
+            {
+              "horizon_step": 13,
+              "mae_mw": 4753.717,
+              "mape_percent": 8.296,
+              "observations": 366,
+              "rmse_mw": 6775.339
+            },
+            {
+              "horizon_step": 14,
+              "mae_mw": 4961.509,
+              "mape_percent": 8.878,
+              "observations": 366,
+              "rmse_mw": 7138.363
+            },
+            {
+              "horizon_step": 15,
+              "mae_mw": 5011.801,
+              "mape_percent": 9.176,
+              "observations": 366,
+              "rmse_mw": 7155.042
+            },
+            {
+              "horizon_step": 16,
+              "mae_mw": 4850.448,
+              "mape_percent": 8.984,
+              "observations": 366,
+              "rmse_mw": 6982.889
+            },
+            {
+              "horizon_step": 17,
+              "mae_mw": 4529.388,
+              "mape_percent": 8.391,
+              "observations": 366,
+              "rmse_mw": 6519.667
+            },
+            {
+              "horizon_step": 18,
+              "mae_mw": 4169.025,
+              "mape_percent": 7.539,
+              "observations": 366,
+              "rmse_mw": 5943.411
+            },
+            {
+              "horizon_step": 19,
+              "mae_mw": 3812.951,
+              "mape_percent": 6.759,
+              "observations": 366,
+              "rmse_mw": 5408.429
+            },
+            {
+              "horizon_step": 20,
+              "mae_mw": 3642.454,
+              "mape_percent": 6.483,
+              "observations": 366,
+              "rmse_mw": 5199.07
+            },
+            {
+              "horizon_step": 21,
+              "mae_mw": 3347.041,
+              "mape_percent": 6.177,
+              "observations": 366,
+              "rmse_mw": 4695.441
+            },
+            {
+              "horizon_step": 22,
+              "mae_mw": 2956.165,
+              "mape_percent": 5.697,
+              "observations": 366,
+              "rmse_mw": 4018.974
+            },
+            {
+              "horizon_step": 23,
+              "mae_mw": 2448.538,
+              "mape_percent": 4.955,
+              "observations": 366,
+              "rmse_mw": 3193.542
+            },
+            {
+              "horizon_step": 24,
+              "mae_mw": 2194.107,
+              "mape_percent": 4.72,
+              "observations": 366,
+              "rmse_mw": 2809.827
+            }
+          ],
+          "lag_hours": 24,
+          "meaning": "load observed 24 real hours before the target interval",
+          "overall": {
+            "mae_mw": 3945.112,
+            "mape_percent": 7.614,
+            "observations": 8784,
+            "rmse_mw": 5898.04
+          }
+        },
+        "weekly_seasonal_naive": {
+          "by_horizon": [
+            {
+              "horizon_step": 1,
+              "mae_mw": 2154.495,
+              "mape_percent": 4.82,
+              "observations": 366,
+              "rmse_mw": 2930.741
+            },
+            {
+              "horizon_step": 2,
+              "mae_mw": 2127.583,
+              "mape_percent": 4.931,
+              "observations": 366,
+              "rmse_mw": 2933.134
+            },
+            {
+              "horizon_step": 3,
+              "mae_mw": 2117.011,
+              "mape_percent": 4.999,
+              "observations": 366,
+              "rmse_mw": 2903.659
+            },
+            {
+              "horizon_step": 4,
+              "mae_mw": 2140.355,
+              "mape_percent": 5.068,
+              "observations": 366,
+              "rmse_mw": 2921.844
+            },
+            {
+              "horizon_step": 5,
+              "mae_mw": 2166.418,
+              "mape_percent": 5.039,
+              "observations": 366,
+              "rmse_mw": 2990.41
+            },
+            {
+              "horizon_step": 6,
+              "mae_mw": 2362.277,
+              "mape_percent": 5.272,
+              "observations": 366,
+              "rmse_mw": 3463.263
+            },
+            {
+              "horizon_step": 7,
+              "mae_mw": 2801.512,
+              "mape_percent": 5.78,
+              "observations": 366,
+              "rmse_mw": 4620.906
+            },
+            {
+              "horizon_step": 8,
+              "mae_mw": 3007.087,
+              "mape_percent": 5.79,
+              "observations": 366,
+              "rmse_mw": 5304.977
+            },
+            {
+              "horizon_step": 9,
+              "mae_mw": 2985.73,
+              "mape_percent": 5.445,
+              "observations": 366,
+              "rmse_mw": 5325.71
+            },
+            {
+              "horizon_step": 10,
+              "mae_mw": 2922.129,
+              "mape_percent": 5.15,
+              "observations": 366,
+              "rmse_mw": 4896.771
+            },
+            {
+              "horizon_step": 11,
+              "mae_mw": 3008.458,
+              "mape_percent": 5.214,
+              "observations": 366,
+              "rmse_mw": 4748.84
+            },
+            {
+              "horizon_step": 12,
+              "mae_mw": 3027.005,
+              "mape_percent": 5.196,
+              "observations": 366,
+              "rmse_mw": 4618.31
+            },
+            {
+              "horizon_step": 13,
+              "mae_mw": 3130.099,
+              "mape_percent": 5.421,
+              "observations": 366,
+              "rmse_mw": 4672.693
+            },
+            {
+              "horizon_step": 14,
+              "mae_mw": 3215.221,
+              "mape_percent": 5.726,
+              "observations": 366,
+              "rmse_mw": 4846.488
+            },
+            {
+              "horizon_step": 15,
+              "mae_mw": 3282.861,
+              "mape_percent": 6.001,
+              "observations": 366,
+              "rmse_mw": 4868.155
+            },
+            {
+              "horizon_step": 16,
+              "mae_mw": 3216.376,
+              "mape_percent": 5.95,
+              "observations": 366,
+              "rmse_mw": 4745.419
+            },
+            {
+              "horizon_step": 17,
+              "mae_mw": 2985.373,
+              "mape_percent": 5.493,
+              "observations": 366,
+              "rmse_mw": 4440.601
+            },
+            {
+              "horizon_step": 18,
+              "mae_mw": 2825.476,
+              "mape_percent": 5.067,
+              "observations": 366,
+              "rmse_mw": 4217.214
+            },
+            {
+              "horizon_step": 19,
+              "mae_mw": 2656.798,
+              "mape_percent": 4.696,
+              "observations": 366,
+              "rmse_mw": 4028.739
+            },
+            {
+              "horizon_step": 20,
+              "mae_mw": 2556.217,
+              "mape_percent": 4.544,
+              "observations": 366,
+              "rmse_mw": 3887.298
+            },
+            {
+              "horizon_step": 21,
+              "mae_mw": 2439.291,
+              "mape_percent": 4.489,
+              "observations": 366,
+              "rmse_mw": 3627.853
+            },
+            {
+              "horizon_step": 22,
+              "mae_mw": 2296.281,
+              "mape_percent": 4.393,
+              "observations": 366,
+              "rmse_mw": 3339.838
+            },
+            {
+              "horizon_step": 23,
+              "mae_mw": 2192.47,
+              "mape_percent": 4.382,
+              "observations": 366,
+              "rmse_mw": 3085.505
+            },
+            {
+              "horizon_step": 24,
+              "mae_mw": 2155.481,
+              "mape_percent": 4.565,
+              "observations": 366,
+              "rmse_mw": 2965.041
+            }
+          ],
+          "lag_hours": 168,
+          "meaning": "load observed 168 real hours before the target interval",
+          "overall": {
+            "mae_mw": 2657.167,
+            "mape_percent": 5.143,
+            "observations": 8784,
+            "rmse_mw": 4101.975
+          }
+        }
+      },
+      "forecast_row_count": 8784,
+      "origin_count": 366
+    }
+  },
+  "schema_version": 1,
+  "source": {
+    "consumption_sha256": "4a0107f087fdd5d87e584c913c6e73187f6e2c81057053964250cf3f1f9316a5",
+    "forecast_contract": {
+      "path": "reports/forecast_contract.json",
+      "sha256": "3a4a2da987089258b3ba5e7d64bc67f0abd62a0a4c5e3fdd31c03df75a060f88"
+    },
+    "forecast_index": {
+      "path": "data/processed/forecast_index.csv",
+      "sha256": "6089b1d7c2cd3298cfa3d24526f98cc763b1c95947ce2e9e84ff06dc42bbecc4"
+    }
+  },
+  "validation_comparison": {
+    "daily_mae_mw": 3945.112,
+    "stronger_baseline": "weekly_seasonal_naive",
+    "weekly_improvement_over_daily_percent": 32.647,
+    "weekly_mae_mw": 2657.167
+  }
+}
