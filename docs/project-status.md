@@ -6,7 +6,7 @@ Last updated: 2026-08-20
 
 Phase 6 - Forecasting
 
-Current step: 6.2 - Daily and weekly seasonal-naive baselines
+Current step: 6.3 - Leakage-safe calendar, lag, and rolling features
 
 Status: completed
 
@@ -277,10 +277,35 @@ Status: completed
 - Passed all 55 fast tests with six live tests deselected, including all four
   new baseline tests.
 - Passed Ruff and `git diff --check` after completing Step 6.2.
+- Added a deterministic 34,896-row model-matrix builder at the frozen
+  origin/horizon grain.
+- Added 27 numeric calendar, cyclic, lag, rolling, and recent-change features.
+- Derived calendar features from UTC-to-Europe/Berlin conversion with explicit
+  repeated-hour fold and UTC offset.
+- Limited every load feature to observations ending at or before its origin.
+- Redacted all 8,760 test labels while retaining available test-time inputs.
+- Added strict schema, split, domain, rolling-consistency, and availability
+  validation.
+- Added deterministic ignored CSV and tracked JSON contract writers.
+- Added fast tests for exact history values, DST fields, future-target
+  invariance, test-label redaction, leakage rejection, and artifact bytes.
+- Verified 34,896 rows, 35 total columns, 27 complete model features, and
+  26,136 materialized development labels.
+- Verified that all 8,760 test targets remain redacted and no test evaluation
+  was performed.
+- Verified four second-fold target rows at local hour 02 with the expected
+  standard-time UTC offset.
+- Reproduced the ignored feature matrix with SHA-256
+  `eda6e21687fe3cd09681de14370749a03cbb974d81972661196c86b1a4d52ef8`.
+- Reproduced the tracked feature contract with SHA-256
+  `daac05d8a00a3db3eedb29671d4543e497607aac7e8431898a413effb4ad65ae`.
+- Passed all 59 fast tests with six live tests deselected, including all four
+  new feature-engineering tests.
+- Passed Ruff and `git diff --check` after completing Step 6.3.
 
 ## In progress
 
-None. Step 6.2 is ready for its Git checkpoint.
+None. Step 6.3 is ready for its Git checkpoint.
 
 ## Not started
 
@@ -289,8 +314,8 @@ None. Step 6.2 is ready for its Git checkpoint.
 
 ## Next bounded step
 
-After the Step 6.2 Git checkpoint, implement Step 6.3 leakage-safe calendar,
-lag, and rolling features.
+After the Step 6.3 Git checkpoint, implement Step 6.4 Ridge and histogram
+gradient-boosting validation models.
 
 ## Current blockers
 

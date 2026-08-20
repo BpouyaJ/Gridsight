@@ -109,8 +109,10 @@ Status: in progress. Step 6.1 completed the local-midnight forecast schedule,
 24-real-hour horizon, information cutoff, chronological train/validation/test
 splits, baseline-source timestamps, and evaluation metrics. Step 6.2 is
 complete with frozen daily and weekly seasonal-naive baselines, aggregate
-overall/horizon metrics, and zero scored test rows. Step 6.3 will implement
-leakage-safe calendar, lag, and rolling features.
+overall/horizon metrics, and zero scored test rows. Step 6.3 completed a
+deterministic calendar, lag, and rolling feature matrix with redacted test
+targets. Step 6.4 will fit Ridge and histogram gradient-boosting models on
+training rows and compare them on validation rows.
 
 ### Phase 7 - Reporting marts
 

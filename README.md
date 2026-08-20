@@ -73,7 +73,9 @@ four reviewed figures with carefully limited findings. Phase 6 Step 6.1
 completed the 24-hour forecasting contract and leakage-safe chronological
 evaluation design. Step 6.2 completed deterministic daily and weekly
 seasonal-naive benchmarks without evaluating the untouched 2025 test split;
-weekly seasonal naive is the stronger validation benchmark.
+weekly seasonal naive is the stronger validation benchmark. Step 6.3 completed
+an auditable calendar, lag, and rolling feature matrix with redacted test
+targets before any learned model is fit.
 
 See:
 
@@ -87,6 +89,7 @@ See:
 - [Focused exploratory analysis](docs/exploratory-analysis.md)
 - [Load-forecasting protocol](docs/forecasting-protocol.md)
 - [Seasonal-naive baseline evaluation](docs/baseline-evaluation.md)
+- [Leakage-safe forecasting features](docs/feature-engineering.md)
 - [Initial SMARD source profile](docs/initial-source-profile.md)
 - [Reproducible source profiling](docs/source-profiling.md)
 - [Clean-data contract](docs/clean-data-contract.md)

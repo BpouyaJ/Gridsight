@@ -142,3 +142,7 @@ the two declared seasonal-naive baselines to training and validation only, as
 documented in [Seasonal-naive baseline evaluation](baseline-evaluation.md).
 It does not create learned-model features, fit models, or evaluate the 2025
 test set.
+
+Step 6.3 applies the next contract layer in
+[Leakage-safe forecasting features](feature-engineering.md). It materializes
+known calendar and completed-history inputs while redacting every test target.

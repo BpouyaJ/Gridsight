@@ -69,3 +69,20 @@ hashes, and an explicit zero-test-row record.
 
 The verified `baseline_snapshot.json` SHA-256 is
 `311513a0405761aa6a30db6a956b53c29b3cc38dfd03dc4e74efa62902a4b717`.
+
+`feature_contract.json` is generated with the ignored row-level feature matrix
+by:
+
+```powershell
+python -m gridsight.forecasting.build_features
+```
+
+It records Step 6.3 feature names and families, split counts, redacted-test
+rules, frozen-input hashes, and the ignored matrix hash.
+
+The verified Step 6.3 artifacts have these SHA-256 values:
+
+- `feature_contract.json`:
+  `daac05d8a00a3db3eedb29671d4543e497607aac7e8431898a413effb4ad65ae`;
+- ignored `data/processed/forecast_features.csv`:
+  `eda6e21687fe3cd09681de14370749a03cbb974d81972661196c86b1a4d52ef8`.

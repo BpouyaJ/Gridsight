@@ -1,0 +1,151 @@
+{
+  "availability": {
+    "latest_observation": "interval ending at the forecast origin",
+    "minimum_history_hours": 168,
+    "rolling_windows_hours": [
+      24,
+      168
+    ],
+    "test_evaluation_performed": false,
+    "test_target_values_materialized": 0
+  },
+  "feature_families": {
+    "historical_load": [
+      "latest_load_mw",
+      "load_lag_24h_mw",
+      "load_lag_168h_mw",
+      "load_rolling_mean_24h_mw",
+      "load_rolling_std_24h_mw",
+      "load_rolling_min_24h_mw",
+      "load_rolling_max_24h_mw",
+      "load_rolling_mean_168h_mw",
+      "load_rolling_std_168h_mw",
+      "load_rolling_min_168h_mw",
+      "load_rolling_max_168h_mw",
+      "load_change_1h_mw",
+      "load_change_24h_mw"
+    ],
+    "known_target_calendar": [
+      "horizon_step",
+      "target_hour_local",
+      "target_day_of_week",
+      "target_is_weekend",
+      "target_month",
+      "target_day_of_year",
+      "target_local_fold",
+      "target_utc_offset_hours",
+      "target_hour_sin",
+      "target_hour_cos",
+      "target_weekday_sin",
+      "target_weekday_cos",
+      "target_year_sin",
+      "target_year_cos"
+    ]
+  },
+  "matrix": {
+    "columns": [
+      "forecast_origin_utc",
+      "origin_local_date",
+      "split",
+      "information_cutoff_utc",
+      "latest_observed_start_utc",
+      "target_start_utc",
+      "target_start_local",
+      "actual_grid_load_mw",
+      "horizon_step",
+      "target_hour_local",
+      "target_day_of_week",
+      "target_is_weekend",
+      "target_month",
+      "target_day_of_year",
+      "target_local_fold",
+      "target_utc_offset_hours",
+      "target_hour_sin",
+      "target_hour_cos",
+      "target_weekday_sin",
+      "target_weekday_cos",
+      "target_year_sin",
+      "target_year_cos",
+      "latest_load_mw",
+      "load_lag_24h_mw",
+      "load_lag_168h_mw",
+      "load_rolling_mean_24h_mw",
+      "load_rolling_std_24h_mw",
+      "load_rolling_min_24h_mw",
+      "load_rolling_max_24h_mw",
+      "load_rolling_mean_168h_mw",
+      "load_rolling_std_168h_mw",
+      "load_rolling_min_168h_mw",
+      "load_rolling_max_168h_mw",
+      "load_change_1h_mw",
+      "load_change_24h_mw"
+    ],
+    "model_feature_columns": [
+      "horizon_step",
+      "target_hour_local",
+      "target_day_of_week",
+      "target_is_weekend",
+      "target_month",
+      "target_day_of_year",
+      "target_local_fold",
+      "target_utc_offset_hours",
+      "target_hour_sin",
+      "target_hour_cos",
+      "target_weekday_sin",
+      "target_weekday_cos",
+      "target_year_sin",
+      "target_year_cos",
+      "latest_load_mw",
+      "load_lag_24h_mw",
+      "load_lag_168h_mw",
+      "load_rolling_mean_24h_mw",
+      "load_rolling_std_24h_mw",
+      "load_rolling_min_24h_mw",
+      "load_rolling_max_24h_mw",
+      "load_rolling_mean_168h_mw",
+      "load_rolling_std_168h_mw",
+      "load_rolling_min_168h_mw",
+      "load_rolling_max_168h_mw",
+      "load_change_1h_mw",
+      "load_change_24h_mw"
+    ],
+    "model_feature_count": 27,
+    "origin_count": 1454,
+    "path": "data/processed/forecast_features.csv",
+    "row_count": 34896,
+    "sha256": "eda6e21687fe3cd09681de14370749a03cbb974d81972661196c86b1a4d52ef8",
+    "target_column": "actual_grid_load_mw"
+  },
+  "schema_version": 1,
+  "source": {
+    "consumption_sha256": "4a0107f087fdd5d87e584c913c6e73187f6e2c81057053964250cf3f1f9316a5",
+    "forecast_contract": {
+      "path": "reports/forecast_contract.json",
+      "sha256": "3a4a2da987089258b3ba5e7d64bc67f0abd62a0a4c5e3fdd31c03df75a060f88"
+    },
+    "forecast_index": {
+      "path": "data/processed/forecast_index.csv",
+      "sha256": "6089b1d7c2cd3298cfa3d24526f98cc763b1c95947ce2e9e84ff06dc42bbecc4"
+    }
+  },
+  "splits": [
+    {
+      "forecast_row_count": 17352,
+      "materialized_target_count": 17352,
+      "name": "train",
+      "origin_count": 723
+    },
+    {
+      "forecast_row_count": 8784,
+      "materialized_target_count": 8784,
+      "name": "validation",
+      "origin_count": 366
+    },
+    {
+      "forecast_row_count": 8760,
+      "materialized_target_count": 0,
+      "name": "test",
+      "origin_count": 365
+    }
+  ]
+}

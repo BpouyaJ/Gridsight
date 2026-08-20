@@ -52,6 +52,12 @@ timestamps, so it remains ignored. Its small tracked companion is
 `reports/forecast_contract.json`, which records the protocol, counts, and
 artifact hashes without publishing the full target series.
 
+Step 6.3 generates `processed/forecast_features.csv`, one row per forecast
+origin and horizon step. It remains ignored because it contains development
+labels and derived row-level features. Its test labels are deliberately blank;
+the tracked `reports/feature_contract.json` records only schema, counts, paths,
+and hashes.
+
 All six approved source snapshots have been registered locally: both Germany
 actual-consumption periods, both Germany actual-generation periods, and both
 DE/LU day-ahead-price periods. Their raw CSVs are ignored, while their
