@@ -1,0 +1,120 @@
+# SQL reporting views
+
+## Purpose
+
+Step 4.3 creates a stable SQL interface between the reconciled analytical model
+and later consumers such as exploratory notebooks, Power BI, and Excel. Those
+consumers should query `reporting` views instead of depending on staging tables
+or rebuilding business rules independently.
+
+Apply and verify the views with PostgreSQL running and Step 4.2 data loaded:
+
+```powershell
+python -m gridsight.database.apply_reporting
+```
+
+The command creates or replaces all four views transactionally, inspects their
+exact ordered column contracts, and runs 19 live grain and measure
+reconciliation checks.
+
+## View contracts
+
+### `reporting.hourly_energy`
+
+Grain: one unique canonical UTC hour. Expected rows: 35,064.
+
+This is the main hourly analysis view. It combines:
+
+- Europe/Berlin calendar and local-hour attributes;
+- UTC offset, DST, and repeated-hour fold context;
+- Germany grid-load measures in MWh and MW;
+- DE/LU day-ahead price in EUR/MWh;
+- reported, renewable, conventional, and storage generation in MWh and MW;
+- reported and unavailable technology counts.
+
+Generation totals include only rows with `value_status = reported`. Unavailable
+Nuclear values remain unavailable and are not estimated or silently converted
+to zero.
+
+### `reporting.hourly_generation_by_technology`
+
+Grain: one unique canonical UTC hour and generation technology. Expected rows:
+420,768.
+
+This view preserves all 12 technology members, classification attributes,
+numeric MWh/MW, availability status, and source export/hash lineage. It is the
+correct source for technology comparisons and detailed renewable composition.
+
+### `reporting.daily_energy`
+
+Grain: one Europe/Berlin calendar date. Expected rows: 1,461.
+
+Daily aggregation deliberately retains `observed_hour_count`. The four spring
+clock-change dates contain 23 real hours, the four autumn dates contain 25, and
+ordinary dates contain 24. No artificial local hour is inserted or removed.
+
+### `reporting.monthly_energy`
+
+Grain: one Europe/Berlin calendar month. Expected rows: 48.
+
+The view aggregates directly from hourly rows, not from rounded daily
+averages. This gives every observed hour equal weight when calculating monthly
+average load and price.
+
+## Aggregation rules
+
+| Measure | Daily/monthly rule | Reason |
+|---|---|---|
+| Grid load MWh | Sum | Energy is additive over time. |
+| Average grid load MW | Average hourly MW | Power is not additive over time. |
+| Peak grid load MW | Maximum hourly MW | Represents the observed period peak. |
+| Generation MWh | Sum reported values | Energy is additive; unavailable values remain excluded. |
+| Day-ahead EUR/MWh | Average, minimum, maximum | Prices must never be summed. |
+| Negative-price hours | Count | Preserves the frequency of market events. |
+| Renewable share | Renewable MWh / all reported generation MWh | Uses like-for-like reported energy and exposes the denominator in the name. |
+
+`renewable_share_of_reported_generation_percent` is not a share of electricity
+consumption and not a claim about physical supply balance. Reported generation
+can omit unavailable Nuclear values and differs conceptually from grid load.
+Storage generation remains in its separate storage group and is not relabeled
+as renewable.
+
+## Reconciliation
+
+The command and live integration test require:
+
+- exact row counts and unique keys for all four grains;
+- exactly 12 technology rows per UTC interval;
+- daily and monthly observed-hour totals of 35,064;
+- four 23-hour dates and four 25-hour dates;
+- exact hourly load and price copies from the electricity fact;
+- exact reported and renewable generation totals from the generation fact;
+- exact daily and monthly load-energy totals;
+- exact daily and monthly negative-price-hour totals.
+
+The views use `CREATE OR REPLACE VIEW` and contain no data-modifying SQL. They
+are evaluated from the current analytical facts, so a successful Step 4.2 full
+refresh is immediately reflected without refreshing a materialized object.
+
+## Step boundary
+
+Step 4.3 provides checked data products and KPI-ready grains but does not claim
+analytical findings. Phase 5 will use these views to define final KPIs, perform
+focused exploratory analysis, and document defensible energy-market findings.
+
+## Verified Step 4.3 result
+
+Two consecutive command-line applications produced identical results:
+
+- one SQL file and four `CREATE OR REPLACE VIEW` statements;
+- four exact live view contracts;
+- 19 passed reporting reconciliations and zero failures;
+- 35,064 hourly energy rows;
+- 420,768 hourly generation/technology rows;
+- 1,461 daily rows and 48 monthly rows.
+
+The fast suite passed all 40 selected tests with four live tests deselected.
+The live suite passed database identity, idempotent data load, schema contract,
+and idempotent reporting-view reconciliation tests with 40 fast tests
+deselected. Ruff passed after removal of one unused import. This result
+completes the Phase 4 PostgreSQL analytical-model gate.

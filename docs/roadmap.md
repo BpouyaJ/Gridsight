@@ -73,11 +73,10 @@ Deliverables:
 
 Skills: SQL, PostgreSQL, star modeling, analytical data foundations.
 
-Status: in progress. Step 4.1 completed and verified the schemas and table
-contracts. Step 4.2 completed and verified a hash-gated client-side `COPY`,
-transactional full refresh, SQL population of dimensions and facts, 19
-reconciliation checks, and repeated idempotent loads. Step 4.3 will add tested
-reporting views.
+Status: completed. Steps 4.1 and 4.2 established the schemas, table contracts,
+transactional data load, star population, and reconciliation. Step 4.3
+completed four unit-aware, DST-safe reporting grains with exact contracts, 19
+fact-to-view reconciliations, and passing fast, live, and lint suites.
 
 ### Phase 5 - Exploratory analysis and KPIs
 

@@ -15,8 +15,9 @@ quality constraints. It does not load data.
 | `analytics` | Conformed dimensions and fact tables at declared grains. |
 | `reporting` | Stable SQL views for Power BI and Excel in later steps. |
 
-The reporting schema is intentionally empty in Step 4.1. Reporting views will
-be created only after the analytical facts are loaded and reconciled.
+The reporting schema is intentionally empty in Step 4.1. Step 4.3 adds four
+views only after the analytical facts are loaded and reconciled. Their grains
+and aggregation semantics are documented in `docs/reporting-views.md`.
 
 ## Staging tables
 

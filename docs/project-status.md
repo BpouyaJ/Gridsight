@@ -6,7 +6,7 @@ Last updated: 2026-08-20
 
 Phase 4 - PostgreSQL analytical model
 
-Current step: 4.2 - Transactional data loading and reconciliation
+Current step: 4.3 - Tested SQL reporting views
 
 Status: completed
 
@@ -165,22 +165,42 @@ Status: completed
 - Passed all three live PostgreSQL tests with 37 fast tests deselected,
   including two additional complete idempotent loads.
 - Passed Ruff after completing the Step 4.2 implementation.
+- Added an hourly energy view combining calendar, load, price, and classified
+  generation at one canonical UTC-hour grain.
+- Added an hourly generation-by-technology view retaining all 12 members,
+  availability status, and source lineage.
+- Added DST-aware daily and hourly-weighted monthly reporting views with
+  explicit MWh, MW, EUR/MWh, count, peak, and percentage semantics.
+- Added exact ordered view contracts and an idempotent transactional
+  create-or-replace command.
+- Added 19 live reporting reconciliations for row counts, unique grains,
+  technology completeness, DST days, and fact-to-view measures.
+- Added fast reporting-contract tests and a self-contained PostgreSQL
+  integration test for repeated view application and reconciliation.
+- Applied all four reporting views twice with identical row counts and 19
+  passed reconciliations each time.
+- Verified 35,064 hourly energy, 420,768 hourly technology, 1,461 daily, and 48
+  monthly reporting rows.
+- Passed all 40 fast tests with four live tests deselected.
+- Passed all four live PostgreSQL tests with 40 fast tests deselected.
+- Passed Ruff after removing the detected unused reporting-contract import.
+- Completed the Phase 4 gate with schemas, constrained staging, conformed
+  dimensions, facts, idempotent loading, reconciliation, and reporting views.
 
 ## In progress
 
-None. Step 4.2 is ready for its Git checkpoint.
+None. Step 4.3 is ready for its Git checkpoint.
 
 ## Not started
 
 - Forecasting
 - Power BI
 - Excel/Power Query
-- SQL reporting views
 
 ## Next bounded step
 
-After Step 4.2 is committed and pushed, begin Step 4.3 by defining tested
-reporting views and KPI-ready grains over the reconciled analytical model.
+After Step 4.3 is committed and pushed, begin Phase 5, Step 5.1 with KPI
+definitions and focused exploratory analysis over the reporting views.
 
 ## Current blockers
 

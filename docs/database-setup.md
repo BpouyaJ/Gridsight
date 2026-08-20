@@ -66,6 +66,19 @@ facts, and commits only after all reconciliation checks pass. Run it again to
 confirm idempotence. Detailed behavior and expected counts are documented in
 `docs/database-loading.md`.
 
+## Apply reporting views
+
+After a successful data load, run:
+
+```powershell
+python -m gridsight.database.apply_reporting
+```
+
+The command creates or replaces four read-only views, verifies their exact
+column contracts, and reconciles their grains, DST hour counts, load, price,
+and generation measures with the analytical facts. View definitions and KPI
+semantics are documented in `docs/reporting-views.md`.
+
 ## Stop and restart
 
 Stop the database without deleting its data:
