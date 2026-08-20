@@ -52,6 +52,20 @@ three staging tables, five analytics tables, zero reporting tables, and
 `Database contract: OK`. Table grains, keys, constraints, and the next loading
 step are documented in `docs/database-model.md`.
 
+## Load validated data
+
+After producing a passing Phase 3 validation summary, run:
+
+```powershell
+python -m gridsight.database.load_data
+```
+
+The command verifies the summary and processed hashes, performs a transactional
+full refresh through client-side PostgreSQL `COPY`, populates dimensions and
+facts, and commits only after all reconciliation checks pass. Run it again to
+confirm idempotence. Detailed behavior and expected counts are documented in
+`docs/database-loading.md`.
+
 ## Stop and restart
 
 Stop the database without deleting its data:

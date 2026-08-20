@@ -64,8 +64,9 @@ SMARD source snapshots
 Phases 1 through 3 are complete, and Phase 4 is in progress. All three
 canonical datasets cover the same 35,064 UTC hours with tested lineage and
 domain-specific value rules. Step 4.1 established verified PostgreSQL staging
-contracts, conformed dimensions, and two fact-table grains. Step 4.2 will load
-and reconcile the validated clean data.
+contracts, conformed dimensions, and two fact-table grains. Step 4.2 verified a
+hash-gated, transactional, idempotent load with 19 database reconciliation
+checks. Step 4.3 will expose stable reporting views.
 
 See:
 
@@ -73,6 +74,7 @@ See:
 - [Development setup](docs/development-setup.md)
 - [Local PostgreSQL setup](docs/database-setup.md)
 - [PostgreSQL analytical model](docs/database-model.md)
+- [PostgreSQL loading and reconciliation](docs/database-loading.md)
 - [Initial SMARD source profile](docs/initial-source-profile.md)
 - [Reproducible source profiling](docs/source-profiling.md)
 - [Clean-data contract](docs/clean-data-contract.md)

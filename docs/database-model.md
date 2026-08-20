@@ -106,9 +106,10 @@ file rather than rewriting a deployed contract invisibly.
 
 ## Step boundary
 
-Step 4.1 creates empty, verified tables. Step 4.2 will implement a transactional
-and idempotent loader, populate dimensions and facts, and reconcile database
-row counts and measures with the Phase 3 validation summary.
+Step 4.1 creates empty, verified tables. Step 4.2 implements the transactional
+and idempotent loader, dimension and fact population, and reconciliation with
+the Phase 3 validation summary. Its operational contract is documented in
+`docs/database-loading.md`.
 
 ## Verified Step 4.1 result
 

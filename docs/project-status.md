@@ -1,12 +1,12 @@
 # Project status
 
-Last updated: 2026-08-19
+Last updated: 2026-08-20
 
 ## Current phase
 
 Phase 4 - PostgreSQL analytical model
 
-Current step: 4.1 - Database schemas and table contracts
+Current step: 4.2 - Transactional data loading and reconciliation
 
 Status: completed
 
@@ -144,24 +144,43 @@ Status: completed
 - Passed all 33 fast tests with two integration tests deselected.
 - Passed both live PostgreSQL integration tests with 33 fast tests deselected.
 - Passed Ruff after completing the Step 4.1 implementation.
+- Added a pre-load trust gate for the Phase 3 summary, issue file, ordered CSV
+  headers, expected counts, and exact output hashes.
+- Added client-side PostgreSQL `COPY` streaming for all three canonical staging
+  datasets.
+- Added SQL transformations for the local date/hour/technology dimensions and
+  both analytical fact grains.
+- Added an atomic full-refresh transaction that rolls back truncation, copies,
+  transformations, and reconciliation together on failure.
+- Added 19 post-load checks covering every table count, price distribution,
+  generation availability, UTC spines, measures, and lineage.
+- Added fast artifact/SQL tests and a live integration test that performs two
+  complete reconciled loads to prove idempotence.
+- Completed two consecutive command-line database loads with identical counts
+  and 19 passed reconciliation checks each.
+- Loaded 35,064 consumption, 420,768 generation, and 35,064 price staging rows.
+- Populated 1,461 dates, 24 hours, 12 technologies, 35,064 electricity facts,
+  and 420,768 generation facts.
+- Passed all 37 fast tests with three live tests deselected.
+- Passed all three live PostgreSQL tests with 37 fast tests deselected,
+  including two additional complete idempotent loads.
+- Passed Ruff after completing the Step 4.2 implementation.
 
 ## In progress
 
-None. Step 4.1 is ready for its Git checkpoint.
+None. Step 4.2 is ready for its Git checkpoint.
 
 ## Not started
 
 - Forecasting
 - Power BI
 - Excel/Power Query
-- Idempotent PostgreSQL data loading and reconciliation
 - SQL reporting views
 
 ## Next bounded step
 
-After Step 4.1 is committed and pushed, begin Step 4.2 by loading the validated
-clean datasets transactionally and reconciling staging, dimensions, and facts
-with the Phase 3 summary.
+After Step 4.2 is committed and pushed, begin Step 4.3 by defining tested
+reporting views and KPI-ready grains over the reconciled analytical model.
 
 ## Current blockers
 

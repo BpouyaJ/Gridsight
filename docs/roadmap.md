@@ -73,11 +73,11 @@ Deliverables:
 
 Skills: SQL, PostgreSQL, star modeling, analytical data foundations.
 
-Status: in progress. Step 4.1 completed and verified the three schemas,
-canonical staging contracts, conformed date/hour/technology dimensions,
-separate electricity and generation fact grains, transactional DDL
-application, and live metadata inspection. Step 4.2 will implement the
-idempotent data load and reconciliation.
+Status: in progress. Step 4.1 completed and verified the schemas and table
+contracts. Step 4.2 completed and verified a hash-gated client-side `COPY`,
+transactional full refresh, SQL population of dimensions and facts, 19
+reconciliation checks, and repeated idempotent loads. Step 4.3 will add tested
+reporting views.
 
 ### Phase 5 - Exploratory analysis and KPIs
 
