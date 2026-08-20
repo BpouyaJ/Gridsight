@@ -4,9 +4,9 @@ Last updated: 2026-08-20
 
 ## Current phase
 
-Phase 4 - PostgreSQL analytical model
+Phase 5 - Exploratory analysis and KPIs
 
-Current step: 4.3 - Tested SQL reporting views
+Current step: 5.1 - KPI definitions and analytical query contract
 
 Status: completed
 
@@ -186,10 +186,30 @@ Status: completed
 - Passed Ruff after removing the detected unused reporting-contract import.
 - Completed the Phase 4 gate with schemas, constrained staging, conformed
   dimensions, facts, idempotent loading, reconciliation, and reporting views.
+- Defined three read-only analytical query grains: one full-period headline
+  row, four Europe/Berlin annual rows, and 12 technology-mix rows.
+- Defined explicit TWh, GW, EUR/MWh, percentage, count, and availability
+  semantics for portfolio KPIs.
+- Added an exact Python query contract that rejects column, ordering, grain,
+  year, hourly-coverage, technology-order, and availability mismatches.
+- Added a deterministic atomic `reports/kpi_snapshot.json` builder with source,
+  unit, period, and SQL-contract metadata.
+- Reproduced the KPI snapshot twice with SHA-256
+  `fa03ee1af919027634aeb45a524c713274bd9effcac9955052d3be449c8395fc`.
+- Verified one headline row, four annual rows, 12 technology rows, and 35,064
+  observed hours.
+- Recorded 1,871.998 TWh total grid load, 54.61% renewable share of reported
+  generation, and 124.58 EUR/MWh average day-ahead price for the complete
+  approved period.
+- Reconciled 1,400 negative-price hours and 16,836 unavailable generation
+  values across headline, annual, and technology grains.
+- Passed all 43 fast tests with five live tests deselected.
+- Passed all five live PostgreSQL tests with 43 fast tests deselected.
+- Passed Ruff and `git diff --check` after completing Step 5.1.
 
 ## In progress
 
-None. Step 4.3 is ready for its Git checkpoint.
+None. Step 5.1 is ready for its Git checkpoint.
 
 ## Not started
 
@@ -199,8 +219,9 @@ None. Step 4.3 is ready for its Git checkpoint.
 
 ## Next bounded step
 
-After Step 4.3 is committed and pushed, begin Phase 5, Step 5.1 with KPI
-definitions and focused exploratory analysis over the reporting views.
+After Step 5.1 is committed and pushed, begin Step 5.2 with focused exploratory
+analysis, figures, and carefully limited findings about load, renewables,
+prices, and unusual periods.
 
 ## Current blockers
 

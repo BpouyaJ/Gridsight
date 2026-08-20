@@ -99,8 +99,9 @@ refresh is immediately reflected without refreshing a materialized object.
 ## Step boundary
 
 Step 4.3 provides checked data products and KPI-ready grains but does not claim
-analytical findings. Phase 5 will use these views to define final KPIs, perform
-focused exploratory analysis, and document defensible energy-market findings.
+analytical findings. The next contract is documented in
+[`kpi-definitions.md`](kpi-definitions.md); focused exploratory findings remain
+a separate Step 5.2 concern.
 
 ## Verified Step 4.3 result
 

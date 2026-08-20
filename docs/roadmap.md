@@ -88,6 +88,11 @@ Deliverables:
 
 Skills: energy analytics, trend analysis, business KPIs, analytical communication.
 
+Status: in progress. Step 5.1 completed one headline, four annual, and 12
+technology-mix KPI rows through verified read-only SQL and a deterministic
+checked JSON artifact. Focused exploratory findings and charts begin in Step
+5.2.
+
 ### Phase 6 - Forecasting
 
 Deliverables:

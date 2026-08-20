@@ -1,0 +1,268 @@
+{
+  "annual_kpis": [
+    {
+      "average_day_ahead_price_eur_per_mwh": 235.45,
+      "average_grid_load_gw": 55.057,
+      "calendar_year": 2022,
+      "grid_load_twh": 482.296,
+      "maximum_day_ahead_price_eur_per_mwh": 871.0,
+      "minimum_day_ahead_price_eur_per_mwh": -19.04,
+      "negative_price_hour_count": 69,
+      "observed_hour_count": 8760,
+      "peak_grid_load_gw": 78.681,
+      "renewable_generation_twh": 233.294,
+      "renewable_share_of_reported_generation_percent": 46.66,
+      "reported_generation_twh": 499.981,
+      "unavailable_generation_value_count": 0
+    },
+    {
+      "average_day_ahead_price_eur_per_mwh": 95.18,
+      "average_grid_load_gw": 52.327,
+      "calendar_year": 2023,
+      "grid_load_twh": 458.382,
+      "maximum_day_ahead_price_eur_per_mwh": 524.27,
+      "minimum_day_ahead_price_eur_per_mwh": -500.0,
+      "negative_price_hour_count": 301,
+      "observed_hour_count": 8760,
+      "peak_grid_load_gw": 73.748,
+      "renewable_generation_twh": 251.591,
+      "renewable_share_of_reported_generation_percent": 55.47,
+      "reported_generation_twh": 453.55,
+      "unavailable_generation_value_count": 0
+    },
+    {
+      "average_day_ahead_price_eur_per_mwh": 78.51,
+      "average_grid_load_gw": 52.994,
+      "calendar_year": 2024,
+      "grid_load_twh": 465.503,
+      "maximum_day_ahead_price_eur_per_mwh": 936.28,
+      "minimum_day_ahead_price_eur_per_mwh": -135.45,
+      "negative_price_hour_count": 457,
+      "observed_hour_count": 8784,
+      "peak_grid_load_gw": 75.508,
+      "renewable_generation_twh": 256.184,
+      "renewable_share_of_reported_generation_percent": 58.54,
+      "reported_generation_twh": 437.654,
+      "unavailable_generation_value_count": 8076
+    },
+    {
+      "average_day_ahead_price_eur_per_mwh": 89.32,
+      "average_grid_load_gw": 53.176,
+      "calendar_year": 2025,
+      "grid_load_twh": 465.818,
+      "maximum_day_ahead_price_eur_per_mwh": 583.4,
+      "minimum_day_ahead_price_eur_per_mwh": -250.32,
+      "negative_price_hour_count": 573,
+      "observed_hour_count": 8760,
+      "peak_grid_load_gw": 75.635,
+      "renewable_generation_twh": 257.756,
+      "renewable_share_of_reported_generation_percent": 58.86,
+      "reported_generation_twh": 437.895,
+      "unavailable_generation_value_count": 8760
+    }
+  ],
+  "generation_mix": [
+    {
+      "generation_twh": 147.105,
+      "is_renewable": true,
+      "reported_hour_count": 35064,
+      "reported_value_coverage_percent": 100.0,
+      "share_of_reported_generation_percent": 8.04,
+      "technology_group": "renewable",
+      "technology_id": "biomass",
+      "technology_name": "Biomass",
+      "technology_order": 1,
+      "unavailable_hour_count": 0
+    },
+    {
+      "generation_twh": 59.559,
+      "is_renewable": true,
+      "reported_hour_count": 35064,
+      "reported_value_coverage_percent": 100.0,
+      "share_of_reported_generation_percent": 3.26,
+      "technology_group": "renewable",
+      "technology_id": "hydropower",
+      "technology_name": "Hydropower",
+      "technology_order": 2,
+      "unavailable_hour_count": 0
+    },
+    {
+      "generation_twh": 100.13,
+      "is_renewable": true,
+      "reported_hour_count": 35064,
+      "reported_value_coverage_percent": 100.0,
+      "share_of_reported_generation_percent": 5.47,
+      "technology_group": "renewable",
+      "technology_id": "wind_offshore",
+      "technology_name": "Wind offshore",
+      "technology_order": 3,
+      "unavailable_hour_count": 0
+    },
+    {
+      "generation_twh": 439.321,
+      "is_renewable": true,
+      "reported_hour_count": 35064,
+      "reported_value_coverage_percent": 100.0,
+      "share_of_reported_generation_percent": 24.02,
+      "technology_group": "renewable",
+      "technology_id": "wind_onshore",
+      "technology_name": "Wind onshore",
+      "technology_order": 4,
+      "unavailable_hour_count": 0
+    },
+    {
+      "generation_twh": 248.204,
+      "is_renewable": true,
+      "reported_hour_count": 35064,
+      "reported_value_coverage_percent": 100.0,
+      "share_of_reported_generation_percent": 13.57,
+      "technology_group": "renewable",
+      "technology_id": "solar_photovoltaic",
+      "technology_name": "Solar photovoltaic",
+      "technology_order": 5,
+      "unavailable_hour_count": 0
+    },
+    {
+      "generation_twh": 4.508,
+      "is_renewable": true,
+      "reported_hour_count": 35064,
+      "reported_value_coverage_percent": 100.0,
+      "share_of_reported_generation_percent": 0.25,
+      "technology_group": "renewable",
+      "technology_id": "other_renewable",
+      "technology_name": "Other renewable",
+      "technology_order": 6,
+      "unavailable_hour_count": 0
+    },
+    {
+      "generation_twh": 39.565,
+      "is_renewable": false,
+      "reported_hour_count": 18228,
+      "reported_value_coverage_percent": 51.98,
+      "share_of_reported_generation_percent": 2.16,
+      "technology_group": "conventional",
+      "technology_id": "nuclear",
+      "technology_name": "Nuclear",
+      "technology_order": 7,
+      "unavailable_hour_count": 16836
+    },
+    {
+      "generation_twh": 319.522,
+      "is_renewable": false,
+      "reported_hour_count": 35064,
+      "reported_value_coverage_percent": 100.0,
+      "share_of_reported_generation_percent": 17.47,
+      "technology_group": "conventional",
+      "technology_id": "lignite",
+      "technology_name": "Lignite",
+      "technology_order": 8,
+      "unavailable_hour_count": 0
+    },
+    {
+      "generation_twh": 158.134,
+      "is_renewable": false,
+      "reported_hour_count": 35064,
+      "reported_value_coverage_percent": 100.0,
+      "share_of_reported_generation_percent": 8.65,
+      "technology_group": "conventional",
+      "technology_id": "hard_coal",
+      "technology_name": "Hard coal",
+      "technology_order": 9,
+      "unavailable_hour_count": 0
+    },
+    {
+      "generation_twh": 214.332,
+      "is_renewable": false,
+      "reported_hour_count": 35064,
+      "reported_value_coverage_percent": 100.0,
+      "share_of_reported_generation_percent": 11.72,
+      "technology_group": "conventional",
+      "technology_id": "fossil_gas",
+      "technology_name": "Fossil gas",
+      "technology_order": 10,
+      "unavailable_hour_count": 0
+    },
+    {
+      "generation_twh": 40.614,
+      "is_renewable": false,
+      "reported_hour_count": 35064,
+      "reported_value_coverage_percent": 100.0,
+      "share_of_reported_generation_percent": 2.22,
+      "technology_group": "storage",
+      "technology_id": "hydro_pumped_storage",
+      "technology_name": "Hydro pumped storage",
+      "technology_order": 11,
+      "unavailable_hour_count": 0
+    },
+    {
+      "generation_twh": 58.089,
+      "is_renewable": false,
+      "reported_hour_count": 35064,
+      "reported_value_coverage_percent": 100.0,
+      "share_of_reported_generation_percent": 3.18,
+      "technology_group": "conventional",
+      "technology_id": "other_conventional",
+      "technology_name": "Other conventional",
+      "technology_order": 12,
+      "unavailable_hour_count": 0
+    }
+  ],
+  "headline_kpis": {
+    "average_day_ahead_price_eur_per_mwh": 124.58,
+    "average_grid_load_gw": 53.388,
+    "conventional_generation_twh": 789.642,
+    "maximum_day_ahead_price_eur_per_mwh": 936.28,
+    "maximum_day_ahead_price_utc": "2024-12-12T16:00:00+00:00",
+    "median_day_ahead_price_eur_per_mwh": 99.43,
+    "minimum_day_ahead_price_eur_per_mwh": -500.0,
+    "minimum_day_ahead_price_utc": "2023-07-02T12:00:00+00:00",
+    "minimum_grid_load_gw": 30.903,
+    "minimum_grid_load_utc": "2023-06-18T02:00:00+00:00",
+    "negative_price_hour_count": 1400,
+    "negative_price_hour_share_percent": 3.99,
+    "observed_hour_count": 35064,
+    "peak_grid_load_gw": 78.681,
+    "peak_grid_load_utc": "2022-02-01T11:00:00+00:00",
+    "period_end_utc": "2025-12-31T23:00:00+00:00",
+    "period_start_utc": "2021-12-31T23:00:00+00:00",
+    "renewable_generation_twh": 998.826,
+    "renewable_share_of_reported_generation_percent": 54.61,
+    "reported_generation_twh": 1829.082,
+    "storage_generation_twh": 40.614,
+    "total_grid_load_twh": 1871.998,
+    "unavailable_generation_value_count": 16836
+  },
+  "period": {
+    "end_utc": "2025-12-31T23:00:00+00:00",
+    "start_utc": "2021-12-31T23:00:00+00:00"
+  },
+  "query_contracts": {
+    "annual_kpis": {
+      "grain": "one Europe/Berlin calendar year",
+      "row_count": 4,
+      "sql_file": "sql/analysis/002_annual_kpis.sql"
+    },
+    "generation_mix": {
+      "grain": "one generation technology for the complete approved period",
+      "row_count": 12,
+      "sql_file": "sql/analysis/003_generation_mix.sql"
+    },
+    "headline_kpis": {
+      "grain": "one row for the complete approved period",
+      "row_count": 1,
+      "sql_file": "sql/analysis/001_headline_kpis.sql"
+    }
+  },
+  "schema_version": 1,
+  "source_attribution": "Bundesnetzagentur | SMARD.de",
+  "source_views": [
+    "reporting.hourly_energy",
+    "reporting.hourly_generation_by_technology"
+  ],
+  "units": {
+    "energy": "TWh",
+    "power": "GW",
+    "price": "EUR/MWh",
+    "share": "percent"
+  }
+}

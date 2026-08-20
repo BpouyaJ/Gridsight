@@ -67,7 +67,9 @@ domain-specific value rules. Step 4.1 established verified PostgreSQL staging
 contracts, conformed dimensions, and two fact-table grains. Step 4.2 verified a
 hash-gated, transactional, idempotent load with 19 database reconciliation
 checks. Step 4.3 completed tested hourly, technology, daily, and monthly
-reporting views. Phase 5 will define KPIs and document analytical findings.
+reporting views. Phase 5 Step 5.1 completed fixed KPI definitions, three
+verified read-only SQL query grains, and a deterministic aggregate snapshot.
+Step 5.2 will develop focused exploratory figures and defensible findings.
 
 See:
 
@@ -77,6 +79,7 @@ See:
 - [PostgreSQL analytical model](docs/database-model.md)
 - [PostgreSQL loading and reconciliation](docs/database-loading.md)
 - [SQL reporting views](docs/reporting-views.md)
+- [KPI definitions and query contract](docs/kpi-definitions.md)
 - [Initial SMARD source profile](docs/initial-source-profile.md)
 - [Reproducible source profiling](docs/source-profiling.md)
 - [Clean-data contract](docs/clean-data-contract.md)
