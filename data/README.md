@@ -46,6 +46,12 @@ The issue file is header-only when validation passes. The JSON summary records
 stable check results, dataset metrics, output paths, and output SHA-256 values.
 Both artifacts are deterministic generated files and remain ignored.
 
+Phase 6 also generates `processed/forecast_index.csv`. It contains one row per
+forecast origin and horizon step, including actual load and baseline-source
+timestamps, so it remains ignored. Its small tracked companion is
+`reports/forecast_contract.json`, which records the protocol, counts, and
+artifact hashes without publishing the full target series.
+
 All six approved source snapshots have been registered locally: both Germany
 actual-consumption periods, both Germany actual-generation periods, and both
 DE/LU day-ahead-price periods. Their raw CSVs are ignored, while their

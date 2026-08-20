@@ -1,0 +1,94 @@
+{
+  "evaluation": {
+    "baseline_improvement": "100 * (baseline_MAE - model_MAE) / baseline_MAE",
+    "final_test_split": "test",
+    "primary_metric": "MAE_MW",
+    "reporting_grains": [
+      "overall",
+      "horizon_step"
+    ],
+    "secondary_metrics": [
+      "RMSE_MW",
+      "MAPE_percent"
+    ],
+    "selection_split": "validation"
+  },
+  "history": {
+    "daily_naive_lag_hours": 24,
+    "minimum_hours": 168,
+    "weekly_naive_lag_hours": 168
+  },
+  "index": {
+    "columns": [
+      "forecast_origin_utc",
+      "forecast_origin_local",
+      "origin_local_date",
+      "split",
+      "horizon_step",
+      "information_cutoff_utc",
+      "target_start_utc",
+      "target_start_local",
+      "target_local_fold",
+      "actual_grid_load_mw",
+      "daily_naive_source_utc",
+      "weekly_naive_source_utc"
+    ],
+    "first_origin_utc": "2022-01-07T23:00:00+00:00",
+    "first_target_utc": "2022-01-07T23:00:00+00:00",
+    "last_origin_utc": "2025-12-30T23:00:00+00:00",
+    "last_target_utc": "2025-12-31T22:00:00+00:00",
+    "origin_count": 1454,
+    "path": "data/processed/forecast_index.csv",
+    "row_count": 34896,
+    "sha256": "6089b1d7c2cd3298cfa3d24526f98cc763b1c95947ce2e9e84ff06dc42bbecc4"
+  },
+  "leakage_rules": [
+    "fit preprocessing and models on training rows only",
+    "select features and hyperparameters using validation rows only",
+    "open the 2025 test split once after the design is frozen",
+    "use only data complete at each forecast origin",
+    "never use random train/test splits"
+  ],
+  "schedule": {
+    "first_target_step": "interval beginning at the forecast origin",
+    "forecast_origin": "Europe/Berlin local midnight",
+    "frequency": "one forecast per local calendar date",
+    "horizon_steps": 24,
+    "information_cutoff": "only observations with interval_end_utc <= forecast_origin_utc",
+    "step_duration": "one real hour"
+  },
+  "schema_version": 1,
+  "source": {
+    "dataset": "data/processed/actual_consumption_hourly.csv",
+    "sha256": "4a0107f087fdd5d87e584c913c6e73187f6e2c81057053964250cf3f1f9316a5",
+    "validation_summary_sha256": "5fc1af559d4ebb46712a86d7cff3f5780a0af2c24ce480c0e7016767176de766"
+  },
+  "splits": [
+    {
+      "end_origin_local_date": "2023-12-31",
+      "forecast_row_count": 17352,
+      "name": "train",
+      "origin_count": 723,
+      "start_origin_local_date": "2022-01-08"
+    },
+    {
+      "end_origin_local_date": "2024-12-31",
+      "forecast_row_count": 8784,
+      "name": "validation",
+      "origin_count": 366,
+      "start_origin_local_date": "2024-01-01"
+    },
+    {
+      "end_origin_local_date": "2025-12-31",
+      "forecast_row_count": 8760,
+      "name": "test",
+      "origin_count": 365,
+      "start_origin_local_date": "2025-01-01"
+    }
+  ],
+  "target": {
+    "column": "grid_load_mw",
+    "meaning": "Germany-wide average grid load during one real hour",
+    "unit": "MW"
+  }
+}

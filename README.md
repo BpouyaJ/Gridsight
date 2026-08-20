@@ -69,8 +69,9 @@ hash-gated, transactional, idempotent load with 19 database reconciliation
 checks. Step 4.3 completed tested hourly, technology, daily, and monthly
 reporting views. Phase 5 completed fixed KPI definitions, verified analytical
 query grains, deterministic aggregate artifacts, a focused EDA notebook, and
-four reviewed figures with carefully limited findings. Phase 6 will establish
-the forecasting contract and leakage-safe chronological evaluation design.
+four reviewed figures with carefully limited findings. Phase 6 Step 6.1
+completed the 24-hour forecasting contract and leakage-safe chronological
+evaluation design before any model training.
 
 See:
 
@@ -82,6 +83,7 @@ See:
 - [SQL reporting views](docs/reporting-views.md)
 - [KPI definitions and query contract](docs/kpi-definitions.md)
 - [Focused exploratory analysis](docs/exploratory-analysis.md)
+- [Load-forecasting protocol](docs/forecasting-protocol.md)
 - [Initial SMARD source profile](docs/initial-source-profile.md)
 - [Reproducible source profiling](docs/source-profiling.md)
 - [Clean-data contract](docs/clean-data-contract.md)

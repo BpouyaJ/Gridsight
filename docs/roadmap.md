@@ -105,6 +105,11 @@ Deliverables:
 
 Skills: NumPy, scikit-learn, feature engineering, time-series validation, model evaluation.
 
+Status: in progress. Step 6.1 completed the local-midnight forecast schedule,
+24-real-hour horizon, information cutoff, chronological train/validation/test
+splits, baseline-source timestamps, and evaluation metrics. Step 6.2 will
+implement and compare the frozen daily and weekly seasonal-naive baselines.
+
 ### Phase 7 - Reporting marts
 
 Deliverables:

@@ -4,9 +4,9 @@ Last updated: 2026-08-20
 
 ## Current phase
 
-Phase 5 - Exploratory analysis and KPIs
+Phase 6 - Forecasting
 
-Current step: 5.2 - Focused exploratory analysis and findings
+Current step: 6.1 - Forecast-origin, split, leakage, and evaluation contract
 
 Status: completed
 
@@ -232,10 +232,35 @@ Status: completed
 - Passed Ruff, `git diff --check`, artifact determinism, and visual review.
 - Completed the Phase 5 gate with KPI definitions, SQL queries, focused EDA,
   reproducible artifacts, documented findings, and limitations.
+- Defined one forecast at each Europe/Berlin local midnight for the next 24
+  consecutive real hourly intervals.
+- Defined the information cutoff as observations whose intervals end at or
+  before the forecast origin.
+- Reserved the first seven 2022 dates for weekly history, training origins for
+  the remainder of 2022-2023, validation origins for 2024, and untouched test
+  origins for 2025.
+- Added a deterministic 1,454-origin, 34,896-row forecast-index builder with
+  UTC/local timestamps, folds, horizon steps, target MW, and daily/weekly
+  baseline-source timestamps.
+- Added strict checks for hourly continuity, split counts, 24-step completeness,
+  DST origin spacing, positive targets, and baseline availability.
+- Added explicit MAE, RMSE, MAPE, and baseline-improvement implementations.
+- Added fast tests for chronology, both DST transitions, leakage rejection,
+  metrics, and deterministic index writing.
+- Generated and reviewed a deterministic 1,454-origin, 34,896-row forecast
+  index with SHA-256
+  `6089b1d7c2cd3298cfa3d24526f98cc763b1c95947ce2e9e84ff06dc42bbecc4`.
+- Generated the tracked forecast-contract summary with SHA-256
+  `3a4a2da987089258b3ba5e7d64bc67f0abd62a0a4c5e3fdd31c03df75a060f88`.
+- Verified 723 training, 366 validation, and 365 untouched test origins with
+  exactly 24 rows per origin and explicit UTC boundaries.
+- Passed all 51 fast tests with six live tests deselected, including the four
+  new forecasting-contract tests.
+- Passed Ruff and `git diff --check` after completing Step 6.1.
 
 ## In progress
 
-None. Step 5.2 and the Phase 5 gate are ready for their Git checkpoint.
+None. Step 6.1 is ready for its Git checkpoint.
 
 ## Not started
 
@@ -245,8 +270,8 @@ None. Step 5.2 and the Phase 5 gate are ready for their Git checkpoint.
 
 ## Next bounded step
 
-After Step 5.2 is committed and pushed, begin Phase 6 Step 6.1 with the
-forecast-origin, chronological split, and evaluation contract.
+After the Step 6.1 Git checkpoint, implement Step 6.2 daily and weekly
+seasonal-naive baselines using only the recorded available source timestamps.
 
 ## Current blockers
 
