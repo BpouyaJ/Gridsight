@@ -92,6 +92,7 @@ The artifacts reproduced with these SHA-256 values:
 ## Step boundary
 
 Step 6.3 does not fit preprocessing, train a model, select hyperparameters, or
-evaluate the test split. Step 6.4 will fit Ridge and histogram gradient-boosting
-candidates using training rows and compare them on validation rows against the
-weekly seasonal-naive benchmark.
+evaluate the test split. Step 6.4 applies the process documented in
+[Chronological model validation](model-validation.md): Ridge and histogram
+gradient-boosting candidates fit training rows and compete on validation rows
+against the weekly seasonal-naive benchmark.

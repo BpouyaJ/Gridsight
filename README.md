@@ -76,6 +76,9 @@ seasonal-naive benchmarks without evaluating the untouched 2025 test split;
 weekly seasonal naive is the stronger validation benchmark. Step 6.3 completed
 an auditable calendar, lag, and rolling feature matrix with redacted test
 targets before any learned model is fit.
+Step 6.4 selected a 31-leaf histogram gradient-boosting model from fixed Ridge
+and tree candidates using only chronological validation performance; the 2025
+test result remains unopened.
 
 See:
 
@@ -90,6 +93,7 @@ See:
 - [Load-forecasting protocol](docs/forecasting-protocol.md)
 - [Seasonal-naive baseline evaluation](docs/baseline-evaluation.md)
 - [Leakage-safe forecasting features](docs/feature-engineering.md)
+- [Chronological model validation](docs/model-validation.md)
 - [Initial SMARD source profile](docs/initial-source-profile.md)
 - [Reproducible source profiling](docs/source-profiling.md)
 - [Clean-data contract](docs/clean-data-contract.md)

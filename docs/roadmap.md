@@ -111,8 +111,10 @@ splits, baseline-source timestamps, and evaluation metrics. Step 6.2 is
 complete with frozen daily and weekly seasonal-naive baselines, aggregate
 overall/horizon metrics, and zero scored test rows. Step 6.3 completed a
 deterministic calendar, lag, and rolling feature matrix with redacted test
-targets. Step 6.4 will fit Ridge and histogram gradient-boosting models on
-training rows and compare them on validation rows.
+targets. Step 6.4 completed training-only fitting of fixed Ridge and histogram
+gradient-boosting candidates and validation-only selection of the 31-leaf
+histogram model. Step 6.5 will refit the frozen design and open the 2025 test
+targets once for final evaluation.
 
 ### Phase 7 - Reporting marts
 

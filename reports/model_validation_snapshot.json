@@ -1,0 +1,1871 @@
+{
+  "candidates": [
+    {
+      "family": "ridge",
+      "name": "ridge_alpha_1",
+      "parameters": {
+        "alpha": 1.0
+      },
+      "train": {
+        "by_horizon": [
+          {
+            "horizon_step": 1,
+            "mae_mw": 1668.053,
+            "mape_percent": 3.768,
+            "observations": 723,
+            "rmse_mw": 2114.671
+          },
+          {
+            "horizon_step": 2,
+            "mae_mw": 1560.502,
+            "mape_percent": 3.665,
+            "observations": 723,
+            "rmse_mw": 2008.683
+          },
+          {
+            "horizon_step": 3,
+            "mae_mw": 1501.689,
+            "mape_percent": 3.599,
+            "observations": 723,
+            "rmse_mw": 1941.121
+          },
+          {
+            "horizon_step": 4,
+            "mae_mw": 1444.803,
+            "mape_percent": 3.457,
+            "observations": 723,
+            "rmse_mw": 1892.925
+          },
+          {
+            "horizon_step": 5,
+            "mae_mw": 1366.391,
+            "mape_percent": 3.21,
+            "observations": 723,
+            "rmse_mw": 1813.129
+          },
+          {
+            "horizon_step": 6,
+            "mae_mw": 1252.219,
+            "mape_percent": 2.819,
+            "observations": 723,
+            "rmse_mw": 1818.314
+          },
+          {
+            "horizon_step": 7,
+            "mae_mw": 1830.429,
+            "mape_percent": 3.785,
+            "observations": 723,
+            "rmse_mw": 2755.596
+          },
+          {
+            "horizon_step": 8,
+            "mae_mw": 2411.811,
+            "mape_percent": 4.593,
+            "observations": 723,
+            "rmse_mw": 3497.075
+          },
+          {
+            "horizon_step": 9,
+            "mae_mw": 2368.402,
+            "mape_percent": 4.235,
+            "observations": 723,
+            "rmse_mw": 3439.743
+          },
+          {
+            "horizon_step": 10,
+            "mae_mw": 2025.229,
+            "mape_percent": 3.513,
+            "observations": 723,
+            "rmse_mw": 2992.831
+          },
+          {
+            "horizon_step": 11,
+            "mae_mw": 1879.503,
+            "mape_percent": 3.204,
+            "observations": 723,
+            "rmse_mw": 2790.321
+          },
+          {
+            "horizon_step": 12,
+            "mae_mw": 1824.285,
+            "mape_percent": 3.06,
+            "observations": 723,
+            "rmse_mw": 2662.34
+          },
+          {
+            "horizon_step": 13,
+            "mae_mw": 1841.01,
+            "mape_percent": 3.117,
+            "observations": 723,
+            "rmse_mw": 2669.592
+          },
+          {
+            "horizon_step": 14,
+            "mae_mw": 1980.614,
+            "mape_percent": 3.444,
+            "observations": 723,
+            "rmse_mw": 2853.847
+          },
+          {
+            "horizon_step": 15,
+            "mae_mw": 2038.501,
+            "mape_percent": 3.642,
+            "observations": 723,
+            "rmse_mw": 2908.037
+          },
+          {
+            "horizon_step": 16,
+            "mae_mw": 2033.09,
+            "mape_percent": 3.678,
+            "observations": 723,
+            "rmse_mw": 2882.89
+          },
+          {
+            "horizon_step": 17,
+            "mae_mw": 1922.661,
+            "mape_percent": 3.483,
+            "observations": 723,
+            "rmse_mw": 2714.735
+          },
+          {
+            "horizon_step": 18,
+            "mae_mw": 1773.108,
+            "mape_percent": 3.133,
+            "observations": 723,
+            "rmse_mw": 2503.442
+          },
+          {
+            "horizon_step": 19,
+            "mae_mw": 1699.026,
+            "mape_percent": 2.95,
+            "observations": 723,
+            "rmse_mw": 2335.412
+          },
+          {
+            "horizon_step": 20,
+            "mae_mw": 1738.661,
+            "mape_percent": 3.043,
+            "observations": 723,
+            "rmse_mw": 2326.802
+          },
+          {
+            "horizon_step": 21,
+            "mae_mw": 1646.572,
+            "mape_percent": 3.009,
+            "observations": 723,
+            "rmse_mw": 2174.615
+          },
+          {
+            "horizon_step": 22,
+            "mae_mw": 1584.227,
+            "mape_percent": 3.024,
+            "observations": 723,
+            "rmse_mw": 2052.82
+          },
+          {
+            "horizon_step": 23,
+            "mae_mw": 1641.252,
+            "mape_percent": 3.275,
+            "observations": 723,
+            "rmse_mw": 2088.932
+          },
+          {
+            "horizon_step": 24,
+            "mae_mw": 1718.718,
+            "mape_percent": 3.647,
+            "observations": 723,
+            "rmse_mw": 2195.969
+          }
+        ],
+        "overall": {
+          "mae_mw": 1781.282,
+          "mape_percent": 3.431,
+          "observations": 17352,
+          "rmse_mw": 2521.657
+        }
+      },
+      "validation": {
+        "by_horizon": [
+          {
+            "horizon_step": 1,
+            "mae_mw": 1836.714,
+            "mape_percent": 4.171,
+            "observations": 366,
+            "rmse_mw": 2279.092
+          },
+          {
+            "horizon_step": 2,
+            "mae_mw": 1738.713,
+            "mape_percent": 4.095,
+            "observations": 366,
+            "rmse_mw": 2157.232
+          },
+          {
+            "horizon_step": 3,
+            "mae_mw": 1656.75,
+            "mape_percent": 3.988,
+            "observations": 366,
+            "rmse_mw": 2085.765
+          },
+          {
+            "horizon_step": 4,
+            "mae_mw": 1631.128,
+            "mape_percent": 3.924,
+            "observations": 366,
+            "rmse_mw": 2050.441
+          },
+          {
+            "horizon_step": 5,
+            "mae_mw": 1568.685,
+            "mape_percent": 3.7,
+            "observations": 366,
+            "rmse_mw": 1979.184
+          },
+          {
+            "horizon_step": 6,
+            "mae_mw": 1462.433,
+            "mape_percent": 3.302,
+            "observations": 366,
+            "rmse_mw": 1981.375
+          },
+          {
+            "horizon_step": 7,
+            "mae_mw": 1999.718,
+            "mape_percent": 4.153,
+            "observations": 366,
+            "rmse_mw": 2878.233
+          },
+          {
+            "horizon_step": 8,
+            "mae_mw": 2570.413,
+            "mape_percent": 4.918,
+            "observations": 366,
+            "rmse_mw": 3629.614
+          },
+          {
+            "horizon_step": 9,
+            "mae_mw": 2577.43,
+            "mape_percent": 4.638,
+            "observations": 366,
+            "rmse_mw": 3673.908
+          },
+          {
+            "horizon_step": 10,
+            "mae_mw": 2241.808,
+            "mape_percent": 3.926,
+            "observations": 366,
+            "rmse_mw": 3220.055
+          },
+          {
+            "horizon_step": 11,
+            "mae_mw": 2087.267,
+            "mape_percent": 3.609,
+            "observations": 366,
+            "rmse_mw": 3009.214
+          },
+          {
+            "horizon_step": 12,
+            "mae_mw": 2033.97,
+            "mape_percent": 3.491,
+            "observations": 366,
+            "rmse_mw": 2878.935
+          },
+          {
+            "horizon_step": 13,
+            "mae_mw": 2112.406,
+            "mape_percent": 3.686,
+            "observations": 366,
+            "rmse_mw": 2940.277
+          },
+          {
+            "horizon_step": 14,
+            "mae_mw": 2269.318,
+            "mape_percent": 4.093,
+            "observations": 366,
+            "rmse_mw": 3155.57
+          },
+          {
+            "horizon_step": 15,
+            "mae_mw": 2371.295,
+            "mape_percent": 4.385,
+            "observations": 366,
+            "rmse_mw": 3236.218
+          },
+          {
+            "horizon_step": 16,
+            "mae_mw": 2288.035,
+            "mape_percent": 4.279,
+            "observations": 366,
+            "rmse_mw": 3139.744
+          },
+          {
+            "horizon_step": 17,
+            "mae_mw": 2105.879,
+            "mape_percent": 3.907,
+            "observations": 366,
+            "rmse_mw": 2877.117
+          },
+          {
+            "horizon_step": 18,
+            "mae_mw": 1902.68,
+            "mape_percent": 3.418,
+            "observations": 366,
+            "rmse_mw": 2634.526
+          },
+          {
+            "horizon_step": 19,
+            "mae_mw": 1863.172,
+            "mape_percent": 3.272,
+            "observations": 366,
+            "rmse_mw": 2549.225
+          },
+          {
+            "horizon_step": 20,
+            "mae_mw": 1870.408,
+            "mape_percent": 3.299,
+            "observations": 366,
+            "rmse_mw": 2497.912
+          },
+          {
+            "horizon_step": 21,
+            "mae_mw": 1773.013,
+            "mape_percent": 3.254,
+            "observations": 366,
+            "rmse_mw": 2348.259
+          },
+          {
+            "horizon_step": 22,
+            "mae_mw": 1688.286,
+            "mape_percent": 3.235,
+            "observations": 366,
+            "rmse_mw": 2207.981
+          },
+          {
+            "horizon_step": 23,
+            "mae_mw": 1791.687,
+            "mape_percent": 3.594,
+            "observations": 366,
+            "rmse_mw": 2287.07
+          },
+          {
+            "horizon_step": 24,
+            "mae_mw": 1928.716,
+            "mape_percent": 4.104,
+            "observations": 366,
+            "rmse_mw": 2425.07
+          }
+        ],
+        "overall": {
+          "mae_mw": 1973.747,
+          "mape_percent": 3.852,
+          "observations": 8784,
+          "rmse_mw": 2718.039
+        }
+      }
+    },
+    {
+      "family": "ridge",
+      "name": "ridge_alpha_10",
+      "parameters": {
+        "alpha": 10.0
+      },
+      "train": {
+        "by_horizon": [
+          {
+            "horizon_step": 1,
+            "mae_mw": 1662.747,
+            "mape_percent": 3.759,
+            "observations": 723,
+            "rmse_mw": 2105.909
+          },
+          {
+            "horizon_step": 2,
+            "mae_mw": 1551.613,
+            "mape_percent": 3.647,
+            "observations": 723,
+            "rmse_mw": 1997.44
+          },
+          {
+            "horizon_step": 3,
+            "mae_mw": 1493.813,
+            "mape_percent": 3.583,
+            "observations": 723,
+            "rmse_mw": 1930.154
+          },
+          {
+            "horizon_step": 4,
+            "mae_mw": 1435.367,
+            "mape_percent": 3.438,
+            "observations": 723,
+            "rmse_mw": 1883.51
+          },
+          {
+            "horizon_step": 5,
+            "mae_mw": 1357.662,
+            "mape_percent": 3.192,
+            "observations": 723,
+            "rmse_mw": 1807.435
+          },
+          {
+            "horizon_step": 6,
+            "mae_mw": 1243.618,
+            "mape_percent": 2.8,
+            "observations": 723,
+            "rmse_mw": 1817.366
+          },
+          {
+            "horizon_step": 7,
+            "mae_mw": 1827.368,
+            "mape_percent": 3.78,
+            "observations": 723,
+            "rmse_mw": 2762.032
+          },
+          {
+            "horizon_step": 8,
+            "mae_mw": 2415.55,
+            "mape_percent": 4.6,
+            "observations": 723,
+            "rmse_mw": 3507.549
+          },
+          {
+            "horizon_step": 9,
+            "mae_mw": 2374.663,
+            "mape_percent": 4.245,
+            "observations": 723,
+            "rmse_mw": 3449.942
+          },
+          {
+            "horizon_step": 10,
+            "mae_mw": 2028.114,
+            "mape_percent": 3.516,
+            "observations": 723,
+            "rmse_mw": 3000.532
+          },
+          {
+            "horizon_step": 11,
+            "mae_mw": 1881.486,
+            "mape_percent": 3.207,
+            "observations": 723,
+            "rmse_mw": 2796.631
+          },
+          {
+            "horizon_step": 12,
+            "mae_mw": 1824.058,
+            "mape_percent": 3.059,
+            "observations": 723,
+            "rmse_mw": 2667.333
+          },
+          {
+            "horizon_step": 13,
+            "mae_mw": 1839.33,
+            "mape_percent": 3.114,
+            "observations": 723,
+            "rmse_mw": 2673.747
+          },
+          {
+            "horizon_step": 14,
+            "mae_mw": 1981.11,
+            "mape_percent": 3.445,
+            "observations": 723,
+            "rmse_mw": 2859.576
+          },
+          {
+            "horizon_step": 15,
+            "mae_mw": 2043.348,
+            "mape_percent": 3.651,
+            "observations": 723,
+            "rmse_mw": 2915.741
+          },
+          {
+            "horizon_step": 16,
+            "mae_mw": 2039.275,
+            "mape_percent": 3.69,
+            "observations": 723,
+            "rmse_mw": 2890.702
+          },
+          {
+            "horizon_step": 17,
+            "mae_mw": 1927.291,
+            "mape_percent": 3.492,
+            "observations": 723,
+            "rmse_mw": 2720.67
+          },
+          {
+            "horizon_step": 18,
+            "mae_mw": 1773.97,
+            "mape_percent": 3.134,
+            "observations": 723,
+            "rmse_mw": 2507.357
+          },
+          {
+            "horizon_step": 19,
+            "mae_mw": 1695.798,
+            "mape_percent": 2.943,
+            "observations": 723,
+            "rmse_mw": 2337.832
+          },
+          {
+            "horizon_step": 20,
+            "mae_mw": 1735.78,
+            "mape_percent": 3.036,
+            "observations": 723,
+            "rmse_mw": 2326.936
+          },
+          {
+            "horizon_step": 21,
+            "mae_mw": 1641.339,
+            "mape_percent": 2.998,
+            "observations": 723,
+            "rmse_mw": 2170.563
+          },
+          {
+            "horizon_step": 22,
+            "mae_mw": 1576.412,
+            "mape_percent": 3.009,
+            "observations": 723,
+            "rmse_mw": 2046.1
+          },
+          {
+            "horizon_step": 23,
+            "mae_mw": 1636.113,
+            "mape_percent": 3.265,
+            "observations": 723,
+            "rmse_mw": 2080.04
+          },
+          {
+            "horizon_step": 24,
+            "mae_mw": 1719.716,
+            "mape_percent": 3.649,
+            "observations": 723,
+            "rmse_mw": 2191.322
+          }
+        ],
+        "overall": {
+          "mae_mw": 1779.398,
+          "mape_percent": 3.427,
+          "observations": 17352,
+          "rmse_mw": 2523.385
+        }
+      },
+      "validation": {
+        "by_horizon": [
+          {
+            "horizon_step": 1,
+            "mae_mw": 1814.46,
+            "mape_percent": 4.123,
+            "observations": 366,
+            "rmse_mw": 2252.855
+          },
+          {
+            "horizon_step": 2,
+            "mae_mw": 1717.263,
+            "mape_percent": 4.048,
+            "observations": 366,
+            "rmse_mw": 2130.677
+          },
+          {
+            "horizon_step": 3,
+            "mae_mw": 1642.142,
+            "mape_percent": 3.956,
+            "observations": 366,
+            "rmse_mw": 2061.005
+          },
+          {
+            "horizon_step": 4,
+            "mae_mw": 1613.838,
+            "mape_percent": 3.886,
+            "observations": 366,
+            "rmse_mw": 2027.503
+          },
+          {
+            "horizon_step": 5,
+            "mae_mw": 1552.677,
+            "mape_percent": 3.665,
+            "observations": 366,
+            "rmse_mw": 1961.322
+          },
+          {
+            "horizon_step": 6,
+            "mae_mw": 1448.662,
+            "mape_percent": 3.273,
+            "observations": 366,
+            "rmse_mw": 1970.198
+          },
+          {
+            "horizon_step": 7,
+            "mae_mw": 1993.275,
+            "mape_percent": 4.141,
+            "observations": 366,
+            "rmse_mw": 2878.539
+          },
+          {
+            "horizon_step": 8,
+            "mae_mw": 2572.666,
+            "mape_percent": 4.922,
+            "observations": 366,
+            "rmse_mw": 3635.84
+          },
+          {
+            "horizon_step": 9,
+            "mae_mw": 2576.543,
+            "mape_percent": 4.634,
+            "observations": 366,
+            "rmse_mw": 3679.924
+          },
+          {
+            "horizon_step": 10,
+            "mae_mw": 2240.596,
+            "mape_percent": 3.923,
+            "observations": 366,
+            "rmse_mw": 3222.535
+          },
+          {
+            "horizon_step": 11,
+            "mae_mw": 2083.338,
+            "mape_percent": 3.601,
+            "observations": 366,
+            "rmse_mw": 3010.248
+          },
+          {
+            "horizon_step": 12,
+            "mae_mw": 2032.068,
+            "mape_percent": 3.487,
+            "observations": 366,
+            "rmse_mw": 2877.842
+          },
+          {
+            "horizon_step": 13,
+            "mae_mw": 2110.48,
+            "mape_percent": 3.683,
+            "observations": 366,
+            "rmse_mw": 2939.578
+          },
+          {
+            "horizon_step": 14,
+            "mae_mw": 2271.882,
+            "mape_percent": 4.099,
+            "observations": 366,
+            "rmse_mw": 3158.085
+          },
+          {
+            "horizon_step": 15,
+            "mae_mw": 2371.715,
+            "mape_percent": 4.388,
+            "observations": 366,
+            "rmse_mw": 3241.187
+          },
+          {
+            "horizon_step": 16,
+            "mae_mw": 2292.154,
+            "mape_percent": 4.288,
+            "observations": 366,
+            "rmse_mw": 3144.354
+          },
+          {
+            "horizon_step": 17,
+            "mae_mw": 2108.389,
+            "mape_percent": 3.913,
+            "observations": 366,
+            "rmse_mw": 2880.123
+          },
+          {
+            "horizon_step": 18,
+            "mae_mw": 1899.117,
+            "mape_percent": 3.413,
+            "observations": 366,
+            "rmse_mw": 2634.281
+          },
+          {
+            "horizon_step": 19,
+            "mae_mw": 1857.541,
+            "mape_percent": 3.262,
+            "observations": 366,
+            "rmse_mw": 2546.215
+          },
+          {
+            "horizon_step": 20,
+            "mae_mw": 1861.008,
+            "mape_percent": 3.282,
+            "observations": 366,
+            "rmse_mw": 2493.361
+          },
+          {
+            "horizon_step": 21,
+            "mae_mw": 1762.677,
+            "mape_percent": 3.235,
+            "observations": 366,
+            "rmse_mw": 2338.605
+          },
+          {
+            "horizon_step": 22,
+            "mae_mw": 1679.381,
+            "mape_percent": 3.219,
+            "observations": 366,
+            "rmse_mw": 2193.254
+          },
+          {
+            "horizon_step": 23,
+            "mae_mw": 1782.696,
+            "mape_percent": 3.577,
+            "observations": 366,
+            "rmse_mw": 2268.346
+          },
+          {
+            "horizon_step": 24,
+            "mae_mw": 1920.739,
+            "mape_percent": 4.089,
+            "observations": 366,
+            "rmse_mw": 2411.193
+          }
+        ],
+        "overall": {
+          "mae_mw": 1966.888,
+          "mape_percent": 3.838,
+          "observations": 8784,
+          "rmse_mw": 2713.068
+        }
+      }
+    },
+    {
+      "family": "ridge",
+      "name": "ridge_alpha_100",
+      "parameters": {
+        "alpha": 100.0
+      },
+      "train": {
+        "by_horizon": [
+          {
+            "horizon_step": 1,
+            "mae_mw": 1670.001,
+            "mape_percent": 3.784,
+            "observations": 723,
+            "rmse_mw": 2105.602
+          },
+          {
+            "horizon_step": 2,
+            "mae_mw": 1539.071,
+            "mape_percent": 3.628,
+            "observations": 723,
+            "rmse_mw": 1984.216
+          },
+          {
+            "horizon_step": 3,
+            "mae_mw": 1484.946,
+            "mape_percent": 3.572,
+            "observations": 723,
+            "rmse_mw": 1919.796
+          },
+          {
+            "horizon_step": 4,
+            "mae_mw": 1429.516,
+            "mape_percent": 3.431,
+            "observations": 723,
+            "rmse_mw": 1880.752
+          },
+          {
+            "horizon_step": 5,
+            "mae_mw": 1352.306,
+            "mape_percent": 3.183,
+            "observations": 723,
+            "rmse_mw": 1815.827
+          },
+          {
+            "horizon_step": 6,
+            "mae_mw": 1228.512,
+            "mape_percent": 2.77,
+            "observations": 723,
+            "rmse_mw": 1830.429
+          },
+          {
+            "horizon_step": 7,
+            "mae_mw": 1834.011,
+            "mape_percent": 3.801,
+            "observations": 723,
+            "rmse_mw": 2799.168
+          },
+          {
+            "horizon_step": 8,
+            "mae_mw": 2462.784,
+            "mape_percent": 4.683,
+            "observations": 723,
+            "rmse_mw": 3572.413
+          },
+          {
+            "horizon_step": 9,
+            "mae_mw": 2426.821,
+            "mape_percent": 4.327,
+            "observations": 723,
+            "rmse_mw": 3517.046
+          },
+          {
+            "horizon_step": 10,
+            "mae_mw": 2059.798,
+            "mape_percent": 3.563,
+            "observations": 723,
+            "rmse_mw": 3052.266
+          },
+          {
+            "horizon_step": 11,
+            "mae_mw": 1908.522,
+            "mape_percent": 3.247,
+            "observations": 723,
+            "rmse_mw": 2837.975
+          },
+          {
+            "horizon_step": 12,
+            "mae_mw": 1840.445,
+            "mape_percent": 3.08,
+            "observations": 723,
+            "rmse_mw": 2700.664
+          },
+          {
+            "horizon_step": 13,
+            "mae_mw": 1847.163,
+            "mape_percent": 3.125,
+            "observations": 723,
+            "rmse_mw": 2703.405
+          },
+          {
+            "horizon_step": 14,
+            "mae_mw": 2002.716,
+            "mape_percent": 3.484,
+            "observations": 723,
+            "rmse_mw": 2897.744
+          },
+          {
+            "horizon_step": 15,
+            "mae_mw": 2085.647,
+            "mape_percent": 3.734,
+            "observations": 723,
+            "rmse_mw": 2965.083
+          },
+          {
+            "horizon_step": 16,
+            "mae_mw": 2081.679,
+            "mape_percent": 3.772,
+            "observations": 723,
+            "rmse_mw": 2940.92
+          },
+          {
+            "horizon_step": 17,
+            "mae_mw": 1955.408,
+            "mape_percent": 3.546,
+            "observations": 723,
+            "rmse_mw": 2761.886
+          },
+          {
+            "horizon_step": 18,
+            "mae_mw": 1787.495,
+            "mape_percent": 3.155,
+            "observations": 723,
+            "rmse_mw": 2538.39
+          },
+          {
+            "horizon_step": 19,
+            "mae_mw": 1706.774,
+            "mape_percent": 2.958,
+            "observations": 723,
+            "rmse_mw": 2368.609
+          },
+          {
+            "horizon_step": 20,
+            "mae_mw": 1753.46,
+            "mape_percent": 3.061,
+            "observations": 723,
+            "rmse_mw": 2354.123
+          },
+          {
+            "horizon_step": 21,
+            "mae_mw": 1642.984,
+            "mape_percent": 2.997,
+            "observations": 723,
+            "rmse_mw": 2179.297
+          },
+          {
+            "horizon_step": 22,
+            "mae_mw": 1554.216,
+            "mape_percent": 2.966,
+            "observations": 723,
+            "rmse_mw": 2042.19
+          },
+          {
+            "horizon_step": 23,
+            "mae_mw": 1628.432,
+            "mape_percent": 3.25,
+            "observations": 723,
+            "rmse_mw": 2070.006
+          },
+          {
+            "horizon_step": 24,
+            "mae_mw": 1745.454,
+            "mape_percent": 3.702,
+            "observations": 723,
+            "rmse_mw": 2207.595
+          }
+        ],
+        "overall": {
+          "mae_mw": 1792.84,
+          "mape_percent": 3.451,
+          "observations": 17352,
+          "rmse_mw": 2552.126
+        }
+      },
+      "validation": {
+        "by_horizon": [
+          {
+            "horizon_step": 1,
+            "mae_mw": 1752.9,
+            "mape_percent": 3.995,
+            "observations": 366,
+            "rmse_mw": 2179.637
+          },
+          {
+            "horizon_step": 2,
+            "mae_mw": 1643.409,
+            "mape_percent": 3.887,
+            "observations": 366,
+            "rmse_mw": 2052.28
+          },
+          {
+            "horizon_step": 3,
+            "mae_mw": 1593.675,
+            "mape_percent": 3.852,
+            "observations": 366,
+            "rmse_mw": 1991.282
+          },
+          {
+            "horizon_step": 4,
+            "mae_mw": 1570.53,
+            "mape_percent": 3.795,
+            "observations": 366,
+            "rmse_mw": 1968.196
+          },
+          {
+            "horizon_step": 5,
+            "mae_mw": 1517.961,
+            "mape_percent": 3.595,
+            "observations": 366,
+            "rmse_mw": 1921.139
+          },
+          {
+            "horizon_step": 6,
+            "mae_mw": 1411.355,
+            "mape_percent": 3.202,
+            "observations": 366,
+            "rmse_mw": 1945.266
+          },
+          {
+            "horizon_step": 7,
+            "mae_mw": 1994.715,
+            "mape_percent": 4.15,
+            "observations": 366,
+            "rmse_mw": 2894.998
+          },
+          {
+            "horizon_step": 8,
+            "mae_mw": 2609.119,
+            "mape_percent": 4.992,
+            "observations": 366,
+            "rmse_mw": 3685.179
+          },
+          {
+            "horizon_step": 9,
+            "mae_mw": 2615.724,
+            "mape_percent": 4.697,
+            "observations": 366,
+            "rmse_mw": 3729.141
+          },
+          {
+            "horizon_step": 10,
+            "mae_mw": 2245.132,
+            "mape_percent": 3.926,
+            "observations": 366,
+            "rmse_mw": 3249.363
+          },
+          {
+            "horizon_step": 11,
+            "mae_mw": 2082.302,
+            "mape_percent": 3.596,
+            "observations": 366,
+            "rmse_mw": 3025.008
+          },
+          {
+            "horizon_step": 12,
+            "mae_mw": 2029.266,
+            "mape_percent": 3.486,
+            "observations": 366,
+            "rmse_mw": 2883.604
+          },
+          {
+            "horizon_step": 13,
+            "mae_mw": 2114.241,
+            "mape_percent": 3.696,
+            "observations": 366,
+            "rmse_mw": 2946.02
+          },
+          {
+            "horizon_step": 14,
+            "mae_mw": 2292.556,
+            "mape_percent": 4.146,
+            "observations": 366,
+            "rmse_mw": 3181.256
+          },
+          {
+            "horizon_step": 15,
+            "mae_mw": 2399.303,
+            "mape_percent": 4.454,
+            "observations": 366,
+            "rmse_mw": 3279.473
+          },
+          {
+            "horizon_step": 16,
+            "mae_mw": 2317.174,
+            "mape_percent": 4.349,
+            "observations": 366,
+            "rmse_mw": 3184.427
+          },
+          {
+            "horizon_step": 17,
+            "mae_mw": 2129.776,
+            "mape_percent": 3.966,
+            "observations": 366,
+            "rmse_mw": 2912.006
+          },
+          {
+            "horizon_step": 18,
+            "mae_mw": 1898.214,
+            "mape_percent": 3.418,
+            "observations": 366,
+            "rmse_mw": 2651.535
+          },
+          {
+            "horizon_step": 19,
+            "mae_mw": 1841.845,
+            "mape_percent": 3.236,
+            "observations": 366,
+            "rmse_mw": 2552.698
+          },
+          {
+            "horizon_step": 20,
+            "mae_mw": 1844.697,
+            "mape_percent": 3.255,
+            "observations": 366,
+            "rmse_mw": 2499.841
+          },
+          {
+            "horizon_step": 21,
+            "mae_mw": 1732.517,
+            "mape_percent": 3.184,
+            "observations": 366,
+            "rmse_mw": 2320.863
+          },
+          {
+            "horizon_step": 22,
+            "mae_mw": 1644.744,
+            "mape_percent": 3.158,
+            "observations": 366,
+            "rmse_mw": 2155.56
+          },
+          {
+            "horizon_step": 23,
+            "mae_mw": 1742.755,
+            "mape_percent": 3.502,
+            "observations": 366,
+            "rmse_mw": 2213.946
+          },
+          {
+            "horizon_step": 24,
+            "mae_mw": 1909.966,
+            "mape_percent": 4.075,
+            "observations": 366,
+            "rmse_mw": 2382.361
+          }
+        ],
+        "overall": {
+          "mae_mw": 1955.578,
+          "mape_percent": 3.817,
+          "observations": 8784,
+          "rmse_mw": 2713.774
+        }
+      }
+    },
+    {
+      "family": "hist_gradient_boosting",
+      "name": "hist_gradient_boosting_15_leaves",
+      "parameters": {
+        "l2_regularization": 1.0,
+        "learning_rate": 0.05,
+        "max_iter": 300,
+        "max_leaf_nodes": 15,
+        "min_samples_leaf": 40
+      },
+      "train": {
+        "by_horizon": [
+          {
+            "horizon_step": 1,
+            "mae_mw": 715.259,
+            "mape_percent": 1.577,
+            "observations": 723,
+            "rmse_mw": 941.075
+          },
+          {
+            "horizon_step": 2,
+            "mae_mw": 684.685,
+            "mape_percent": 1.573,
+            "observations": 723,
+            "rmse_mw": 894.318
+          },
+          {
+            "horizon_step": 3,
+            "mae_mw": 661.223,
+            "mape_percent": 1.556,
+            "observations": 723,
+            "rmse_mw": 856.734
+          },
+          {
+            "horizon_step": 4,
+            "mae_mw": 622.098,
+            "mape_percent": 1.464,
+            "observations": 723,
+            "rmse_mw": 794.521
+          },
+          {
+            "horizon_step": 5,
+            "mae_mw": 635.56,
+            "mape_percent": 1.469,
+            "observations": 723,
+            "rmse_mw": 799.337
+          },
+          {
+            "horizon_step": 6,
+            "mae_mw": 720.265,
+            "mape_percent": 1.592,
+            "observations": 723,
+            "rmse_mw": 1003.545
+          },
+          {
+            "horizon_step": 7,
+            "mae_mw": 1016.575,
+            "mape_percent": 2.1,
+            "observations": 723,
+            "rmse_mw": 1512.237
+          },
+          {
+            "horizon_step": 8,
+            "mae_mw": 955.027,
+            "mape_percent": 1.841,
+            "observations": 723,
+            "rmse_mw": 1447.544
+          },
+          {
+            "horizon_step": 9,
+            "mae_mw": 845.062,
+            "mape_percent": 1.534,
+            "observations": 723,
+            "rmse_mw": 1221.91
+          },
+          {
+            "horizon_step": 10,
+            "mae_mw": 812.163,
+            "mape_percent": 1.408,
+            "observations": 723,
+            "rmse_mw": 1083.832
+          },
+          {
+            "horizon_step": 11,
+            "mae_mw": 826.099,
+            "mape_percent": 1.403,
+            "observations": 723,
+            "rmse_mw": 1074.351
+          },
+          {
+            "horizon_step": 12,
+            "mae_mw": 890.247,
+            "mape_percent": 1.48,
+            "observations": 723,
+            "rmse_mw": 1151.559
+          },
+          {
+            "horizon_step": 13,
+            "mae_mw": 937.403,
+            "mape_percent": 1.575,
+            "observations": 723,
+            "rmse_mw": 1200.348
+          },
+          {
+            "horizon_step": 14,
+            "mae_mw": 961.872,
+            "mape_percent": 1.651,
+            "observations": 723,
+            "rmse_mw": 1238.888
+          },
+          {
+            "horizon_step": 15,
+            "mae_mw": 980.716,
+            "mape_percent": 1.719,
+            "observations": 723,
+            "rmse_mw": 1259.334
+          },
+          {
+            "horizon_step": 16,
+            "mae_mw": 996.817,
+            "mape_percent": 1.771,
+            "observations": 723,
+            "rmse_mw": 1269.089
+          },
+          {
+            "horizon_step": 17,
+            "mae_mw": 982.359,
+            "mape_percent": 1.754,
+            "observations": 723,
+            "rmse_mw": 1257.411
+          },
+          {
+            "horizon_step": 18,
+            "mae_mw": 907.445,
+            "mape_percent": 1.582,
+            "observations": 723,
+            "rmse_mw": 1164.535
+          },
+          {
+            "horizon_step": 19,
+            "mae_mw": 868.266,
+            "mape_percent": 1.497,
+            "observations": 723,
+            "rmse_mw": 1107.045
+          },
+          {
+            "horizon_step": 20,
+            "mae_mw": 843.358,
+            "mape_percent": 1.467,
+            "observations": 723,
+            "rmse_mw": 1076.653
+          },
+          {
+            "horizon_step": 21,
+            "mae_mw": 903.185,
+            "mape_percent": 1.634,
+            "observations": 723,
+            "rmse_mw": 1149.398
+          },
+          {
+            "horizon_step": 22,
+            "mae_mw": 911.731,
+            "mape_percent": 1.716,
+            "observations": 723,
+            "rmse_mw": 1152.161
+          },
+          {
+            "horizon_step": 23,
+            "mae_mw": 924.162,
+            "mape_percent": 1.824,
+            "observations": 723,
+            "rmse_mw": 1160.33
+          },
+          {
+            "horizon_step": 24,
+            "mae_mw": 960.729,
+            "mape_percent": 2.024,
+            "observations": 723,
+            "rmse_mw": 1205.318
+          }
+        ],
+        "overall": {
+          "mae_mw": 856.763,
+          "mape_percent": 1.634,
+          "observations": 17352,
+          "rmse_mw": 1139.608
+        }
+      },
+      "validation": {
+        "by_horizon": [
+          {
+            "horizon_step": 1,
+            "mae_mw": 880.499,
+            "mape_percent": 1.965,
+            "observations": 366,
+            "rmse_mw": 1161.459
+          },
+          {
+            "horizon_step": 2,
+            "mae_mw": 892.946,
+            "mape_percent": 2.07,
+            "observations": 366,
+            "rmse_mw": 1209.905
+          },
+          {
+            "horizon_step": 3,
+            "mae_mw": 894.476,
+            "mape_percent": 2.121,
+            "observations": 366,
+            "rmse_mw": 1202.399
+          },
+          {
+            "horizon_step": 4,
+            "mae_mw": 934.168,
+            "mape_percent": 2.231,
+            "observations": 366,
+            "rmse_mw": 1274.845
+          },
+          {
+            "horizon_step": 5,
+            "mae_mw": 994.073,
+            "mape_percent": 2.337,
+            "observations": 366,
+            "rmse_mw": 1358.155
+          },
+          {
+            "horizon_step": 6,
+            "mae_mw": 1208.839,
+            "mape_percent": 2.718,
+            "observations": 366,
+            "rmse_mw": 1747.377
+          },
+          {
+            "horizon_step": 7,
+            "mae_mw": 1623.94,
+            "mape_percent": 3.43,
+            "observations": 366,
+            "rmse_mw": 2652.333
+          },
+          {
+            "horizon_step": 8,
+            "mae_mw": 1717.308,
+            "mape_percent": 3.435,
+            "observations": 366,
+            "rmse_mw": 3029.695
+          },
+          {
+            "horizon_step": 9,
+            "mae_mw": 1672.864,
+            "mape_percent": 3.15,
+            "observations": 366,
+            "rmse_mw": 3011.05
+          },
+          {
+            "horizon_step": 10,
+            "mae_mw": 1624.952,
+            "mape_percent": 2.942,
+            "observations": 366,
+            "rmse_mw": 2868.711
+          },
+          {
+            "horizon_step": 11,
+            "mae_mw": 1728.537,
+            "mape_percent": 3.053,
+            "observations": 366,
+            "rmse_mw": 2831.33
+          },
+          {
+            "horizon_step": 12,
+            "mae_mw": 1806.662,
+            "mape_percent": 3.162,
+            "observations": 366,
+            "rmse_mw": 2838.419
+          },
+          {
+            "horizon_step": 13,
+            "mae_mw": 1904.616,
+            "mape_percent": 3.373,
+            "observations": 366,
+            "rmse_mw": 2916.271
+          },
+          {
+            "horizon_step": 14,
+            "mae_mw": 2016.963,
+            "mape_percent": 3.672,
+            "observations": 366,
+            "rmse_mw": 3109.516
+          },
+          {
+            "horizon_step": 15,
+            "mae_mw": 2072.863,
+            "mape_percent": 3.885,
+            "observations": 366,
+            "rmse_mw": 3163.814
+          },
+          {
+            "horizon_step": 16,
+            "mae_mw": 2029.294,
+            "mape_percent": 3.856,
+            "observations": 366,
+            "rmse_mw": 3079.71
+          },
+          {
+            "horizon_step": 17,
+            "mae_mw": 1908.524,
+            "mape_percent": 3.588,
+            "observations": 366,
+            "rmse_mw": 2824.531
+          },
+          {
+            "horizon_step": 18,
+            "mae_mw": 1793.412,
+            "mape_percent": 3.267,
+            "observations": 366,
+            "rmse_mw": 2622.962
+          },
+          {
+            "horizon_step": 19,
+            "mae_mw": 1664.786,
+            "mape_percent": 2.978,
+            "observations": 366,
+            "rmse_mw": 2492.434
+          },
+          {
+            "horizon_step": 20,
+            "mae_mw": 1578.946,
+            "mape_percent": 2.849,
+            "observations": 366,
+            "rmse_mw": 2404.387
+          },
+          {
+            "horizon_step": 21,
+            "mae_mw": 1596.822,
+            "mape_percent": 2.959,
+            "observations": 366,
+            "rmse_mw": 2313.896
+          },
+          {
+            "horizon_step": 22,
+            "mae_mw": 1529.076,
+            "mape_percent": 2.932,
+            "observations": 366,
+            "rmse_mw": 2169.973
+          },
+          {
+            "horizon_step": 23,
+            "mae_mw": 1399.975,
+            "mape_percent": 2.811,
+            "observations": 366,
+            "rmse_mw": 1951.474
+          },
+          {
+            "horizon_step": 24,
+            "mae_mw": 1312.001,
+            "mape_percent": 2.783,
+            "observations": 366,
+            "rmse_mw": 1798.922
+          }
+        ],
+        "overall": {
+          "mae_mw": 1532.772,
+          "mape_percent": 2.982,
+          "observations": 8784,
+          "rmse_mw": 2432.344
+        }
+      }
+    },
+    {
+      "family": "hist_gradient_boosting",
+      "name": "hist_gradient_boosting_31_leaves",
+      "parameters": {
+        "l2_regularization": 1.0,
+        "learning_rate": 0.05,
+        "max_iter": 300,
+        "max_leaf_nodes": 31,
+        "min_samples_leaf": 30
+      },
+      "train": {
+        "by_horizon": [
+          {
+            "horizon_step": 1,
+            "mae_mw": 570.99,
+            "mape_percent": 1.262,
+            "observations": 723,
+            "rmse_mw": 738.945
+          },
+          {
+            "horizon_step": 2,
+            "mae_mw": 507.061,
+            "mape_percent": 1.161,
+            "observations": 723,
+            "rmse_mw": 659.137
+          },
+          {
+            "horizon_step": 3,
+            "mae_mw": 497.364,
+            "mape_percent": 1.168,
+            "observations": 723,
+            "rmse_mw": 640.91
+          },
+          {
+            "horizon_step": 4,
+            "mae_mw": 463.973,
+            "mape_percent": 1.089,
+            "observations": 723,
+            "rmse_mw": 582.898
+          },
+          {
+            "horizon_step": 5,
+            "mae_mw": 456.267,
+            "mape_percent": 1.054,
+            "observations": 723,
+            "rmse_mw": 592.553
+          },
+          {
+            "horizon_step": 6,
+            "mae_mw": 581.55,
+            "mape_percent": 1.287,
+            "observations": 723,
+            "rmse_mw": 787.283
+          },
+          {
+            "horizon_step": 7,
+            "mae_mw": 753.66,
+            "mape_percent": 1.542,
+            "observations": 723,
+            "rmse_mw": 1126.22
+          },
+          {
+            "horizon_step": 8,
+            "mae_mw": 717.555,
+            "mape_percent": 1.367,
+            "observations": 723,
+            "rmse_mw": 1021.38
+          },
+          {
+            "horizon_step": 9,
+            "mae_mw": 647.239,
+            "mape_percent": 1.171,
+            "observations": 723,
+            "rmse_mw": 891.105
+          },
+          {
+            "horizon_step": 10,
+            "mae_mw": 604.61,
+            "mape_percent": 1.048,
+            "observations": 723,
+            "rmse_mw": 783.083
+          },
+          {
+            "horizon_step": 11,
+            "mae_mw": 599.348,
+            "mape_percent": 1.016,
+            "observations": 723,
+            "rmse_mw": 763.237
+          },
+          {
+            "horizon_step": 12,
+            "mae_mw": 668.184,
+            "mape_percent": 1.113,
+            "observations": 723,
+            "rmse_mw": 859.28
+          },
+          {
+            "horizon_step": 13,
+            "mae_mw": 690.802,
+            "mape_percent": 1.158,
+            "observations": 723,
+            "rmse_mw": 878.892
+          },
+          {
+            "horizon_step": 14,
+            "mae_mw": 700.294,
+            "mape_percent": 1.199,
+            "observations": 723,
+            "rmse_mw": 892.654
+          },
+          {
+            "horizon_step": 15,
+            "mae_mw": 710.69,
+            "mape_percent": 1.24,
+            "observations": 723,
+            "rmse_mw": 902.414
+          },
+          {
+            "horizon_step": 16,
+            "mae_mw": 729.979,
+            "mape_percent": 1.282,
+            "observations": 723,
+            "rmse_mw": 911.629
+          },
+          {
+            "horizon_step": 17,
+            "mae_mw": 740.791,
+            "mape_percent": 1.315,
+            "observations": 723,
+            "rmse_mw": 932.165
+          },
+          {
+            "horizon_step": 18,
+            "mae_mw": 689.454,
+            "mape_percent": 1.198,
+            "observations": 723,
+            "rmse_mw": 880.705
+          },
+          {
+            "horizon_step": 19,
+            "mae_mw": 619.706,
+            "mape_percent": 1.071,
+            "observations": 723,
+            "rmse_mw": 782.435
+          },
+          {
+            "horizon_step": 20,
+            "mae_mw": 619.383,
+            "mape_percent": 1.077,
+            "observations": 723,
+            "rmse_mw": 799.173
+          },
+          {
+            "horizon_step": 21,
+            "mae_mw": 681.391,
+            "mape_percent": 1.231,
+            "observations": 723,
+            "rmse_mw": 887.252
+          },
+          {
+            "horizon_step": 22,
+            "mae_mw": 714.789,
+            "mape_percent": 1.347,
+            "observations": 723,
+            "rmse_mw": 910.669
+          },
+          {
+            "horizon_step": 23,
+            "mae_mw": 717.525,
+            "mape_percent": 1.416,
+            "observations": 723,
+            "rmse_mw": 892.166
+          },
+          {
+            "horizon_step": 24,
+            "mae_mw": 784.431,
+            "mape_percent": 1.65,
+            "observations": 723,
+            "rmse_mw": 979.792
+          }
+        ],
+        "overall": {
+          "mae_mw": 644.46,
+          "mape_percent": 1.227,
+          "observations": 17352,
+          "rmse_mw": 847.161
+        }
+      },
+      "validation": {
+        "by_horizon": [
+          {
+            "horizon_step": 1,
+            "mae_mw": 767.573,
+            "mape_percent": 1.719,
+            "observations": 366,
+            "rmse_mw": 1067.287
+          },
+          {
+            "horizon_step": 2,
+            "mae_mw": 795.478,
+            "mape_percent": 1.844,
+            "observations": 366,
+            "rmse_mw": 1079.392
+          },
+          {
+            "horizon_step": 3,
+            "mae_mw": 818.786,
+            "mape_percent": 1.944,
+            "observations": 366,
+            "rmse_mw": 1103.126
+          },
+          {
+            "horizon_step": 4,
+            "mae_mw": 863.064,
+            "mape_percent": 2.059,
+            "observations": 366,
+            "rmse_mw": 1173.992
+          },
+          {
+            "horizon_step": 5,
+            "mae_mw": 941.142,
+            "mape_percent": 2.214,
+            "observations": 366,
+            "rmse_mw": 1290.704
+          },
+          {
+            "horizon_step": 6,
+            "mae_mw": 1115.658,
+            "mape_percent": 2.519,
+            "observations": 366,
+            "rmse_mw": 1658.481
+          },
+          {
+            "horizon_step": 7,
+            "mae_mw": 1482.379,
+            "mape_percent": 3.126,
+            "observations": 366,
+            "rmse_mw": 2519.145
+          },
+          {
+            "horizon_step": 8,
+            "mae_mw": 1567.442,
+            "mape_percent": 3.128,
+            "observations": 366,
+            "rmse_mw": 2908.794
+          },
+          {
+            "horizon_step": 9,
+            "mae_mw": 1574.26,
+            "mape_percent": 2.945,
+            "observations": 366,
+            "rmse_mw": 2891.606
+          },
+          {
+            "horizon_step": 10,
+            "mae_mw": 1599.95,
+            "mape_percent": 2.889,
+            "observations": 366,
+            "rmse_mw": 2811.162
+          },
+          {
+            "horizon_step": 11,
+            "mae_mw": 1692.765,
+            "mape_percent": 2.987,
+            "observations": 366,
+            "rmse_mw": 2766.163
+          },
+          {
+            "horizon_step": 12,
+            "mae_mw": 1753.999,
+            "mape_percent": 3.064,
+            "observations": 366,
+            "rmse_mw": 2739.25
+          },
+          {
+            "horizon_step": 13,
+            "mae_mw": 1852.131,
+            "mape_percent": 3.276,
+            "observations": 366,
+            "rmse_mw": 2838.465
+          },
+          {
+            "horizon_step": 14,
+            "mae_mw": 1957.967,
+            "mape_percent": 3.561,
+            "observations": 366,
+            "rmse_mw": 3028.756
+          },
+          {
+            "horizon_step": 15,
+            "mae_mw": 1991.471,
+            "mape_percent": 3.724,
+            "observations": 366,
+            "rmse_mw": 3065.007
+          },
+          {
+            "horizon_step": 16,
+            "mae_mw": 1953.519,
+            "mape_percent": 3.71,
+            "observations": 366,
+            "rmse_mw": 3011.31
+          },
+          {
+            "horizon_step": 17,
+            "mae_mw": 1846.807,
+            "mape_percent": 3.469,
+            "observations": 366,
+            "rmse_mw": 2789.547
+          },
+          {
+            "horizon_step": 18,
+            "mae_mw": 1716.932,
+            "mape_percent": 3.126,
+            "observations": 366,
+            "rmse_mw": 2528.025
+          },
+          {
+            "horizon_step": 19,
+            "mae_mw": 1627.32,
+            "mape_percent": 2.908,
+            "observations": 366,
+            "rmse_mw": 2412.241
+          },
+          {
+            "horizon_step": 20,
+            "mae_mw": 1553.868,
+            "mape_percent": 2.798,
+            "observations": 366,
+            "rmse_mw": 2339.819
+          },
+          {
+            "horizon_step": 21,
+            "mae_mw": 1525.697,
+            "mape_percent": 2.826,
+            "observations": 366,
+            "rmse_mw": 2195.846
+          },
+          {
+            "horizon_step": 22,
+            "mae_mw": 1498.115,
+            "mape_percent": 2.869,
+            "observations": 366,
+            "rmse_mw": 2116.374
+          },
+          {
+            "horizon_step": 23,
+            "mae_mw": 1354.72,
+            "mape_percent": 2.711,
+            "observations": 366,
+            "rmse_mw": 1893.651
+          },
+          {
+            "horizon_step": 24,
+            "mae_mw": 1243.987,
+            "mape_percent": 2.639,
+            "observations": 366,
+            "rmse_mw": 1750.734
+          }
+        ],
+        "overall": {
+          "mae_mw": 1462.293,
+          "mape_percent": 2.836,
+          "observations": 8784,
+          "rmse_mw": 2350.998
+        }
+      }
+    }
+  ],
+  "schema_version": 1,
+  "selection": {
+    "beats_weekly_baseline": true,
+    "improvement_over_weekly_baseline_percent": 44.968,
+    "selected_candidate": "hist_gradient_boosting_31_leaves",
+    "selected_family": "hist_gradient_boosting",
+    "selected_validation_mae_mw": 1462.293,
+    "weekly_baseline_validation_mae_mw": 2657.167
+  },
+  "source": {
+    "baseline_snapshot": {
+      "path": "reports/baseline_snapshot.json",
+      "sha256": "311513a0405761aa6a30db6a956b53c29b3cc38dfd03dc4e74efa62902a4b717",
+      "weekly_validation_mae_mw": 2657.167
+    },
+    "feature_contract": {
+      "path": "reports/feature_contract.json",
+      "sha256": "daac05d8a00a3db3eedb29671d4543e497607aac7e8431898a413effb4ad65ae"
+    },
+    "feature_matrix": {
+      "path": "data/processed/forecast_features.csv",
+      "sha256": "eda6e21687fe3cd09681de14370749a03cbb974d81972661196c86b1a4d52ef8"
+    },
+    "scikit_learn_version": "1.9.0"
+  },
+  "test_guard": {
+    "feature_rows_available": 8760,
+    "forecast_rows_scored": 0,
+    "target_values_available": 0,
+    "test_results_published": false
+  },
+  "training_contract": {
+    "fit_split": "train",
+    "histogram_early_stopping": false,
+    "model_feature_count": 27,
+    "preprocessing_fit_on": "train only",
+    "random_state": 42,
+    "selection_metric": "validation MAE_MW",
+    "selection_split": "validation",
+    "test_rows_scored": 0,
+    "test_split": "test",
+    "train_rows": 17352,
+    "validation_rows": 8784
+  }
+}

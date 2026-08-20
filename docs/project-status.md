@@ -6,7 +6,7 @@ Last updated: 2026-08-20
 
 Phase 6 - Forecasting
 
-Current step: 6.3 - Leakage-safe calendar, lag, and rolling features
+Current step: 6.4 - Ridge and histogram gradient-boosting validation
 
 Status: completed
 
@@ -302,10 +302,37 @@ Status: completed
 - Passed all 59 fast tests with six live tests deselected, including all four
   new feature-engineering tests.
 - Passed Ruff and `git diff --check` after completing Step 6.3.
+- Added hash-gated loading for the frozen feature matrix, feature contract, and
+  baseline comparison.
+- Predeclared three scaled Ridge candidates and two deterministic histogram
+  gradient-boosting candidates.
+- Fit all preprocessing and estimators on training rows only, with histogram
+  internal early stopping disabled.
+- Added train and validation MAE, RMSE, and MAPE overall and by 24 horizons.
+- Added stable lowest-validation-MAE selection and weekly-baseline improvement.
+- Added a deterministic aggregate report with exact source hashes, parameters,
+  scikit-learn version, and a zero-test-result guard.
+- Added tests for estimator configuration, synthetic fitting, stable selection,
+  deterministic reporting, changed bytes, and lineage mismatch.
+- Fit all five candidates on 17,352 training rows and evaluated them on 8,784
+  validation rows while scoring zero test rows.
+- Selected the 31-leaf histogram gradient-boosting candidate with validation
+  MAE 1,462.293 MW, RMSE 2,350.998 MW, and MAPE 2.836%.
+- Improved validation MAE by 44.968% over the frozen 2,657.167 MW weekly
+  seasonal-naive benchmark.
+- Recorded the selected model's 644.460 MW training MAE and documented the
+  material train/validation generalization gap before final testing.
+- Verified 366 observations for every selected-model validation horizon, from
+  767.573 MW MAE at step 1 to 1,991.471 MW at step 15.
+- Reproduced the scikit-learn 1.9.0 validation report with SHA-256
+  `b6c2b96482e238249300612ee6750b278f63aabb970f56e4f2c150ec67d013f7`.
+- Passed all 64 fast tests with six live tests deselected, including all five
+  new model-validation tests.
+- Passed Ruff and `git diff --check` after completing Step 6.4.
 
 ## In progress
 
-None. Step 6.3 is ready for its Git checkpoint.
+None. Step 6.4 is ready for its Git checkpoint.
 
 ## Not started
 
@@ -314,8 +341,8 @@ None. Step 6.3 is ready for its Git checkpoint.
 
 ## Next bounded step
 
-After the Step 6.3 Git checkpoint, implement Step 6.4 Ridge and histogram
-gradient-boosting validation models.
+After the Step 6.4 Git checkpoint, perform Step 6.5 one-time final 2025 test
+evaluation with the frozen selected design.
 
 ## Current blockers
 
