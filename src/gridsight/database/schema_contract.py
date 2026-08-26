@@ -15,6 +15,10 @@ SCHEMA_SQL_FILES = (
     PROJECT_ROOT / "sql" / "schemas" / "001_create_schemas.sql",
     PROJECT_ROOT / "sql" / "tables" / "001_create_staging_tables.sql",
     PROJECT_ROOT / "sql" / "tables" / "002_create_analytics_tables.sql",
+    PROJECT_ROOT
+    / "sql"
+    / "tables"
+    / "003_create_forecast_evaluation_tables.sql",
 )
 EXPECTED_SCHEMAS = ("staging", "analytics", "reporting")
 
@@ -203,6 +207,57 @@ TABLE_CONTRACTS = {
             ("analytics", "dim_date"),
             ("analytics", "dim_hour"),
             ("analytics", "dim_generation_technology"),
+        ),
+        minimum_check_constraints=3,
+    ),
+    ("staging", "final_forecast_predictions"): TableContract(
+        columns=(
+            "forecast_origin_utc",
+            "origin_local_date",
+            "split",
+            "horizon_step",
+            "information_cutoff_utc",
+            "target_start_utc",
+            "target_start_local",
+            "actual_grid_load_mw",
+            "daily_naive_source_utc",
+            "daily_naive_prediction_mw",
+            "weekly_naive_source_utc",
+            "weekly_naive_prediction_mw",
+            "model_name",
+            "model_prediction_mw",
+            "model_error_mw",
+            "model_absolute_error_mw",
+        ),
+        primary_key=("forecast_origin_utc", "horizon_step"),
+        minimum_check_constraints=5,
+    ),
+    ("analytics", "fact_load_forecast_evaluation"): TableContract(
+        columns=(
+            "forecast_origin_utc",
+            "origin_date_key",
+            "horizon_step",
+            "information_cutoff_utc",
+            "target_start_utc",
+            "target_date_key",
+            "target_hour_key",
+            "actual_grid_load_mw",
+            "daily_naive_source_utc",
+            "daily_naive_prediction_mw",
+            "weekly_naive_source_utc",
+            "weekly_naive_prediction_mw",
+            "model_name",
+            "model_prediction_mw",
+            "model_error_mw",
+            "model_absolute_error_mw",
+            "prediction_artifact_sha256",
+            "evaluation_snapshot_sha256",
+        ),
+        primary_key=("forecast_origin_utc", "horizon_step"),
+        foreign_key_targets=(
+            ("analytics", "dim_date"),
+            ("analytics", "dim_hour"),
+            ("analytics", "fact_electricity_hourly"),
         ),
         minimum_check_constraints=3,
     ),

@@ -47,8 +47,9 @@ model:
 python -m gridsight.database.apply_schema
 ```
 
-The command is transactional and idempotent. It must report three schemas,
-three staging tables, five analytics tables, zero reporting tables, and
+The command is transactional and idempotent. With Step 7.2 applied, it must
+report three schemas, four staging tables, six analytics tables, zero reporting
+tables, and
 `Database contract: OK`. Table grains, keys, constraints, and the next loading
 step are documented in `docs/database-model.md`.
 
@@ -66,18 +67,32 @@ facts, and commits only after all reconciliation checks pass. Run it again to
 confirm idempotence. Detailed behavior and expected counts are documented in
 `docs/database-loading.md`.
 
-## Apply reporting views
+## Load the final forecast mart
 
 After a successful data load, run:
+
+```powershell
+python -m gridsight.database.load_forecast_mart
+```
+
+The command verifies the frozen final-evaluation hashes, replaces 8,760
+forecast rows transactionally, creates all six reporting views, and reconciles
+both the detailed and 75-row summary forecast products. See
+`docs/forecast-reporting-mart.md` for the exact contract and refresh order.
+
+## Reapply reporting views separately
+
+After both canonical and forecast facts are loaded, the views can also be
+reapplied and inspected without replacing data:
 
 ```powershell
 python -m gridsight.database.apply_reporting
 ```
 
-The command creates or replaces four read-only views, verifies their exact
+The command creates or replaces six read-only views, verifies their exact
 column contracts, and reconciles their grains, DST hour counts, load, price,
-and generation measures with the analytical facts. View definitions and KPI
-semantics are documented in `docs/reporting-views.md`.
+generation, and final forecast measures with the analytical facts. View
+definitions and KPI semantics are documented in `docs/reporting-views.md`.
 
 ## Stop and restart
 

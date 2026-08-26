@@ -474,6 +474,7 @@ def load_database(engine: Engine, inputs: ValidatedInputs) -> DatabaseLoadReport
         connection.exec_driver_sql(
             """
             TRUNCATE TABLE
+                analytics.fact_load_forecast_evaluation,
                 analytics.fact_generation_hourly,
                 analytics.fact_electricity_hourly,
                 analytics.dim_generation_technology,
@@ -481,7 +482,8 @@ def load_database(engine: Engine, inputs: ValidatedInputs) -> DatabaseLoadReport
                 analytics.dim_date,
                 staging.actual_generation_hourly,
                 staging.actual_consumption_hourly,
-                staging.day_ahead_price_hourly
+                staging.day_ahead_price_hourly,
+                staging.final_forecast_predictions
             """
         )
         for dataset in inputs.datasets:

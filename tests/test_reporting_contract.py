@@ -7,13 +7,15 @@ from gridsight.database.reporting_contract import (
 from gridsight.database.schema_contract import split_sql_statements
 
 
-def test_reporting_contract_declares_four_stable_grains() -> None:
-    """Consumers receive hourly, technology, daily, and monthly grains."""
+def test_reporting_contract_declares_six_stable_grains() -> None:
+    """Consumers receive energy and final forecast-performance grains."""
     assert set(VIEW_CONTRACTS) == {
         "hourly_energy",
         "hourly_generation_by_technology",
         "daily_energy",
         "monthly_energy",
+        "forecast_performance_hourly",
+        "forecast_performance_summary",
     }
     assert VIEW_CONTRACTS["hourly_energy"].expected_rows == 35_064
     assert (
@@ -22,21 +24,26 @@ def test_reporting_contract_declares_four_stable_grains() -> None:
     )
     assert VIEW_CONTRACTS["daily_energy"].expected_rows == 1_461
     assert VIEW_CONTRACTS["monthly_energy"].expected_rows == 48
-    assert len({contract.grain for contract in VIEW_CONTRACTS.values()}) == 4
+    assert VIEW_CONTRACTS["forecast_performance_hourly"].expected_rows == 8_760
+    assert VIEW_CONTRACTS["forecast_performance_summary"].expected_rows == 75
+    assert len({contract.grain for contract in VIEW_CONTRACTS.values()}) == 6
 
 
 def test_reporting_sql_is_idempotent_and_non_destructive() -> None:
     """The ordered reporting file replaces views without touching fact data."""
     assert [path.name for path in REPORTING_SQL_FILES] == [
-        "001_create_reporting_views.sql"
+        "001_create_reporting_views.sql",
+        "002_create_forecast_views.sql",
     ]
-    sql_text = REPORTING_SQL_FILES[0].read_text(encoding="utf-8")
-    upper_sql = sql_text.upper()
-    assert "DROP " not in upper_sql
-    assert "TRUNCATE " not in upper_sql
-    assert "DELETE " not in upper_sql
-    statements = split_sql_statements(sql_text)
-    assert len(statements) == 4
+    statements = []
+    for path in REPORTING_SQL_FILES:
+        sql_text = path.read_text(encoding="utf-8")
+        upper_sql = sql_text.upper()
+        assert "DROP " not in upper_sql
+        assert "TRUNCATE " not in upper_sql
+        assert "DELETE " not in upper_sql
+        statements.extend(split_sql_statements(sql_text))
+    assert len(statements) == 6
     assert all(
         "CREATE OR REPLACE VIEW" in statement.upper()
         for statement in statements

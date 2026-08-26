@@ -26,6 +26,7 @@ and aggregation semantics are documented in `docs/reporting-views.md`.
 | `staging.actual_consumption_hourly` | One Germany UTC hour | 35,064 |
 | `staging.actual_generation_hourly` | One Germany UTC hour and technology | 420,768 |
 | `staging.day_ahead_price_hourly` | One DE/LU UTC hour | 35,064 |
+| `staging.final_forecast_predictions` | One final forecast origin and horizon | 8,760 |
 
 The three tables preserve every canonical clean column in its defined order.
 Primary keys reject duplicate UTC or interval/technology keys. Check
@@ -81,6 +82,16 @@ one-hour interval and non-negative. Unavailable values must keep both numeric
 columns null. Technology, date, and hour foreign keys enforce conformed
 dimensions.
 
+### `analytics.fact_load_forecast_evaluation`
+
+Grain: one final 2025 forecast origin and horizon step.
+
+Step 7.2 adds this fact after the model and test evaluation are frozen. It
+links origin date, target date, target hour, and target electricity fact;
+retains learned, daily-naive, and weekly-naive MW values; and records the exact
+prediction and evaluation-snapshot hashes. See
+[`forecast-reporting-mart.md`](forecast-reporting-mart.md).
+
 ## Apply and inspect the contract
 
 Start PostgreSQL, then run:
@@ -89,11 +100,12 @@ Start PostgreSQL, then run:
 python -m gridsight.database.apply_schema
 ```
 
-The command applies three ordered SQL files in one transaction:
+The current command applies four ordered SQL files in one transaction:
 
 1. `sql/schemas/001_create_schemas.sql`
 2. `sql/tables/001_create_staging_tables.sql`
 3. `sql/tables/002_create_analytics_tables.sql`
+4. `sql/tables/003_create_forecast_evaluation_tables.sql`
 
 All schema, table, and index statements use `IF NOT EXISTS`, so applying the
 unchanged contract repeatedly is safe. After applying DDL, Python inspects the

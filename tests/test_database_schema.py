@@ -11,7 +11,7 @@ from gridsight.database.schema_contract import (
 
 
 def test_schema_contract_has_expected_star_model_boundaries() -> None:
-    """The declared model contains three staging and five analytics tables."""
+    """The model contains source and forecast staging and analytical facts."""
     assert EXPECTED_SCHEMAS == ("staging", "analytics", "reporting")
     tables_by_schema = {
         schema: {
@@ -26,6 +26,7 @@ def test_schema_contract_has_expected_star_model_boundaries() -> None:
         "actual_consumption_hourly",
         "actual_generation_hourly",
         "day_ahead_price_hourly",
+        "final_forecast_predictions",
     }
     assert tables_by_schema["analytics"] == {
         "dim_date",
@@ -33,6 +34,7 @@ def test_schema_contract_has_expected_star_model_boundaries() -> None:
         "dim_hour",
         "fact_electricity_hourly",
         "fact_generation_hourly",
+        "fact_load_forecast_evaluation",
     }
     assert tables_by_schema["reporting"] == set()
 
@@ -43,6 +45,7 @@ def test_sql_files_are_ordered_idempotent_and_non_destructive() -> None:
         "001_create_schemas.sql",
         "001_create_staging_tables.sql",
         "002_create_analytics_tables.sql",
+        "003_create_forecast_evaluation_tables.sql",
     ]
     statements = []
     for path in SCHEMA_SQL_FILES:
@@ -52,7 +55,7 @@ def test_sql_files_are_ordered_idempotent_and_non_destructive() -> None:
         assert "TRUNCATE " not in upper_sql
         statements.extend(split_sql_statements(sql_text))
 
-    assert len(statements) == 14
+    assert len(statements) == 19
     assert all("IF NOT EXISTS" in statement.upper() for statement in statements)
 
 
@@ -62,6 +65,7 @@ def test_staging_contracts_match_canonical_column_counts() -> None:
         "actual_consumption_hourly": 24,
         "actual_generation_hourly": 29,
         "day_ahead_price_hourly": 25,
+        "final_forecast_predictions": 16,
     }
     for table, expected_count in expected_counts.items():
         contract = TABLE_CONTRACTS[("staging", table)]

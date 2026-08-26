@@ -6,7 +6,7 @@ Last updated: 2026-08-26
 
 Phase 7 - Reporting marts
 
-Current step: 7.1 - BI/Excel reporting-mart and sample contract
+Current step: 7.2 - PostgreSQL forecast-performance marts
 
 Status: completed
 
@@ -367,10 +367,37 @@ Status: completed
 - Passed all 74 fast tests with six live tests deselected, including all five
   new reporting-mart contract tests.
 - Passed Ruff and `git diff --check` after completing Step 7.1.
+- Added constrained staging and analytical forecast-evaluation tables at the
+  frozen 8,760-row origin/horizon grain.
+- Added a hash-gated, transactional forecast loader that preserves the frozen
+  model decision and rolls back on lineage, join, grain, or metric mismatch.
+- Added conformed origin date, target date, target hour, and source-artifact
+  lineage to the forecast analytical fact.
+- Added hourly forecast-performance and three-series overall/by-horizon
+  reporting views with exact 8,760-row and 75-row contracts.
+- Extended schema, reporting, mart-contract, and integration tests for the two
+  new tables and two new views.
+- Completed two identical live forecast-mart loads with 21 passed transactional
+  load checks and 28 passed reporting checks per run.
+- Verified 8,760 staging rows, 8,760 analytical forecast facts, 8,760 hourly
+  reporting rows, and 75 overall/by-horizon summary rows without count drift.
+- Verified two reporting SQL files, six view statements, and all six reporting
+  view contracts against live PostgreSQL.
+- Regenerated the eight-product reporting contract with all six SQL products
+  marked verified and SHA-256
+  `2b6e765eb106a706ae87b1e6c22d502b8bc18e3d995bf429a4d5889051532f95`.
+- Passed all 77 fast tests with six live tests deselected.
+- Passed Ruff and `git diff --check`; the displayed LF-to-CRLF messages were
+  Git working-tree conversion warnings, not whitespace failures.
+- Passed all six live PostgreSQL integration tests with 77 fast tests
+  deselected, including repeated canonical loading, schema idempotence, KPI/EDA
+  queries, and repeated forecast/reporting reconciliation.
+- Completed Step 7.2 with exact Python, PostgreSQL, and reporting-layer
+  agreement for the final 2025 forecast evaluation.
 
 ## In progress
 
-None. Step 7.1 is ready for its Git checkpoint.
+None. Step 7.2 is ready for its Git checkpoint.
 
 ## Not started
 
@@ -379,9 +406,8 @@ None. Step 7.1 is ready for its Git checkpoint.
 
 ## Next bounded step
 
-After the Step 7.1 Git checkpoint, start Step 7.2 by adding the forecast
-evaluation fact load and the two contracted PostgreSQL reporting views with
-live reconciliation.
+Complete the Step 7.2 live verification and Git checkpoint, then start Step
+7.3 by generating all eight deterministic checked sample extracts.
 
 ## Current blockers
 

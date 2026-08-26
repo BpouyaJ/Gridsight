@@ -12,6 +12,7 @@ from gridsight.database.schema_contract import PROJECT_ROOT, split_sql_statement
 
 REPORTING_SQL_FILES = (
     PROJECT_ROOT / "sql" / "reporting" / "001_create_reporting_views.sql",
+    PROJECT_ROOT / "sql" / "reporting" / "002_create_forecast_views.sql",
 )
 STATUS_PASSED = "passed"
 STATUS_FAILED = "failed"
@@ -190,6 +191,51 @@ VIEW_CONTRACTS = {
             "unavailable_generation_value_count",
         ),
         expected_rows=48,
+    ),
+    "forecast_performance_hourly": ViewContract(
+        grain="one 2025 forecast origin and horizon step",
+        columns=(
+            "forecast_origin_utc",
+            "origin_local_date",
+            "information_cutoff_utc",
+            "target_start_utc",
+            "target_start_local",
+            "target_date_key",
+            "target_calendar_date",
+            "target_calendar_year",
+            "target_calendar_quarter",
+            "target_month_number",
+            "target_month_name",
+            "target_weekday_number",
+            "target_weekday_name",
+            "target_is_weekend",
+            "target_hour_key",
+            "target_hour_label",
+            "horizon_step",
+            "actual_grid_load_mw",
+            "model_name",
+            "model_prediction_mw",
+            "model_error_mw",
+            "model_absolute_error_mw",
+            "daily_naive_prediction_mw",
+            "weekly_naive_prediction_mw",
+        ),
+        expected_rows=8_760,
+    ),
+    "forecast_performance_summary": ViewContract(
+        grain="one forecast series and overall or horizon scope",
+        columns=(
+            "forecast_name",
+            "forecast_role",
+            "evaluation_scope",
+            "horizon_step",
+            "observations",
+            "mae_mw",
+            "rmse_mw",
+            "mape_percent",
+            "improvement_over_weekly_percent",
+        ),
+        expected_rows=75,
     ),
 }
 
@@ -488,6 +534,94 @@ def reconcile_reporting_views(engine: Engine) -> ReportingReconciliation:
             "monthly_energy.negative_price_hours",
             fact_negative_prices,
             monthly_negative_prices,
+        )
+
+        forecast_grain = connection.exec_driver_sql(
+            """
+            SELECT
+                COUNT(DISTINCT (forecast_origin_utc, horizon_step)),
+                COUNT(DISTINCT forecast_origin_utc),
+                COUNT(*) FILTER (
+                    WHERE horizon_count = 24
+                        AND minimum_horizon = 1
+                        AND maximum_horizon = 24
+                )
+            FROM (
+                SELECT
+                    forecast_origin_utc,
+                    horizon_step,
+                    COUNT(*) OVER (
+                        PARTITION BY forecast_origin_utc
+                    ) AS horizon_count,
+                    MIN(horizon_step) OVER (
+                        PARTITION BY forecast_origin_utc
+                    ) AS minimum_horizon,
+                    MAX(horizon_step) OVER (
+                        PARTITION BY forecast_origin_utc
+                    ) AS maximum_horizon
+                FROM reporting.forecast_performance_hourly
+            ) AS forecast_rows
+            """
+        ).one()
+        _add_check(
+            checks,
+            "forecast_performance_hourly.unique_grain",
+            8_760,
+            int(forecast_grain[0]),
+        )
+        _add_check(
+            checks,
+            "forecast_performance_hourly.origin_count",
+            365,
+            int(forecast_grain[1]),
+        )
+        _add_check(
+            checks,
+            "forecast_performance_hourly.complete_origin_rows",
+            8_760,
+            int(forecast_grain[2]),
+        )
+
+        summary_grain = connection.exec_driver_sql(
+            """
+            SELECT
+                COUNT(DISTINCT (
+                    forecast_name,
+                    evaluation_scope,
+                    horizon_step
+                )),
+                COUNT(*) FILTER (WHERE evaluation_scope = 'overall'),
+                COUNT(*) FILTER (WHERE evaluation_scope = 'horizon'),
+                COUNT(*) FILTER (
+                    WHERE forecast_name = 'weekly_seasonal_naive'
+                        AND improvement_over_weekly_percent <> 0
+                )
+            FROM reporting.forecast_performance_summary
+            """
+        ).one()
+        _add_check(
+            checks,
+            "forecast_performance_summary.unique_grain",
+            75,
+            int(summary_grain[0]),
+        )
+        _add_check(
+            checks,
+            "forecast_performance_summary.overall_rows",
+            3,
+            int(summary_grain[1]),
+        )
+        _add_check(
+            checks,
+            "forecast_performance_summary.horizon_rows",
+            72,
+            int(summary_grain[2]),
+        )
+        _add_check(
+            checks,
+            "forecast_performance_summary.weekly_reference",
+            0,
+            int(summary_grain[3]),
         )
 
     return ReportingReconciliation(

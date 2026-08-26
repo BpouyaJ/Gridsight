@@ -9,7 +9,7 @@
   ],
   "implementation_sequence": [
     "Step 7.1: freeze this product and extract contract",
-    "Step 7.2: add and reconcile PostgreSQL forecast marts",
+    "Step 7.2: added and reconciled PostgreSQL forecast marts",
     "Step 7.3: build checked public sample extracts"
   ],
   "products": [
@@ -449,7 +449,7 @@
       "display_name": "Final hourly forecast performance",
       "expected_full_rows": 8760,
       "grain": "one 2025 forecast origin and horizon step",
-      "implementation_status": "planned_step_7_2",
+      "implementation_status": "verified_existing",
       "key_columns": [
         "forecast_origin_utc",
         "horizon_step"
@@ -510,7 +510,7 @@
       "display_name": "Forecast metrics overall and by horizon",
       "expected_full_rows": 75,
       "grain": "one forecast series and overall or horizon scope",
-      "implementation_status": "planned_step_7_2",
+      "implementation_status": "verified_existing",
       "key_columns": [
         "forecast_name",
         "evaluation_scope",
@@ -632,9 +632,17 @@
       "sha256": "e6e1a5c64372942142993e81f8f3f748b609dda67a15a66af5e48260686b38e6"
     },
     "reporting_sql": {
-      "path": "sql/reporting/001_create_reporting_views.sql",
-      "sha256": "b04d5830c49c747311f09728ef12edb755739efa12972cd432749ac0afccfef3",
-      "verified_existing_views": 4
+      "files": [
+        {
+          "path": "sql/reporting/001_create_reporting_views.sql",
+          "sha256": "b04d5830c49c747311f09728ef12edb755739efa12972cd432749ac0afccfef3"
+        },
+        {
+          "path": "sql/reporting/002_create_forecast_views.sql",
+          "sha256": "9dfd4e04aaeedf8ccc5b5c16ffbfab52d45a6f33fae66f6266223544a5a8a1ed"
+        }
+      ],
+      "verified_existing_views": 6
     },
     "source_manifest": {
       "exports": 6,
@@ -647,5 +655,5 @@
       "sha256": "5fc1af559d4ebb46712a86d7cff3f5780a0af2c24ce480c0e7016767176de766"
     }
   },
-  "status": "frozen_before_mart_implementation"
+  "status": "forecast_marts_implemented"
 }

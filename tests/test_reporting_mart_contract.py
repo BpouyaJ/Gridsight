@@ -48,7 +48,7 @@ def test_existing_sql_products_match_verified_view_contracts() -> None:
         for contract in MART_CONTRACTS
         if contract.implementation_status == "verified_existing"
     ]
-    assert len(existing) == 4
+    assert len(existing) == 6
     for contract in existing:
         view_name = contract.source_name.removeprefix("reporting.")
         view = VIEW_CONTRACTS[view_name]
@@ -150,7 +150,7 @@ def test_snapshot_is_hash_gated_and_deterministic(tmp_path: Path) -> None:
     write_reporting_mart_contract(snapshot, output_path)
 
     assert output_path.read_bytes() == first_bytes
-    assert snapshot["status"] == "frozen_before_mart_implementation"
+    assert snapshot["status"] == "forecast_marts_implemented"
     assert len(snapshot["products"]) == 8
     assert snapshot["source"]["validation_summary"]["checks"] == 29
     assert snapshot["source"]["source_manifest"]["exports"] == 6

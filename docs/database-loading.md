@@ -40,7 +40,8 @@ python -m gridsight.database.load_data
 The command applies the Step 4.1 DDL if needed and then performs one database
 transaction:
 
-1. Truncate all staging, dimension, and fact tables together.
+1. Truncate all staging, dimension, and fact tables together, including any
+   dependent Step 7.2 forecast rows.
 2. Stream the three canonical CSVs from the Python client through PostgreSQL
    `COPY` into staging.
 3. Populate date, hour, and technology dimensions with SQL.
@@ -119,3 +120,7 @@ live suite passed database identity, repeated full-load reconciliation, and
 schema idempotence/contract inspection, with 37 fast tests deselected. Ruff
 also passed. The repeated load test completed without duplicated rows or count
 drift.
+
+Because forecast facts reference the canonical electricity fact, a canonical
+full refresh clears them first. Rebuild them afterward with
+`python -m gridsight.database.load_forecast_mart`.

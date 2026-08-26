@@ -68,6 +68,11 @@ daily-baseline, and weekly-baseline values, so it remains ignored. The tracked
 `reports/final_evaluation_snapshot.json` contains aggregate results, source
 hashes, and the ignored prediction-file hash.
 
+Step 7.2 reads that ignored file only after its bytes match the tracked final
+evaluation snapshot, then loads it into constrained PostgreSQL staging and
+analytics tables. The database copy does not change the rule that the full
+row-level CSV stays outside Git.
+
 All six approved source snapshots have been registered locally: both Germany
 actual-consumption periods, both Germany actual-generation periods, and both
 DE/LU day-ahead-price periods. Their raw CSVs are ignored, while their

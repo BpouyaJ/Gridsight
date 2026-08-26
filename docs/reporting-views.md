@@ -7,14 +7,15 @@ and later consumers such as exploratory notebooks, Power BI, and Excel. Those
 consumers should query `reporting` views instead of depending on staging tables
 or rebuilding business rules independently.
 
-Apply and verify the views with PostgreSQL running and Step 4.2 data loaded:
+Apply and verify the views with PostgreSQL running and both the canonical and
+Step 7.2 forecast facts loaded:
 
 ```powershell
 python -m gridsight.database.apply_reporting
 ```
 
-The command creates or replaces all four views transactionally, inspects their
-exact ordered column contracts, and runs 19 live grain and measure
+The command creates or replaces all six views transactionally, inspects their
+exact ordered column contracts, and runs 28 live grain and measure
 reconciliation checks.
 
 ## View contracts
@@ -61,6 +62,14 @@ The view aggregates directly from hourly rows, not from rounded daily
 averages. This gives every observed hour equal weight when calculating monthly
 average load and price.
 
+### Forecast-performance views
+
+Step 7.2 adds `reporting.forecast_performance_hourly` at one final 2025 origin
+and horizon step (8,760 rows) and `reporting.forecast_performance_summary` at
+one forecast series and overall-or-horizon scope (75 rows). Their guarded load,
+metric formulas, and refresh order are documented in
+[`forecast-reporting-mart.md`](forecast-reporting-mart.md).
+
 ## Aggregation rules
 
 | Measure | Daily/monthly rule | Reason |
@@ -83,7 +92,7 @@ as renewable.
 
 The command and live integration test require:
 
-- exact row counts and unique keys for all four grains;
+- exact row counts and unique keys for all six grains;
 - exactly 12 technology rows per UTC interval;
 - daily and monthly observed-hour totals of 35,064;
 - four 23-hour dates and four 25-hour dates;
@@ -91,6 +100,9 @@ The command and live integration test require:
 - exact reported and renewable generation totals from the generation fact;
 - exact daily and monthly load-energy totals;
 - exact daily and monthly negative-price-hour totals.
+- exactly 365 complete 24-step forecast origins;
+- three overall and 72 horizon-specific forecast summary rows;
+- zero weekly-baseline improvement against itself.
 
 The views use `CREATE OR REPLACE VIEW` and contain no data-modifying SQL. They
 are evaluated from the current analytical facts, so a successful Step 4.2 full
@@ -119,3 +131,8 @@ The live suite passed database identity, idempotent data load, schema contract,
 and idempotent reporting-view reconciliation tests with 40 fast tests
 deselected. Ruff passed after removal of one unused import. This result
 completes the Phase 4 PostgreSQL analytical-model gate.
+
+Step 7.2 later extended the layer to six views. Its repeated live application
+verified 8,760 forecast-detail rows, 75 forecast-summary rows, and 28 total
+reporting reconciliations. The expanded fast suite passed 77 tests and all six
+live PostgreSQL tests passed.

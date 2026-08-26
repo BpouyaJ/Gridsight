@@ -24,14 +24,14 @@ summary, and six-row source manifest before publishing any product contract.
 | `hourly_generation_by_technology` | One UTC hour and technology | 420,768 | Existing verified SQL view | Power BI |
 | `daily_energy` | One Europe/Berlin date | 1,461 | Existing verified SQL view | Power BI, Excel |
 | `monthly_energy` | One Europe/Berlin month | 48 | Existing verified SQL view | Power BI, Excel |
-| `forecast_performance_hourly` | One 2025 origin and horizon | 8,760 | Planned Step 7.2 SQL view | Power BI |
-| `forecast_performance_summary` | One series and evaluation scope | 75 | Planned Step 7.2 SQL view | Power BI, Excel |
+| `forecast_performance_hourly` | One 2025 origin and horizon | 8,760 | Implemented Step 7.2 SQL view | Power BI |
+| `forecast_performance_summary` | One series and evaluation scope | 75 | Implemented Step 7.2 SQL view | Power BI, Excel |
 | `data_quality_checks` | One stable validation check | 29 | Planned Step 7.3 extract | Power BI |
 | `source_lineage` | One immutable SMARD export | 6 | Planned Step 7.3 extract | Power BI |
 
-The four existing view contracts are imported without reinterpretation from
-the verified Phase 4 reporting layer. Forecast products are frozen now so the
-Step 7.2 table and view migration has an exact target. Data-quality and lineage
+All six SQL view contracts are imported without reinterpretation from the
+verified reporting layer. Step 7.2 implements the two predeclared forecast
+products through a hash-gated analytical fact. Data-quality and lineage
 products remain small checked extracts instead of unnecessary database facts.
 
 ## Grain and unit rules
@@ -69,10 +69,9 @@ record SHA-256 values, and reconcile their values with SQL or source artifacts.
 
 ## Implementation boundary
 
-Step 7.1 defines and tests contracts only. It does not create a forecast table,
-change the existing reporting views, generate sample CSVs, build Power BI, or
-build Excel. Step 7.2 will add the two forecast SQL marts and live
-reconciliation; Step 7.3 will generate the eight checked samples.
+Step 7.2 creates and reconciles the forecast tables and views but does not
+generate sample CSVs, build Power BI, or build Excel. Step 7.3 will generate
+the eight checked samples.
 
 ## Verified Step 7.1 result
 
@@ -85,3 +84,10 @@ All 74 fast tests passed with six live database tests deselected, including the
 five new tests for product uniqueness, existing-view compatibility, explicit
 units and forecast grains, upstream hash gates, deterministic output, and
 fixed portfolio-safe samples. Ruff and `git diff --check` also passed.
+
+## Step 7.2 contract update
+
+After implementing both forecast views, the contract marks all six PostgreSQL
+products `verified_existing` while retaining the two Step 7.3 extracts as
+planned. The regenerated contract hash is
+`2b6e765eb106a706ae87b1e6c22d502b8bc18e3d995bf429a4d5889051532f95`.

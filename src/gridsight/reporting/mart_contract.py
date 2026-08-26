@@ -226,7 +226,7 @@ MART_CONTRACTS = (
         display_name="Final hourly forecast performance",
         source_kind="postgresql_view",
         source_name="reporting.forecast_performance_hourly",
-        implementation_status="planned_step_7_2",
+        implementation_status="verified_existing",
         grain="one 2025 forecast origin and horizon step",
         key_columns=("forecast_origin_utc", "horizon_step"),
         columns=FORECAST_PERFORMANCE_HOURLY_COLUMNS,
@@ -244,7 +244,7 @@ MART_CONTRACTS = (
         display_name="Forecast metrics overall and by horizon",
         source_kind="postgresql_view",
         source_name="reporting.forecast_performance_summary",
-        implementation_status="planned_step_7_2",
+        implementation_status="verified_existing",
         grain="one forecast series and overall or horizon scope",
         key_columns=("forecast_name", "evaluation_scope", "horizon_step"),
         columns=FORECAST_PERFORMANCE_SUMMARY_COLUMNS,
@@ -402,7 +402,8 @@ def _validate_source_manifest(path: Path) -> None:
 def build_reporting_mart_contract(
     *,
     contracts: tuple[MartContract, ...] = MART_CONTRACTS,
-    reporting_sql_path: Path = REPORTING_SQL_FILES[0],
+    reporting_sql_paths: tuple[Path, ...] = REPORTING_SQL_FILES,
+    reporting_sql_path: Path | None = None,
     final_snapshot_path: Path = DEFAULT_FINAL_EVALUATION_SNAPSHOT,
     predictions_path: Path = DEFAULT_FINAL_PREDICTIONS,
     validation_summary_path: Path = DEFAULT_VALIDATION_SUMMARY,
@@ -418,6 +419,13 @@ def build_reporting_mart_contract(
     )
     _load_validation_summary(validation_summary_path)
     _validate_source_manifest(source_manifest_path)
+    resolved_reporting_paths = (
+        (reporting_sql_path,)
+        if reporting_sql_path is not None
+        else reporting_sql_paths
+    )
+    if not resolved_reporting_paths:
+        raise ValueError("At least one reporting SQL file is required")
     products = []
     for contract in contracts:
         record = asdict(contract)
@@ -431,12 +439,17 @@ def build_reporting_mart_contract(
         products.append(record)
     return {
         "schema_version": 1,
-        "status": "frozen_before_mart_implementation",
+        "status": "forecast_marts_implemented",
         "attribution": "Bundesnetzagentur | SMARD.de",
         "source": {
             "reporting_sql": {
-                "path": reporting_sql_path.relative_to(project_root).as_posix(),
-                "sha256": sha256_file(reporting_sql_path),
+                "files": [
+                    {
+                        "path": path.relative_to(project_root).as_posix(),
+                        "sha256": sha256_file(path),
+                    }
+                    for path in resolved_reporting_paths
+                ],
                 "verified_existing_views": len(VIEW_CONTRACTS),
             },
             "final_evaluation_snapshot": {
@@ -464,7 +477,7 @@ def build_reporting_mart_contract(
         "products": products,
         "implementation_sequence": [
             "Step 7.1: freeze this product and extract contract",
-            "Step 7.2: add and reconcile PostgreSQL forecast marts",
+            "Step 7.2: added and reconciled PostgreSQL forecast marts",
             "Step 7.3: build checked public sample extracts",
         ],
         "consumer_rules": [

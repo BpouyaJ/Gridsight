@@ -20,12 +20,12 @@ def test_database_schema_is_idempotent_and_matches_contract() -> None:
     finally:
         engine.dispose()
 
-    assert first.files_applied == 3
-    assert first.statements_executed == 14
+    assert first.files_applied == 4
+    assert first.statements_executed == 19
     assert second == first
     assert report.ok, report.problems
     assert report.schema_table_counts == {
-        "staging": 3,
-        "analytics": 5,
+        "staging": 4,
+        "analytics": 6,
         "reporting": 0,
     }

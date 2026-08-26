@@ -128,8 +128,10 @@ python -m gridsight.reporting.build_mart_contract
 
 Step 7.1 verifies the reporting SQL, final forecast, clean-data gate, and source
 manifest before freezing eight Power BI/Excel data products and their checked
-sample-extract policies. It contains contracts only; forecast SQL marts and
-public sample files are deliberately implemented in Steps 7.2 and 7.3.
+sample-extract policies. Step 7.2 updates the same contract after implementing
+the two forecast SQL marts; public sample files remain Step 7.3.
 
-The verified `reporting_mart_contract.json` SHA-256 is
+The Step 7.1 frozen-design SHA-256 was
 `acb7d3137aaa2c7c4f6fd688520987e5c573cbbeba245938e564cbc5cf1abdbc`.
+The Step 7.2 implementation SHA-256 is
+`2b6e765eb106a706ae87b1e6c22d502b8bc18e3d995bf429a4d5889051532f95`.
