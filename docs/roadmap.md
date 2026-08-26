@@ -128,6 +128,12 @@ Deliverables:
 
 Skills: reliable BI foundations, reporting design, metric reconciliation.
 
+Status: in progress. Step 7.1 froze eight consumer-facing product contracts:
+four verified energy SQL views, two planned forecast-performance views, and
+checked data-quality and lineage extracts. It passed 74 fast tests and lint;
+PostgreSQL forecast marts and public sample generation remain bounded Steps 7.2
+and 7.3.
+
 ### Phase 8 - Power BI
 
 Deliverables:

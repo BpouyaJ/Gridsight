@@ -1,12 +1,12 @@
 # Project status
 
-Last updated: 2026-08-20
+Last updated: 2026-08-26
 
 ## Current phase
 
-Phase 6 - Forecasting
+Phase 7 - Reporting marts
 
-Current step: 6.5 - Final refit and one-time 2025 test evaluation
+Current step: 7.1 - BI/Excel reporting-mart and sample contract
 
 Status: completed
 
@@ -350,10 +350,27 @@ Status: completed
 - Passed all 69 fast tests with six live tests deselected, including all five
   new final-evaluation tests.
 - Passed Ruff and `git diff --check` after completing Step 6.5 and Phase 6.
+- Defined eight stable reporting products with explicit grains, keys, ordered
+  columns, units, row counts, implementation status, and consumers.
+- Reused the four verified Phase 4 reporting views without changing their
+  semantics.
+- Froze hourly and aggregate forecast-performance view targets for Step 7.2.
+- Froze eight compact checked sample paths, filters, and expected row counts
+  for Step 7.3.
+- Added upstream hash gates for reporting SQL, final forecast predictions,
+  clean-data validation, and source lineage.
+- Added deterministic machine-readable contract output and fast tests.
+- Verified four existing views, two planned forecast views, eight fixed sample
+  policies, 29 passing source checks, and six source exports.
+- Generated `reports/reporting_mart_contract.json` with SHA-256
+  `acb7d3137aaa2c7c4f6fd688520987e5c573cbbeba245938e564cbc5cf1abdbc`.
+- Passed all 74 fast tests with six live tests deselected, including all five
+  new reporting-mart contract tests.
+- Passed Ruff and `git diff --check` after completing Step 7.1.
 
 ## In progress
 
-None. Step 6.5 and Phase 6 are ready for their Git checkpoint.
+None. Step 7.1 is ready for its Git checkpoint.
 
 ## Not started
 
@@ -362,9 +379,9 @@ None. Step 6.5 and Phase 6 are ready for their Git checkpoint.
 
 ## Next bounded step
 
-After the Phase 6 Git checkpoint, start Step 7.1 by defining stable
-forecast-performance reporting marts and checked sample-extract contracts for
-Power BI and Excel.
+After the Step 7.1 Git checkpoint, start Step 7.2 by adding the forecast
+evaluation fact load and the two contracted PostgreSQL reporting views with
+live reconciliation.
 
 ## Current blockers
 

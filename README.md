@@ -85,6 +85,8 @@ further model selection is permitted.
 Phase 6 is complete with a frozen, leakage-safe feature and model protocol,
 two explicit baselines, chronological validation, and an untouched final-year
 evaluation reported overall and across all 24 horizons.
+Phase 7 Step 7.1 completed the stable Power BI/Excel product grains, keys,
+units, and checked public-sample policies before database migrations.
 
 See:
 
@@ -101,6 +103,7 @@ See:
 - [Leakage-safe forecasting features](docs/feature-engineering.md)
 - [Chronological model validation](docs/model-validation.md)
 - [Final forecast evaluation](docs/final-forecast-evaluation.md)
+- [BI/Excel reporting-mart contract](docs/reporting-mart-contract.md)
 - [Initial SMARD source profile](docs/initial-source-profile.md)
 - [Reproducible source profiling](docs/source-profiling.md)
 - [Clean-data contract](docs/clean-data-contract.md)
