@@ -90,7 +90,8 @@ must produce identical JSON bytes.
 
 ## Step boundary
 
-Step 6.4 selects one learned design but does not publish final performance or
-save a production model. Step 6.5 will freeze the selected design, refit it on
-training plus validation data, deliberately unlock the 2025 targets once, and
-compare final test performance with both seasonal-naive baselines.
+Step 6.4 selected one learned design without publishing final performance or
+saving a production model. Step 6.5 froze that design, refit it on training
+plus validation data, deliberately unlocked the 2025 targets once, and
+compared final test performance with both seasonal-naive baselines under the
+[final forecast evaluation protocol](final-forecast-evaluation.md).

@@ -77,8 +77,14 @@ weekly seasonal naive is the stronger validation benchmark. Step 6.3 completed
 an auditable calendar, lag, and rolling feature matrix with redacted test
 targets before any learned model is fit.
 Step 6.4 selected a 31-leaf histogram gradient-boosting model from fixed Ridge
-and tree candidates using only chronological validation performance; the 2025
-test result remains unopened.
+and tree candidates using only chronological validation performance. Step 6.5
+refit that frozen design on 2022-2024 and produced a one-time 2025 test MAE of
+1,398.259 MW, 46.541% better than the weekly seasonal-naive baseline. No
+further model selection is permitted.
+
+Phase 6 is complete with a frozen, leakage-safe feature and model protocol,
+two explicit baselines, chronological validation, and an untouched final-year
+evaluation reported overall and across all 24 horizons.
 
 See:
 
@@ -94,6 +100,7 @@ See:
 - [Seasonal-naive baseline evaluation](docs/baseline-evaluation.md)
 - [Leakage-safe forecasting features](docs/feature-engineering.md)
 - [Chronological model validation](docs/model-validation.md)
+- [Final forecast evaluation](docs/final-forecast-evaluation.md)
 - [Initial SMARD source profile](docs/initial-source-profile.md)
 - [Reproducible source profiling](docs/source-profiling.md)
 - [Clean-data contract](docs/clean-data-contract.md)

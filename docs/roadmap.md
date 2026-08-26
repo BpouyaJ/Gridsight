@@ -105,7 +105,7 @@ Deliverables:
 
 Skills: NumPy, scikit-learn, feature engineering, time-series validation, model evaluation.
 
-Status: in progress. Step 6.1 completed the local-midnight forecast schedule,
+Status: completed. Step 6.1 established the local-midnight forecast schedule,
 24-real-hour horizon, information cutoff, chronological train/validation/test
 splits, baseline-source timestamps, and evaluation metrics. Step 6.2 is
 complete with frozen daily and weekly seasonal-naive baselines, aggregate
@@ -113,8 +113,10 @@ overall/horizon metrics, and zero scored test rows. Step 6.3 completed a
 deterministic calendar, lag, and rolling feature matrix with redacted test
 targets. Step 6.4 completed training-only fitting of fixed Ridge and histogram
 gradient-boosting candidates and validation-only selection of the 31-leaf
-histogram model. Step 6.5 will refit the frozen design and open the 2025 test
-targets once for final evaluation.
+histogram model. Step 6.5 refit that frozen design on the completed development
+period and opened the 2025 test once. The guarded run produced 1,398.259 MW
+test MAE, a 46.541% improvement over the weekly baseline, reconciled aggregate
+and row-level evidence, and passing forecasting, regression, and lint checks.
 
 ### Phase 7 - Reporting marts
 

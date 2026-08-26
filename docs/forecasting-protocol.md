@@ -146,3 +146,9 @@ test set.
 Step 6.3 applies the next contract layer in
 [Leakage-safe forecasting features](feature-engineering.md). It materializes
 known calendar and completed-history inputs while redacting every test target.
+
+Step 6.4 froze the 31-leaf histogram gradient-boosting design using 2024
+validation MAE. Step 6.5 followed the
+[final forecast evaluation protocol](final-forecast-evaluation.md): it refit
+that unchanged design on the completed development period, unlocked 2025 once,
+and published final model-versus-baseline evidence without further selection.

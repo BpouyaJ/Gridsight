@@ -6,7 +6,7 @@ Last updated: 2026-08-20
 
 Phase 6 - Forecasting
 
-Current step: 6.4 - Ridge and histogram gradient-boosting validation
+Current step: 6.5 - Final refit and one-time 2025 test evaluation
 
 Status: completed
 
@@ -329,10 +329,31 @@ Status: completed
 - Passed all 64 fast tests with six live tests deselected, including all five
   new model-validation tests.
 - Passed Ruff and `git diff --check` after completing Step 6.4.
+- Added a hash-gated loader for the frozen Step 6.4 selection and runtime.
+- Added exact target alignment before the deliberately isolated test unlock.
+- Added final train-plus-validation refitting without passing test labels to
+  `fit`.
+- Added ignored row-level model and seasonal-baseline predictions with strict
+  grain, time, value, and error reconciliation.
+- Added deterministic aggregate final-evaluation reporting and fast tests.
+- Refit the frozen 31-leaf histogram model on 26,136 train-plus-validation
+  rows and evaluated all 8,760 rows from 365 test origins.
+- Recorded final test MAE 1,398.259 MW, RMSE 2,011.223 MW, and MAPE 2.652%.
+- Improved final MAE by 64.335% over daily seasonal naive and 46.541% over
+  weekly seasonal naive.
+- Reconciled the ignored row-level predictions independently to the tracked
+  aggregate report and confirmed no further selection is allowed.
+- Recorded prediction SHA-256
+  `e6e1a5c64372942142993e81f8f3f748b609dda67a15a66af5e48260686b38e6`
+  and report SHA-256
+  `d65eea94653b1367ec169de60d4ff91fe2a956fa317040746c5a0a3c56fd3065`.
+- Passed all 69 fast tests with six live tests deselected, including all five
+  new final-evaluation tests.
+- Passed Ruff and `git diff --check` after completing Step 6.5 and Phase 6.
 
 ## In progress
 
-None. Step 6.4 is ready for its Git checkpoint.
+None. Step 6.5 and Phase 6 are ready for their Git checkpoint.
 
 ## Not started
 
@@ -341,8 +362,9 @@ None. Step 6.4 is ready for its Git checkpoint.
 
 ## Next bounded step
 
-After the Step 6.4 Git checkpoint, perform Step 6.5 one-time final 2025 test
-evaluation with the frozen selected design.
+After the Phase 6 Git checkpoint, start Step 7.1 by defining stable
+forecast-performance reporting marts and checked sample-extract contracts for
+Power BI and Excel.
 
 ## Current blockers
 

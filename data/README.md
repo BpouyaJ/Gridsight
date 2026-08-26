@@ -58,6 +58,12 @@ labels and derived row-level features. Its test labels are deliberately blank;
 the tracked `reports/feature_contract.json` records only schema, counts, paths,
 and hashes.
 
+Step 6.5 generates `processed/final_forecast_predictions.csv` after the model
+design is frozen. It contains the 8,760 row-level 2025 actual, learned-model,
+daily-baseline, and weekly-baseline values, so it remains ignored. The tracked
+`reports/final_evaluation_snapshot.json` contains aggregate results, source
+hashes, and the ignored prediction-file hash.
+
 All six approved source snapshots have been registered locally: both Germany
 actual-consumption periods, both Germany actual-generation periods, and both
 DE/LU day-ahead-price periods. Their raw CSVs are ignored, while their

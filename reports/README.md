@@ -99,3 +99,23 @@ runtime version, and zero published test results.
 
 The verified `model_validation_snapshot.json` SHA-256 is
 `b6c2b96482e238249300612ee6750b278f63aabb970f56e4f2c150ec67d013f7`.
+
+`final_evaluation_snapshot.json` is generated with the ignored row-level test
+prediction artifact by:
+
+```powershell
+python -m gridsight.forecasting.evaluate_final
+```
+
+Step 6.5 hash-gates every frozen forecasting dependency, refits only the
+already-selected design on train plus validation rows, and publishes the one
+final 2025 comparison with both seasonal-naive baselines. The snapshot contains
+aggregate overall and horizon metrics; the detailed 8,760-row predictions stay
+ignored under `data/processed/`.
+
+The verified Step 6.5 artifacts have these SHA-256 values:
+
+- `final_evaluation_snapshot.json`:
+  `d65eea94653b1367ec169de60d4ff91fe2a956fa317040746c5a0a3c56fd3065`;
+- ignored `data/processed/final_forecast_predictions.csv`:
+  `e6e1a5c64372942142993e81f8f3f748b609dda67a15a66af5e48260686b38e6`.
