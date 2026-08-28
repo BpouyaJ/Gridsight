@@ -40,7 +40,7 @@ class SampleExtractContract:
     path: str
     filter_rule: str
     expected_rows: int
-    implementation_status: str = "planned_step_7_3"
+    implementation_status: str = "verified_existing"
 
 
 @dataclass(frozen=True)
@@ -262,7 +262,7 @@ MART_CONTRACTS = (
         display_name="Canonical data-quality checks",
         source_kind="checked_extract",
         source_name="data/processed/validation_summary.json",
-        implementation_status="planned_step_7_3",
+        implementation_status="verified_existing",
         grain="one stable validation check",
         key_columns=("dataset", "check_id"),
         columns=DATA_QUALITY_CHECK_COLUMNS,
@@ -280,7 +280,7 @@ MART_CONTRACTS = (
         display_name="SMARD source lineage",
         source_kind="checked_extract",
         source_name="data/manifests/smard_source_manifest.csv",
-        implementation_status="planned_step_7_3",
+        implementation_status="verified_existing",
         grain="one immutable registered SMARD export",
         key_columns=("export_id",),
         columns=SOURCE_LINEAGE_COLUMNS,
@@ -335,7 +335,10 @@ def validate_mart_contracts(
         if not all(unit in ALLOWED_UNITS for _, unit in contract.measures):
             raise ValueError(f"Invalid measure unit for {contract.product_id}")
 
-        if contract.implementation_status == "verified_existing":
+        if (
+            contract.source_kind == "postgresql_view"
+            and contract.implementation_status == "verified_existing"
+        ):
             view_name = contract.source_name.removeprefix("reporting.")
             view = VIEW_CONTRACTS.get(view_name)
             if view is None:
@@ -439,7 +442,7 @@ def build_reporting_mart_contract(
         products.append(record)
     return {
         "schema_version": 1,
-        "status": "forecast_marts_implemented",
+        "status": "reporting_marts_and_samples_implemented",
         "attribution": "Bundesnetzagentur | SMARD.de",
         "source": {
             "reporting_sql": {
@@ -478,7 +481,7 @@ def build_reporting_mart_contract(
         "implementation_sequence": [
             "Step 7.1: freeze this product and extract contract",
             "Step 7.2: added and reconciled PostgreSQL forecast marts",
-            "Step 7.3: build checked public sample extracts",
+            "Step 7.3: built checked public sample extracts",
         ],
         "consumer_rules": [
             "Power BI and Excel consume reporting products, not staging tables",

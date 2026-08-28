@@ -9,9 +9,10 @@ GridSight uses real public electricity-market data. Full raw and processed datas
 - `processed/`: generated clean and analytical files; ignored by Git
 - `samples/`: small, attributed recruiter/test samples that may be committed
 
-Phase 7 freezes every checked sample before generating it. Sample filters,
-row counts, schemas, consumers, and source products are declared in
-`docs/reporting-mart-contract.md`; Step 7.1 does not yet write sample CSVs.
+Phase 7 freezes every checked sample before generating it. Sample filters, row
+counts, schemas, consumers, and source products are declared in
+`docs/reporting-mart-contract.md`. Step 7.3 writes exactly eight compact CSVs
+and a hash manifest through a repeatable-read checked build.
 
 ## Essential source
 

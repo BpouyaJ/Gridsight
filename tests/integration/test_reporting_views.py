@@ -14,6 +14,7 @@ from gridsight.database.reporting_contract import (
     reconcile_reporting_views,
 )
 from gridsight.database.schema_contract import apply_database_schema
+from gridsight.reporting.sample_extracts import build_sample_frames
 
 
 @pytest.mark.integration
@@ -32,6 +33,13 @@ def test_reporting_views_are_idempotent_and_reconciled() -> None:
         contract = inspect_reporting_contract(engine)
         first_reconciliation = reconcile_reporting_views(engine)
         second_reconciliation = reconcile_reporting_views(engine)
+        with engine.connect() as connection:
+            with connection.begin():
+                connection.exec_driver_sql(
+                    "SET TRANSACTION ISOLATION LEVEL REPEATABLE READ READ ONLY"
+                )
+                connection.exec_driver_sql("SET LOCAL TIME ZONE 'UTC'")
+                sample_frames = build_sample_frames(connection)
     finally:
         engine.dispose()
 
@@ -54,4 +62,14 @@ def test_reporting_views_are_idempotent_and_reconciled() -> None:
         "monthly_energy": 48,
         "forecast_performance_hourly": 8_760,
         "forecast_performance_summary": 75,
+    }
+    assert {product_id: len(frame) for product_id, frame in sample_frames.items()} == {
+        "hourly_energy": 168,
+        "hourly_generation_by_technology": 2_016,
+        "daily_energy": 365,
+        "monthly_energy": 48,
+        "forecast_performance_hourly": 744,
+        "forecast_performance_summary": 75,
+        "data_quality_checks": 29,
+        "source_lineage": 6,
     }

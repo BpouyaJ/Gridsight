@@ -10,7 +10,7 @@
   "implementation_sequence": [
     "Step 7.1: freeze this product and extract contract",
     "Step 7.2: added and reconciled PostgreSQL forecast marts",
-    "Step 7.3: build checked public sample extracts"
+    "Step 7.3: built checked public sample extracts"
   ],
   "products": [
     {
@@ -132,7 +132,7 @@
       "sample": {
         "expected_rows": 168,
         "filter_rule": "calendar_date from 2025-01-06 through 2025-01-12 inclusive",
-        "implementation_status": "planned_step_7_3",
+        "implementation_status": "verified_existing",
         "path": "data/samples/hourly_energy_sample.csv"
       },
       "source_kind": "postgresql_view",
@@ -195,7 +195,7 @@
       "sample": {
         "expected_rows": 2016,
         "filter_rule": "calendar_date from 2025-01-06 through 2025-01-12 inclusive",
-        "implementation_status": "planned_step_7_3",
+        "implementation_status": "verified_existing",
         "path": "data/samples/hourly_generation_sample.csv"
       },
       "source_kind": "postgresql_view",
@@ -302,7 +302,7 @@
       "sample": {
         "expected_rows": 365,
         "filter_rule": "calendar_year equals 2025",
-        "implementation_status": "planned_step_7_3",
+        "implementation_status": "verified_existing",
         "path": "data/samples/daily_energy_sample.csv"
       },
       "source_kind": "postgresql_view",
@@ -409,7 +409,7 @@
       "sample": {
         "expected_rows": 48,
         "filter_rule": "all 48 complete project months",
-        "implementation_status": "planned_step_7_3",
+        "implementation_status": "verified_existing",
         "path": "data/samples/monthly_energy_sample.csv"
       },
       "source_kind": "postgresql_view",
@@ -484,7 +484,7 @@
       "sample": {
         "expected_rows": 744,
         "filter_rule": "origin_local_date from 2025-01-01 through 2025-01-31",
-        "implementation_status": "planned_step_7_3",
+        "implementation_status": "verified_existing",
         "path": "data/samples/forecast_performance_hourly_sample.csv"
       },
       "source_kind": "postgresql_view",
@@ -542,7 +542,7 @@
       "sample": {
         "expected_rows": 75,
         "filter_rule": "all three series at overall and 24 horizon scopes",
-        "implementation_status": "planned_step_7_3",
+        "implementation_status": "verified_existing",
         "path": "data/samples/forecast_performance_summary_sample.csv"
       },
       "source_kind": "postgresql_view",
@@ -563,7 +563,7 @@
       "display_name": "Canonical data-quality checks",
       "expected_full_rows": 29,
       "grain": "one stable validation check",
-      "implementation_status": "planned_step_7_3",
+      "implementation_status": "verified_existing",
       "key_columns": [
         "dataset",
         "check_id"
@@ -573,7 +573,7 @@
       "sample": {
         "expected_rows": 29,
         "filter_rule": "all 29 canonical validation checks",
-        "implementation_status": "planned_step_7_3",
+        "implementation_status": "verified_existing",
         "path": "data/samples/data_quality_checks.csv"
       },
       "source_kind": "checked_extract",
@@ -604,7 +604,7 @@
       "display_name": "SMARD source lineage",
       "expected_full_rows": 6,
       "grain": "one immutable registered SMARD export",
-      "implementation_status": "planned_step_7_3",
+      "implementation_status": "verified_existing",
       "key_columns": [
         "export_id"
       ],
@@ -613,7 +613,7 @@
       "sample": {
         "expected_rows": 6,
         "filter_rule": "all six registered SMARD exports",
-        "implementation_status": "planned_step_7_3",
+        "implementation_status": "verified_existing",
         "path": "data/samples/source_lineage.csv"
       },
       "source_kind": "checked_extract",
@@ -655,5 +655,5 @@
       "sha256": "5fc1af559d4ebb46712a86d7cff3f5780a0af2c24ce480c0e7016767176de766"
     }
   },
-  "status": "forecast_marts_implemented"
+  "status": "reporting_marts_and_samples_implemented"
 }

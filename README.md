@@ -89,7 +89,9 @@ Phase 7 Step 7.1 completed the stable Power BI/Excel product grains, keys,
 units, and checked public-sample policies before database migrations. Step 7.2
 completed the hash-gated 8,760-row forecast fact load plus hourly and 75-row
 summary forecast-performance views with repeated live PostgreSQL
-reconciliation.
+reconciliation. Step 7.3 implements and reproducibly generates the eight
+deterministic checked sample extracts plus their hash manifest. All fast and
+live gates passed, completing Phase 7.
 
 See:
 
@@ -108,6 +110,7 @@ See:
 - [Final forecast evaluation](docs/final-forecast-evaluation.md)
 - [BI/Excel reporting-mart contract](docs/reporting-mart-contract.md)
 - [Forecast reporting mart](docs/forecast-reporting-mart.md)
+- [Checked reporting samples](docs/sample-extracts.md)
 - [Initial SMARD source profile](docs/initial-source-profile.md)
 - [Reproducible source profiling](docs/source-profiling.md)
 - [Clean-data contract](docs/clean-data-contract.md)

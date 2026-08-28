@@ -1,14 +1,14 @@
 # Project status
 
-Last updated: 2026-08-26
+Last updated: 2026-08-28
 
 ## Current phase
 
-Phase 7 - Reporting marts
+Phase 7 - Reporting marts (complete)
 
-Current step: 7.2 - PostgreSQL forecast-performance marts
+Current step: 7.3 - checked reporting sample extracts (complete)
 
-Status: completed
+Status: complete
 
 ## Completed
 
@@ -394,10 +394,38 @@ Status: completed
   queries, and repeated forecast/reporting reconciliation.
 - Completed Step 7.2 with exact Python, PostgreSQL, and reporting-layer
   agreement for the final 2025 forecast evaluation.
+- Added fixed, read-only, deterministically ordered query contracts for all six
+  PostgreSQL reporting samples.
+- Added checked transformations for all 29 canonical validation checks and all
+  six registered SMARD source-lineage rows.
+- Added exact schema, row-count, key, scope, attribution, and CSV-publication
+  validation for all eight sample products.
+- Added manifest-last bundle publication with contract and source hashes plus
+  per-sample SHA-256 records.
+- Published through destination-local temporary files so Windows artifacts
+  inherit the repository directory permissions before atomic replacement.
+- Added fast tests and live reporting-integration coverage for the 3,451-row
+  checked sample bundle.
+- Completed three identical live sample builds with all 28 reporting
+  reconciliations passing on every run.
+- Verified eight samples, 3,451 total committed data rows, reporting-mart
+  contract SHA-256
+  `54a55962b79d14508eb50882578f2277b9201a678a055006c06f383632c71110`,
+  and manifest SHA-256
+  `b0a377003820b1321b6b55fb290f08ae07eff2f8e06e4688c9788b42ec42f150`.
+- Passed all 82 fast tests with six live tests deselected, including all five
+  checked-sample tests.
+- Passed all six live PostgreSQL integration tests with 82 fast tests
+  deselected, including exact sample reconciliation inside the reporting-view
+  integration test.
+- Passed Ruff, bundled-Python syntax compilation, and `git diff --check` after
+  completing Step 7.3.
+- Completed Phase 7 with stable SQL marts, checked extracts, deterministic
+  manifests, and Python/PostgreSQL/reporting reconciliation.
 
 ## In progress
 
-None. Step 7.2 is ready for its Git checkpoint.
+None. Phase 7 is complete.
 
 ## Not started
 
@@ -406,8 +434,8 @@ None. Step 7.2 is ready for its Git checkpoint.
 
 ## Next bounded step
 
-Complete the Step 7.2 live verification and Git checkpoint, then start Step
-7.3 by generating all eight deterministic checked sample extracts.
+Start Step 8.1: define the Power BI semantic model, relationship contract,
+measure catalogue, and report-page wireframes before building the `.pbix`.
 
 ## Current blockers
 

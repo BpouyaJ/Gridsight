@@ -1,0 +1,301 @@
+{
+  "attribution": "Bundesnetzagentur | SMARD.de",
+  "reporting_mart_contract": {
+    "path": "reports/reporting_mart_contract.json",
+    "sha256": "54a55962b79d14508eb50882578f2277b9201a678a055006c06f383632c71110"
+  },
+  "reporting_reconciliation_checks": 28,
+  "sample_count": 8,
+  "sample_rows": 3451,
+  "samples": [
+    {
+      "columns": [
+        "interval_start_utc",
+        "interval_end_utc",
+        "date_key",
+        "calendar_date",
+        "calendar_year",
+        "calendar_quarter",
+        "month_number",
+        "month_name",
+        "iso_week",
+        "weekday_number",
+        "weekday_name",
+        "is_weekend",
+        "hour_key",
+        "hour_label",
+        "utc_offset_minutes",
+        "is_dst",
+        "local_fold",
+        "load_area",
+        "grid_load_mwh",
+        "grid_load_mw",
+        "grid_load_including_pumped_storage_mwh",
+        "hydro_pumped_storage_mwh",
+        "residual_load_mwh",
+        "price_market_area",
+        "day_ahead_price_eur_per_mwh",
+        "reported_generation_mwh",
+        "reported_generation_mw",
+        "renewable_generation_mwh",
+        "renewable_generation_mw",
+        "conventional_generation_mwh",
+        "conventional_generation_mw",
+        "storage_generation_mwh",
+        "storage_generation_mw",
+        "unavailable_technology_count",
+        "reported_technology_count"
+      ],
+      "filter_rule": "calendar_date from 2025-01-06 through 2025-01-12 inclusive",
+      "key_columns": [
+        "interval_start_utc"
+      ],
+      "path": "data/samples/hourly_energy_sample.csv",
+      "product_id": "hourly_energy",
+      "rows": 168,
+      "sha256": "02e3347e229a3a812eaa086558f33483f1f9a9a19e6ce0c39d01594c78dfebeb",
+      "source_kind": "postgresql_view",
+      "source_name": "reporting.hourly_energy"
+    },
+    {
+      "columns": [
+        "interval_start_utc",
+        "interval_end_utc",
+        "date_key",
+        "calendar_date",
+        "calendar_year",
+        "calendar_quarter",
+        "month_number",
+        "month_name",
+        "iso_week",
+        "weekday_number",
+        "weekday_name",
+        "is_weekend",
+        "hour_key",
+        "hour_label",
+        "utc_offset_minutes",
+        "is_dst",
+        "local_fold",
+        "technology_key",
+        "technology_id",
+        "technology_name",
+        "technology_group",
+        "is_renewable",
+        "technology_order",
+        "generation_mwh",
+        "generation_mw",
+        "value_status",
+        "source_export_id",
+        "source_sha256"
+      ],
+      "filter_rule": "calendar_date from 2025-01-06 through 2025-01-12 inclusive",
+      "key_columns": [
+        "interval_start_utc",
+        "technology_key"
+      ],
+      "path": "data/samples/hourly_generation_sample.csv",
+      "product_id": "hourly_generation_by_technology",
+      "rows": 2016,
+      "sha256": "dc39ad656b2f1d8fdd1469112d826980806966a2cd3f75547b5d32476ce73eb7",
+      "source_kind": "postgresql_view",
+      "source_name": "reporting.hourly_generation_by_technology"
+    },
+    {
+      "columns": [
+        "date_key",
+        "calendar_date",
+        "calendar_year",
+        "calendar_quarter",
+        "month_number",
+        "month_name",
+        "iso_week",
+        "weekday_number",
+        "weekday_name",
+        "is_weekend",
+        "observed_hour_count",
+        "grid_load_mwh",
+        "average_grid_load_mw",
+        "peak_grid_load_mw",
+        "reported_generation_mwh",
+        "renewable_generation_mwh",
+        "conventional_generation_mwh",
+        "storage_generation_mwh",
+        "renewable_share_of_reported_generation_percent",
+        "average_day_ahead_price_eur_per_mwh",
+        "minimum_day_ahead_price_eur_per_mwh",
+        "maximum_day_ahead_price_eur_per_mwh",
+        "negative_price_hour_count",
+        "unavailable_generation_value_count"
+      ],
+      "filter_rule": "calendar_year equals 2025",
+      "key_columns": [
+        "date_key"
+      ],
+      "path": "data/samples/daily_energy_sample.csv",
+      "product_id": "daily_energy",
+      "rows": 365,
+      "sha256": "dfec93328728d2449d5441e4ec05148ab94704e70327e5b00d184ebf384c910b",
+      "source_kind": "postgresql_view",
+      "source_name": "reporting.daily_energy"
+    },
+    {
+      "columns": [
+        "month_key",
+        "month_start",
+        "calendar_year",
+        "month_number",
+        "month_name",
+        "observed_day_count",
+        "observed_hour_count",
+        "grid_load_mwh",
+        "average_grid_load_mw",
+        "peak_grid_load_mw",
+        "reported_generation_mwh",
+        "renewable_generation_mwh",
+        "conventional_generation_mwh",
+        "storage_generation_mwh",
+        "renewable_share_of_reported_generation_percent",
+        "average_day_ahead_price_eur_per_mwh",
+        "minimum_day_ahead_price_eur_per_mwh",
+        "maximum_day_ahead_price_eur_per_mwh",
+        "negative_price_hour_count",
+        "unavailable_generation_value_count"
+      ],
+      "filter_rule": "all 48 complete project months",
+      "key_columns": [
+        "month_key"
+      ],
+      "path": "data/samples/monthly_energy_sample.csv",
+      "product_id": "monthly_energy",
+      "rows": 48,
+      "sha256": "86a17351935e5cf9bebec2b1bad8b6da00359363df09e8f65c73fd0422c78676",
+      "source_kind": "postgresql_view",
+      "source_name": "reporting.monthly_energy"
+    },
+    {
+      "columns": [
+        "forecast_origin_utc",
+        "origin_local_date",
+        "information_cutoff_utc",
+        "target_start_utc",
+        "target_start_local",
+        "target_date_key",
+        "target_calendar_date",
+        "target_calendar_year",
+        "target_calendar_quarter",
+        "target_month_number",
+        "target_month_name",
+        "target_weekday_number",
+        "target_weekday_name",
+        "target_is_weekend",
+        "target_hour_key",
+        "target_hour_label",
+        "horizon_step",
+        "actual_grid_load_mw",
+        "model_name",
+        "model_prediction_mw",
+        "model_error_mw",
+        "model_absolute_error_mw",
+        "daily_naive_prediction_mw",
+        "weekly_naive_prediction_mw"
+      ],
+      "filter_rule": "origin_local_date from 2025-01-01 through 2025-01-31",
+      "key_columns": [
+        "forecast_origin_utc",
+        "horizon_step"
+      ],
+      "path": "data/samples/forecast_performance_hourly_sample.csv",
+      "product_id": "forecast_performance_hourly",
+      "rows": 744,
+      "sha256": "3f8a0dc4bb484b4a322b1da3121039ab4995d63d9a173dbfbc0ec5184ea37bfa",
+      "source_kind": "postgresql_view",
+      "source_name": "reporting.forecast_performance_hourly"
+    },
+    {
+      "columns": [
+        "forecast_name",
+        "forecast_role",
+        "evaluation_scope",
+        "horizon_step",
+        "observations",
+        "mae_mw",
+        "rmse_mw",
+        "mape_percent",
+        "improvement_over_weekly_percent"
+      ],
+      "filter_rule": "all three series at overall and 24 horizon scopes",
+      "key_columns": [
+        "forecast_name",
+        "evaluation_scope",
+        "horizon_step"
+      ],
+      "path": "data/samples/forecast_performance_summary_sample.csv",
+      "product_id": "forecast_performance_summary",
+      "rows": 75,
+      "sha256": "6c3585dd78372ded0f861579789305b6c24ba724a8d5180aedf56b964b728fa1",
+      "source_kind": "postgresql_view",
+      "source_name": "reporting.forecast_performance_summary"
+    },
+    {
+      "columns": [
+        "dataset",
+        "check_id",
+        "status",
+        "expected",
+        "observed"
+      ],
+      "filter_rule": "all 29 canonical validation checks",
+      "key_columns": [
+        "dataset",
+        "check_id"
+      ],
+      "path": "data/samples/data_quality_checks.csv",
+      "product_id": "data_quality_checks",
+      "rows": 29,
+      "sha256": "5bad3f65f96408b69c993262487b76136ab095027de95b7141dad8f83b763e6f",
+      "source_kind": "checked_extract",
+      "source_name": "data/processed/validation_summary.json"
+    },
+    {
+      "columns": [
+        "export_id",
+        "source_name",
+        "source_url",
+        "source_category",
+        "source_geography",
+        "source_resolution",
+        "period_start",
+        "period_end",
+        "downloaded_at_utc",
+        "original_filename",
+        "local_filename",
+        "sha256",
+        "licence",
+        "attribution",
+        "notes"
+      ],
+      "filter_rule": "all six registered SMARD exports",
+      "key_columns": [
+        "export_id"
+      ],
+      "path": "data/samples/source_lineage.csv",
+      "product_id": "source_lineage",
+      "rows": 6,
+      "sha256": "fc1012b6bf2eda5571006bd2637e9ee1c8c596ac7b56dd531907e4a0609d6507",
+      "source_kind": "checked_extract",
+      "source_name": "data/manifests/smard_source_manifest.csv"
+    }
+  ],
+  "schema_version": 1,
+  "source": {
+    "source_manifest": {
+      "path": "data/manifests/smard_source_manifest.csv",
+      "sha256": "fc1012b6bf2eda5571006bd2637e9ee1c8c596ac7b56dd531907e4a0609d6507"
+    },
+    "validation_summary": {
+      "path": "data/processed/validation_summary.json",
+      "sha256": "5fc1af559d4ebb46712a86d7cff3f5780a0af2c24ce480c0e7016767176de766"
+    }
+  },
+  "status": "passed"
+}

@@ -26,8 +26,8 @@ summary, and six-row source manifest before publishing any product contract.
 | `monthly_energy` | One Europe/Berlin month | 48 | Existing verified SQL view | Power BI, Excel |
 | `forecast_performance_hourly` | One 2025 origin and horizon | 8,760 | Implemented Step 7.2 SQL view | Power BI |
 | `forecast_performance_summary` | One series and evaluation scope | 75 | Implemented Step 7.2 SQL view | Power BI, Excel |
-| `data_quality_checks` | One stable validation check | 29 | Planned Step 7.3 extract | Power BI |
-| `source_lineage` | One immutable SMARD export | 6 | Planned Step 7.3 extract | Power BI |
+| `data_quality_checks` | One stable validation check | 29 | Implemented Step 7.3 extract | Power BI |
+| `source_lineage` | One immutable SMARD export | 6 | Implemented Step 7.3 extract | Power BI |
 
 All six SQL view contracts are imported without reinterpretation from the
 verified reporting layer. Step 7.2 implements the two predeclared forecast
@@ -64,14 +64,13 @@ products remain small checked extracts instead of unnecessary database facts.
 
 The samples are deliberately fixed, compact, attributed, and reviewable in
 Git. They are not substitutes for the ignored full row-level inputs. Step 7.3
-will generate them in deterministic order, verify exact columns and counts,
-record SHA-256 values, and reconcile their values with SQL or source artifacts.
+generates them in deterministic order, verifies exact columns and counts,
+records SHA-256 values, and reconciles their values with SQL or source artifacts.
 
 ## Implementation boundary
 
-Step 7.2 creates and reconciles the forecast tables and views but does not
-generate sample CSVs, build Power BI, or build Excel. Step 7.3 will generate
-the eight checked samples.
+Step 7.3 generates the eight checked samples but does not build Power BI or
+Excel. Those remain Phases 8 and 9.
 
 ## Verified Step 7.1 result
 
@@ -91,3 +90,14 @@ After implementing both forecast views, the contract marks all six PostgreSQL
 products `verified_existing` while retaining the two Step 7.3 extracts as
 planned. The regenerated contract hash is
 `2b6e765eb106a706ae87b1e6c22d502b8bc18e3d995bf429a4d5889051532f95`.
+
+## Step 7.3 sample implementation
+
+All eight sample policies are now `verified_existing`. Three consecutive live
+builds produced identical files after 28 successful reporting reconciliations.
+The implemented contract SHA-256 is
+`54a55962b79d14508eb50882578f2277b9201a678a055006c06f383632c71110`,
+and the 3,451-row bundle manifest SHA-256 is
+`b0a377003820b1321b6b55fb290f08ae07eff2f8e06e4688c9788b42ec42f150`.
+All 82 fast tests and all six live PostgreSQL tests passed; Ruff and
+`git diff --check` also passed.

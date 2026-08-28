@@ -46,7 +46,8 @@ def test_existing_sql_products_match_verified_view_contracts() -> None:
     existing = [
         contract
         for contract in MART_CONTRACTS
-        if contract.implementation_status == "verified_existing"
+        if contract.source_kind == "postgresql_view"
+        and contract.implementation_status == "verified_existing"
     ]
     assert len(existing) == 6
     for contract in existing:
@@ -150,7 +151,7 @@ def test_snapshot_is_hash_gated_and_deterministic(tmp_path: Path) -> None:
     write_reporting_mart_contract(snapshot, output_path)
 
     assert output_path.read_bytes() == first_bytes
-    assert snapshot["status"] == "forecast_marts_implemented"
+    assert snapshot["status"] == "reporting_marts_and_samples_implemented"
     assert len(snapshot["products"]) == 8
     assert snapshot["source"]["validation_summary"]["checks"] == 29
     assert snapshot["source"]["source_manifest"]["exports"] == 6

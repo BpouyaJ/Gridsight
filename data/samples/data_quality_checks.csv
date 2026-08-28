@@ -1,0 +1,30 @@
+dataset,check_id,status,expected,observed
+consumption,consumption.column_contract,passed,24,24
+consumption,consumption.finite_measures,passed,all finite,0 non-finite cells
+consumption,consumption.grid_load_identity,passed,difference <= 0.011,maximum 0.010000
+consumption,consumption.hourly_power_identity,passed,grid_load_mw equals grid_load_mwh,0 mismatches
+consumption,consumption.lineage_identity,passed,actual_consumption/DE/hour,actual_consumption/DE/hour
+consumption,consumption.lineage_sources,passed,2 exports with lowercase SHA-256,"2 exports, 0 invalid hashes"
+consumption,consumption.nonnegative_measures,passed,all nonnegative,0 negative cells
+consumption,consumption.row_count,passed,35064,35064
+consumption,consumption.unique_interval,passed,unique UTC starts,0 duplicates
+cross_dataset,cross_dataset.interval_duration,passed,all UTC intervals are one hour,valid
+cross_dataset,cross_dataset.utc_spine,passed,35064 identical UTC starts,"consumption=35064, generation=35064, price=35064"
+generation,generation.column_contract,passed,29,29
+generation,generation.complete_technology_set,passed,12,range 12-12
+generation,generation.hourly_power_identity,passed,generation_mw equals generation_mwh,0 mismatches
+generation,generation.lineage_identity,passed,actual_generation/DE/hour,actual_generation/DE/hour
+generation,generation.lineage_sources,passed,2 exports with lowercase SHA-256,"2 exports, 0 invalid hashes"
+generation,generation.reported_measures,passed,finite and nonnegative,0 invalid cells
+generation,generation.row_count,passed,420768,420768
+generation,generation.technology_metadata,passed,12,12
+generation,generation.unavailable_semantics,passed,nuclear marker with missing measures,0 invalid rows
+generation,generation.unique_interval_technology,passed,unique UTC start and technology,0 duplicates
+generation,generation.value_status_domain,passed,"['reported', 'unavailable']","['reported', 'unavailable']"
+price,price.column_contract,passed,25,25
+price,price.finite_values,passed,all finite; negative values allowed,0 non-finite values
+price,price.lineage_identity,passed,day_ahead_price/DE-LU/hour,day_ahead_price/DE-LU/hour
+price,price.lineage_sources,passed,2 exports with lowercase SHA-256,"2 exports, 0 invalid hashes"
+price,price.market_identity,passed,DE-LU/EUR/EUR/MWh,"1 market(s), 1 currency value(s)"
+price,price.row_count,passed,35064,35064
+price,price.unique_interval,passed,unique UTC starts,0 duplicates
