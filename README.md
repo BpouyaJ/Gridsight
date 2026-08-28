@@ -92,6 +92,9 @@ summary forecast-performance views with repeated live PostgreSQL
 reconciliation. Step 7.3 implements and reproducibly generates the eight
 deterministic checked sample extracts plus their hash manifest. All fast and
 live gates passed, completing Phase 7.
+Phase 8 Step 8.1 completed a tested 15-table Power BI semantic model, 12
+single-direction relationships, 30 explicit DAX measures, five page
+wireframes, and exact reconciliation values before the Desktop build.
 
 See:
 
@@ -111,6 +114,7 @@ See:
 - [BI/Excel reporting-mart contract](docs/reporting-mart-contract.md)
 - [Forecast reporting mart](docs/forecast-reporting-mart.md)
 - [Checked reporting samples](docs/sample-extracts.md)
+- [Power BI semantic-model contract](docs/power-bi-semantic-model.md)
 - [Initial SMARD source profile](docs/initial-source-profile.md)
 - [Reproducible source profiling](docs/source-profiling.md)
 - [Clean-data contract](docs/clean-data-contract.md)

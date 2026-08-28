@@ -29,6 +29,8 @@ postgres_data/
 
 # Power BI temporary files
 *.pbix.autosave
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
 
 # Editors and operating systems
 .vscode/
@@ -36,4 +38,3 @@ postgres_data/
 .DS_Store
 Thumbs.db
 desktop.ini
-

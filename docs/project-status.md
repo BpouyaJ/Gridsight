@@ -4,9 +4,9 @@ Last updated: 2026-08-28
 
 ## Current phase
 
-Phase 7 - Reporting marts (complete)
+Phase 8 - Power BI
 
-Current step: 7.3 - checked reporting sample extracts (complete)
+Current step: 8.1 - semantic-model and report-design contract (complete)
 
 Status: complete
 
@@ -422,20 +422,48 @@ Status: complete
   completing Step 7.3.
 - Completed Phase 7 with stable SQL marts, checked extracts, deterministic
   manifests, and Python/PostgreSQL/reporting reconciliation.
+- Researched the current Microsoft PBIP, PBIR, TMDL, star-schema, relationship,
+  and declared-date-table guidance using official documentation.
+- Froze a source-control boundary where Step 8.1 owns the tested design and
+  Step 8.2 lets Power BI Desktop generate its version-specific project files.
+- Defined 15 Import-mode model tables, including six dimensions, six facts,
+  two checked evidence tables, and one dedicated measure table.
+- Defined 12 active one-to-many, single-direction dimension-to-fact
+  relationships with no fact-to-fact or bidirectional paths.
+- Declared `Dim Date[calendar_date]` as the 1,461-row Europe/Berlin date table
+  spanning 2022-01-01 through 2025-12-31.
+- Added 30 explicit, unit-safe DAX measures across energy, generation, price,
+  forecasting, and data quality.
+- Froze all five report pages with business questions, minimum visuals,
+  fields, slicers, attribution, and interpretation limits.
+- Added 16 exact Power BI acceptance values reconciled to the frozen KPI,
+  final-evaluation, quality, and lineage evidence.
+- Added deterministic JSON and DAX generation plus five fast contract tests.
+- Completed two identical Step 8.1 builds with semantic-model contract SHA-256
+  `6f94e6bae7d426fd0a1014cf9665d02c857679e36fd773be22e23ab51d0fb32e`
+  and DAX catalogue SHA-256
+  `de63d5a9964a08968674bb56bf7eea0a3bb316d937eaef6d9cc8e92d38e676df`.
+- Passed all 87 fast tests with six live PostgreSQL tests deselected, including
+  all five new Power BI contract tests.
+- Re-ran all five focused Power BI contract tests after the only Ruff finding,
+  a corrected standard-library import order.
+- Passed Ruff, bundled-Python syntax compilation, and `git diff --check` after
+  completing Step 8.1.
 
 ## In progress
 
-None. Phase 7 is complete.
+None. Step 8.1 is complete.
 
 ## Not started
 
-- Power BI
+- Power BI Desktop project and report pages
 - Excel/Power Query
 
 ## Next bounded step
 
-Start Step 8.1: define the Power BI semantic model, relationship contract,
-measure catalogue, and report-page wireframes before building the `.pbix`.
+Start Step 8.2 by using Power BI Desktop to create the PBIP/PBIR/TMDL project,
+connect the frozen sources, and implement the declared tables and
+relationships before adding report visuals.
 
 ## Current blockers
 

@@ -1,0 +1,898 @@
+{
+  "acceptance_values": [
+    {
+      "expected_value": 35064,
+      "measure": "Observed Hours",
+      "tolerance": 0
+    },
+    {
+      "expected_value": 1871.998,
+      "measure": "Total Grid Load TWh",
+      "tolerance": 0.001
+    },
+    {
+      "expected_value": 53.388,
+      "measure": "Average Grid Load GW",
+      "tolerance": 0.001
+    },
+    {
+      "expected_value": 78.681,
+      "measure": "Peak Grid Load GW",
+      "tolerance": 0.001
+    },
+    {
+      "expected_value": 0.5461,
+      "measure": "Renewable Share %",
+      "tolerance": 0.0001
+    },
+    {
+      "expected_value": 124.58,
+      "measure": "Average Day-Ahead Price",
+      "tolerance": 0.01
+    },
+    {
+      "expected_value": 1400,
+      "measure": "Negative Price Hours",
+      "tolerance": 0
+    },
+    {
+      "expected_value": 16836,
+      "measure": "Unavailable Generation Values",
+      "tolerance": 0
+    },
+    {
+      "expected_value": 1398.259,
+      "measure": "Model MAE MW",
+      "tolerance": 0.001
+    },
+    {
+      "expected_value": 2011.223,
+      "measure": "Model RMSE MW",
+      "tolerance": 0.001
+    },
+    {
+      "expected_value": 0.02652,
+      "measure": "Model MAPE %",
+      "tolerance": 1e-05
+    },
+    {
+      "expected_value": 2615.589,
+      "measure": "Weekly Baseline MAE MW",
+      "tolerance": 0.001
+    },
+    {
+      "expected_value": 0.46541,
+      "measure": "Model Improvement vs Weekly %",
+      "tolerance": 1e-05
+    },
+    {
+      "expected_value": 29,
+      "measure": "Data Quality Checks",
+      "tolerance": 0
+    },
+    {
+      "expected_value": 1.0,
+      "measure": "Data Quality Pass Rate %",
+      "tolerance": 0
+    },
+    {
+      "expected_value": 6,
+      "measure": "Registered Source Snapshots",
+      "tolerance": 0
+    }
+  ],
+  "attribution": "Bundesnetzagentur | SMARD.de",
+  "date_table": {
+    "calendar": "Europe/Berlin",
+    "date_column": "calendar_date",
+    "end": "2025-12-31",
+    "marked_as_date_table": true,
+    "start": "2022-01-01",
+    "table": "Dim Date",
+    "unique_contiguous_dates": 1461
+  },
+  "desktop_boundary": {
+    "report_definition_policy": "do not hand-author preview PBIR files",
+    "step_8_1": "versioned design contract and DAX catalogue",
+    "step_8_2": "Power BI Desktop creates PBIP/PBIR/TMDL project files",
+    "storage_mode": "Import"
+  },
+  "measures": [
+    {
+      "dax": "DISTINCTCOUNT('Fact Hourly Energy'[interval_start_utc])",
+      "description": "Unique canonical UTC hourly intervals in the current filter context.",
+      "display_folder": "Energy",
+      "format_string": "#,0",
+      "name": "Observed Hours",
+      "unit": "count"
+    },
+    {
+      "dax": "DIVIDE(SUM('Fact Hourly Energy'[grid_load_mwh]), 1000000)",
+      "description": "Grid-load energy summed over time and converted from MWh to TWh.",
+      "display_folder": "Energy",
+      "format_string": "0.000 \"TWh\"",
+      "name": "Total Grid Load TWh",
+      "unit": "TWh"
+    },
+    {
+      "dax": "DIVIDE(AVERAGE('Fact Hourly Energy'[grid_load_mw]), 1000)",
+      "description": "Arithmetic mean of hourly average grid load, converted from MW to GW.",
+      "display_folder": "Energy",
+      "format_string": "0.000 \"GW\"",
+      "name": "Average Grid Load GW",
+      "unit": "GW"
+    },
+    {
+      "dax": "DIVIDE(MAX('Fact Hourly Energy'[grid_load_mw]), 1000)",
+      "description": "Maximum observed hourly average grid load, converted from MW to GW.",
+      "display_folder": "Energy",
+      "format_string": "0.000 \"GW\"",
+      "name": "Peak Grid Load GW",
+      "unit": "GW"
+    },
+    {
+      "dax": "DIVIDE(SUM('Fact Hourly Energy'[reported_generation_mwh]), 1000000)",
+      "description": "Reported generation energy summed over time and converted to TWh.",
+      "display_folder": "Generation",
+      "format_string": "0.000 \"TWh\"",
+      "name": "Reported Generation TWh",
+      "unit": "TWh"
+    },
+    {
+      "dax": "DIVIDE(SUM('Fact Hourly Energy'[renewable_generation_mwh]), 1000000)",
+      "description": "Reported renewable generation summed over time and converted to TWh.",
+      "display_folder": "Generation",
+      "format_string": "0.000 \"TWh\"",
+      "name": "Renewable Generation TWh",
+      "unit": "TWh"
+    },
+    {
+      "dax": "DIVIDE(CALCULATE(SUM('Fact Hourly Generation'[generation_mwh]), 'Fact Hourly Generation'[value_status] = \"reported\"), 1000000)",
+      "description": "Reported generation for the selected technology, converted to TWh.",
+      "display_folder": "Generation",
+      "format_string": "0.000 \"TWh\"",
+      "name": "Technology Generation TWh",
+      "unit": "TWh"
+    },
+    {
+      "dax": "DIVIDE(SUM('Fact Hourly Energy'[conventional_generation_mwh]), 1000000)",
+      "description": "Reported conventional generation summed over time and converted to TWh.",
+      "display_folder": "Generation",
+      "format_string": "0.000 \"TWh\"",
+      "name": "Conventional Generation TWh",
+      "unit": "TWh"
+    },
+    {
+      "dax": "DIVIDE(SUM('Fact Hourly Energy'[storage_generation_mwh]), 1000000)",
+      "description": "Reported pumped-storage generation summed over time and converted to TWh.",
+      "display_folder": "Generation",
+      "format_string": "0.000 \"TWh\"",
+      "name": "Storage Generation TWh",
+      "unit": "TWh"
+    },
+    {
+      "dax": "DIVIDE([Renewable Generation TWh], [Reported Generation TWh])",
+      "description": "Renewable reported generation divided by all reported generation.",
+      "display_folder": "Generation",
+      "format_string": "0.00%",
+      "name": "Renewable Share %",
+      "unit": "percent"
+    },
+    {
+      "dax": "AVERAGE('Fact Hourly Energy'[day_ahead_price_eur_per_mwh])",
+      "description": "Arithmetic mean of hourly DE/LU day-ahead prices.",
+      "display_folder": "Price",
+      "format_string": "#,0.00 \"EUR/MWh\"",
+      "name": "Average Day-Ahead Price",
+      "unit": "EUR/MWh"
+    },
+    {
+      "dax": "DIVIDE(SUM('Fact Daily Energy'[renewable_generation_mwh]), SUM('Fact Daily Energy'[reported_generation_mwh]))",
+      "description": "Energy-weighted renewable share at the selected daily context.",
+      "display_folder": "Price",
+      "format_string": "0.00%",
+      "name": "Daily Renewable Share %",
+      "unit": "percent"
+    },
+    {
+      "dax": "DIVIDE(SUMX('Fact Daily Energy', 'Fact Daily Energy'[average_day_ahead_price_eur_per_mwh] * 'Fact Daily Energy'[observed_hour_count]), SUM('Fact Daily Energy'[observed_hour_count]))",
+      "description": "Observed-hour-weighted day-ahead price from daily reporting rows.",
+      "display_folder": "Price",
+      "format_string": "#,0.00 \"EUR/MWh\"",
+      "name": "Daily Average Day-Ahead Price",
+      "unit": "EUR/MWh"
+    },
+    {
+      "dax": "CALCULATE(COUNTROWS('Fact Hourly Energy'), 'Fact Hourly Energy'[day_ahead_price_eur_per_mwh] < 0)",
+      "description": "Count of hourly DE/LU day-ahead prices below zero.",
+      "display_folder": "Price",
+      "format_string": "#,0",
+      "name": "Negative Price Hours",
+      "unit": "count"
+    },
+    {
+      "dax": "DIVIDE([Negative Price Hours], [Observed Hours])",
+      "description": "Negative-price hours divided by observed canonical hours.",
+      "display_folder": "Price",
+      "format_string": "0.00%",
+      "name": "Negative Price Share %",
+      "unit": "percent"
+    },
+    {
+      "dax": "SUM('Fact Hourly Energy'[unavailable_technology_count])",
+      "description": "Unavailable hour/technology observations; never interpreted as zero.",
+      "display_folder": "Data Quality",
+      "format_string": "#,0",
+      "name": "Unavailable Generation Values",
+      "unit": "count"
+    },
+    {
+      "dax": "AVERAGE('Fact Forecast Hourly'[model_absolute_error_mw])",
+      "description": "Mean absolute error of the frozen selected model.",
+      "display_folder": "Forecast",
+      "format_string": "#,0.000 \"MW\"",
+      "name": "Model MAE MW",
+      "unit": "MW"
+    },
+    {
+      "dax": "AVERAGE('Fact Forecast Hourly'[actual_grid_load_mw])",
+      "description": "Actual hourly grid load for the frozen 2025 final-test rows.",
+      "display_folder": "Forecast",
+      "format_string": "#,0.000 \"MW\"",
+      "name": "Actual Load MW",
+      "unit": "MW"
+    },
+    {
+      "dax": "AVERAGE('Fact Forecast Hourly'[model_prediction_mw])",
+      "description": "Selected-model prediction for the frozen 2025 final-test rows.",
+      "display_folder": "Forecast",
+      "format_string": "#,0.000 \"MW\"",
+      "name": "Model Prediction MW",
+      "unit": "MW"
+    },
+    {
+      "dax": "SQRT(AVERAGEX('Fact Forecast Hourly', POWER('Fact Forecast Hourly'[model_error_mw], 2)))",
+      "description": "Root mean squared error of the frozen selected model.",
+      "display_folder": "Forecast",
+      "format_string": "#,0.000 \"MW\"",
+      "name": "Model RMSE MW",
+      "unit": "MW"
+    },
+    {
+      "dax": "AVERAGEX('Fact Forecast Hourly', DIVIDE(ABS('Fact Forecast Hourly'[model_error_mw]), 'Fact Forecast Hourly'[actual_grid_load_mw]))",
+      "description": "Mean absolute percentage error of the frozen selected model.",
+      "display_folder": "Forecast",
+      "format_string": "0.000%",
+      "name": "Model MAPE %",
+      "unit": "percent"
+    },
+    {
+      "dax": "AVERAGEX('Fact Forecast Hourly', ABS('Fact Forecast Hourly'[daily_naive_prediction_mw] - 'Fact Forecast Hourly'[actual_grid_load_mw]))",
+      "description": "Mean absolute error of the daily seasonal-naive baseline.",
+      "display_folder": "Forecast",
+      "format_string": "#,0.000 \"MW\"",
+      "name": "Daily Baseline MAE MW",
+      "unit": "MW"
+    },
+    {
+      "dax": "AVERAGEX('Fact Forecast Hourly', ABS('Fact Forecast Hourly'[weekly_naive_prediction_mw] - 'Fact Forecast Hourly'[actual_grid_load_mw]))",
+      "description": "Mean absolute error of the weekly seasonal-naive baseline.",
+      "display_folder": "Forecast",
+      "format_string": "#,0.000 \"MW\"",
+      "name": "Weekly Baseline MAE MW",
+      "unit": "MW"
+    },
+    {
+      "dax": "DIVIDE([Weekly Baseline MAE MW] - [Model MAE MW], [Weekly Baseline MAE MW])",
+      "description": "Relative MAE improvement of the selected model over the weekly baseline.",
+      "display_folder": "Forecast",
+      "format_string": "0.000%",
+      "name": "Model Improvement vs Weekly %",
+      "unit": "percent"
+    },
+    {
+      "dax": "SWITCH(SELECTEDVALUE('Dim Forecast Series'[forecast_name], \"hist_gradient_boosting_31_leaves\"), \"daily_seasonal_naive\", [Daily Baseline MAE MW], \"weekly_seasonal_naive\", [Weekly Baseline MAE MW], [Model MAE MW])",
+      "description": "MAE selected by the forecast-series slicer.",
+      "display_folder": "Forecast",
+      "format_string": "#,0.000 \"MW\"",
+      "name": "Selected Forecast MAE MW",
+      "unit": "MW"
+    },
+    {
+      "dax": "CALCULATE(MAX('Fact Forecast Summary'[mae_mw]), 'Fact Forecast Summary'[evaluation_scope] = \"overall\")",
+      "description": "Overall MAE for the forecast series selected in summary context.",
+      "display_folder": "Forecast",
+      "format_string": "#,0.000 \"MW\"",
+      "name": "Overall Forecast MAE MW",
+      "unit": "MW"
+    },
+    {
+      "dax": "COUNTROWS('Data Quality Checks')",
+      "description": "Number of stable clean-data validation checks.",
+      "display_folder": "Data Quality",
+      "format_string": "#,0",
+      "name": "Data Quality Checks",
+      "unit": "count"
+    },
+    {
+      "dax": "CALCULATE(COUNTROWS('Data Quality Checks'), 'Data Quality Checks'[status] = \"passed\")",
+      "description": "Number of clean-data checks with passing status.",
+      "display_folder": "Data Quality",
+      "format_string": "#,0",
+      "name": "Passed Data Quality Checks",
+      "unit": "count"
+    },
+    {
+      "dax": "DIVIDE([Passed Data Quality Checks], [Data Quality Checks])",
+      "description": "Passing checks divided by all declared checks.",
+      "display_folder": "Data Quality",
+      "format_string": "0.00%",
+      "name": "Data Quality Pass Rate %",
+      "unit": "percent"
+    },
+    {
+      "dax": "COUNTROWS('Source Lineage')",
+      "description": "Number of immutable registered SMARD source exports.",
+      "display_folder": "Data Quality",
+      "format_string": "#,0",
+      "name": "Registered Source Snapshots",
+      "unit": "count"
+    }
+  ],
+  "model_rules": [
+    "No fact-to-fact relationships",
+    "No bidirectional relationships",
+    "Every relationship is active one-to-many from dimension to fact",
+    "UTC stays the unique fact timestamp; Europe/Berlin is for reporting",
+    "MW, MWh, TWh, EUR/MWh, count, and percent remain distinct",
+    "Base numeric columns use Do not summarize and report visuals use measures",
+    "Foreign keys and technical lineage columns are hidden from report view",
+    "The final 2025 forecast is evidence only and cannot drive model selection"
+  ],
+  "pages": [
+    {
+      "business_question": "What changed across 2022-2025, and what should a decision-maker notice?",
+      "default_filter": "All approved years; Europe/Berlin calendar",
+      "page_name": "Executive Overview",
+      "page_order": 1,
+      "visuals": [
+        {
+          "fields": [
+            "Total Grid Load TWh",
+            "Renewable Share %",
+            "Average Day-Ahead Price",
+            "Model MAE MW"
+          ],
+          "purpose": "Four headline outcomes with explicit units.",
+          "title": "Portfolio KPIs",
+          "visual_id": "headline_cards",
+          "visual_type": "card_group"
+        },
+        {
+          "fields": [
+            "Dim Date[calendar_year]",
+            "Total Grid Load TWh",
+            "Renewable Share %"
+          ],
+          "purpose": "Show annual system scale and generation-mix change together.",
+          "title": "Annual Load and Renewable Share",
+          "visual_id": "annual_energy_trend",
+          "visual_type": "line_and_clustered_column"
+        },
+        {
+          "fields": [
+            "Dim Date[calendar_year]",
+            "Average Day-Ahead Price"
+          ],
+          "purpose": "Make the 2022 price regime visibly distinct.",
+          "title": "Average Day-Ahead Price by Year",
+          "visual_id": "annual_price_trend",
+          "visual_type": "line_chart"
+        },
+        {
+          "fields": [
+            "Bundesnetzagentur | SMARD.de"
+          ],
+          "purpose": "State source, years, geography, and interpretation limits.",
+          "title": "Scope and Attribution",
+          "visual_id": "scope_note",
+          "visual_type": "text_box"
+        }
+      ]
+    },
+    {
+      "business_question": "How do load, renewable output, and technology mix vary over time?",
+      "default_filter": "All approved years; year and technology slicers visible",
+      "page_name": "Load & Renewables",
+      "page_order": 2,
+      "visuals": [
+        {
+          "fields": [
+            "Dim Date[calendar_date]",
+            "Average Grid Load GW",
+            "Renewable Generation TWh"
+          ],
+          "purpose": "Compare demand level with renewable energy over time.",
+          "title": "Grid Load and Renewable Generation",
+          "visual_id": "load_renewable_trend",
+          "visual_type": "line_chart"
+        },
+        {
+          "fields": [
+            "Dim Date[calendar_date]",
+            "Dim Technology[technology_name]",
+            "Technology Generation TWh"
+          ],
+          "purpose": "Expose technology composition without treating missing values as zero.",
+          "title": "Generation by Technology",
+          "visual_id": "generation_mix",
+          "visual_type": "stacked_area_chart"
+        },
+        {
+          "fields": [
+            "Dim Hour[hour_label]",
+            "Average Grid Load GW",
+            "Dim Date[is_weekend]"
+          ],
+          "purpose": "Compare weekday and weekend load profiles.",
+          "title": "Hourly Load Shape",
+          "visual_id": "load_shape",
+          "visual_type": "line_chart"
+        }
+      ]
+    },
+    {
+      "business_question": "When are prices negative or extreme, and how do they relate to renewables?",
+      "default_filter": "All approved years; year and month slicers visible",
+      "page_name": "Price Analysis",
+      "page_order": 3,
+      "visuals": [
+        {
+          "fields": [
+            "Fact Hourly Energy[interval_start_utc]",
+            "Average Day-Ahead Price"
+          ],
+          "purpose": "Retain negative prices and make the zero line visible.",
+          "title": "DE/LU Day-Ahead Price",
+          "visual_id": "price_trend",
+          "visual_type": "line_chart"
+        },
+        {
+          "fields": [
+            "Negative Price Hours",
+            "Negative Price Share %"
+          ],
+          "purpose": "Quantify negative prices without confusing count and share.",
+          "title": "Negative-Price Exposure",
+          "visual_id": "negative_price_cards",
+          "visual_type": "card_group"
+        },
+        {
+          "fields": [
+            "Daily Renewable Share %",
+            "Daily Average Day-Ahead Price",
+            "Dim Date[calendar_date]"
+          ],
+          "purpose": "Show association while explicitly avoiding causal claims.",
+          "title": "Renewable Share vs Day-Ahead Price",
+          "visual_id": "renewable_price_scatter",
+          "visual_type": "scatter_chart"
+        }
+      ]
+    },
+    {
+      "business_question": "Does the frozen model beat honest seasonal baselines, overall and by horizon?",
+      "default_filter": "Final 2025 test only; selected model fixed",
+      "page_name": "Forecast Performance",
+      "page_order": 4,
+      "visuals": [
+        {
+          "fields": [
+            "Model MAE MW",
+            "Model RMSE MW",
+            "Model MAPE %",
+            "Model Improvement vs Weekly %"
+          ],
+          "purpose": "Report frozen final-test metrics without further model selection.",
+          "title": "Final Test Metrics",
+          "visual_id": "forecast_cards",
+          "visual_type": "card_group"
+        },
+        {
+          "fields": [
+            "Fact Forecast Hourly[target_start_utc]",
+            "Actual Load MW",
+            "Model Prediction MW"
+          ],
+          "purpose": "Show forecast tracking over a user-selected date range.",
+          "title": "Actual vs Model Load",
+          "visual_id": "actual_vs_prediction",
+          "visual_type": "line_chart"
+        },
+        {
+          "fields": [
+            "Dim Horizon[horizon_step]",
+            "Selected Forecast MAE MW"
+          ],
+          "purpose": "Compare degradation across the 24 forecast horizons.",
+          "title": "MAE by Horizon",
+          "visual_id": "error_by_horizon",
+          "visual_type": "line_chart"
+        },
+        {
+          "fields": [
+            "Dim Forecast Series[forecast_name]",
+            "Overall Forecast MAE MW"
+          ],
+          "purpose": "Keep the learned model and both seasonal baselines visible.",
+          "title": "Model and Baseline MAE",
+          "visual_id": "model_baseline_comparison",
+          "visual_type": "clustered_bar_chart"
+        }
+      ]
+    },
+    {
+      "business_question": "Can a reviewer trace the data and verify the analytical gates?",
+      "default_filter": "All checks and all six immutable source snapshots",
+      "page_name": "Data Quality",
+      "page_order": 5,
+      "visuals": [
+        {
+          "fields": [
+            "Passed Data Quality Checks",
+            "Data Quality Pass Rate %",
+            "Unavailable Generation Values",
+            "Registered Source Snapshots"
+          ],
+          "purpose": "Show passing controls and preserved source unavailability.",
+          "title": "Quality Gate",
+          "visual_id": "quality_cards",
+          "visual_type": "card_group"
+        },
+        {
+          "fields": [
+            "Data Quality Checks[dataset]",
+            "Data Quality Checks[check_id]",
+            "Data Quality Checks[status]",
+            "Data Quality Checks[expected]",
+            "Data Quality Checks[observed]"
+          ],
+          "purpose": "Expose all 29 stable checks rather than only a green badge.",
+          "title": "Validation Checks",
+          "visual_id": "quality_matrix",
+          "visual_type": "matrix"
+        },
+        {
+          "fields": [
+            "Source Lineage[export_id]",
+            "Source Lineage[source_category]",
+            "Source Lineage[period_start]",
+            "Source Lineage[period_end]",
+            "Source Lineage[sha256]"
+          ],
+          "purpose": "Make all six immutable SMARD registrations reviewable.",
+          "title": "Source Lineage",
+          "visual_id": "lineage_table",
+          "visual_type": "table"
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "active": true,
+      "cardinality": "one_to_many",
+      "cross_filter_direction": "single",
+      "from_column": "date_key",
+      "from_table": "Dim Date",
+      "to_column": "date_key",
+      "to_table": "Fact Hourly Energy"
+    },
+    {
+      "active": true,
+      "cardinality": "one_to_many",
+      "cross_filter_direction": "single",
+      "from_column": "date_key",
+      "from_table": "Dim Date",
+      "to_column": "date_key",
+      "to_table": "Fact Hourly Generation"
+    },
+    {
+      "active": true,
+      "cardinality": "one_to_many",
+      "cross_filter_direction": "single",
+      "from_column": "date_key",
+      "from_table": "Dim Date",
+      "to_column": "date_key",
+      "to_table": "Fact Daily Energy"
+    },
+    {
+      "active": true,
+      "cardinality": "one_to_many",
+      "cross_filter_direction": "single",
+      "from_column": "date_key",
+      "from_table": "Dim Date",
+      "to_column": "target_date_key",
+      "to_table": "Fact Forecast Hourly"
+    },
+    {
+      "active": true,
+      "cardinality": "one_to_many",
+      "cross_filter_direction": "single",
+      "from_column": "month_key",
+      "from_table": "Dim Month",
+      "to_column": "month_key",
+      "to_table": "Fact Monthly Energy"
+    },
+    {
+      "active": true,
+      "cardinality": "one_to_many",
+      "cross_filter_direction": "single",
+      "from_column": "hour_key",
+      "from_table": "Dim Hour",
+      "to_column": "hour_key",
+      "to_table": "Fact Hourly Energy"
+    },
+    {
+      "active": true,
+      "cardinality": "one_to_many",
+      "cross_filter_direction": "single",
+      "from_column": "hour_key",
+      "from_table": "Dim Hour",
+      "to_column": "hour_key",
+      "to_table": "Fact Hourly Generation"
+    },
+    {
+      "active": true,
+      "cardinality": "one_to_many",
+      "cross_filter_direction": "single",
+      "from_column": "hour_key",
+      "from_table": "Dim Hour",
+      "to_column": "target_hour_key",
+      "to_table": "Fact Forecast Hourly"
+    },
+    {
+      "active": true,
+      "cardinality": "one_to_many",
+      "cross_filter_direction": "single",
+      "from_column": "technology_key",
+      "from_table": "Dim Technology",
+      "to_column": "technology_key",
+      "to_table": "Fact Hourly Generation"
+    },
+    {
+      "active": true,
+      "cardinality": "one_to_many",
+      "cross_filter_direction": "single",
+      "from_column": "horizon_step",
+      "from_table": "Dim Horizon",
+      "to_column": "horizon_step",
+      "to_table": "Fact Forecast Hourly"
+    },
+    {
+      "active": true,
+      "cardinality": "one_to_many",
+      "cross_filter_direction": "single",
+      "from_column": "horizon_step",
+      "from_table": "Dim Horizon",
+      "to_column": "horizon_step",
+      "to_table": "Fact Forecast Summary"
+    },
+    {
+      "active": true,
+      "cardinality": "one_to_many",
+      "cross_filter_direction": "single",
+      "from_column": "forecast_name",
+      "from_table": "Dim Forecast Series",
+      "to_column": "forecast_name",
+      "to_table": "Fact Forecast Summary"
+    }
+  ],
+  "schema_version": 1,
+  "source": {
+    "final_evaluation_snapshot": {
+      "path": "reports/final_evaluation_snapshot.json",
+      "sha256": "d65eea94653b1367ec169de60d4ff91fe2a956fa317040746c5a0a3c56fd3065"
+    },
+    "kpi_snapshot": {
+      "path": "reports/kpi_snapshot.json",
+      "sha256": "fa03ee1af919027634aeb45a524c713274bd9effcac9955052d3be449c8395fc"
+    },
+    "reporting_mart_contract": {
+      "path": "reports/reporting_mart_contract.json",
+      "sha256": "54a55962b79d14508eb50882578f2277b9201a678a055006c06f383632c71110"
+    },
+    "sample_extract_manifest": {
+      "path": "reports/sample_extract_manifest.json",
+      "sha256": "b0a377003820b1321b6b55fb290f08ae07eff2f8e06e4688c9788b42ec42f150"
+    }
+  },
+  "status": "design_frozen_for_desktop_build",
+  "tables": [
+    {
+      "grain": "one Europe/Berlin calendar date",
+      "hide_key_columns": true,
+      "key_columns": [
+        "date_key"
+      ],
+      "name": "Dim Date",
+      "role": "dimension",
+      "source_kind": "power_query_reference",
+      "source_product": "daily_energy",
+      "storage_mode": "Import"
+    },
+    {
+      "grain": "one Europe/Berlin calendar month",
+      "hide_key_columns": true,
+      "key_columns": [
+        "month_key"
+      ],
+      "name": "Dim Month",
+      "role": "dimension",
+      "source_kind": "power_query_reference",
+      "source_product": "monthly_energy",
+      "storage_mode": "Import"
+    },
+    {
+      "grain": "one reporting hour label",
+      "hide_key_columns": true,
+      "key_columns": [
+        "hour_key"
+      ],
+      "name": "Dim Hour",
+      "role": "dimension",
+      "source_kind": "power_query_reference",
+      "source_product": "hourly_energy",
+      "storage_mode": "Import"
+    },
+    {
+      "grain": "one generation technology",
+      "hide_key_columns": true,
+      "key_columns": [
+        "technology_key"
+      ],
+      "name": "Dim Technology",
+      "role": "dimension",
+      "source_kind": "power_query_reference",
+      "source_product": "hourly_generation_by_technology",
+      "storage_mode": "Import"
+    },
+    {
+      "grain": "one overall or forecast horizon step",
+      "hide_key_columns": true,
+      "key_columns": [
+        "horizon_step"
+      ],
+      "name": "Dim Horizon",
+      "role": "dimension",
+      "source_kind": "generated",
+      "source_product": "generated_0_to_24",
+      "storage_mode": "Import"
+    },
+    {
+      "grain": "one forecast series",
+      "hide_key_columns": true,
+      "key_columns": [
+        "forecast_name"
+      ],
+      "name": "Dim Forecast Series",
+      "role": "dimension",
+      "source_kind": "power_query_reference",
+      "source_product": "forecast_performance_summary",
+      "storage_mode": "Import"
+    },
+    {
+      "grain": "one canonical UTC hour",
+      "hide_key_columns": true,
+      "key_columns": [
+        "interval_start_utc"
+      ],
+      "name": "Fact Hourly Energy",
+      "role": "fact",
+      "source_kind": "postgresql_view",
+      "source_product": "hourly_energy",
+      "storage_mode": "Import"
+    },
+    {
+      "grain": "one canonical UTC hour and generation technology",
+      "hide_key_columns": true,
+      "key_columns": [
+        "interval_start_utc",
+        "technology_key"
+      ],
+      "name": "Fact Hourly Generation",
+      "role": "fact",
+      "source_kind": "postgresql_view",
+      "source_product": "hourly_generation_by_technology",
+      "storage_mode": "Import"
+    },
+    {
+      "grain": "one Europe/Berlin calendar date",
+      "hide_key_columns": true,
+      "key_columns": [
+        "date_key"
+      ],
+      "name": "Fact Daily Energy",
+      "role": "fact",
+      "source_kind": "postgresql_view",
+      "source_product": "daily_energy",
+      "storage_mode": "Import"
+    },
+    {
+      "grain": "one Europe/Berlin calendar month",
+      "hide_key_columns": true,
+      "key_columns": [
+        "month_key"
+      ],
+      "name": "Fact Monthly Energy",
+      "role": "fact",
+      "source_kind": "postgresql_view",
+      "source_product": "monthly_energy",
+      "storage_mode": "Import"
+    },
+    {
+      "grain": "one 2025 forecast origin and horizon step",
+      "hide_key_columns": true,
+      "key_columns": [
+        "forecast_origin_utc",
+        "horizon_step"
+      ],
+      "name": "Fact Forecast Hourly",
+      "role": "fact",
+      "source_kind": "postgresql_view",
+      "source_product": "forecast_performance_hourly",
+      "storage_mode": "Import"
+    },
+    {
+      "grain": "one forecast series and evaluation scope",
+      "hide_key_columns": true,
+      "key_columns": [
+        "forecast_name",
+        "evaluation_scope",
+        "horizon_step"
+      ],
+      "name": "Fact Forecast Summary",
+      "role": "fact",
+      "source_kind": "postgresql_view",
+      "source_product": "forecast_performance_summary",
+      "storage_mode": "Import"
+    },
+    {
+      "grain": "one stable validation check",
+      "hide_key_columns": true,
+      "key_columns": [
+        "dataset",
+        "check_id"
+      ],
+      "name": "Data Quality Checks",
+      "role": "evidence",
+      "source_kind": "checked_csv",
+      "source_product": "data_quality_checks",
+      "storage_mode": "Import"
+    },
+    {
+      "grain": "one immutable registered SMARD export",
+      "hide_key_columns": true,
+      "key_columns": [
+        "export_id"
+      ],
+      "name": "Source Lineage",
+      "role": "evidence",
+      "source_kind": "checked_csv",
+      "source_product": "source_lineage",
+      "storage_mode": "Import"
+    },
+    {
+      "grain": "one hidden placeholder row",
+      "hide_key_columns": true,
+      "key_columns": [
+        "placeholder"
+      ],
+      "name": "_Measures",
+      "role": "measure_table",
+      "source_kind": "calculated",
+      "source_product": "none",
+      "storage_mode": "Import"
+    }
+  ]
+}

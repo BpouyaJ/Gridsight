@@ -150,6 +150,13 @@ Deliverables:
 
 Skills: Power BI, DAX, relationships, dashboard design, business reporting.
 
+Status: in progress. Step 8.1 completed the source-controlled design: 15 Import
+tables, 12 active one-to-many single-direction relationships, one declared
+date table, 30 explicit DAX measures, five page wireframes, and exact
+reconciliation targets. It passed 87 fast tests, five focused rerun tests, lint,
+and whitespace checks. Step 8.2 will use Power BI Desktop to generate the
+PBIP/PBIR/TMDL project and implement that frozen model.
+
 ### Phase 9 - Excel and Power Query
 
 Deliverables:

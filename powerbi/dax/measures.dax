@@ -1,0 +1,165 @@
+// GridSight Power BI measure catalogue
+// Target table: _Measures
+// Generated from the tested Step 8.1 semantic-model contract.
+
+// [Energy]
+
+// Unique canonical UTC hourly intervals in the current filter context.
+// Unit: count; Format: #,0
+Observed Hours =
+DISTINCTCOUNT('Fact Hourly Energy'[interval_start_utc])
+
+// Grid-load energy summed over time and converted from MWh to TWh.
+// Unit: TWh; Format: 0.000 "TWh"
+Total Grid Load TWh =
+DIVIDE(SUM('Fact Hourly Energy'[grid_load_mwh]), 1000000)
+
+// Arithmetic mean of hourly average grid load, converted from MW to GW.
+// Unit: GW; Format: 0.000 "GW"
+Average Grid Load GW =
+DIVIDE(AVERAGE('Fact Hourly Energy'[grid_load_mw]), 1000)
+
+// Maximum observed hourly average grid load, converted from MW to GW.
+// Unit: GW; Format: 0.000 "GW"
+Peak Grid Load GW =
+DIVIDE(MAX('Fact Hourly Energy'[grid_load_mw]), 1000)
+
+// [Generation]
+
+// Reported generation energy summed over time and converted to TWh.
+// Unit: TWh; Format: 0.000 "TWh"
+Reported Generation TWh =
+DIVIDE(SUM('Fact Hourly Energy'[reported_generation_mwh]), 1000000)
+
+// Reported renewable generation summed over time and converted to TWh.
+// Unit: TWh; Format: 0.000 "TWh"
+Renewable Generation TWh =
+DIVIDE(SUM('Fact Hourly Energy'[renewable_generation_mwh]), 1000000)
+
+// Reported generation for the selected technology, converted to TWh.
+// Unit: TWh; Format: 0.000 "TWh"
+Technology Generation TWh =
+DIVIDE(CALCULATE(SUM('Fact Hourly Generation'[generation_mwh]), 'Fact Hourly Generation'[value_status] = "reported"), 1000000)
+
+// Reported conventional generation summed over time and converted to TWh.
+// Unit: TWh; Format: 0.000 "TWh"
+Conventional Generation TWh =
+DIVIDE(SUM('Fact Hourly Energy'[conventional_generation_mwh]), 1000000)
+
+// Reported pumped-storage generation summed over time and converted to TWh.
+// Unit: TWh; Format: 0.000 "TWh"
+Storage Generation TWh =
+DIVIDE(SUM('Fact Hourly Energy'[storage_generation_mwh]), 1000000)
+
+// Renewable reported generation divided by all reported generation.
+// Unit: percent; Format: 0.00%
+Renewable Share % =
+DIVIDE([Renewable Generation TWh], [Reported Generation TWh])
+
+// [Price]
+
+// Arithmetic mean of hourly DE/LU day-ahead prices.
+// Unit: EUR/MWh; Format: #,0.00 "EUR/MWh"
+Average Day-Ahead Price =
+AVERAGE('Fact Hourly Energy'[day_ahead_price_eur_per_mwh])
+
+// Energy-weighted renewable share at the selected daily context.
+// Unit: percent; Format: 0.00%
+Daily Renewable Share % =
+DIVIDE(SUM('Fact Daily Energy'[renewable_generation_mwh]), SUM('Fact Daily Energy'[reported_generation_mwh]))
+
+// Observed-hour-weighted day-ahead price from daily reporting rows.
+// Unit: EUR/MWh; Format: #,0.00 "EUR/MWh"
+Daily Average Day-Ahead Price =
+DIVIDE(SUMX('Fact Daily Energy', 'Fact Daily Energy'[average_day_ahead_price_eur_per_mwh] * 'Fact Daily Energy'[observed_hour_count]), SUM('Fact Daily Energy'[observed_hour_count]))
+
+// Count of hourly DE/LU day-ahead prices below zero.
+// Unit: count; Format: #,0
+Negative Price Hours =
+CALCULATE(COUNTROWS('Fact Hourly Energy'), 'Fact Hourly Energy'[day_ahead_price_eur_per_mwh] < 0)
+
+// Negative-price hours divided by observed canonical hours.
+// Unit: percent; Format: 0.00%
+Negative Price Share % =
+DIVIDE([Negative Price Hours], [Observed Hours])
+
+// [Data Quality]
+
+// Unavailable hour/technology observations; never interpreted as zero.
+// Unit: count; Format: #,0
+Unavailable Generation Values =
+SUM('Fact Hourly Energy'[unavailable_technology_count])
+
+// [Forecast]
+
+// Mean absolute error of the frozen selected model.
+// Unit: MW; Format: #,0.000 "MW"
+Model MAE MW =
+AVERAGE('Fact Forecast Hourly'[model_absolute_error_mw])
+
+// Actual hourly grid load for the frozen 2025 final-test rows.
+// Unit: MW; Format: #,0.000 "MW"
+Actual Load MW =
+AVERAGE('Fact Forecast Hourly'[actual_grid_load_mw])
+
+// Selected-model prediction for the frozen 2025 final-test rows.
+// Unit: MW; Format: #,0.000 "MW"
+Model Prediction MW =
+AVERAGE('Fact Forecast Hourly'[model_prediction_mw])
+
+// Root mean squared error of the frozen selected model.
+// Unit: MW; Format: #,0.000 "MW"
+Model RMSE MW =
+SQRT(AVERAGEX('Fact Forecast Hourly', POWER('Fact Forecast Hourly'[model_error_mw], 2)))
+
+// Mean absolute percentage error of the frozen selected model.
+// Unit: percent; Format: 0.000%
+Model MAPE % =
+AVERAGEX('Fact Forecast Hourly', DIVIDE(ABS('Fact Forecast Hourly'[model_error_mw]), 'Fact Forecast Hourly'[actual_grid_load_mw]))
+
+// Mean absolute error of the daily seasonal-naive baseline.
+// Unit: MW; Format: #,0.000 "MW"
+Daily Baseline MAE MW =
+AVERAGEX('Fact Forecast Hourly', ABS('Fact Forecast Hourly'[daily_naive_prediction_mw] - 'Fact Forecast Hourly'[actual_grid_load_mw]))
+
+// Mean absolute error of the weekly seasonal-naive baseline.
+// Unit: MW; Format: #,0.000 "MW"
+Weekly Baseline MAE MW =
+AVERAGEX('Fact Forecast Hourly', ABS('Fact Forecast Hourly'[weekly_naive_prediction_mw] - 'Fact Forecast Hourly'[actual_grid_load_mw]))
+
+// Relative MAE improvement of the selected model over the weekly baseline.
+// Unit: percent; Format: 0.000%
+Model Improvement vs Weekly % =
+DIVIDE([Weekly Baseline MAE MW] - [Model MAE MW], [Weekly Baseline MAE MW])
+
+// MAE selected by the forecast-series slicer.
+// Unit: MW; Format: #,0.000 "MW"
+Selected Forecast MAE MW =
+SWITCH(SELECTEDVALUE('Dim Forecast Series'[forecast_name], "hist_gradient_boosting_31_leaves"), "daily_seasonal_naive", [Daily Baseline MAE MW], "weekly_seasonal_naive", [Weekly Baseline MAE MW], [Model MAE MW])
+
+// Overall MAE for the forecast series selected in summary context.
+// Unit: MW; Format: #,0.000 "MW"
+Overall Forecast MAE MW =
+CALCULATE(MAX('Fact Forecast Summary'[mae_mw]), 'Fact Forecast Summary'[evaluation_scope] = "overall")
+
+// [Data Quality]
+
+// Number of stable clean-data validation checks.
+// Unit: count; Format: #,0
+Data Quality Checks =
+COUNTROWS('Data Quality Checks')
+
+// Number of clean-data checks with passing status.
+// Unit: count; Format: #,0
+Passed Data Quality Checks =
+CALCULATE(COUNTROWS('Data Quality Checks'), 'Data Quality Checks'[status] = "passed")
+
+// Passing checks divided by all declared checks.
+// Unit: percent; Format: 0.00%
+Data Quality Pass Rate % =
+DIVIDE([Passed Data Quality Checks], [Data Quality Checks])
+
+// Number of immutable registered SMARD source exports.
+// Unit: count; Format: #,0
+Registered Source Snapshots =
+COUNTROWS('Source Lineage')
