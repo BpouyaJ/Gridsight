@@ -1,0 +1,22 @@
+createOrReplace
+
+    ref table _Measures
+        measure 'Renewable Share %' = DIVIDE([Renewable Generation TWh], [Reported Generation TWh])
+            formatString: 0.00%
+            displayFolder: Generation
+
+        measure 'Negative Price Share %' = DIVIDE([Negative Price Hours], [Observed Hours])
+            formatString: 0.00%
+            displayFolder: Price
+
+        measure 'Model Improvement vs Weekly %' = DIVIDE([Weekly Baseline MAE MW] - [Model MAE MW], [Weekly Baseline MAE MW])
+            formatString: 0.000%
+            displayFolder: Forecast
+
+        measure 'Selected Forecast MAE MW' = SWITCH(SELECTEDVALUE('Dim Forecast Series'[forecast_name], "hist_gradient_boosting_31_leaves"), "daily_seasonal_naive", [Daily Baseline MAE MW], "weekly_seasonal_naive", [Weekly Baseline MAE MW], [Model MAE MW])
+            formatString: #,0.000 "MW"
+            displayFolder: Forecast
+
+        measure 'Data Quality Pass Rate %' = DIVIDE([Passed Data Quality Checks], [Data Quality Checks])
+            formatString: 0.00%
+            displayFolder: Data Quality

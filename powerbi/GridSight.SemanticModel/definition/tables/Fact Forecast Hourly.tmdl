@@ -1,0 +1,392 @@
+table 'Fact Forecast Hourly'
+	lineageTag: 674cc84b-06a7-42b8-8f36-a51873a5f446
+
+	column origin_local_date
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: bfa5de67-6b1c-45d6-b767-eda2c6fcd209
+		summarizeBy: none
+		sourceColumn: origin_local_date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column target_start_local
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: 4ee56f9e-ab3a-4cb3-9514-8121268ac208
+		summarizeBy: none
+		sourceColumn: target_start_local
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_date_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 330d59e7-9027-4fdd-8d2d-3263041bdc95
+		summarizeBy: none
+		sourceColumn: target_date_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_calendar_date
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: 1cd9151e-ad98-4168-84c2-80795e0f71be
+		summarizeBy: none
+		sourceColumn: target_calendar_date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column target_calendar_year
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 45a2f611-5a9d-4032-973f-abddc6d87f13
+		summarizeBy: sum
+		sourceColumn: target_calendar_year
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_calendar_quarter
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 026d780a-7f64-4ecb-b50f-570476d1cd4a
+		summarizeBy: sum
+		sourceColumn: target_calendar_quarter
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_month_number
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a1585677-4bb6-445e-8000-2aec769cd952
+		summarizeBy: sum
+		sourceColumn: target_month_number
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_month_name
+		dataType: string
+		isHidden
+		lineageTag: f6a74092-a001-4034-a75a-d2483a982033
+		summarizeBy: none
+		sourceColumn: target_month_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_weekday_number
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 8125cbf3-4b69-4def-8489-1ea66d370cda
+		summarizeBy: sum
+		sourceColumn: target_weekday_number
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_weekday_name
+		dataType: string
+		isHidden
+		lineageTag: b99ac433-42be-476b-b7c4-576b7c331a00
+		summarizeBy: none
+		sourceColumn: target_weekday_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_is_weekend
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 27732d53-30a3-4542-8018-ebfb8c62cd23
+		summarizeBy: none
+		sourceColumn: target_is_weekend
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_hour_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4f7522ce-4d50-44f0-9120-7ac93eebff69
+		summarizeBy: none
+		sourceColumn: target_hour_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_hour_label
+		dataType: string
+		isHidden
+		lineageTag: 31efa617-ef47-4985-a7a3-091a39c04bca
+		summarizeBy: none
+		sourceColumn: target_hour_label
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column horizon_step
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 93752834-91b4-40c9-b2b5-85fc9b2a636f
+		summarizeBy: none
+		sourceColumn: horizon_step
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column actual_grid_load_mw
+		dataType: double
+		lineageTag: c34ad8ca-4f62-4d2f-964b-9860e8baddd6
+		summarizeBy: sum
+		sourceColumn: actual_grid_load_mw
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column model_name
+		dataType: string
+		lineageTag: d677e662-3071-418e-996e-babc25eb7faf
+		summarizeBy: none
+		sourceColumn: model_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column model_prediction_mw
+		dataType: double
+		lineageTag: 9197f370-dae8-4796-b5c9-b3f64bbf181a
+		summarizeBy: sum
+		sourceColumn: model_prediction_mw
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column model_error_mw
+		dataType: double
+		lineageTag: a03ffde3-4c0b-4e78-85fc-07c824bd6d94
+		summarizeBy: sum
+		sourceColumn: model_error_mw
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column model_absolute_error_mw
+		dataType: double
+		lineageTag: d5801670-ade6-464b-9dbd-04813746431a
+		summarizeBy: sum
+		sourceColumn: model_absolute_error_mw
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column daily_naive_prediction_mw
+		dataType: double
+		lineageTag: 6c26549f-c380-43b3-bdd4-c8a7c2e63951
+		summarizeBy: sum
+		sourceColumn: daily_naive_prediction_mw
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column weekly_naive_prediction_mw
+		dataType: double
+		lineageTag: a086f622-ed63-4967-8eb9-e8396907b004
+		summarizeBy: sum
+		sourceColumn: weekly_naive_prediction_mw
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column forecast_origin_utc
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 21e449a3-f1e5-4f66-9199-8064d55c7184
+		summarizeBy: none
+		sourceColumn: forecast_origin_utc
+
+		annotation SummarizationSetBy = Automatic
+
+	column information_cutoff_utc
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 630cd1f7-bbc9-4878-99c1-200ac2ded755
+		summarizeBy: none
+		sourceColumn: information_cutoff_utc
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_start_utc
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 003f49e1-5eaf-44bd-9a0c-2111ce3f8fba
+		summarizeBy: none
+		sourceColumn: target_start_utc
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact Forecast Hourly' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost:5432", "gridsight"),
+				    reporting_forecast_hourly =
+				        Source{
+				            [
+				                Schema="reporting",
+				                Item="forecast_performance_hourly"
+				            ]
+				        }[Data],
+
+				    OriginOffsetRows =
+				        Table.SelectRows(
+				            #"Fact Hourly Energy",
+				            each [hour_key] = 0
+				        ),
+
+				    OriginOffsetColumns =
+				        Table.SelectColumns(
+				            OriginOffsetRows,
+				            {
+				                "calendar_date",
+				                "utc_offset_minutes"
+				            }
+				        ),
+
+				    OriginOffsets =
+				        Table.Distinct(
+				            OriginOffsetColumns,
+				            {"calendar_date"}
+				        ),
+
+				    #"Merged Origin Offset" =
+				        Table.NestedJoin(
+				            reporting_forecast_hourly,
+				            {"origin_local_date"},
+				            OriginOffsets,
+				            {"calendar_date"},
+				            "__origin_offset",
+				            JoinKind.LeftOuter
+				        ),
+
+				    #"Expanded Origin Offset" =
+				        Table.ExpandTableColumn(
+				            #"Merged Origin Offset",
+				            "__origin_offset",
+				            {"utc_offset_minutes"},
+				            {"__origin_offset_minutes"}
+				        ),
+
+				    #"Added Correct Forecast Origin UTC" =
+				        Table.AddColumn(
+				            #"Expanded Origin Offset",
+				            "__forecast_origin_utc",
+				            each
+				                DateTime.From([forecast_origin_utc])
+				                - #duration(
+				                    0,
+				                    0,
+				                    Number.From([__origin_offset_minutes]),
+				                    0
+				                ),
+				            type datetime
+				        ),
+
+				    #"Added Correct Information Cutoff UTC" =
+				        Table.AddColumn(
+				            #"Added Correct Forecast Origin UTC",
+				            "__information_cutoff_utc",
+				            each [__forecast_origin_utc],
+				            type datetime
+				        ),
+
+				    #"Added Correct Target Start UTC" =
+				        Table.AddColumn(
+				            #"Added Correct Information Cutoff UTC",
+				            "__target_start_utc",
+				            each
+				                [__forecast_origin_utc]
+				                + #duration(
+				                    0,
+				                    Number.From([horizon_step]) - 1,
+				                    0,
+				                    0
+				                ),
+				            type datetime
+				        ),
+
+				    #"Removed Connector Timestamps" =
+				        Table.RemoveColumns(
+				            #"Added Correct Target Start UTC",
+				            {
+				                "forecast_origin_utc",
+				                "information_cutoff_utc",
+				                "target_start_utc",
+				                "__origin_offset_minutes"
+				            }
+				        ),
+
+				    #"Renamed UTC Timestamps" =
+				        Table.RenameColumns(
+				            #"Removed Connector Timestamps",
+				            {
+				                {
+				                    "__forecast_origin_utc",
+				                    "forecast_origin_utc"
+				                },
+				                {
+				                    "__information_cutoff_utc",
+				                    "information_cutoff_utc"
+				                },
+				                {
+				                    "__target_start_utc",
+				                    "target_start_utc"
+				                }
+				            }
+				        )
+				in
+				    #"Renamed UTC Timestamps"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table

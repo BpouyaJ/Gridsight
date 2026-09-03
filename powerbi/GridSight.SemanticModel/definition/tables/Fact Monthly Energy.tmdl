@@ -1,0 +1,222 @@
+table 'Fact Monthly Energy'
+	lineageTag: ec6e499e-1ed3-4e35-a71c-61b7727438a9
+
+	column month_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 036ebe19-04e2-4a8c-b376-8c20a25864de
+		summarizeBy: none
+		sourceColumn: month_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_start
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: 5c5ed9ad-df96-472a-8e40-f17e7a082d2c
+		summarizeBy: none
+		sourceColumn: month_start
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column calendar_year
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 32871f29-b41f-470a-85b1-a2eb4a7ae582
+		summarizeBy: sum
+		sourceColumn: calendar_year
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_number
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c94720dd-62fc-4237-92ef-427c5de845fc
+		summarizeBy: sum
+		sourceColumn: month_number
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_name
+		dataType: string
+		isHidden
+		lineageTag: 02358c19-9a74-455f-8884-cc4c1994a0d6
+		summarizeBy: none
+		sourceColumn: month_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column observed_day_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 68cdb422-2057-4e19-84cb-6c65b3c0d945
+		summarizeBy: sum
+		sourceColumn: observed_day_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column observed_hour_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 9c8c3d6e-7c93-497c-9ac2-9593ee3ac513
+		summarizeBy: sum
+		sourceColumn: observed_hour_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column grid_load_mwh
+		dataType: double
+		lineageTag: fe1ff0e4-0183-4e71-a2a8-5acb7b2431b9
+		summarizeBy: sum
+		sourceColumn: grid_load_mwh
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column average_grid_load_mw
+		dataType: double
+		lineageTag: 369112ee-768f-4fda-858c-199ae16541c7
+		summarizeBy: sum
+		sourceColumn: average_grid_load_mw
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column peak_grid_load_mw
+		dataType: double
+		lineageTag: 0fce50a3-b191-43b3-98c4-680f110cb85b
+		summarizeBy: sum
+		sourceColumn: peak_grid_load_mw
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column reported_generation_mwh
+		dataType: double
+		lineageTag: 37f80c6f-d426-4ec3-848f-6af488b6e15f
+		summarizeBy: sum
+		sourceColumn: reported_generation_mwh
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column renewable_generation_mwh
+		dataType: double
+		lineageTag: db1a6e61-e7a6-4878-bbe9-e1e69a79e61e
+		summarizeBy: sum
+		sourceColumn: renewable_generation_mwh
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column conventional_generation_mwh
+		dataType: double
+		lineageTag: bf13d762-9108-4be0-9d27-5936e5b3e4d2
+		summarizeBy: sum
+		sourceColumn: conventional_generation_mwh
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column storage_generation_mwh
+		dataType: double
+		lineageTag: b3773510-d5c4-4dc7-afd6-a55004a00444
+		summarizeBy: sum
+		sourceColumn: storage_generation_mwh
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column renewable_share_of_reported_generation_percent
+		dataType: double
+		lineageTag: 35128a65-b954-45ea-9dc4-433f98943878
+		summarizeBy: sum
+		sourceColumn: renewable_share_of_reported_generation_percent
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column average_day_ahead_price_eur_per_mwh
+		dataType: double
+		lineageTag: 1dbc1211-d511-4f1a-b5b1-9c9d79b643ea
+		summarizeBy: sum
+		sourceColumn: average_day_ahead_price_eur_per_mwh
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column minimum_day_ahead_price_eur_per_mwh
+		dataType: double
+		lineageTag: 2fc8e796-77a2-4711-99d8-949b9f03bd05
+		summarizeBy: sum
+		sourceColumn: minimum_day_ahead_price_eur_per_mwh
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column maximum_day_ahead_price_eur_per_mwh
+		dataType: double
+		lineageTag: fa6a520d-27eb-4802-8653-935702f1f661
+		summarizeBy: sum
+		sourceColumn: maximum_day_ahead_price_eur_per_mwh
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column negative_price_hour_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 83ae165d-5973-430e-b294-253c241d79a8
+		summarizeBy: sum
+		sourceColumn: negative_price_hour_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column unavailable_generation_value_count
+		dataType: int64
+		formatString: 0
+		lineageTag: a8667e0d-84c8-4da5-9d62-4095d1cd5cec
+		summarizeBy: sum
+		sourceColumn: unavailable_generation_value_count
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact Monthly Energy' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost:5432", "gridsight"),
+				    reporting_monthly_energy = Source{[Schema="reporting",Item="monthly_energy"]}[Data]
+				in
+				    reporting_monthly_energy
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table

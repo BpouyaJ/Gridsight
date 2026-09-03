@@ -1,0 +1,209 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "2e8e2fbdd252618a7731",
+  "position": {
+    "x": 0,
+    "y": 540,
+    "z": 1,
+    "height": 540,
+    "width": 1920,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Data Quality Checks"
+                    }
+                  },
+                  "Property": "dataset"
+                }
+              },
+              "queryRef": "Data Quality Checks.dataset",
+              "nativeQueryRef": "dataset",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Data Quality Checks"
+                    }
+                  },
+                  "Property": "check_id"
+                }
+              },
+              "queryRef": "Data Quality Checks.check_id",
+              "nativeQueryRef": "check_id",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Data Quality Checks"
+                        }
+                      },
+                      "Property": "status"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(Data Quality Checks.status)",
+              "nativeQueryRef": "First status"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Data Quality Checks"
+                        }
+                      },
+                      "Property": "expected"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(Data Quality Checks.expected)",
+              "nativeQueryRef": "First expected"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Data Quality Checks"
+                        }
+                      },
+                      "Property": "observed"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(Data Quality Checks.observed)",
+              "nativeQueryRef": "First observed"
+            }
+          ]
+        }
+      }
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "Data Quality Checks.dataset"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Data Quality Checks"
+                    }
+                  },
+                  "Property": "dataset"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Data Quality Checks.check_id"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {
+          "children": [
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'price'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'generation'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'cross_dataset'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'consumption'"
+                  }
+                }
+              ],
+              "isToggled": true
+            }
+          ]
+        }
+      }
+    ],
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Data Quality Check Results'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

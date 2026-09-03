@@ -1,0 +1,13 @@
+EVALUATE
+ROW(
+    "Observed Hours", [Observed Hours],
+    "Total Grid Load TWh", [Total Grid Load TWh],
+    "Renewable Share", [Renewable Share %],
+    "Average Day-Ahead Price", [Average Day-Ahead Price],
+    "Model MAE MW", [Model MAE MW],
+    "Model RMSE MW", [Model RMSE MW],
+    "Model MAPE", [Model MAPE %],
+    "Data Quality Checks", [Data Quality Checks],
+    "Data Quality Pass Rate", [Data Quality Pass Rate %],
+    "Registered Sources", [Registered Source Snapshots]
+)

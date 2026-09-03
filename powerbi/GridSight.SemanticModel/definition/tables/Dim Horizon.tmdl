@@ -1,0 +1,26 @@
+table 'Dim Horizon'
+	lineageTag: 5748222e-f2bc-43ec-ba24-e33357ea9ca7
+
+	column horizon_step
+		dataType: int64
+		formatString: 0
+		lineageTag: e19879f7-65da-4eab-adcb-2c4f23bc7392
+		summarizeBy: none
+		sourceColumn: horizon_step
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dim Horizon' = m
+		mode: import
+		source =
+				let
+				    Source = #table(
+				        type table [horizon_step = Int64.Type],
+				        List.Transform({0..24}, each {_})
+				    )
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table

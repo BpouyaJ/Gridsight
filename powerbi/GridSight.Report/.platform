@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "GridSight"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "2299de0e-3e77-4d42-ae62-d50b369d2c11"
+  }
+}

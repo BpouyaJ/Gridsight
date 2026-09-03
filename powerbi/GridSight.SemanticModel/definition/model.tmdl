@@ -1,0 +1,32 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-DE
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_ProTooling = ["DevMode","TMDLView_Desktop","DaxQueryView_Desktop"]
+
+annotation PBI_QueryOrder = ["Fact Daily Energy","Fact Forecast Hourly","Fact Forecast Summary","Fact Hourly Energy","Fact Hourly Generation","Fact Monthly Energy","Dim Date","Dim Month","Dim Hour","Dim Technology","Dim Horizon","Dim Forecast Series","Data Quality Checks","Source Lineage"]
+
+ref table 'Fact Daily Energy'
+ref table 'Fact Forecast Hourly'
+ref table 'Fact Forecast Summary'
+ref table 'Fact Hourly Energy'
+ref table 'Fact Hourly Generation'
+ref table 'Fact Monthly Energy'
+ref table 'Dim Date'
+ref table 'Dim Month'
+ref table 'Dim Hour'
+ref table 'Dim Technology'
+ref table 'Dim Horizon'
+ref table 'Dim Forecast Series'
+ref table 'Data Quality Checks'
+ref table 'Source Lineage'
+ref table _Measures
+
+ref cultureInfo en-US

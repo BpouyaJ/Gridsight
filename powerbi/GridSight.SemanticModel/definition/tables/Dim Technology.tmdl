@@ -1,0 +1,76 @@
+table 'Dim Technology'
+	lineageTag: 6bccf025-483f-4210-8c36-e6ecc59d50f4
+
+	column technology_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f4b14e9a-89aa-4040-a260-dfd42350bf3c
+		summarizeBy: none
+		sourceColumn: technology_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column technology_id
+		dataType: string
+		lineageTag: 68278ba6-342e-4b2f-97bd-a7ec889089c4
+		summarizeBy: none
+		sourceColumn: technology_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column technology_name
+		dataType: string
+		lineageTag: 3ccd6f08-b3fe-4829-9247-f513fa58e0f5
+		summarizeBy: none
+		sourceColumn: technology_name
+		sortByColumn: technology_order
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column technology_group
+		dataType: string
+		lineageTag: eaeea0e3-d814-400b-81de-43a8d95957ac
+		summarizeBy: none
+		sourceColumn: technology_group
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_renewable
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 54102325-ac58-4263-b816-6130f3019336
+		summarizeBy: none
+		sourceColumn: is_renewable
+
+		annotation SummarizationSetBy = Automatic
+
+	column technology_order
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a49628e9-3d8c-406d-bc2e-c648412e3852
+		summarizeBy: none
+		sourceColumn: technology_order
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dim Technology' = m
+		mode: import
+		source =
+				let
+				    Source = #"Fact Hourly Generation",
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"technology_key", "technology_id", "technology_name", "technology_group", "is_renewable", "technology_order"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns")
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table

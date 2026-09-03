@@ -1,0 +1,122 @@
+table 'Dim Date'
+	lineageTag: fb478395-c69b-4bcc-a193-e725b6125887
+	dataCategory: Time
+
+	column date_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a4884afc-7c30-4e31-bb82-255355334bd3
+		summarizeBy: none
+		sourceColumn: date_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column calendar_date
+		dataType: dateTime
+		isKey
+		formatString: Long Date
+		lineageTag: d31a7f22-8eb6-484c-9989-4f54663e8948
+		summarizeBy: none
+		sourceColumn: calendar_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column calendar_year
+		dataType: int64
+		formatString: 0
+		lineageTag: a1022380-1b7c-4b4a-a22e-65e2c8163f65
+		summarizeBy: sum
+		sourceColumn: calendar_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column calendar_quarter
+		dataType: int64
+		formatString: 0
+		lineageTag: 57c6f815-8288-4bfb-999a-801216e94953
+		summarizeBy: sum
+		sourceColumn: calendar_quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_number
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 689c27e4-3ec9-4d22-bd43-91a2e3d765e2
+		summarizeBy: sum
+		sourceColumn: month_number
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_name
+		dataType: string
+		lineageTag: 9a3c4846-3dbd-4110-873f-0c4de7eb00ea
+		summarizeBy: none
+		sourceColumn: month_name
+		sortByColumn: month_number
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column iso_week
+		dataType: int64
+		formatString: 0
+		lineageTag: 5ed26b1b-90e0-464a-9a93-dd5ad0efaacf
+		summarizeBy: sum
+		sourceColumn: iso_week
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekday_number
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 0ed8c101-7383-4429-bef6-5bbaddfe7308
+		summarizeBy: sum
+		sourceColumn: weekday_number
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekday_name
+		dataType: string
+		lineageTag: b51c82dc-046e-4f3d-8933-3db433704ba7
+		summarizeBy: none
+		sourceColumn: weekday_name
+		sortByColumn: weekday_number
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_weekend
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: cf26e435-116d-4bff-95f9-f4f4ab5d61ae
+		summarizeBy: none
+		sourceColumn: is_weekend
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dim Date' = m
+		mode: import
+		source =
+				let
+				    Source = #"Fact Daily Energy",
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"date_key", "calendar_date", "calendar_year", "calendar_quarter", "month_number", "month_name", "iso_week", "weekday_number", "weekday_name", "is_weekend"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table

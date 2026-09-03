@@ -1,0 +1,109 @@
+table 'Fact Forecast Summary'
+	lineageTag: 0de3e046-aa73-479d-9b74-a9083d924a53
+
+	column forecast_name
+		dataType: string
+		isHidden
+		lineageTag: 2540682a-325c-4f69-95bb-09b8c6256dad
+		summarizeBy: none
+		sourceColumn: forecast_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column forecast_role
+		dataType: string
+		isHidden
+		lineageTag: 95c54cbb-ee03-4b25-804a-5627cae5bdec
+		summarizeBy: none
+		sourceColumn: forecast_role
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column evaluation_scope
+		dataType: string
+		isHidden
+		lineageTag: 2854d067-465a-4b2f-8606-3f28433e3d08
+		summarizeBy: none
+		sourceColumn: evaluation_scope
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column horizon_step
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1ebebfa9-a9e3-4300-bb92-e0d923f7b77a
+		summarizeBy: none
+		sourceColumn: horizon_step
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column observations
+		dataType: int64
+		formatString: 0
+		lineageTag: d5947c2a-1b53-44e4-8a62-4263ebd52e52
+		summarizeBy: sum
+		sourceColumn: observations
+
+		annotation SummarizationSetBy = Automatic
+
+	column mae_mw
+		dataType: double
+		lineageTag: 36b8923d-de21-4254-ba1d-170ecdb3ee0c
+		summarizeBy: sum
+		sourceColumn: mae_mw
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column rmse_mw
+		dataType: double
+		lineageTag: 19d08195-e033-4171-bbb2-e3cd6bd36f92
+		summarizeBy: sum
+		sourceColumn: rmse_mw
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column mape_percent
+		dataType: double
+		lineageTag: 3badbd85-8040-4ca0-a718-4a725e2e9916
+		summarizeBy: sum
+		sourceColumn: mape_percent
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column improvement_over_weekly_percent
+		dataType: double
+		lineageTag: 7652893f-e23c-4017-9d8a-1812ba6437a6
+		summarizeBy: sum
+		sourceColumn: improvement_over_weekly_percent
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Fact Forecast Summary' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost:5432", "gridsight"),
+				    reporting_forecast_performance_summary = Source{[Schema="reporting",Item="forecast_performance_summary"]}[Data]
+				in
+				    reporting_forecast_performance_summary
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,70 @@
+table 'Dim Month'
+	lineageTag: c1bc40ea-e83d-4b6b-acfe-d57fb4936a0b
+
+	column month_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 315e6c78-f1b3-42df-a827-54cba397d0b5
+		summarizeBy: none
+		sourceColumn: month_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_start
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ade9bd32-c1c7-4b0f-ae91-e529960802bf
+		summarizeBy: none
+		sourceColumn: month_start
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column calendar_year
+		dataType: int64
+		formatString: 0
+		lineageTag: 9aaa316a-0952-44b2-a058-5608ba717e42
+		summarizeBy: none
+		sourceColumn: calendar_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_number
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d3c54b56-edae-4567-bc87-05f5414dbce5
+		summarizeBy: none
+		sourceColumn: month_number
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_name
+		dataType: string
+		lineageTag: 5c733817-3ff8-4699-895e-c31ae7437a46
+		summarizeBy: none
+		sourceColumn: month_name
+		sortByColumn: month_number
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dim Month' = m
+		mode: import
+		source =
+				let
+				    Source = #"Fact Monthly Energy",
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"month_key", "month_start", "calendar_year", "month_number", "month_name"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table

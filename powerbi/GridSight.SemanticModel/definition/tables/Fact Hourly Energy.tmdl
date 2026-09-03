@@ -1,0 +1,422 @@
+table 'Fact Hourly Energy'
+	lineageTag: d7e1e750-3043-4972-8b44-178bfbcf159b
+
+	column date_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b6e044f2-ba02-445a-8f5a-060398bf9c43
+		summarizeBy: none
+		sourceColumn: date_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column calendar_date
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: b5ef06d7-041d-44f6-9cec-6f2fbce535d2
+		summarizeBy: none
+		sourceColumn: calendar_date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column calendar_year
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a1a895dc-e701-4d3f-9a2f-6bc0addcef33
+		summarizeBy: sum
+		sourceColumn: calendar_year
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column calendar_quarter
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 7e47097f-0176-4f48-a2f6-b3d262966387
+		summarizeBy: sum
+		sourceColumn: calendar_quarter
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_number
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: befd9a49-0a8e-4d39-b2af-b0f7b0137711
+		summarizeBy: sum
+		sourceColumn: month_number
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_name
+		dataType: string
+		isHidden
+		lineageTag: 23d1e776-a54b-4b07-9499-af418c2a3dae
+		summarizeBy: none
+		sourceColumn: month_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column iso_week
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d46d181a-58cd-4bf8-b9d9-5cbcb979f799
+		summarizeBy: sum
+		sourceColumn: iso_week
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekday_number
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4a329915-dbd9-46c1-82c2-890ab4ab4a98
+		summarizeBy: sum
+		sourceColumn: weekday_number
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekday_name
+		dataType: string
+		isHidden
+		lineageTag: 7d81370a-1662-4e10-8f46-d30c60056863
+		summarizeBy: none
+		sourceColumn: weekday_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_weekend
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 2531e8fc-e113-40d6-83b3-b793233a6abb
+		summarizeBy: none
+		sourceColumn: is_weekend
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column hour_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b3b1ad42-da8e-4e21-b103-d5fd8d73817e
+		summarizeBy: none
+		sourceColumn: hour_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column hour_label
+		dataType: string
+		isHidden
+		lineageTag: bcb549cd-ebe8-49e8-aae5-e93986838c3b
+		summarizeBy: none
+		sourceColumn: hour_label
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column utc_offset_minutes
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 88b7c15f-2c4a-4ed2-b770-c92da6b811b0
+		summarizeBy: sum
+		sourceColumn: utc_offset_minutes
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_dst
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e0175406-0497-4551-a40d-3c8a1166857b
+		summarizeBy: none
+		sourceColumn: is_dst
+
+		annotation SummarizationSetBy = Automatic
+
+	column local_fold
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 553b709e-d933-4b72-9719-1c6d3cd5edc9
+		summarizeBy: sum
+		sourceColumn: local_fold
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column load_area
+		dataType: string
+		lineageTag: 87155823-dbc4-4df4-b44e-8065dbf55255
+		summarizeBy: none
+		sourceColumn: load_area
+
+		annotation SummarizationSetBy = Automatic
+
+	column grid_load_mwh
+		dataType: double
+		lineageTag: 919e86f1-b1f0-4197-a57a-6c4e73b16ca2
+		summarizeBy: sum
+		sourceColumn: grid_load_mwh
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column grid_load_mw
+		dataType: double
+		lineageTag: 381aaf20-7ce5-49e5-aca3-532d9fd0dac9
+		summarizeBy: sum
+		sourceColumn: grid_load_mw
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column grid_load_including_pumped_storage_mwh
+		dataType: double
+		lineageTag: eee2166c-be35-4055-8977-50bbd4e20805
+		summarizeBy: sum
+		sourceColumn: grid_load_including_pumped_storage_mwh
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column hydro_pumped_storage_mwh
+		dataType: double
+		lineageTag: 2405d4da-03bd-4e85-92e7-964b59662fb9
+		summarizeBy: sum
+		sourceColumn: hydro_pumped_storage_mwh
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column residual_load_mwh
+		dataType: double
+		lineageTag: b2ac470b-4cc1-4a25-959c-a09e51385d68
+		summarizeBy: sum
+		sourceColumn: residual_load_mwh
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column price_market_area
+		dataType: string
+		lineageTag: 2ac80d48-f309-4f6e-a3b9-956f2c0e041d
+		summarizeBy: none
+		sourceColumn: price_market_area
+
+		annotation SummarizationSetBy = Automatic
+
+	column day_ahead_price_eur_per_mwh
+		dataType: double
+		lineageTag: f4686cf4-d499-4c9d-b18d-405b5e59fcfd
+		summarizeBy: sum
+		sourceColumn: day_ahead_price_eur_per_mwh
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column reported_generation_mwh
+		dataType: double
+		lineageTag: 5fc97bf0-ff8f-4fed-b902-077ed4652557
+		summarizeBy: sum
+		sourceColumn: reported_generation_mwh
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column reported_generation_mw
+		dataType: double
+		lineageTag: eec768fe-1d21-4afb-b566-331efb176101
+		summarizeBy: sum
+		sourceColumn: reported_generation_mw
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column renewable_generation_mwh
+		dataType: double
+		lineageTag: 7a87d89c-2096-449b-94cf-0d237392bbad
+		summarizeBy: sum
+		sourceColumn: renewable_generation_mwh
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column renewable_generation_mw
+		dataType: double
+		lineageTag: f1ac1d56-d96c-4384-8cc5-ef22f45ccb8e
+		summarizeBy: sum
+		sourceColumn: renewable_generation_mw
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column conventional_generation_mwh
+		dataType: double
+		lineageTag: 6f6503f9-cb9b-46c5-ae48-b8a52de0bb39
+		summarizeBy: sum
+		sourceColumn: conventional_generation_mwh
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column conventional_generation_mw
+		dataType: double
+		lineageTag: 5f5e3a1a-72fc-499f-ad7c-eb9131557bad
+		summarizeBy: sum
+		sourceColumn: conventional_generation_mw
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column storage_generation_mwh
+		dataType: double
+		lineageTag: 877c7a4a-25c7-4af9-816c-1554becb7d10
+		summarizeBy: sum
+		sourceColumn: storage_generation_mwh
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column storage_generation_mw
+		dataType: double
+		lineageTag: 7cc7ad99-8503-4ec3-a996-df8afaa02ba9
+		summarizeBy: sum
+		sourceColumn: storage_generation_mw
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column unavailable_technology_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 92ea991d-0867-4cd0-ae54-d1a483691942
+		summarizeBy: sum
+		sourceColumn: unavailable_technology_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column reported_technology_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 9556da1c-d18b-47b3-96b6-0578f5d67b2e
+		summarizeBy: sum
+		sourceColumn: reported_technology_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column interval_start_utc
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 93f3c316-12ba-4904-aa72-1f47f4668522
+		summarizeBy: none
+		sourceColumn: interval_start_utc
+
+		annotation SummarizationSetBy = Automatic
+
+	column interval_end_utc
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7eeacf1d-6621-483b-849a-ae79817df718
+		summarizeBy: none
+		sourceColumn: interval_end_utc
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact Hourly Energy' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost:5432", "gridsight"),
+				    reporting_hourly_energy =
+				        Source{[Schema="reporting", Item="hourly_energy"]}[Data],
+
+				    #"Added Correct UTC Start" =
+				        Table.AddColumn(
+				            reporting_hourly_energy,
+				            "__interval_start_utc",
+				            each
+				                DateTime.From([interval_start_utc])
+				                - #duration(
+				                    0,
+				                    0,
+				                    Number.From([utc_offset_minutes]),
+				                    0
+				                ),
+				            type datetime
+				        ),
+
+				    #"Added Correct UTC End" =
+				        Table.AddColumn(
+				            #"Added Correct UTC Start",
+				            "__interval_end_utc",
+				            each [__interval_start_utc] + #duration(0, 1, 0, 0),
+				            type datetime
+				        ),
+
+				    #"Removed Connector Timestamps" =
+				        Table.RemoveColumns(
+				            #"Added Correct UTC End",
+				            {"interval_start_utc", "interval_end_utc"}
+				        ),
+
+				    #"Renamed UTC Timestamps" =
+				        Table.RenameColumns(
+				            #"Removed Connector Timestamps",
+				            {
+				                {"__interval_start_utc", "interval_start_utc"},
+				                {"__interval_end_utc", "interval_end_utc"}
+				            }
+				        )
+				in
+				    #"Renamed UTC Timestamps"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,90 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "52e0aef4dd94c6842d63",
+  "position": {
+    "x": 0,
+    "y": 183.33333333333334,
+    "z": 0,
+    "height": 756.66666666666674,
+    "width": 960,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Hourly Energy"
+                    }
+                  },
+                  "Property": "interval_start_utc"
+                }
+              },
+              "queryRef": "Fact Hourly Energy.interval_start_utc",
+              "nativeQueryRef": "interval_start_utc",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Average Day-Ahead Price"
+                }
+              },
+              "queryRef": "_Measures.Average Day-Ahead Price",
+              "nativeQueryRef": "Average Day-Ahead Price"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact Hourly Energy"
+                  }
+                },
+                "Property": "interval_start_utc"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'DE/LU Day-Ahead Price'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

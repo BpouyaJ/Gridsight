@@ -1,0 +1,57 @@
+table 'Data Quality Checks'
+	lineageTag: b8f4e6d9-8d22-4735-a1e9-57b77d6dfbcc
+
+	column dataset
+		dataType: string
+		lineageTag: 80d02c35-0629-46ed-b721-1440fbb2cd18
+		summarizeBy: none
+		sourceColumn: dataset
+
+		annotation SummarizationSetBy = Automatic
+
+	column check_id
+		dataType: string
+		lineageTag: a03b2d1f-c2a1-486b-864c-f65703463306
+		summarizeBy: none
+		sourceColumn: check_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 41fd222c-304a-4c91-92c4-223196c2c1ee
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column expected
+		dataType: string
+		lineageTag: 7a6ffae8-f5c9-476f-86fe-df22c64f06a2
+		summarizeBy: none
+		sourceColumn: expected
+
+		annotation SummarizationSetBy = Automatic
+
+	column observed
+		dataType: string
+		lineageTag: f73d2364-8741-43ee-b67a-186e8be8ce2a
+		summarizeBy: none
+		sourceColumn: observed
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Data Quality Checks' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\borji\Documents\Codex\GridSight\data\samples\data_quality_checks.csv"),[Delimiter=",", Columns=5, QuoteStyle=QuoteStyle.None]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"dataset", type text}, {"check_id", type text}, {"status", type text}, {"expected", type text}, {"observed", type text}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table

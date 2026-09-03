@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "caf35e31328c77641e81",
+  "position": {
+    "x": 0,
+    "y": 1003.3333333333334,
+    "z": 3,
+    "height": 76.666666666666671,
+    "width": 1920,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Scope: Germany and the DE-LU electricity market, 2022–2025. Sources: Bundesnetzagentur SMARD consumption, generation, and day-ahead price data. Hourly timestamps are normalized to UTC. Forecast results cover the defined 2025 evaluation period. Data-quality and source-lineage details are available on the Data Quality page.",
+                    "textStyle": {
+                      "fontSize": "18pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

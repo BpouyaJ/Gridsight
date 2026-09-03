@@ -1,0 +1,109 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "e31d1cfdeee7c0eb8c07",
+  "position": {
+    "x": 0,
+    "y": 175,
+    "z": 2,
+    "height": 365,
+    "width": 1920,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Source Lineage"
+                    }
+                  },
+                  "Property": "export_id"
+                }
+              },
+              "queryRef": "Source Lineage.export_id",
+              "nativeQueryRef": "export_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Source Lineage"
+                    }
+                  },
+                  "Property": "source_category"
+                }
+              },
+              "queryRef": "Source Lineage.source_category",
+              "nativeQueryRef": "source_category"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Source Lineage"
+                    }
+                  },
+                  "Property": "period_start"
+                }
+              },
+              "queryRef": "Source Lineage.period_start",
+              "nativeQueryRef": "period_start"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Source Lineage"
+                    }
+                  },
+                  "Property": "period_end"
+                }
+              },
+              "queryRef": "Source Lineage.period_end",
+              "nativeQueryRef": "period_end"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Source Lineage"
+                    }
+                  },
+                  "Property": "sha256"
+                }
+              },
+              "queryRef": "Source Lineage.sha256",
+              "nativeQueryRef": "sha256"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Source Lineage'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

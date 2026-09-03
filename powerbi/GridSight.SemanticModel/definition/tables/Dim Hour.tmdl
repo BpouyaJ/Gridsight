@@ -1,0 +1,39 @@
+table 'Dim Hour'
+	lineageTag: 838c6e96-93d7-4190-9edc-1feda281636d
+
+	column hour_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 61834e5b-1d50-45e8-a71b-b51caf35eff3
+		summarizeBy: none
+		sourceColumn: hour_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column hour_label
+		dataType: string
+		lineageTag: d0d872de-bd04-4861-a9a9-9e111887be19
+		summarizeBy: none
+		sourceColumn: hour_label
+		sortByColumn: hour_key
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dim Hour' = m
+		mode: import
+		source =
+				let
+				    Source = #"Fact Hourly Energy",
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"hour_key", "hour_label"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns")
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table

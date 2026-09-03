@@ -1,0 +1,47 @@
+relationship cb2f3594-b05c-9bd7-379c-de5677c8541b
+	fromColumn: 'Fact Hourly Energy'.date_key
+	toColumn: 'Dim Date'.date_key
+
+relationship 911c5418-242a-64cf-3253-f249e2d0d656
+	fromColumn: 'Fact Hourly Generation'.date_key
+	toColumn: 'Dim Date'.date_key
+
+relationship f8b89727-2d6c-4e95-8aec-07a3fe83cd19
+	fromColumn: 'Fact Daily Energy'.date_key
+	toColumn: 'Dim Date'.date_key
+
+relationship 9d30b394-73e3-6584-4c1e-76717bfee007
+	fromColumn: 'Fact Forecast Hourly'.target_date_key
+	toColumn: 'Dim Date'.date_key
+
+relationship fc34901b-affb-3431-1a57-4cdc02bc77f1
+	fromColumn: 'Fact Monthly Energy'.month_key
+	toColumn: 'Dim Month'.month_key
+
+relationship 90629b53-b866-b8ec-0d7a-4c3f1787a4d1
+	fromColumn: 'Fact Hourly Energy'.hour_key
+	toColumn: 'Dim Hour'.hour_key
+
+relationship eab3dfe1-22ba-8286-dd5b-626713b6c1ac
+	fromColumn: 'Fact Hourly Generation'.hour_key
+	toColumn: 'Dim Hour'.hour_key
+
+relationship ffc4a2dd-99b1-8135-9bd4-ebfe2b7417df
+	fromColumn: 'Fact Forecast Hourly'.target_hour_key
+	toColumn: 'Dim Hour'.hour_key
+
+relationship 7d423a6f-a4a7-f9b0-2e31-574b711cd90e
+	fromColumn: 'Fact Hourly Generation'.technology_key
+	toColumn: 'Dim Technology'.technology_key
+
+relationship 6100a625-ad93-312f-2d09-caef5cde3466
+	fromColumn: 'Fact Forecast Hourly'.horizon_step
+	toColumn: 'Dim Horizon'.horizon_step
+
+relationship dccbbf6c-4a10-486a-2381-cb1d068ebd5e
+	fromColumn: 'Fact Forecast Summary'.horizon_step
+	toColumn: 'Dim Horizon'.horizon_step
+
+relationship f2a67e77-873e-c9e2-3ed3-8adcd838b78c
+	fromColumn: 'Fact Forecast Summary'.forecast_name
+	toColumn: 'Dim Forecast Series'.forecast_name

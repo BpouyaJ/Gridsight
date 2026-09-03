@@ -1,0 +1,32 @@
+table 'Dim Forecast Series'
+	lineageTag: 7152ed60-edd5-4e73-8e5b-408f8c354c2d
+
+	column forecast_name
+		dataType: string
+		lineageTag: 849eda49-4f38-4fdd-9545-fb94a88eb98f
+		summarizeBy: none
+		sourceColumn: forecast_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column forecast_role
+		dataType: string
+		lineageTag: 165c79a1-440b-4ace-b5a6-b739c0995ae8
+		summarizeBy: none
+		sourceColumn: forecast_role
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dim Forecast Series' = m
+		mode: import
+		source =
+				let
+				    Source = #"Fact Forecast Summary",
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"forecast_name", "forecast_role"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns")
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,143 @@
+table 'Source Lineage'
+	lineageTag: 362ed8a8-9277-40a4-9c67-3cae47843dd8
+
+	column export_id
+		dataType: string
+		lineageTag: a730430d-0c63-48c2-821f-5f31a4dfe747
+		summarizeBy: none
+		sourceColumn: export_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_name
+		dataType: string
+		lineageTag: 5256c665-9750-4e16-b801-6d623e718204
+		summarizeBy: none
+		sourceColumn: source_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_url
+		dataType: string
+		lineageTag: 77787299-87e8-4ae5-9422-7d11103455ec
+		summarizeBy: none
+		sourceColumn: source_url
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_category
+		dataType: string
+		lineageTag: 19016b8e-b360-42b1-9db2-d699b05a7909
+		summarizeBy: none
+		sourceColumn: source_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_geography
+		dataType: string
+		lineageTag: d22d146c-aafe-40c0-8d95-846ea8137487
+		summarizeBy: none
+		sourceColumn: source_geography
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_resolution
+		dataType: string
+		lineageTag: b78ff37f-30c4-4aea-af57-dd7eb2628112
+		summarizeBy: none
+		sourceColumn: source_resolution
+
+		annotation SummarizationSetBy = Automatic
+
+	column period_start
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: bfa3b733-5857-481b-a4e7-578e7934f891
+		summarizeBy: none
+		sourceColumn: period_start
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column period_end
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 002fbaff-2587-41d0-a284-169fb48d752d
+		summarizeBy: none
+		sourceColumn: period_end
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column downloaded_at_utc
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 920125b4-0e28-4281-9b97-062e40a3f5aa
+		summarizeBy: none
+		sourceColumn: downloaded_at_utc
+
+		annotation SummarizationSetBy = Automatic
+
+	column original_filename
+		dataType: string
+		lineageTag: 4b11ec9f-ec80-4780-b678-b1f641ded6fa
+		summarizeBy: none
+		sourceColumn: original_filename
+
+		annotation SummarizationSetBy = Automatic
+
+	column local_filename
+		dataType: string
+		lineageTag: 761ac7c8-81ae-41bd-ab28-1bafab03230c
+		summarizeBy: none
+		sourceColumn: local_filename
+
+		annotation SummarizationSetBy = Automatic
+
+	column sha256
+		dataType: string
+		lineageTag: 7d883b25-728a-4ed1-bf8b-2818e8105a65
+		summarizeBy: none
+		sourceColumn: sha256
+
+		annotation SummarizationSetBy = Automatic
+
+	column licence
+		dataType: string
+		lineageTag: f7838e9e-d89d-43bf-9f8b-7fd24f6cb4ef
+		summarizeBy: none
+		sourceColumn: licence
+
+		annotation SummarizationSetBy = Automatic
+
+	column attribution
+		dataType: string
+		lineageTag: b9d5b03b-7c30-41f1-a911-4c4b5506ae2b
+		summarizeBy: none
+		sourceColumn: attribution
+
+		annotation SummarizationSetBy = Automatic
+
+	column notes
+		dataType: string
+		lineageTag: 8ba58f4d-7df9-468b-a9ac-9b6f2a885b6e
+		summarizeBy: none
+		sourceColumn: notes
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Source Lineage' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\borji\Documents\Codex\GridSight\data\samples\source_lineage.csv"),[Delimiter=",", Columns=15, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"export_id", type text}, {"source_name", type text}, {"source_url", type text}, {"source_category", type text}, {"source_geography", type text}, {"source_resolution", type text}, {"period_start", type date}, {"period_end", type date}, {"downloaded_at_utc", type datetime}, {"original_filename", type text}, {"local_filename", type text}, {"sha256", type text}, {"licence", type text}, {"attribution", type text}, {"notes", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table

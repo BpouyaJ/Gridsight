@@ -1,0 +1,216 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 3.5770727207657655,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 2606.18475118063,
+            "y": -22.195050904890223
+          },
+          "nodeIndex": "Fact Daily Energy",
+          "nodeLineageTag": "e1287efe-d9f1-4ff4-8632-a75999d952df",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 3124.3616394153596,
+            "y": 25
+          },
+          "nodeIndex": "Fact Forecast Hourly",
+          "nodeLineageTag": "674cc84b-06a7-42b8-8f36-a51873a5f446",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 3408.3616394153596,
+            "y": 27
+          },
+          "nodeIndex": "Fact Forecast Summary",
+          "nodeLineageTag": "0de3e046-aa73-479d-9b74-a9083d924a53",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 2890.3616394153596,
+            "y": -8.8700582724539743
+          },
+          "nodeIndex": "Fact Hourly Energy",
+          "nodeLineageTag": "d7e1e750-3043-4972-8b44-178bfbcf159b",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 2322,
+            "y": -41.129941727546026
+          },
+          "nodeIndex": "Fact Hourly Generation",
+          "nodeLineageTag": "9ffcc6aa-b714-4ceb-9320-e987a12dc194",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 3692.3616394153596,
+            "y": 0
+          },
+          "nodeIndex": "Fact Monthly Energy",
+          "nodeLineageTag": "ec6e499e-1ed3-4e35-a71c-61b7727438a9",
+          "size": {
+            "height": 325,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 83.064970863773
+          },
+          "nodeIndex": "Data Quality Checks",
+          "nodeLineageTag": "b8f4e6d9-8d22-4735-a1e9-57b77d6dfbcc",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 284,
+            "y": 33.064970863773
+          },
+          "nodeIndex": "Dim Date",
+          "nodeLineageTag": "fb478395-c69b-4bcc-a193-e725b6125887",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 15
+        },
+        {
+          "location": {
+            "x": 568,
+            "y": 119.064970863773
+          },
+          "nodeIndex": "Dim Forecast Series",
+          "nodeLineageTag": "7152ed60-edd5-4e73-8e5b-408f8c354c2d",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 852,
+            "y": 131.064970863773
+          },
+          "nodeIndex": "Dim Horizon",
+          "nodeLineageTag": "5748222e-f2bc-43ec-ba24-e33357ea9ca7",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 1136,
+            "y": 119.064970863773
+          },
+          "nodeIndex": "Dim Hour",
+          "nodeLineageTag": "838c6e96-93d7-4190-9edc-1feda281636d",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 1420,
+            "y": 83.064970863773
+          },
+          "nodeIndex": "Dim Month",
+          "nodeLineageTag": "c1bc40ea-e83d-4b6b-acfe-d57fb4936a0b",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 1704,
+            "y": 71.064970863773
+          },
+          "nodeIndex": "Dim Technology",
+          "nodeLineageTag": "6bccf025-483f-4210-8c36-e6ecc59d50f4",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 12
+        },
+        {
+          "location": {
+            "x": 1988,
+            "y": 33.064970863773
+          },
+          "nodeIndex": "Source Lineage",
+          "nodeLineageTag": "362ed8a8-9277-40a4-9c67-3cae47843dd8",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 13
+        },
+        {
+          "location": {
+            "x": 3976.3616394153596,
+            "y": 87.097456295659526
+          },
+          "nodeIndex": "_Measures",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 14
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 27.955819690071159,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

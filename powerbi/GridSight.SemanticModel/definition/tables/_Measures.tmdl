@@ -1,0 +1,173 @@
+table _Measures
+	lineageTag: 6d16455d-c72d-4fa8-b0c3-10fddf5472d1
+
+	measure 'Observed Hours' = DISTINCTCOUNT('Fact Hourly Energy'[interval_start_utc])
+		formatString: #,0
+		displayFolder: Energy
+		lineageTag: aad5208f-7f3a-4487-bc30-9086e2f2a126
+
+	measure 'Total Grid Load TWh' = DIVIDE(SUM('Fact Hourly Energy'[grid_load_mwh]), 1000000)
+		formatString: 0.000 "TWh"
+		displayFolder: Energy
+		lineageTag: 57f8e39d-afd6-4595-b125-c6c4a9e3bdd2
+
+	measure 'Average Grid Load GW' = DIVIDE(AVERAGE('Fact Hourly Energy'[grid_load_mw]), 1000)
+		formatString: 0.000 "GW"
+		displayFolder: Energy
+		lineageTag: 83e7b7be-4dbd-4aaf-8eab-6eddae92fd1d
+
+	measure 'Peak Grid Load GW' = DIVIDE(MAX('Fact Hourly Energy'[grid_load_mw]), 1000)
+		formatString: 0.000 "GW"
+		displayFolder: Energy
+		lineageTag: aa3ee2c8-f90a-4c26-97a7-f99618f8b759
+
+	measure 'Reported Generation TWh' = DIVIDE(SUM('Fact Hourly Energy'[reported_generation_mwh]), 1000000)
+		formatString: 0.000 "TWh"
+		displayFolder: Generation
+		lineageTag: 45d1f8c7-a87b-4031-a275-9c79d1bc714f
+
+	measure 'Renewable Generation TWh' = DIVIDE(SUM('Fact Hourly Energy'[renewable_generation_mwh]), 1000000)
+		formatString: 0.000 "TWh"
+		displayFolder: Generation
+		lineageTag: 5dd98b61-36ca-430c-b190-4ce0ecbf8a4a
+
+	measure 'Technology Generation TWh' = DIVIDE(CALCULATE(SUM('Fact Hourly Generation'[generation_mwh]), 'Fact Hourly Generation'[value_status] = "reported"), 1000000)
+		formatString: 0.000 "TWh"
+		displayFolder: Generation
+		lineageTag: 58d37bb2-3773-4cad-ba51-3de828bdcd11
+
+	measure 'Conventional Generation TWh' = DIVIDE(SUM('Fact Hourly Energy'[conventional_generation_mwh]), 1000000)
+		formatString: 0.000 "TWh"
+		displayFolder: Generation
+		lineageTag: 7e72189f-248f-44b7-8a1a-118de8b75677
+
+	measure 'Storage Generation TWh' = DIVIDE(SUM('Fact Hourly Energy'[storage_generation_mwh]), 1000000)
+		formatString: 0.000 "TWh"
+		displayFolder: Generation
+		lineageTag: 1f909f6d-960e-4230-ba8a-6bf792781899
+
+	measure 'Average Day-Ahead Price' = AVERAGE('Fact Hourly Energy'[day_ahead_price_eur_per_mwh])
+		formatString: #,0.00 "EUR/MWh"
+		displayFolder: Price
+		lineageTag: ba5d0f21-2b52-4e7e-91bc-bf6a82a71a9b
+
+	measure 'Daily Renewable Share %' = DIVIDE(SUM('Fact Daily Energy'[renewable_generation_mwh]), SUM('Fact Daily Energy'[reported_generation_mwh]))
+		formatString: 0.00%
+		displayFolder: Price
+		lineageTag: 7a0a6a56-95b4-456b-84b2-a9f705050deb
+
+	measure 'Daily Average Day-Ahead Price' = DIVIDE(SUMX('Fact Daily Energy', 'Fact Daily Energy'[average_day_ahead_price_eur_per_mwh] * 'Fact Daily Energy'[observed_hour_count]), SUM('Fact Daily Energy'[observed_hour_count]))
+		formatString: #,0.00 "EUR/MWh"
+		displayFolder: Price
+		lineageTag: 487deeb2-a69f-4269-9e68-0983027cbab0
+
+	measure 'Negative Price Hours' = CALCULATE(COUNTROWS('Fact Hourly Energy'), 'Fact Hourly Energy'[day_ahead_price_eur_per_mwh] < 0)
+		formatString: #,0
+		displayFolder: Price
+		lineageTag: 3cee0ebd-a7c5-470f-9fd4-e8a352f0d2ac
+
+	measure 'Unavailable Generation Values' = SUM('Fact Hourly Energy'[unavailable_technology_count])
+		formatString: #,0
+		displayFolder: Data Quality
+		lineageTag: f449f5d2-669b-490e-a252-4082f0eb9919
+
+	measure 'Model MAE MW' = AVERAGE('Fact Forecast Hourly'[model_absolute_error_mw])
+		formatString: #,0.000 "MW"
+		displayFolder: Forecast
+		lineageTag: cd4768f5-b80a-43a6-b7ae-90c255d60d4a
+
+	measure 'Actual Load MW' = AVERAGE('Fact Forecast Hourly'[actual_grid_load_mw])
+		formatString: #,0.000 "MW"
+		displayFolder: Forecast
+		lineageTag: 1c9da777-a4e3-4fe6-b788-458cabdc4a6b
+
+	measure 'Model Prediction MW' = AVERAGE('Fact Forecast Hourly'[model_prediction_mw])
+		formatString: #,0.000 "MW"
+		displayFolder: Forecast
+		lineageTag: a82e61ba-d76e-4cbe-892c-064c1493ff07
+
+	measure 'Model RMSE MW' = SQRT(AVERAGEX('Fact Forecast Hourly', POWER('Fact Forecast Hourly'[model_error_mw], 2)))
+		formatString: #,0.000 "MW"
+		displayFolder: Forecast
+		lineageTag: 8a341365-5441-490a-aea9-4db3591d9b33
+
+	measure 'Model MAPE %' = AVERAGEX('Fact Forecast Hourly', DIVIDE(ABS('Fact Forecast Hourly'[model_error_mw]), 'Fact Forecast Hourly'[actual_grid_load_mw]))
+		formatString: 0.000%
+		displayFolder: Forecast
+		lineageTag: be6aec16-155c-4edc-bb1e-76bf19efbddc
+
+	measure 'Daily Baseline MAE MW' = AVERAGEX('Fact Forecast Hourly', ABS('Fact Forecast Hourly'[daily_naive_prediction_mw] - 'Fact Forecast Hourly'[actual_grid_load_mw]))
+		formatString: #,0.000 "MW"
+		displayFolder: Forecast
+		lineageTag: 6fe0b4c8-9000-4b1d-af43-7b7e05950972
+
+	measure 'Weekly Baseline MAE MW' = AVERAGEX('Fact Forecast Hourly', ABS('Fact Forecast Hourly'[weekly_naive_prediction_mw] - 'Fact Forecast Hourly'[actual_grid_load_mw]))
+		formatString: #,0.000 "MW"
+		displayFolder: Forecast
+		lineageTag: 96848b11-53f6-4c60-aca9-156624dffdd0
+
+	measure 'Overall Forecast MAE MW' = CALCULATE(MAX('Fact Forecast Summary'[mae_mw]), 'Fact Forecast Summary'[evaluation_scope] = "overall")
+		formatString: #,0.000 "MW"
+		displayFolder: Forecast
+		lineageTag: 4bbe48ce-bb2f-46d7-ac23-d3c36b6d461e
+
+	measure 'Data Quality Checks' = COUNTROWS('Data Quality Checks')
+		formatString: #,0
+		displayFolder: Data Quality
+		lineageTag: 1388d534-9a1c-4597-8d78-3b3119c6688c
+
+	measure 'Passed Data Quality Checks' = CALCULATE(COUNTROWS('Data Quality Checks'), 'Data Quality Checks'[status] = "passed")
+		formatString: #,0
+		displayFolder: Data Quality
+		lineageTag: dcdee646-b358-4857-aa30-a823e4859ce6
+
+	measure 'Registered Source Snapshots' = COUNTROWS('Source Lineage')
+		formatString: #,0
+		displayFolder: Data Quality
+		lineageTag: 161888ac-ccf1-4d3a-9820-45a0b63b2cf3
+
+	measure 'Renewable Share %' = DIVIDE([Renewable Generation TWh], [Reported Generation TWh])
+		formatString: 0.00%
+		displayFolder: Generation
+		lineageTag: b816b1ae-6b04-435d-a026-a90e14f45208
+
+	measure 'Negative Price Share %' = DIVIDE([Negative Price Hours], [Observed Hours])
+		formatString: 0.00%
+		displayFolder: Price
+		lineageTag: 9fd81c8d-9ffc-4331-ba67-bc5816de6d4f
+
+	measure 'Model Improvement vs Weekly %' = DIVIDE([Weekly Baseline MAE MW] - [Model MAE MW], [Weekly Baseline MAE MW])
+		formatString: 0.000%
+		displayFolder: Forecast
+		lineageTag: 56e30c41-1c2f-4c52-980e-d9c9cd17386f
+
+	measure 'Selected Forecast MAE MW' = SWITCH(SELECTEDVALUE('Dim Forecast Series'[forecast_name], "hist_gradient_boosting_31_leaves"), "daily_seasonal_naive", [Daily Baseline MAE MW], "weekly_seasonal_naive", [Weekly Baseline MAE MW], [Model MAE MW])
+		formatString: #,0.000 "MW"
+		displayFolder: Forecast
+		lineageTag: 7815f205-8654-443c-b7ec-3a4c0aeba73b
+
+	measure 'Data Quality Pass Rate %' = DIVIDE([Passed Data Quality Checks], [Data Quality Checks])
+		formatString: 0.00%
+		displayFolder: Data Quality
+		lineageTag: 966c9bae-2dbd-430f-998f-e4a453500048
+
+	column _Placeholder
+		isHidden
+		lineageTag: b7be11d8-9707-45d2-9121-5af5f66813f7
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [_Placeholder]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = calculated
+		mode: import
+		source =
+
+				DATATABLE(
+				    "_Placeholder",
+				    STRING,
+				    { { "Measures" } }
+				)
+
+	annotation PBI_Id = 056b82bcede743e9af6ed6b004ba6429
