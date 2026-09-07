@@ -504,6 +504,8 @@ Status: completed
 - Corrected the GitHub Actions boundary after the first hosted run exposed seven
   tests that depended on intentionally ignored processed files; those tests now
   use an explicit `local_artifact` marker and `--with-local-artifacts` flag.
+- Passed the corrected public-clone GitHub Actions workflow on Ubuntu and Python
+  3.13 at commit `11c0675`, including Ruff and all 92 source-controlled tests.
 - Completed Phase 11 and the full approved GridSight roadmap.
 
 ## In progress

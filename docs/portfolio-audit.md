@@ -28,6 +28,10 @@ The local command `python -m gridsight.verify_portfolio
 generated outputs. The six live PostgreSQL tests had already passed after the
 final reporting-mart implementation.
 
+GitHub Actions then passed the 92-test public-clone gate on Ubuntu with Python
+3.13 at commit `11c0675`, confirming that the source-controlled verification
+path is portable beyond the Windows development environment.
+
 Generated-artifact and PostgreSQL tests remain opt-in through
 `--with-local-artifacts` and `--with-postgres` because a clean public clone has
 neither the intentionally unpublished processed files nor database credentials
@@ -62,5 +66,5 @@ found.
 
 Repository visibility, About text, topics, social preview, and GitHub Actions
 results are GitHub-hosted settings rather than source-controlled files. The
-repository is public with its MIT license detected; topics, social preview, and
-the corrected CI result remain to be confirmed after this fix is pushed.
+repository is public with its MIT license detected, and the corrected CI result
+is green. Topics and social preview remain optional GitHub presentation settings.
