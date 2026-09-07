@@ -30,3 +30,4 @@ table 'Dim Forecast Series'
 	annotation PBI_NavigationStepName = Navigation
 
 	annotation PBI_ResultType = Table
+

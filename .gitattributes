@@ -1,0 +1,6 @@
+* text=auto
+
+# Power BI Desktop owns TMDL serialization and may emit blank or indented
+# separator lines. Keep Git's general whitespace gate strict without treating
+# those generated lines as hand-authored whitespace defects.
+powerbi/**/*.tmdl text whitespace=-blank-at-eof,-trailing-space

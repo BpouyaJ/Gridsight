@@ -45,3 +45,4 @@ relationship dccbbf6c-4a10-486a-2381-cb1d068ebd5e
 relationship f2a67e77-873e-c9e2-3ed3-8adcd838b78c
 	fromColumn: 'Fact Forecast Summary'.forecast_name
 	toColumn: 'Dim Forecast Series'.forecast_name
+

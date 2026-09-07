@@ -40,12 +40,23 @@ available without reinstalling the package.
 ```powershell
 python --version
 python -c "import gridsight; print(gridsight.__version__)"
-python -m pytest
-python -m ruff check .
+python -m gridsight.verify_portfolio
 ```
 
 Python should resolve to `.venv\Scripts\python.exe`. The `.venv` directory is
 local-only and must not be committed.
+
+The verification command validates the checked BI contracts, runs Ruff and the
+complete fast pytest suite, stops at the first failure, and writes
+`logs/portfolio-check.log`. To add the live PostgreSQL integration suite after
+starting the database, use:
+
+```powershell
+python -m gridsight.verify_portfolio --with-postgres
+```
+
+See [Automation and continuous integration](automation-and-ci.md) for the
+failure behavior and GitHub Actions boundary.
 
 ## Leave the environment
 

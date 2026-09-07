@@ -150,12 +150,13 @@ Deliverables:
 
 Skills: Power BI, DAX, relationships, dashboard design, business reporting.
 
-Status: in progress. Step 8.1 completed the source-controlled design: 15 Import
+Status: completed. Step 8.1 froze the source-controlled design: 15 Import
 tables, 12 active one-to-many single-direction relationships, one declared
 date table, 30 explicit DAX measures, five page wireframes, and exact
-reconciliation targets. It passed 87 fast tests, five focused rerun tests, lint,
-and whitespace checks. Step 8.2 will use Power BI Desktop to generate the
-PBIP/PBIR/TMDL project and implement that frozen model.
+reconciliation targets. Step 8.2 used Power BI Desktop to generate and commit
+the PBIP/PBIR/TMDL project with five pages and 21 visuals. The acceptance values
+reconciled, the focused five-test contract suite passed, and report screenshots
+and interpretation limits are documented.
 
 ### Phase 9 - Excel and Power Query
 
@@ -168,6 +169,12 @@ Deliverables:
 
 Skills: Excel analytics, Power Query, PivotTables, business-user reporting.
 
+Status: completed. The delivered workbook includes a recruiter-ready dashboard,
+formula-backed annual and pivot analysis, nine exact KPI reconciliation checks,
+a native `MonthlyEnergy` Power Query connection, and a native year-by-month
+PivotTable. The checked workbook preserves the 48-row public sample, explicit
+units, source attribution, and unavailable-generation semantics.
+
 ### Phase 10 - Automation and tests
 
 Deliverables:
@@ -178,6 +185,12 @@ Deliverables:
 - Optional GitHub Actions workflow
 
 Skills: reproducibility, automation, testing, CI fundamentals.
+
+Status: completed. `python -m gridsight.verify_portfolio` now performs a
+fail-fast checked-contract, Ruff, and pytest workflow with reusable logging.
+The optional `--with-postgres` flag adds the six live integration tests, while
+GitHub Actions runs the public-clone-safe default on Python 3.13. The completed
+local gate passed Ruff and all 95 selected fast tests.
 
 ### Phase 11 - Portfolio polish
 
@@ -190,6 +203,8 @@ Deliverables:
 - Final technical and recruiter reviews
 
 Skills: technical communication, presentation, GitHub portfolio quality.
+
+Status: in progress.
 
 ## Essential scope
 

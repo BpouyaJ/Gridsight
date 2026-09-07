@@ -163,7 +163,7 @@ table _Measures
 	partition _Measures = calculated
 		mode: import
 		source =
-
+				
 				DATATABLE(
 				    "_Placeholder",
 				    STRING,
@@ -171,3 +171,4 @@ table _Measures
 				)
 
 	annotation PBI_Id = 056b82bcede743e9af6ed6b004ba6429
+

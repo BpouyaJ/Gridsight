@@ -376,7 +376,7 @@ table 'Fact Hourly Energy'
 				    Source = PostgreSQL.Database("localhost:5432", "gridsight"),
 				    reporting_hourly_energy =
 				        Source{[Schema="reporting", Item="hourly_energy"]}[Data],
-
+				
 				    #"Added Correct UTC Start" =
 				        Table.AddColumn(
 				            reporting_hourly_energy,
@@ -391,7 +391,7 @@ table 'Fact Hourly Energy'
 				                ),
 				            type datetime
 				        ),
-
+				
 				    #"Added Correct UTC End" =
 				        Table.AddColumn(
 				            #"Added Correct UTC Start",
@@ -399,13 +399,13 @@ table 'Fact Hourly Energy'
 				            each [__interval_start_utc] + #duration(0, 1, 0, 0),
 				            type datetime
 				        ),
-
+				
 				    #"Removed Connector Timestamps" =
 				        Table.RemoveColumns(
 				            #"Added Correct UTC End",
 				            {"interval_start_utc", "interval_end_utc"}
 				        ),
-
+				
 				    #"Renamed UTC Timestamps" =
 				        Table.RenameColumns(
 				            #"Removed Connector Timestamps",
@@ -420,3 +420,4 @@ table 'Fact Hourly Energy'
 	annotation PBI_NavigationStepName = Navigation
 
 	annotation PBI_ResultType = Table
+

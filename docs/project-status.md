@@ -1,14 +1,14 @@
 # Project status
 
-Last updated: 2026-08-28
+Last updated: 2026-09-08
 
 ## Current phase
 
-Phase 8 - Power BI
+Phase 11 - Portfolio polish
 
-Current step: 8.1 - semantic-model and report-design contract (complete)
+Current step: 11.1 - recruiter-facing repository and final audit (in progress)
 
-Status: complete
+Status: in progress
 
 ## Completed
 
@@ -449,21 +449,55 @@ Status: complete
   a corrected standard-library import order.
 - Passed Ruff, bundled-Python syntax compilation, and `git diff --check` after
   completing Step 8.1.
+- Used Power BI Desktop to create and source-control the PBIP/PBIR/TMDL project.
+- Implemented all five required report pages with 21 visuals.
+- Reconciled the report to the frozen all-period energy, price, forecast,
+  quality, and lineage acceptance values.
+- Verified the 15-table model, 12 active one-to-many single-direction
+  relationships, declared date table, and 30 explicit DAX measures.
+- Passed all five focused Power BI contract tests and Ruff after the Desktop
+  build.
+- Added portfolio screenshots, findings, and interpretation limits for the
+  Executive Overview, Load & Renewables, Price Analysis, Forecast Performance,
+  and Data Quality pages.
+- Completed Phase 8 and pushed commit `059beb0` to `origin/main`.
+- Built the monthly Excel analyst pack with eight formula-backed KPIs, annual
+  summaries, two charts, a pivot-style audit view, and nine exact KPI
+  reconciliation checks.
+- Embedded the native `MonthlyEnergy` Power Query connection and its 48-row
+  query-backed table using the versioned M contract.
+- Added a native year-by-month PivotTable whose rounded grand total is
+  1,872.00 TWh and whose source is the Power Query table.
+- Verified the workbook visually and structurally, including zero cached
+  formula errors and PASS status for every reconciliation check.
+- Added deterministic workbook, query, sample-hash, connection, and PivotTable
+  contract coverage.
+- Completed Phase 9 with the refresh workflow and limitations documented.
+- Added one fail-fast `gridsight.verify_portfolio` command that validates the
+  checked Power BI artifacts, runs Ruff, and runs the complete fast test suite.
+- Added structured console/file logging and preserved the first failing
+  subprocess exit code for actionable local and CI failures.
+- Added an explicit `--with-postgres` option for the six live integration
+  tests without making an external database a public-clone requirement.
+- Added a read-only GitHub Actions workflow using Python 3.13 and the same
+  one-command verification path.
+- Passed the completed Phase 10 gate with Ruff and 95 fast tests; six marked
+  PostgreSQL integration tests were correctly deselected.
+- Completed Phase 10 with automation boundaries and commands documented.
 
 ## In progress
 
-None. Step 8.1 is complete.
+Step 11.1 is polishing the recruiter-facing repository, diagrams, evidence,
+licensing, and final technical review.
 
 ## Not started
 
-- Power BI Desktop project and report pages
-- Excel/Power Query
+- Final portfolio polish
 
 ## Next bounded step
 
-Start Step 8.2 by using Power BI Desktop to create the PBIP/PBIR/TMDL project,
-connect the frozen sources, and implement the declared tables and
-relationships before adding report visuals.
+Complete the recruiter-facing README, architecture and data-model diagrams,
+repository metadata, licensing decision, and final regression audit.
 
 ## Current blockers
 

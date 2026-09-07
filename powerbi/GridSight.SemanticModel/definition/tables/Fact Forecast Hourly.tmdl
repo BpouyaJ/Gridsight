@@ -277,13 +277,13 @@ table 'Fact Forecast Hourly'
 				                Item="forecast_performance_hourly"
 				            ]
 				        }[Data],
-
+				
 				    OriginOffsetRows =
 				        Table.SelectRows(
 				            #"Fact Hourly Energy",
 				            each [hour_key] = 0
 				        ),
-
+				
 				    OriginOffsetColumns =
 				        Table.SelectColumns(
 				            OriginOffsetRows,
@@ -292,13 +292,13 @@ table 'Fact Forecast Hourly'
 				                "utc_offset_minutes"
 				            }
 				        ),
-
+				
 				    OriginOffsets =
 				        Table.Distinct(
 				            OriginOffsetColumns,
 				            {"calendar_date"}
 				        ),
-
+				
 				    #"Merged Origin Offset" =
 				        Table.NestedJoin(
 				            reporting_forecast_hourly,
@@ -308,7 +308,7 @@ table 'Fact Forecast Hourly'
 				            "__origin_offset",
 				            JoinKind.LeftOuter
 				        ),
-
+				
 				    #"Expanded Origin Offset" =
 				        Table.ExpandTableColumn(
 				            #"Merged Origin Offset",
@@ -316,7 +316,7 @@ table 'Fact Forecast Hourly'
 				            {"utc_offset_minutes"},
 				            {"__origin_offset_minutes"}
 				        ),
-
+				
 				    #"Added Correct Forecast Origin UTC" =
 				        Table.AddColumn(
 				            #"Expanded Origin Offset",
@@ -331,7 +331,7 @@ table 'Fact Forecast Hourly'
 				                ),
 				            type datetime
 				        ),
-
+				
 				    #"Added Correct Information Cutoff UTC" =
 				        Table.AddColumn(
 				            #"Added Correct Forecast Origin UTC",
@@ -339,7 +339,7 @@ table 'Fact Forecast Hourly'
 				            each [__forecast_origin_utc],
 				            type datetime
 				        ),
-
+				
 				    #"Added Correct Target Start UTC" =
 				        Table.AddColumn(
 				            #"Added Correct Information Cutoff UTC",
@@ -354,7 +354,7 @@ table 'Fact Forecast Hourly'
 				                ),
 				            type datetime
 				        ),
-
+				
 				    #"Removed Connector Timestamps" =
 				        Table.RemoveColumns(
 				            #"Added Correct Target Start UTC",
@@ -365,7 +365,7 @@ table 'Fact Forecast Hourly'
 				                "__origin_offset_minutes"
 				            }
 				        ),
-
+				
 				    #"Renamed UTC Timestamps" =
 				        Table.RenameColumns(
 				            #"Removed Connector Timestamps",
@@ -390,3 +390,4 @@ table 'Fact Forecast Hourly'
 	annotation PBI_NavigationStepName = Navigation
 
 	annotation PBI_ResultType = Table
+

@@ -159,7 +159,7 @@ The required pages are:
 5. Data Quality
 
 Their exact business questions, minimum visuals, fields, slicers, and caveats
-are frozen in `powerbi/page-wireframes.md` and the JSON contract. Step 8.1 does
-not create report screenshots or claim that a Desktop report exists. Those are
-verified only after the user completes the Desktop build in later Phase 8
-steps.
+are frozen in `powerbi/page-wireframes.md` and the JSON contract. Step 8.2 is
+complete: the Desktop-generated PBIP/PBIR/TMDL project implements all five
+pages with 21 visuals. Screenshots, findings, reconciliation notes, and honest
+interpretation limits are published in `docs/power-bi-report.md`.

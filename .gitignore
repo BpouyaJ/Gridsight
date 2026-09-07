@@ -32,6 +32,9 @@ postgres_data/
 **/.pbi/localSettings.json
 **/.pbi/cache.abf
 
+# Excel temporary lock files
+~$*.xlsx
+
 # Editors and operating systems
 .vscode/
 .idea/

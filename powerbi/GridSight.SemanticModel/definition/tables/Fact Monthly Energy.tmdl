@@ -220,3 +220,4 @@ table 'Fact Monthly Energy'
 	annotation PBI_NavigationStepName = Navigation
 
 	annotation PBI_ResultType = Table
+

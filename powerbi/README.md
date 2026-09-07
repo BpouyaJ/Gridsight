@@ -1,44 +1,39 @@
-# GridSight Power BI workspace
+# GridSight Power BI report
 
-This folder holds the source-controlled Power BI design and, beginning in Step
-8.2, the project files created by Power BI Desktop.
+GridSight includes a source-controlled Power BI Desktop project built with the
+PBIP, PBIR, and TMDL formats. Open `GridSight.pbip` from this folder's parent
+directory to inspect the semantic model and five-page report.
 
-## Current Step 8.1 assets
+## Delivered report
 
-- `dax/measures.dax`: 24 tested, copy-ready DAX measures.
-- `page-wireframes.md`: the five report pages, questions, visuals, and fields.
-- `reports/powerbi_semantic_model_contract.json`: the machine-readable model
-  contract generated from Python.
-- `docs/power-bi-semantic-model.md`: the relationship, table, unit, and Desktop
-  implementation guide.
+- 15 Import-mode tables
+- 12 active one-to-many, single-direction relationships
+- one declared Europe/Berlin date table
+- 30 explicit DAX measures
+- 5 report pages and 21 visuals
+- checked sample inputs for a public, compact portfolio review
 
-Regenerate and validate the design from the repository root:
+The pages are Executive Overview, Load & Renewables, Price Analysis, Forecast
+Performance, and Data Quality. Screenshots and concise findings are documented
+in `docs/power-bi-report.md`.
+
+## Rebuild and validation
+
+The checked design contract remains reproducible from the repository root:
 
 ```powershell
 python -m gridsight.reporting.build_powerbi_contract
+python -m pytest tests/test_powerbi_contract.py -v
 ```
 
-## Step boundary
+Power BI Desktop owns the generated PBIP/PBIR/TMDL serialization. The project
+is a local portfolio deliverable, not a deployed production BI service. Do not
+commit credentials, local caches, autosaves, database extracts outside
+`data/samples/`, or workspace-specific connection secrets.
 
-Step 8.1 does not hand-author a `.pbix`, `.pbip`, PBIR report definition, or
-TMDL semantic model. In Step 8.2, Power BI Desktop will create those files from
-its supported **Save as Power BI Project** workflow. We will then compare the
-Desktop model to the frozen JSON and DAX contracts before building visuals.
-
-Power BI Desktop projects and the enhanced PBIR report format are currently
-documented by Microsoft as preview features. Desktop-generated files are used
-so their schemas and local metadata are valid for the installed Desktop
-version. Local `.pbi` cache and settings files must remain excluded from Git.
-
-Official references:
+## References
 
 - [Power BI Desktop projects](https://learn.microsoft.com/power-bi/developer/projects/projects-overview)
-- [Power BI project report folder and PBIR](https://learn.microsoft.com/power-bi/developer/projects/projects-report)
-- [TMDL view in Power BI Desktop](https://learn.microsoft.com/power-bi/transform-model/desktop-tmdl-view)
+- [PBIR report folders](https://learn.microsoft.com/power-bi/developer/projects/projects-report)
+- [TMDL view](https://learn.microsoft.com/power-bi/transform-model/desktop-tmdl-view)
 - [Star-schema guidance](https://learn.microsoft.com/power-bi/guidance/star-schema)
-
-## Portfolio limits
-
-The report is a local portfolio deliverable, not a deployed production BI
-service. Do not commit credentials, local caches, autosaves, database extracts
-outside `data/samples/`, or workspace-specific connection secrets.
