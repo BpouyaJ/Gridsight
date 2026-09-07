@@ -17,6 +17,8 @@ from gridsight.forecasting.final_evaluation import (
     DEFAULT_FINAL_PREDICTIONS,
 )
 
+pytestmark = pytest.mark.local_artifact
+
 
 def _copy_final_artifacts(project_root: Path) -> tuple[Path, Path]:
     predictions = project_root / "data" / "processed" / "final_forecast_predictions.csv"

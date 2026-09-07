@@ -37,6 +37,7 @@ def test_sample_queries_cover_six_views_with_fixed_ordering() -> None:
     assert all(query.order_by for query in SAMPLE_QUERIES)
 
 
+@pytest.mark.local_artifact
 def test_checked_artifact_samples_match_source_contracts() -> None:
     frames = build_checked_sample_frames()
 
@@ -49,6 +50,7 @@ def test_checked_artifact_samples_match_source_contracts() -> None:
     }
 
 
+@pytest.mark.local_artifact
 def test_sample_validation_rejects_duplicate_contract_key() -> None:
     frame = build_checked_sample_frames()["data_quality_checks"].copy()
     frame.loc[frame.index[-1], ["dataset", "check_id"]] = frame.loc[
@@ -59,6 +61,7 @@ def test_sample_validation_rejects_duplicate_contract_key() -> None:
         validate_sample_frame(_contract("data_quality_checks"), frame)
 
 
+@pytest.mark.local_artifact
 def test_sample_csv_writer_is_byte_deterministic(tmp_path: Path) -> None:
     frame = build_checked_sample_frames()["data_quality_checks"]
     path = tmp_path / "quality.csv"
@@ -70,6 +73,7 @@ def test_sample_csv_writer_is_byte_deterministic(tmp_path: Path) -> None:
     assert first_bytes.startswith(b"dataset,check_id,status,expected,observed\n")
 
 
+@pytest.mark.local_artifact
 def test_published_bundle_matches_manifest_and_contract() -> None:
     manifest = validate_published_sample_bundle()
 

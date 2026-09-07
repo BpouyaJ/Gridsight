@@ -25,7 +25,8 @@ keeping MW, MWh, TWh, EUR/MWh, counts, and percentages explicit.
 | Frozen 2025 model MAPE | 2.652% |
 | MAE improvement over weekly naive | 46.541% |
 | Published data-quality checks | 29 / 29 passed |
-| Automated fast tests | 99 passed |
+| Public-clone automated tests | 92 passed |
+| Local generated-artifact tests | 7 passed |
 | Live PostgreSQL integration tests | 6 passed |
 
 The selected histogram-gradient-boosting model was chosen on 2024 validation
@@ -46,8 +47,9 @@ Its final result is historical evidence, not a production-service claim.
   relationships, 30 explicit DAX measures, five pages, and 21 visuals.
 - **Excel analytics:** formula-backed dashboard, reconciliation sheet, native
   Power Query connection, query-backed table, and native PivotTable.
-- **Software quality:** 99 fast tests, six opt-in database tests, Ruff, fail-fast
-  logging, deterministic checked artifacts, and GitHub Actions.
+- **Software quality:** 92 public-clone tests, seven local generated-artifact
+  tests, six opt-in database tests, Ruff, fail-fast logging, deterministic
+  checked artifacts, and GitHub Actions.
 
 ## Architecture
 
@@ -117,14 +119,21 @@ GridSight requires Python 3.13. From the repository root:
 
 ```powershell
 py -3.13 -m venv .venv
-& '.\.venv\Scripts\python.exe' -m pip install -e ".[dev]"
+& '.\.venv\Scripts\python.exe' -m pip install -e ".[dev,analysis]"
 & '.\.venv\Scripts\python.exe' -m gridsight.verify_portfolio
 ```
 
 The last command validates the checked Power BI artifacts, runs Ruff, executes
-all 99 fast tests, stops on the first failure, and writes
-`logs/portfolio-check.log`. It does not require raw data, Power BI Desktop,
-Excel, Docker, or PostgreSQL.
+all 92 public-clone tests, stops on the first failure, and writes
+`logs/portfolio-check.log`. It does not require raw or generated processed data,
+Power BI Desktop, Excel, Docker, or PostgreSQL.
+
+When the ignored generated files under `data/processed/` exist locally, add the
+seven artifact-backed checks:
+
+```powershell
+& '.\.venv\Scripts\python.exe' -m gridsight.verify_portfolio --with-local-artifacts
+```
 
 For the six live database tests, start the configured service and run:
 

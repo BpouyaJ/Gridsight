@@ -474,7 +474,7 @@ Status: completed
   contract coverage.
 - Completed Phase 9 with the refresh workflow and limitations documented.
 - Added one fail-fast `gridsight.verify_portfolio` command that validates the
-  checked Power BI artifacts, runs Ruff, and runs the complete fast test suite.
+  checked Power BI artifacts, runs Ruff, and runs the public-clone test suite.
 - Added structured console/file logging and preserved the first failing
   subprocess exit code for actionable local and CI failures.
 - Added an explicit `--with-postgres` option for the six live integration
@@ -498,9 +498,12 @@ Status: completed
 - Audited the source-controlled portfolio for broken local links, invalid JSON
   and notebooks, invalid TOML, high-confidence secrets, and oversized files;
   every static gate passed.
-- Passed the final one-command gate with checked Power BI contracts, Ruff, and
-  all 99 selected fast tests; six marked PostgreSQL tests were deselected as
-  designed.
+- Passed the final full local gate with checked Power BI contracts, Ruff, 92
+  public-clone tests, and seven generated-artifact tests; six marked PostgreSQL
+  tests remained opt-in as designed.
+- Corrected the GitHub Actions boundary after the first hosted run exposed seven
+  tests that depended on intentionally ignored processed files; those tests now
+  use an explicit `local_artifact` marker and `--with-local-artifacts` flag.
 - Completed Phase 11 and the full approved GridSight roadmap.
 
 ## In progress

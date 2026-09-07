@@ -21,10 +21,10 @@ def _silent_logger() -> logging.Logger:
     return logger
 
 
-def test_default_sequence_runs_lint_then_the_complete_fast_suite() -> None:
+def test_default_sequence_runs_lint_then_the_public_clone_suite() -> None:
     steps = build_steps()
 
-    assert [step.name for step in steps] == ["Ruff", "Fast tests"]
+    assert [step.name for step in steps] == ["Ruff", "Public-clone tests"]
     assert steps[0].command == (
         sys.executable,
         "-m",
@@ -35,11 +35,20 @@ def test_default_sequence_runs_lint_then_the_complete_fast_suite() -> None:
     assert steps[1].command == (sys.executable, "-m", "pytest")
 
 
-def test_postgres_option_adds_the_explicit_integration_suite() -> None:
-    steps = build_steps(with_postgres=True)
+def test_optional_flags_add_the_explicit_local_suites() -> None:
+    artifact_steps = build_steps(with_local_artifacts=True)
+    postgres_steps = build_steps(with_postgres=True)
 
-    assert steps[-1].name == "PostgreSQL integration tests"
-    assert steps[-1].command == (
+    assert artifact_steps[-1].name == "Local generated-artifact tests"
+    assert artifact_steps[-1].command == (
+        sys.executable,
+        "-m",
+        "pytest",
+        "-m",
+        "local_artifact",
+    )
+    assert postgres_steps[-1].name == "PostgreSQL integration tests"
+    assert postgres_steps[-1].command == (
         sys.executable,
         "-m",
         "pytest",

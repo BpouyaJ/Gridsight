@@ -25,7 +25,11 @@ class VerificationStep:
     command: tuple[str, ...]
 
 
-def build_steps(*, with_postgres: bool = False) -> tuple[VerificationStep, ...]:
+def build_steps(
+    *,
+    with_local_artifacts: bool = False,
+    with_postgres: bool = False,
+) -> tuple[VerificationStep, ...]:
     """Return the deterministic verification sequence."""
     steps = [
         VerificationStep(
@@ -33,10 +37,17 @@ def build_steps(*, with_postgres: bool = False) -> tuple[VerificationStep, ...]:
             (sys.executable, "-m", "ruff", "check", "."),
         ),
         VerificationStep(
-            "Fast tests",
+            "Public-clone tests",
             (sys.executable, "-m", "pytest"),
         ),
     ]
+    if with_local_artifacts:
+        steps.append(
+            VerificationStep(
+                "Local generated-artifact tests",
+                (sys.executable, "-m", "pytest", "-m", "local_artifact"),
+            )
+        )
     if with_postgres:
         steps.append(
             VerificationStep(
@@ -114,6 +125,14 @@ def _parser() -> argparse.ArgumentParser:
         )
     )
     parser.add_argument(
+        "--with-local-artifacts",
+        action="store_true",
+        help=(
+            "also run tests that require ignored generated files under "
+            "data/processed"
+        ),
+    )
+    parser.add_argument(
         "--with-postgres",
         action="store_true",
         help="also run tests marked integration against the configured database",
@@ -145,7 +164,10 @@ def main(argv: Sequence[str] | None = None) -> int:
         return 1
 
     result = run_steps(
-        build_steps(with_postgres=args.with_postgres),
+        build_steps(
+            with_local_artifacts=args.with_local_artifacts,
+            with_postgres=args.with_postgres,
+        ),
         logger=logger,
     )
     if result:

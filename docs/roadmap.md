@@ -190,9 +190,9 @@ Skills: reproducibility, automation, testing, CI fundamentals.
 
 Status: completed. `python -m gridsight.verify_portfolio` now performs a
 fail-fast checked-contract, Ruff, and pytest workflow with reusable logging.
-The optional `--with-postgres` flag adds the six live integration tests, while
-GitHub Actions runs the public-clone-safe default on Python 3.13. The completed
-local gate passed Ruff and all 95 selected fast tests.
+The default runs 92 public-clone tests; `--with-local-artifacts` adds seven
+generated-output tests and `--with-postgres` adds six live integration tests.
+GitHub Actions runs the public-clone-safe default on Python 3.13.
 
 ### Phase 11 - Portfolio polish
 
@@ -210,7 +210,7 @@ Status: completed. The final repository leads with verified business and model
 results, portfolio screenshots, a concise public-clone path, a detailed
 architecture and analytical data model, honest limitations, and a detectable
 MIT license. Documentation claims are contract-tested, and the final local gate
-passed Ruff plus all 99 selected fast tests.
+passed Ruff plus 92 public-clone and seven generated-artifact tests.
 
 ## Essential scope
 

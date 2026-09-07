@@ -35,9 +35,10 @@ dev = [
 where = ["src"]
 
 [tool.pytest.ini_options]
-addopts = "-ra --strict-markers -m 'not integration'"
+addopts = "-ra --strict-markers -m 'not integration and not local_artifact'"
 markers = [
     "integration: requires a running external service such as PostgreSQL",
+    "local_artifact: requires ignored generated artifacts under data/processed",
 ]
 testpaths = ["tests"]
 

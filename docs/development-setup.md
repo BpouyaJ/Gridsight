@@ -47,9 +47,16 @@ Python should resolve to `.venv\Scripts\python.exe`. The `.venv` directory is
 local-only and must not be committed.
 
 The verification command validates the checked BI contracts, runs Ruff and the
-complete fast pytest suite, stops at the first failure, and writes
-`logs/portfolio-check.log`. To add the live PostgreSQL integration suite after
-starting the database, use:
+92-test public-clone pytest suite, stops at the first failure, and writes
+`logs/portfolio-check.log`.
+
+If the ignored generated outputs exist under `data/processed/`, also run:
+
+```powershell
+python -m gridsight.verify_portfolio --with-local-artifacts
+```
+
+To add the live PostgreSQL integration suite after starting the database, use:
 
 ```powershell
 python -m gridsight.verify_portfolio --with-postgres

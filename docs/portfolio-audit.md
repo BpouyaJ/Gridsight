@@ -9,7 +9,7 @@ Docker, or PostgreSQL.
 
 ## Automated gate
 
-The final command was:
+The public-clone command is:
 
 ```powershell
 python -m gridsight.verify_portfolio
@@ -19,13 +19,19 @@ Verified result:
 
 - checked Power BI contract: passed;
 - Ruff: passed;
-- pytest: 99 passed and six PostgreSQL integration tests deselected;
+- pytest: 92 public-clone tests passed;
 - exit status: zero;
 - evidence log: `logs/portfolio-check.log` (local and ignored by Git).
 
-The six live PostgreSQL tests had already passed after the final reporting-mart
-implementation. They remain opt-in through `--with-postgres` because a clean
-public clone has no database credentials or preloaded service.
+The local command `python -m gridsight.verify_portfolio
+--with-local-artifacts` additionally passed seven tests that require ignored
+generated outputs. The six live PostgreSQL tests had already passed after the
+final reporting-mart implementation.
+
+Generated-artifact and PostgreSQL tests remain opt-in through
+`--with-local-artifacts` and `--with-postgres` because a clean public clone has
+neither the intentionally unpublished processed files nor database credentials
+and a preloaded service.
 
 ## Static repository audit
 
@@ -54,6 +60,7 @@ found.
 
 ## Remaining external settings
 
-Repository visibility, About text, topics, social preview, and the first GitHub
-Actions result are GitHub-hosted settings rather than source-controlled files.
-They should be confirmed after the final commit is pushed.
+Repository visibility, About text, topics, social preview, and GitHub Actions
+results are GitHub-hosted settings rather than source-controlled files. The
+repository is public with its MIT license detected; topics, social preview, and
+the corrected CI result remain to be confirmed after this fix is pushed.
