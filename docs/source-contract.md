@@ -17,7 +17,8 @@
 - Canonical processed timezone: UTC
 - Reporting timezone: Europe/Berlin
 
-SMARD limits a market-data export to two years. Each category will therefore be downloaded in two immutable snapshots: 2022-2023 and 2024-2025.
+SMARD limits a market-data export to two years. Each category was therefore
+downloaded in two immutable snapshots: 2022-2023 and 2024-2025.
 
 ## Required categories
 
@@ -50,7 +51,7 @@ Processed measure: hourly energy generation in MWh.
 - Hourly prices are averaged only when source intervals require aggregation; prices are never summed.
 - Negative wholesale prices are valid observations and must not be removed by a generic non-negative rule.
 
-## Planned raw filenames
+## Registered raw filenames
 
 ```text
 smard_actual_consumption_de_2022_2023.csv
@@ -61,7 +62,8 @@ smard_day_ahead_price_de_lu_2022_2023.csv
 smard_day_ahead_price_de_lu_2024_2025.csv
 ```
 
-The actual downloaded names will be preserved. These normalized names may be used as immutable local copies after their original filenames are recorded in the manifest.
+The original downloaded names are preserved in the manifest. These normalized
+names identify the immutable local copies.
 
 ## Manifest fields
 

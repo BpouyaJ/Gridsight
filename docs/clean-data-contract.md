@@ -2,7 +2,7 @@
 
 ## Canonical hourly time contract
 
-Every clean GridSight dataset will use a unique UTC interval as its canonical
+Every clean GridSight dataset uses a unique UTC interval as its canonical
 time key while retaining Europe/Berlin reporting context and the exact SMARD
 source labels.
 

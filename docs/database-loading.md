@@ -98,9 +98,9 @@ would duplicate facts.
 
 ## Step boundary
 
-Step 4.2 loads and reconciles internal analytical tables. Step 4.3 will add
-tested, stable `reporting` views for KPI analysis, Power BI, and Excel without
-making those clients depend directly on staging implementation details.
+Step 4.2 loads and reconciles internal analytical tables. Step 4.3 added tested,
+stable `reporting` views for KPI analysis, Power BI, and Excel without making
+those clients depend directly on staging implementation details.
 
 ## Verified Step 4.2 result
 

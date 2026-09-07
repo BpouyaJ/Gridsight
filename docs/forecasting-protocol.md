@@ -102,7 +102,7 @@ selection, preprocessing, model choice, hyperparameters, or thresholds.
 
 ## Evaluation contract
 
-Every origin/horizon pair is one forecast observation. Results will be reported
+Every origin/horizon pair is one forecast observation. Results are reported
 overall and by horizon step 1 through 24.
 
 | Metric | Definition | Unit/use |

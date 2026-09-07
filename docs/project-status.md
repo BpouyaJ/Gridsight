@@ -4,11 +4,11 @@ Last updated: 2026-09-08
 
 ## Current phase
 
-Phase 11 - Portfolio polish
+Phase 11 - Portfolio polish (completed)
 
-Current step: 11.1 - recruiter-facing repository and final audit (in progress)
+Current step: all approved phases complete
 
-Status: in progress
+Status: completed
 
 ## Completed
 
@@ -484,20 +484,38 @@ Status: in progress
 - Passed the completed Phase 10 gate with Ruff and 95 fast tests; six marked
   PostgreSQL integration tests were correctly deselected.
 - Completed Phase 10 with automation boundaries and commands documented.
+- Replaced the development-era root README with a recruiter-facing project
+  narrative led by verified results, screenshots, skills evidence, reproducible
+  review commands, and honest limitations.
+- Added repository-native Mermaid diagrams for the complete system flow and
+  PostgreSQL analytical star model.
+- Added an MIT license under the repository author identity and separated that
+  code/documentation license from SMARD's CC BY 4.0 data terms.
+- Added four fast portfolio-documentation tests for relative links, evidence
+  values, diagrams, licensing, and stale development language.
+- Removed stale future-tense language from the main technical documentation.
+- Verified the public Excel parameter no longer exposes the local user path.
+- Audited the source-controlled portfolio for broken local links, invalid JSON
+  and notebooks, invalid TOML, high-confidence secrets, and oversized files;
+  every static gate passed.
+- Passed the final one-command gate with checked Power BI contracts, Ruff, and
+  all 99 selected fast tests; six marked PostgreSQL tests were deselected as
+  designed.
+- Completed Phase 11 and the full approved GridSight roadmap.
 
 ## In progress
 
-Step 11.1 is polishing the recruiter-facing repository, diagrams, evidence,
-licensing, and final technical review.
+None. The approved GridSight scope is complete.
 
 ## Not started
 
-- Final portfolio polish
+None within the approved scope.
 
 ## Next bounded step
 
-Complete the recruiter-facing README, architecture and data-model diagrams,
-repository metadata, licensing decision, and final regression audit.
+Use the completed repository in applications and maintain only verified fixes.
+Any optional expansion requires a new decision and must preserve the frozen
+forecast-test boundary.
 
 ## Current blockers
 

@@ -69,12 +69,12 @@ records SHA-256 values, and reconciles their values with SQL or source artifacts
 
 ## Implementation boundary
 
-Step 7.3 generates the eight checked samples but does not build Power BI or
-Excel. Those remain Phases 8 and 9.
+Step 7.3 generated the eight checked samples before the Power BI and Excel
+deliverables consumed them in Phases 8 and 9.
 
 ## Verified Step 7.1 result
 
-The real build verified four existing views, two planned forecast views, eight
+The initial build verified four existing views, two planned forecast views, eight
 sample policies, 29 passing data-quality checks, six source exports, and every
 upstream SHA-256 dependency. The deterministic contract has SHA-256
 `acb7d3137aaa2c7c4f6fd688520987e5c573cbbeba245938e564cbc5cf1abdbc`.
@@ -86,9 +86,9 @@ fixed portfolio-safe samples. Ruff and `git diff --check` also passed.
 
 ## Step 7.2 contract update
 
-After implementing both forecast views, the contract marks all six PostgreSQL
+After implementing both forecast views, the contract marked all six PostgreSQL
 products `verified_existing` while retaining the two Step 7.3 extracts as
-planned. The regenerated contract hash is
+planned at that historical gate. The regenerated contract hash is
 `2b6e765eb106a706ae87b1e6c22d502b8bc18e3d995bf429a4d5889051532f95`.
 
 ## Step 7.3 sample implementation

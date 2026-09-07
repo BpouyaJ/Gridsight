@@ -13,7 +13,7 @@ quality constraints. It does not load data.
 |---|---|
 | `staging` | Canonical clean datasets with row-level source lineage. |
 | `analytics` | Conformed dimensions and fact tables at declared grains. |
-| `reporting` | Stable SQL views for Power BI and Excel in later steps. |
+| `reporting` | Stable SQL views for Power BI and Excel. |
 
 The reporting schema is intentionally empty in Step 4.1. Step 4.3 adds four
 views only after the analytical facts are loaded and reconciled. Their grains

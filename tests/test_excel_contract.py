@@ -55,6 +55,19 @@ def test_excel_pack_contains_the_approved_sheets_tables_and_charts() -> None:
         "MonthlyEnergyTable",
     }
 
+    shared_strings_root = ET.fromstring(parts["xl/sharedStrings.xml"])
+    shared_strings = [
+        "".join(
+            text.text or ""
+            for text in item.findall(
+                f".//{{{SPREADSHEET_NS}}}t"
+            )
+        )
+        for item in shared_strings_root
+    ]
+    assert r"C:\path\to\GridSight" in shared_strings
+    assert not any(r"C:\Users\borji" in value for value in shared_strings)
+
     chart_parts = [name for name in parts if name.startswith("xl/charts/chart")]
     assert len(chart_parts) == 2
 

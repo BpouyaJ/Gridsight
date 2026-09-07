@@ -75,8 +75,8 @@ python -m gridsight.database.load_forecast_mart
 ```
 
 The second command also creates all six reporting views and runs the complete
-reporting reconciliation. Step 7.3 will export the fixed checked samples from
-these products.
+reporting reconciliation. Step 7.3 exports the fixed checked samples from these
+products.
 
 ## Verified Step 7.2 result
 

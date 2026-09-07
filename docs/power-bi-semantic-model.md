@@ -2,9 +2,10 @@
 
 ## Purpose
 
-Step 8.1 freezes the model before any report visuals are built. The contract
-prevents Power BI from introducing ambiguous relationships, implicit measures,
-unit drift, or metric definitions that disagree with Python and PostgreSQL.
+Step 8.1 froze the model before report visuals were built, and Step 8.2
+implemented the source-controlled Desktop project. The retained contract
+prevents ambiguous relationships, implicit measures, unit drift, or metric
+definitions that disagree with Python and PostgreSQL.
 
 Build the deterministic artifacts from the project root:
 
@@ -33,7 +34,7 @@ which was import ordering. Ruff and `git diff --check` then passed cleanly.
 
 ## Desktop project decision
 
-Step 8.1 versions the design contract and DAX catalogue. Step 8.2 uses Power BI
+Step 8.1 versions the design contract and DAX catalogue. Step 8.2 used Power BI
 Desktop to create the actual PBIP/PBIR/TMDL files through **Save as Power BI
 Project**. We do not invent those files by hand because Microsoft currently
 documents Power BI Desktop projects and enhanced PBIR report definitions as

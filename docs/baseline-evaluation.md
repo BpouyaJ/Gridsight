@@ -82,5 +82,5 @@ No test forecast row was scored.
 
 These baselines do not learn parameters and do not prove production forecast
 quality. They are reproducible reference points for the later Ridge and
-histogram gradient-boosting models. Model improvement will be credible only if
-it uses the same origins, targets, metrics, and untouched-test boundary.
+histogram gradient-boosting models. The final improvement claim uses the same
+origins, targets, metrics, and untouched-test boundary.

@@ -48,6 +48,6 @@ local gate because it requires an external service and credentials.
 
 ## Verified result
 
-The completed local gate on 2026-09-08 passed Ruff and selected 95 fast tests;
+The final local gate on 2026-09-08 passed Ruff and selected 99 fast tests;
 six PostgreSQL integration tests were deselected by the declared marker. The
 same command produced `logs/portfolio-check.log` and returned exit code zero.
