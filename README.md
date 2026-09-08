@@ -11,7 +11,7 @@ UTC-normalized analytical model, PostgreSQL reporting layer, leakage-safe
 pack. It covers the complete 2022-2025 Europe/Berlin calendar period while
 keeping MW, MWh, TWh, EUR/MWh, counts, and percentages explicit.
 
-![GridSight Power BI executive overview](docs/images/power-bi/executive-overview.png)
+
 
 ## Portfolio results
 
