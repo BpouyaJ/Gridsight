@@ -46,10 +46,14 @@ The third generated output is
 price series from the wider market export and remains ignored.
 
 The consolidated clean-data gate also creates
-`processed/validation_issues.csv` and `processed/validation_summary.json`.
+`processed/validation_issues.csv`, `processed/validation_summary.json`, and
+`processed/validation_run_status.json`.
 The issue file is header-only when validation passes. The JSON summary records
 stable check results, dataset metrics, output paths, and output SHA-256 values.
-Both artifacts are deterministic generated files and remain ignored.
+Those two artifacts are deterministic. The separate run-status sidecar records
+whether the latest attempt is running, passed, or failed and binds a pass to
+the current summary hash, preventing an older passing summary from masking a
+later exception. All three generated artifacts remain ignored.
 
 Phase 6 also generates `processed/forecast_index.csv`. It contains one row per
 forecast origin and horizon step, including actual load and baseline-source

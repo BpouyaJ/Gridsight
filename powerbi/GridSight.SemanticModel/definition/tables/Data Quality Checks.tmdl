@@ -45,7 +45,7 @@ table 'Data Quality Checks'
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\borji\Documents\Codex\GridSight\data\samples\data_quality_checks.csv"),[Delimiter=",", Columns=5, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(File.Contents(ProjectRoot & "\data\samples\data_quality_checks.csv"),[Delimiter=",", Columns=5, QuoteStyle=QuoteStyle.None]),
 				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}}),
 				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
 				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"dataset", type text}, {"check_id", type text}, {"status", type text}, {"expected", type text}, {"observed", type text}})

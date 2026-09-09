@@ -12,6 +12,11 @@ Run the final workflow from the project root:
 python -m gridsight.forecasting.evaluate_final
 ```
 
+Byte-level reproduction of the published evidence requires the numeric stack
+in `constraints/published-model.txt`, including scikit-learn 1.9.0. Install the
+project with that constraint file before rerunning this one-time historical
+workflow.
+
 This command intentionally opens the 2025 targets. Do not use its results to
 change the model design; doing so would turn the test set into another
 validation set and invalidate the final performance claim.

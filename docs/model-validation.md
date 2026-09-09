@@ -86,7 +86,10 @@ and SHA-256
 The report records exact source paths and hashes, scikit-learn version,
 candidate parameters, preprocessing ownership, random state, selection rule,
 and zero scored test rows. Repeated runs with unchanged inputs and environment
-must produce identical JSON bytes.
+must produce identical JSON bytes. Recreate the published numeric environment
+with the constrained install command in `docs/development-setup.md`; it pins
+scikit-learn 1.9.0 and the associated NumPy, pandas, SciPy, joblib, and
+threadpoolctl versions.
 
 ## Step boundary
 

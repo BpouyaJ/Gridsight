@@ -373,7 +373,7 @@ table 'Fact Hourly Energy'
 		mode: import
 		source =
 				let
-				    Source = PostgreSQL.Database("localhost:5432", "gridsight"),
+				    Source = PostgreSQL.Database(PostgreSQLServer, PostgreSQLDatabase),
 				    reporting_hourly_energy =
 				        Source{[Schema="reporting", Item="hourly_energy"]}[Data],
 				

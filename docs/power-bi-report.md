@@ -8,8 +8,11 @@ Import-mode tables, 12 active one-to-many single-direction relationships, one
 declared date table, 30 explicit DAX measures, and 21 visuals.
 
 Open `powerbi/GridSight.pbip` in Power BI Desktop to inspect or refresh the
-report. The public project uses the compact checked extracts in `data/samples/`
-so the report can be reviewed without committing the full raw data or database.
+report. Six fact tables refresh from the parameterized local PostgreSQL
+reporting views. `Data Quality Checks` and `Source Lineage` read their compact
+checked CSVs through the `ProjectRoot` parameter. The repository commits no
+Power BI data cache: database-free review is provided by the report sources,
+screenshots, semantic contract, and DAX catalogue.
 
 ## Executive overview
 

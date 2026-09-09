@@ -507,10 +507,30 @@ Status: completed
 - Passed the corrected public-clone GitHub Actions workflow on Ubuntu and Python
   3.13 at commit `11c0675`, including Ruff and all 92 source-controlled tests.
 - Completed Phase 11 and the full approved GridSight roadmap.
+- Completed the 2026-09-09 independent-review hardening pass without expanding
+  the analytical or forecasting scope.
+- Rewired all 268 Excel worksheet formula references to the native
+  `MonthlyEnergy` query table, repaired the 48 cached `yyyy-MM` labels, enabled
+  full recalculation on open, and removed local-user path metadata while
+  preserving the query connection, PivotTable/cache, three tables, and charts.
+- Parameterized Power BI's PostgreSQL server, database, and repository root;
+  all six facts retain full reporting-view sources and both evidence tables use
+  checked CSVs below `ProjectRoot`.
+- Added an atomic `running`/`passed`/`failed` validation-run sidecar and made the
+  database loader reject a present nonpassing or hash-mismatched latest status.
+- Pinned scikit-learn 1.9.0 and the published numeric stack, corrected the live
+  database identity test to follow configured credentials, and added a
+  deterministic public-safe portfolio packager with nested OOXML inspection.
+- Restored the Power BI hero screenshot and corrected the public documentation
+  to distinguish database-free review evidence from full local refresh paths.
+- Passed Ruff, all 117 public-clone tests, seven generated-artifact tests, six
+  live PostgreSQL integration tests, workbook structural/visual checks, Python
+  compilation, and the safe-package content scan after hardening.
 
 ## In progress
 
-None. The approved GridSight scope is complete.
+- Hosted GitHub Actions confirmation after the reviewed hardening commit is
+  pushed.
 
 ## Not started
 
@@ -518,9 +538,10 @@ None within the approved scope.
 
 ## Next bounded step
 
-Use the completed repository in applications and maintain only verified fixes.
-Any optional expansion requires a new decision and must preserve the frozen
-forecast-test boundary.
+Commit/push the reviewed hardening patch and confirm the hosted workflow is
+green. After that, use the repository in applications and accept only verified
+maintenance fixes. Any optional expansion requires a new decision and must
+preserve the frozen forecast-test boundary.
 
 ## Current blockers
 

@@ -22,7 +22,9 @@ The command performs these actions in order:
 2. Run the complete validation suite without replacing existing clean files.
 3. If validation passes, atomically write all three canonical CSVs.
 4. Write deterministic validation issues and summary artifacts.
-5. Return exit code `0` for a passing run or `1` for a failed run.
+5. Atomically update `validation_run_status.json` from `running` to `passed`
+   or `failed`, binding a pass to the current summary SHA-256.
+6. Return exit code `0` for a passing run or `1` for a failed run.
 
 ## Validation coverage
 
@@ -75,14 +77,24 @@ The summary intentionally has no wall-clock run timestamp. With unchanged raw
 snapshots and code, both validation artifacts reproduce byte for byte. Source
 download timestamps remain available in the tracked manifest.
 
+`data/processed/validation_run_status.json` is a separate latest-attempt
+sidecar. It is written as `running` before input loading begins, becomes
+`passed` only after publication completes, and records the current summary
+SHA-256. A structured validation failure records `failed` and the failed
+summary hash; an unexpected read/parse/write exception records its type and
+message without replacing a previous summary or issue file. An interrupted
+process therefore leaves a nonpassing `running` marker instead of silently
+exposing an older pass as the latest outcome.
+
 ## Publication safety
 
 Validation happens before the canonical output writers are called. A failed
 validation run therefore preserves the last known-good consumption,
-generation, and price CSVs while publishing enough diagnostic information to
-repair the problem. All generated clean and validation artifacts remain ignored
-by Git; their contracts, code, tests, and documented verified hashes are
-tracked.
+generation, and price CSVs. Structured failures publish detailed issues and a
+failed summary; unexpected exceptions preserve the previous deterministic
+summary/issues and publish failure details in the run-status sidecar. All
+generated clean and validation artifacts remain ignored by Git; their
+contracts, code, tests, and documented verified hashes are tracked.
 
 ## Verified Phase 3 gate
 

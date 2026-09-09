@@ -1,6 +1,8 @@
 """CLI for the final Phase 3 clean-data validation gate."""
 
+import json
 from pathlib import Path
+from typing import Any
 
 from gridsight.ingestion.snapshot_registry import sha256_file
 from gridsight.transformation.consumption import (
@@ -13,6 +15,7 @@ from gridsight.transformation.generation import (
 )
 from gridsight.transformation.price import load_price_dataset, write_price_csv
 from gridsight.validation.clean_data import (
+    STATUS_FAILED,
     STATUS_PASSED,
     summarize_clean_datasets,
     validate_clean_datasets,
@@ -33,15 +36,58 @@ OUTPUT_PATHS = {
 }
 DEFAULT_ISSUES = PROCESSED_DIR / "validation_issues.csv"
 DEFAULT_SUMMARY = PROCESSED_DIR / "validation_summary.json"
+DEFAULT_RUN_STATUS = PROCESSED_DIR / "validation_run_status.json"
 
 
 def _relative(path: Path) -> str:
     return path.relative_to(PROJECT_ROOT).as_posix()
 
 
+def write_validation_run_status(
+    status_path: Path,
+    *,
+    status: str,
+    summary_sha256: str | None = None,
+    failure: dict[str, Any] | None = None,
+) -> None:
+    """Atomically expose the outcome of the latest attempted validation run."""
+    payload = {
+        "schema_version": 1,
+        "status": status,
+        "summary_sha256": summary_sha256,
+        "failure": failure,
+    }
+    status_path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = status_path.with_name(f".{status_path.name}.tmp")
+    try:
+        temporary.write_text(
+            json.dumps(payload, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+        temporary.replace(status_path)
+    finally:
+        temporary.unlink(missing_ok=True)
+
+
+def _record_exception_failure(error: BaseException) -> None:
+    try:
+        write_validation_run_status(
+            DEFAULT_RUN_STATUS,
+            status=STATUS_FAILED,
+            failure={
+                "kind": "exception",
+                "type": type(error).__name__,
+                "message": str(error),
+            },
+        )
+    except OSError as status_error:
+        print(f"Validation run status could not be written ({status_error})")
+
+
 def main() -> int:
     """Rebuild, validate, and publish the complete clean-data layer."""
     try:
+        write_validation_run_status(DEFAULT_RUN_STATUS, status="running")
         consumption = load_consumption_dataset(
             DEFAULT_CONFIG,
             DEFAULT_MANIFEST,
@@ -72,6 +118,15 @@ def main() -> int:
                 DEFAULT_ISSUES,
                 DEFAULT_SUMMARY,
             )
+            write_validation_run_status(
+                DEFAULT_RUN_STATUS,
+                status=STATUS_FAILED,
+                summary_sha256=sha256_file(DEFAULT_SUMMARY),
+                failure={
+                    "kind": "validation",
+                    "issue_count": len(report.issues),
+                },
+            )
             print("Clean-data validation: FAILED")
             print(f"Issues: {len(report.issues)}")
             print(f"Issues output: {_relative(DEFAULT_ISSUES)}")
@@ -100,7 +155,13 @@ def main() -> int:
             DEFAULT_ISSUES,
             DEFAULT_SUMMARY,
         )
+        write_validation_run_status(
+            DEFAULT_RUN_STATUS,
+            status=STATUS_PASSED,
+            summary_sha256=sha256_file(DEFAULT_SUMMARY),
+        )
     except (OSError, TypeError, ValueError) as error:
+        _record_exception_failure(error)
         print(f"Clean-data validation: FAILED ({error})")
         return 1
 

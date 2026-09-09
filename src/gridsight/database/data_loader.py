@@ -23,6 +23,7 @@ from gridsight.validation.clean_data import ISSUE_COLUMNS
 
 PROCESSED_DIR = PROJECT_ROOT / "data" / "processed"
 DEFAULT_VALIDATION_SUMMARY = PROCESSED_DIR / "validation_summary.json"
+DEFAULT_VALIDATION_RUN_STATUS = PROCESSED_DIR / "validation_run_status.json"
 DEFAULT_VALIDATION_ISSUES = PROCESSED_DIR / "validation_issues.csv"
 TRANSFORMATION_SQL_FILES = (
     PROJECT_ROOT / "sql" / "transformations" / "001_populate_dimensions.sql",
@@ -158,11 +159,35 @@ def _require_mapping(value: object, label: str) -> dict[str, Any]:
     return value
 
 
+def _require_latest_validation_pass(summary_path: Path) -> None:
+    status_path = summary_path.with_name(DEFAULT_VALIDATION_RUN_STATUS.name)
+    if not status_path.exists():
+        return
+    try:
+        status = json.loads(status_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as error:
+        message = "Latest validation run status is missing or invalid"
+        raise ValueError(message) from error
+    status = _require_mapping(status, "run status")
+    if (
+        status.get("schema_version") != 1
+        or status.get("status") != STATUS_PASSED
+    ):
+        raise ValueError("Latest validation run did not pass")
+    try:
+        observed_summary_sha256 = sha256_file(summary_path)
+    except OSError as error:
+        raise ValueError("Validation summary is missing or invalid") from error
+    if status.get("summary_sha256") != observed_summary_sha256:
+        raise ValueError("Latest validation run status does not match the summary")
+
+
 def load_validated_inputs(
     summary_path: Path = DEFAULT_VALIDATION_SUMMARY,
     project_root: Path = PROJECT_ROOT,
 ) -> ValidatedInputs:
     """Verify the Phase 3 summary, issue file, CSV headers, and output hashes."""
+    _require_latest_validation_pass(summary_path)
     try:
         summary = json.loads(summary_path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as error:

@@ -11,7 +11,8 @@ directory to inspect the semantic model and five-page report.
 - one declared Europe/Berlin date table
 - 30 explicit DAX measures
 - 5 report pages and 21 visuals
-- checked sample inputs for a public, compact portfolio review
+- six fact tables sourced from parameterized local PostgreSQL reporting views
+- two evidence tables sourced from checked CSVs under parameterized `ProjectRoot`
 
 The pages are Executive Overview, Load & Renewables, Price Analysis, Forecast
 Performance, and Data Quality. Screenshots and concise findings are documented
@@ -30,6 +31,11 @@ Power BI Desktop owns the generated PBIP/PBIR/TMDL serialization. The project
 is a local portfolio deliverable, not a deployed production BI service. Do not
 commit credentials, local caches, autosaves, database extracts outside
 `data/samples/`, or workspace-specific connection secrets.
+
+Before a refresh, set `PostgreSQLServer`, `PostgreSQLDatabase`, and
+`ProjectRoot` in Power BI's parameter UI. A database-free reviewer can still
+inspect the source-controlled model, DAX, report definitions, screenshots, and
+checked contracts; the PBIP does not contain a committed data cache.
 
 ## References
 

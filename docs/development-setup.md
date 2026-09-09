@@ -29,11 +29,13 @@ Install the package and all development tools:
 
 ```powershell
 python -m pip install --upgrade pip
-python -m pip install -e ".[analysis,dev]"
+python -m pip install -c constraints/published-model.txt -e ".[analysis,dev]"
 ```
 
 The editable install means changes under `src/gridsight/` are immediately
-available without reinstalling the package.
+available without reinstalling the package. The constraint file pins the
+numeric stack used by the frozen forecast evidence, including scikit-learn
+1.9.0, while `pyproject.toml` remains the package dependency contract.
 
 ## Verification commands
 
@@ -47,7 +49,7 @@ Python should resolve to `.venv\Scripts\python.exe`. The `.venv` directory is
 local-only and must not be committed.
 
 The verification command validates the checked BI contracts, runs Ruff and the
-92-test public-clone pytest suite, stops at the first failure, and writes
+117-test public-clone pytest suite, stops at the first failure, and writes
 `logs/portfolio-check.log`.
 
 If the ignored generated outputs exist under `data/processed/`, also run:

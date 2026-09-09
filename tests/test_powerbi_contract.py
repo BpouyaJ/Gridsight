@@ -16,6 +16,9 @@ from gridsight.reporting.powerbi_contract import (
     write_powerbi_artifacts,
 )
 
+ROOT = Path(__file__).resolve().parents[1]
+SEMANTIC_MODEL = ROOT / "powerbi" / "GridSight.SemanticModel" / "definition"
+
 
 def test_model_is_a_single_direction_star_schema() -> None:
     validate_powerbi_contracts()
@@ -108,3 +111,41 @@ def test_contract_rejects_changed_frozen_source(tmp_path: Path) -> None:
 
     with pytest.raises(ValueError, match="kpi_snapshot"):
         build_powerbi_contract(kpi_snapshot_path=changed_kpi)
+
+
+def test_desktop_sources_use_portable_explicit_parameters() -> None:
+    model = (SEMANTIC_MODEL / "model.tmdl").read_text(encoding="utf-8")
+    expressions = (SEMANTIC_MODEL / "expressions.tmdl").read_text(
+        encoding="utf-8"
+    )
+    table_sources = "\n".join(
+        path.read_text(encoding="utf-8")
+        for path in sorted((SEMANTIC_MODEL / "tables").glob("*.tmdl"))
+    )
+    all_tmdl = f"{model}\n{expressions}\n{table_sources}"
+
+    assert (
+        'expression PostgreSQLServer = "localhost:5432" meta '
+        "[IsParameterQuery=true, Type=\"Text\", IsParameterQueryRequired=true]"
+        in expressions
+    )
+    assert (
+        'expression PostgreSQLDatabase = "gridsight" meta '
+        "[IsParameterQuery=true, Type=\"Text\", IsParameterQueryRequired=true]"
+        in expressions
+    )
+    assert (
+        'expression ProjectRoot = "C:\\path\\to\\GridSight" meta '
+        "[IsParameterQuery=true, Type=\"Text\", IsParameterQueryRequired=true]"
+        in expressions
+    )
+    assert all(
+        parameter in model
+        for parameter in ("PostgreSQLServer", "PostgreSQLDatabase", "ProjectRoot")
+    )
+    assert table_sources.count(
+        "PostgreSQL.Database(PostgreSQLServer, PostgreSQLDatabase)"
+    ) == 6
+    assert table_sources.count("File.Contents(ProjectRoot &") == 2
+    assert 'PostgreSQL.Database("localhost:5432", "gridsight")' not in all_tmdl
+    assert "C:" + "\\Users\\" not in all_tmdl

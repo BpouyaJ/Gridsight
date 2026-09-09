@@ -262,7 +262,7 @@ table 'Fact Daily Energy'
 		mode: import
 		source =
 				let
-				    Source = PostgreSQL.Database("localhost:5432", "gridsight"),
+				    Source = PostgreSQL.Database(PostgreSQLServer, PostgreSQLDatabase),
 				    reporting_daily_energy = Source{[Schema="reporting",Item="daily_energy"]}[Data]
 				in
 				    reporting_daily_energy

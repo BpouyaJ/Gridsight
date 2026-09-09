@@ -315,7 +315,7 @@ table 'Fact Hourly Generation'
 		mode: import
 		source =
 				let
-				    Source = PostgreSQL.Database("localhost:5432", "gridsight"),
+				    Source = PostgreSQL.Database(PostgreSQLServer, PostgreSQLDatabase),
 				    reporting_hourly_generation =
 				        Source{
 				            [

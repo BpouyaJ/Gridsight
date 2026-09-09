@@ -46,6 +46,24 @@ def _write_validated_project(project_root: Path) -> Path:
     return summary_path
 
 
+def _write_run_status(
+    summary_path: Path,
+    *,
+    status: str = "passed",
+    summary_sha256: str | None = None,
+) -> None:
+    payload = {
+        "schema_version": 1,
+        "status": status,
+        "summary_sha256": summary_sha256 or sha256_file(summary_path),
+        "failure": None,
+    }
+    summary_path.with_name("validation_run_status.json").write_text(
+        json.dumps(payload),
+        encoding="utf-8",
+    )
+
+
 def test_load_validated_inputs_accepts_matching_artifacts(tmp_path: Path) -> None:
     """Passing metadata, exact headers, and matching hashes are loadable."""
     summary_path = _write_validated_project(tmp_path)
@@ -59,6 +77,35 @@ def test_load_validated_inputs_accepts_matching_artifacts(tmp_path: Path) -> Non
         "generation",
         "price",
     ]
+
+
+def test_load_validated_inputs_accepts_matching_latest_run_status(
+    tmp_path: Path,
+) -> None:
+    summary_path = _write_validated_project(tmp_path)
+    _write_run_status(summary_path)
+
+    inputs = load_validated_inputs(summary_path, tmp_path)
+
+    assert inputs.summary_sha256 == sha256_file(summary_path)
+
+
+def test_load_validated_inputs_rejects_failed_latest_run(tmp_path: Path) -> None:
+    summary_path = _write_validated_project(tmp_path)
+    _write_run_status(summary_path, status="failed")
+
+    with pytest.raises(ValueError, match="Latest validation run did not pass"):
+        load_validated_inputs(summary_path, tmp_path)
+
+
+def test_load_validated_inputs_rejects_status_for_another_summary(
+    tmp_path: Path,
+) -> None:
+    summary_path = _write_validated_project(tmp_path)
+    _write_run_status(summary_path, summary_sha256="0" * 64)
+
+    with pytest.raises(ValueError, match="does not match the summary"):
+        load_validated_inputs(summary_path, tmp_path)
 
 
 def test_load_validated_inputs_rejects_failed_summary(tmp_path: Path) -> None:

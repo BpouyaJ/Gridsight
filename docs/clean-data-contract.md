@@ -269,6 +269,11 @@ does not replace the last known-good canonical CSVs. It still writes an
 actionable `data/processed/validation_issues.csv` and a machine-readable
 `data/processed/validation_summary.json`. On success, it atomically replaces
 the three canonical CSVs and records their new SHA-256 values in the summary.
+Every attempt also atomically updates
+`data/processed/validation_run_status.json`: `running` before work begins,
+`passed` only after successful publication, or `failed` with validation or
+exception details. Unexpected exceptions preserve the prior summary and issue
+bytes, so the sidecar is the authoritative latest-attempt indicator.
 
 The artifact schemas and stable check-ID conventions are defined in
 `docs/data-quality.md`.

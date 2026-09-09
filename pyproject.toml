@@ -13,12 +13,13 @@ dependencies = [
     "pandas>=3.0,<4.0",
     "psycopg[binary]>=3.2,<4.0",
     "python-dotenv>=1.2,<2.0",
-    "scikit-learn>=1.8,<2.0",
+    "scikit-learn==1.9.0",
     "SQLAlchemy>=2.0,<3.0",
 ]
 
 [project.scripts]
 gridsight-check = "gridsight.verify_portfolio:main"
+gridsight-package = "gridsight.package_portfolio:main"
 
 [project.optional-dependencies]
 analysis = [

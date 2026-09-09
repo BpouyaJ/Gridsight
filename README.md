@@ -11,7 +11,7 @@ UTC-normalized analytical model, PostgreSQL reporting layer, leakage-safe
 pack. It covers the complete 2022-2025 Europe/Berlin calendar period while
 keeping MW, MWh, TWh, EUR/MWh, counts, and percentages explicit.
 
-
+![GridSight Power BI executive overview](docs/images/power-bi/executive-overview.png)
 
 ## Portfolio results
 
@@ -25,7 +25,7 @@ keeping MW, MWh, TWh, EUR/MWh, counts, and percentages explicit.
 | Frozen 2025 model MAPE | 2.652% |
 | MAE improvement over weekly naive | 46.541% |
 | Published data-quality checks | 29 / 29 passed |
-| Public-clone automated tests | 92 passed |
+| Public-clone automated tests | 117 passed |
 | Local generated-artifact tests | 7 passed |
 | Live PostgreSQL integration tests | 6 passed |
 
@@ -47,7 +47,7 @@ Its final result is historical evidence, not a production-service claim.
   relationships, 30 explicit DAX measures, five pages, and 21 visuals.
 - **Excel analytics:** formula-backed dashboard, reconciliation sheet, native
   Power Query connection, query-backed table, and native PivotTable.
-- **Software quality:** 92 public-clone tests, seven local generated-artifact
+- **Software quality:** 117 public-clone tests, seven local generated-artifact
   tests, six opt-in database tests, Ruff, fail-fast logging, deterministic
   checked artifacts, and GitHub Actions.
 
@@ -91,8 +91,13 @@ are in the [forecasting protocol](docs/forecasting-protocol.md) and
 ## Power BI report
 
 Open [`powerbi/GridSight.pbip`](powerbi/GridSight.pbip) in Power BI Desktop.
-The source-controlled PBIP/PBIR/TMDL project uses compact checked extracts, so
-reviewers do not need the private raw snapshots or PostgreSQL database.
+The source-controlled PBIP/PBIR/TMDL project parameterizes its local
+`PostgreSQLServer`, `PostgreSQLDatabase`, and `ProjectRoot` settings. Six fact
+tables refresh from the stable PostgreSQL reporting views; the two evidence
+tables read checked CSVs under `data/samples/`. Reviewers can inspect the
+screenshots, model, measures, and contracts without the private data or a live
+database; refreshing the full report requires the documented local PostgreSQL
+pipeline.
 
 The report answers four business questions: portfolio scale, load and renewable
 patterns, price behavior, and final forecast performance. A fifth page exposes
@@ -109,7 +114,7 @@ for the business-user companion to Power BI.
 
 The workbook opens with cached results, reconciles nine metrics with the SQL
 and Power BI contracts, and includes the native `MonthlyEnergy` Power Query and
-year-by-month PivotTable. Update the repository-root parameter on **Setup** and
+year-by-month PivotTable. Update `ProjectRoot` on **Setup** and
 use **Data > Refresh All** to refresh it locally. See the
 [Excel guide](excel/README.md).
 
@@ -119,12 +124,12 @@ GridSight requires Python 3.13. From the repository root:
 
 ```powershell
 py -3.13 -m venv .venv
-& '.\.venv\Scripts\python.exe' -m pip install -e ".[dev,analysis]"
+& '.\.venv\Scripts\python.exe' -m pip install -c constraints/published-model.txt -e ".[dev,analysis]"
 & '.\.venv\Scripts\python.exe' -m gridsight.verify_portfolio
 ```
 
 The last command validates the checked Power BI artifacts, runs Ruff, executes
-all 92 public-clone tests, stops on the first failure, and writes
+all 117 public-clone tests, stops on the first failure, and writes
 `logs/portfolio-check.log`. It does not require raw or generated processed data,
 Power BI Desktop, Excel, Docker, or PostgreSQL.
 
@@ -182,8 +187,9 @@ not establish causality or future operational performance.
   outages, price forecasts, and operational schedules are intentionally absent.
 - The model is a reproducible offline experiment, not a deployed or monitored
   production forecast.
-- Power BI and Excel consume static checked extracts by default; their refresh
-  paths are local portfolio workflows, not hosted services.
+- Power BI refreshes six reporting facts from parameterized local PostgreSQL;
+  its two evidence tables and the Excel workbook use checked public extracts.
+  These are local portfolio workflows, not hosted services.
 - The selected 2022-2025 geography and market regime limit generalization.
 
 ## Documentation
@@ -198,6 +204,7 @@ not establish causality or future operational performance.
 - [Power BI report](docs/power-bi-report.md)
 - [Excel analyst pack](excel/README.md)
 - [Automation and continuous integration](docs/automation-and-ci.md)
+- [Safe portfolio packaging](docs/portfolio-packaging.md)
 - [Final portfolio audit](docs/portfolio-audit.md)
 - [Decision log](docs/decisions.md)
 

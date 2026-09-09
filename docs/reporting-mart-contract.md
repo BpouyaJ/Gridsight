@@ -69,8 +69,10 @@ records SHA-256 values, and reconciles their values with SQL or source artifacts
 
 ## Implementation boundary
 
-Step 7.3 generated the eight checked samples before the Power BI and Excel
-deliverables consumed them in Phases 8 and 9.
+Step 7.3 generated eight checked evidence samples before Phases 8 and 9. Excel
+consumes the monthly sample, and Power BI consumes the data-quality and lineage
+samples; Power BI's six fact tables use the corresponding full PostgreSQL
+reporting views.
 
 ## Verified Step 7.1 result
 

@@ -2,9 +2,11 @@
 
 ## Purpose
 
-Step 7.3 publishes compact, reviewable evidence for Power BI, Excel/Power
-Query, automated tests, and GitHub portfolio visitors. Full raw, processed, and
-forecast row-level datasets remain excluded from Git.
+Step 7.3 publishes compact, reviewable evidence for Power BI's quality and
+lineage pages, the Excel/Power Query pack, automated tests, and GitHub portfolio
+visitors. The other samples prove the reporting contracts without replacing
+Power BI's six full PostgreSQL fact sources. Full raw, processed, and forecast
+row-level datasets remain excluded from Git.
 
 ## Build command
 

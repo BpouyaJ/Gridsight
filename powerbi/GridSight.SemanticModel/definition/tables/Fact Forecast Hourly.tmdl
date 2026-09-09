@@ -269,7 +269,7 @@ table 'Fact Forecast Hourly'
 		mode: import
 		source =
 				let
-				    Source = PostgreSQL.Database("localhost:5432", "gridsight"),
+				    Source = PostgreSQL.Database(PostgreSQLServer, PostgreSQLDatabase),
 				    reporting_forecast_hourly =
 				        Source{
 				            [

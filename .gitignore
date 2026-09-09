@@ -23,6 +23,7 @@ data/processed/*
 !data/processed/.gitkeep
 models/
 logs/
+dist/
 
 # PostgreSQL / Docker volumes
 postgres_data/

@@ -190,7 +190,7 @@ Skills: reproducibility, automation, testing, CI fundamentals.
 
 Status: completed. `python -m gridsight.verify_portfolio` now performs a
 fail-fast checked-contract, Ruff, and pytest workflow with reusable logging.
-The default runs 92 public-clone tests; `--with-local-artifacts` adds seven
+The default runs 117 public-clone tests; `--with-local-artifacts` adds seven
 generated-output tests and `--with-postgres` adds six live integration tests.
 GitHub Actions runs the public-clone-safe default on Python 3.13.
 
@@ -209,8 +209,12 @@ Skills: technical communication, presentation, GitHub portfolio quality.
 Status: completed. The final repository leads with verified business and model
 results, portfolio screenshots, a concise public-clone path, a detailed
 architecture and analytical data model, honest limitations, and a detectable
-MIT license. Documentation claims are contract-tested, and the final local gate
-passed Ruff plus 92 public-clone and seven generated-artifact tests.
+MIT license. Documentation claims are contract-tested. The 2026-09-09
+maintenance hardening connected all Excel formulas to Power Query,
+parameterized Power BI sources, added latest-run validation state and exact
+model constraints, and introduced a deterministic safe-package gate. Ruff,
+117 public-clone tests, seven generated-artifact tests, and six PostgreSQL tests
+passed after those changes.
 
 ## Essential scope
 

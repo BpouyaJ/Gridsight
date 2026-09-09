@@ -132,7 +132,7 @@ table 'Source Lineage'
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\borji\Documents\Codex\GridSight\data\samples\source_lineage.csv"),[Delimiter=",", Columns=15, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(File.Contents(ProjectRoot & "\data\samples\source_lineage.csv"),[Delimiter=",", Columns=15, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"export_id", type text}, {"source_name", type text}, {"source_url", type text}, {"source_category", type text}, {"source_geography", type text}, {"source_resolution", type text}, {"period_start", type date}, {"period_end", type date}, {"downloaded_at_utc", type datetime}, {"original_filename", type text}, {"local_filename", type text}, {"sha256", type text}, {"licence", type text}, {"attribution", type text}, {"notes", type text}})
 				in

@@ -11,6 +11,8 @@ contains the same rows and measures as the validated files.
 The loader requires these ignored Phase 3 artifacts:
 
 - `data/processed/validation_summary.json`;
+- `data/processed/validation_run_status.json` for outputs created by the current
+  validation runner;
 - `data/processed/validation_issues.csv`;
 - the three canonical processed CSVs named in the summary.
 
@@ -19,6 +21,10 @@ status `passed`, zero failed checks, zero error issues, and only passed
 individual checks. The issue CSV must contain only its defined header. For each
 dataset, the declared path, row count, column count, exact ordered CSV header,
 and SHA-256 must match the fixed loading contract and current file bytes.
+When the latest-run sidecar exists, it must also say `passed` and contain the
+exact current summary SHA-256; `running`, `failed`, malformed, or mismatched
+status blocks the load. Sidecar absence remains accepted only for legacy local
+artifacts created before this safeguard.
 
 This creates an auditable chain:
 

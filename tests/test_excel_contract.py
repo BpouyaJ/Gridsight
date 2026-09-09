@@ -66,7 +66,20 @@ def test_excel_pack_contains_the_approved_sheets_tables_and_charts() -> None:
         for item in shared_strings_root
     ]
     assert r"C:\path\to\GridSight" in shared_strings
-    assert not any(r"C:\Users\borji" in value for value in shared_strings)
+    private_user_root = "C:" + "\\Users\\"
+    assert not any(
+        private_user_root in xml.decode("utf-8", errors="ignore")
+        for xml in parts.values()
+    )
+
+    setup_instructions = "\n".join(shared_strings)
+    assert "Replace ProjectRoot above" in setup_instructions
+    assert "Data > Refresh All" in setup_instructions
+    assert "Confirm MonthlyEnergy contains 48 rows" in setup_instructions
+    assert "Review Reconciliation" in setup_instructions
+    assert "RepositoryRoot" not in setup_instructions
+    assert "Blank Query" not in setup_instructions
+    assert "Advanced Editor" not in setup_instructions
 
     chart_parts = [name for name in parts if name.startswith("xl/charts/chart")]
     assert len(chart_parts) == 2
@@ -79,23 +92,25 @@ def test_excel_formulas_are_present_and_have_no_cached_errors() -> None:
         for name, xml in parts.items()
         if name.startswith("xl/worksheets/sheet")
     ]
-    formulas = {
+    formulas = [
         formula.text or ""
         for root in worksheet_roots
         for formula in root.findall(f".//{{{SPREADSHEET_NS}}}f")
-    }
+    ]
 
     assert any(
-        "SUM('Monthly Data'!$H$2:$H$49)/1000000" in formula
+        "SUM(MonthlyEnergy!$H$2:$H$49)/1000000" in formula
         for formula in formulas
     )
     assert any(
-        "SUMIF('Monthly Data'!$C$2:$C$49,$A6" in formula
+        "SUMIF(MonthlyEnergy!$C$2:$C$49,$A6" in formula
         for formula in formulas
     )
     assert any(
         'IF(ABS(E6)<=C6,"PASS","CHECK")' in formula for formula in formulas
     )
+    assert sum(formula.count("MonthlyEnergy!") for formula in formulas) == 268
+    assert not any("'Monthly Data'!" in formula for formula in formulas)
 
     error_cells = [
         cell.attrib.get("r", "")
@@ -104,6 +119,39 @@ def test_excel_formulas_are_present_and_have_no_cached_errors() -> None:
         if cell.attrib.get("t") == "e"
     ]
     assert error_cells == []
+
+
+def test_excel_month_labels_are_valid_and_recalculate_on_refresh() -> None:
+    parts = _workbook_xml_parts()
+    monthly_data = ET.fromstring(parts["xl/worksheets/sheet4.xml"])
+    expected_labels = [
+        f"{year:04d}-{month:02d}"
+        for year in range(2022, 2026)
+        for month in range(1, 13)
+    ]
+    labels = []
+    for row in range(2, 50):
+        cell = monthly_data.find(
+            f'.//{{{SPREADSHEET_NS}}}c[@r="U{row}"]'
+        )
+        assert cell is not None
+        value = cell.find(f"{{{SPREADSHEET_NS}}}v")
+        assert value is not None
+        labels.append(value.text)
+
+    shared_formula = monthly_data.find(
+        f'.//{{{SPREADSHEET_NS}}}c[@r="U2"]/'
+        f"{{{SPREADSHEET_NS}}}f"
+    )
+    assert shared_formula is not None
+    assert shared_formula.text == 'YEAR(B2)&"-"&RIGHT("0"&MONTH(B2),2)'
+    assert labels == expected_labels
+
+    workbook = ET.fromstring(parts["xl/workbook.xml"])
+    calc_properties = workbook.find(f"{{{SPREADSHEET_NS}}}calcPr")
+    assert calc_properties is not None
+    assert calc_properties.attrib["calcMode"] == "auto"
+    assert calc_properties.attrib["fullCalcOnLoad"] == "1"
 
 
 def test_excel_pack_embeds_power_query_and_native_pivot_metadata() -> None:

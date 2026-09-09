@@ -1,0 +1,9 @@
+expression PostgreSQLServer = "localhost:5432" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: e6766d11-dee6-4ed9-b4e7-1e87934b5ecd
+
+expression PostgreSQLDatabase = "gridsight" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 954b3487-7298-4fad-8732-55d477a23592
+
+expression ProjectRoot = "C:\path\to\GridSight" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: ac042c21-8be7-488f-8158-626ddc526d57
+

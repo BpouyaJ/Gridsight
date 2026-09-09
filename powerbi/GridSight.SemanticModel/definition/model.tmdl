@@ -11,7 +11,7 @@ annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation PBI_ProTooling = ["DevMode","TMDLView_Desktop","DaxQueryView_Desktop"]
 
-annotation PBI_QueryOrder = ["Fact Daily Energy","Fact Forecast Hourly","Fact Forecast Summary","Fact Hourly Energy","Fact Hourly Generation","Fact Monthly Energy","Dim Date","Dim Month","Dim Hour","Dim Technology","Dim Horizon","Dim Forecast Series","Data Quality Checks","Source Lineage"]
+annotation PBI_QueryOrder = ["PostgreSQLServer","PostgreSQLDatabase","ProjectRoot","Fact Daily Energy","Fact Forecast Hourly","Fact Forecast Summary","Fact Hourly Energy","Fact Hourly Generation","Fact Monthly Energy","Dim Date","Dim Month","Dim Hour","Dim Technology","Dim Horizon","Dim Forecast Series","Data Quality Checks","Source Lineage"]
 
 ref table 'Fact Daily Energy'
 ref table 'Fact Forecast Hourly'

@@ -99,7 +99,7 @@ table 'Fact Forecast Summary'
 		mode: import
 		source =
 				let
-				    Source = PostgreSQL.Database("localhost:5432", "gridsight"),
+				    Source = PostgreSQL.Database(PostgreSQLServer, PostgreSQLDatabase),
 				    reporting_forecast_performance_summary = Source{[Schema="reporting",Item="forecast_performance_summary"]}[Data]
 				in
 				    reporting_forecast_performance_summary

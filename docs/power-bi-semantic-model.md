@@ -76,6 +76,26 @@ The reporting views remain the business-logic boundary. Power Query may select,
 rename, type, hide, or deduplicate dimension columns, but it must not recompute
 the upstream energy, price, forecast, or quality semantics.
 
+## Refresh parameters and public-review boundary
+
+The Desktop project declares three required text parameters in TMDL:
+
+- `PostgreSQLServer`, defaulting to `localhost:5432`;
+- `PostgreSQLDatabase`, defaulting to `gridsight`;
+- `ProjectRoot`, defaulting to the portable placeholder
+  `C:\path\to\GridSight`.
+
+All six fact partitions call
+`PostgreSQL.Database(PostgreSQLServer, PostgreSQLDatabase)`. The two evidence
+partitions read `data/samples/data_quality_checks.csv` and
+`data/samples/source_lineage.csv` below `ProjectRoot`. Dimension tables derive
+from those fact/evidence queries, so no credentials, user-specific path, or
+Power BI data cache is committed.
+
+This is a local full-data refresh design, not a samples-only PBIP. A public
+clone remains reviewable without PostgreSQL through its TMDL/PBIR sources,
+screenshots, checked sample evidence, and deterministic semantic contract.
+
 ## Relationships
 
 Every relationship is active, one-to-many, and single-direction from the

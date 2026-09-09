@@ -212,7 +212,7 @@ table 'Fact Monthly Energy'
 		mode: import
 		source =
 				let
-				    Source = PostgreSQL.Database("localhost:5432", "gridsight"),
+				    Source = PostgreSQL.Database(PostgreSQLServer, PostgreSQLDatabase),
 				    reporting_monthly_energy = Source{[Schema="reporting",Item="monthly_energy"]}[Data]
 				in
 				    reporting_monthly_energy

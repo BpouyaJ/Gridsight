@@ -33,7 +33,7 @@ flowchart TB
     subgraph public["Source-controlled evidence"]
         REPORTS["Aggregate JSON contracts<br/>KPIs, EDA, model evaluation"]
         SAMPLES["8 checked CSV samples<br/>3,451 rows total"]
-        TESTS["95 fast tests and CI"]
+        TESTS["117 public-clone tests and CI"]
     end
 
     subgraph presentation["Business-facing outputs"]
@@ -155,7 +155,9 @@ erDiagram
 ## Reporting boundary
 
 Power BI and Excel read stable reporting products rather than staging tables.
-The public PBIP and workbook use deterministic samples so they open with useful
-results on another machine. A database-backed rebuild remains available for
-the full local pipeline, while source-controlled contracts prevent the desktop
-tools from redefining metric semantics.
+Power BI's six facts refresh from parameterized local PostgreSQL reporting
+views, while its two evidence tables use checked samples. The Excel workbook
+uses the checked monthly sample through its `ProjectRoot` Power Query parameter.
+Screenshots and cached workbook results make both deliverables immediately
+reviewable, while source-controlled contracts prevent either desktop tool from
+redefining metric semantics.
