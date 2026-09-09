@@ -529,8 +529,7 @@ Status: completed
 
 ## In progress
 
-- Hosted GitHub Actions confirmation after the reviewed hardening commit is
-  pushed.
+None within the approved scope.
 
 ## Not started
 
@@ -538,10 +537,9 @@ None within the approved scope.
 
 ## Next bounded step
 
-Commit/push the reviewed hardening patch and confirm the hosted workflow is
-green. After that, use the repository in applications and accept only verified
-maintenance fixes. Any optional expansion requires a new decision and must
-preserve the frozen forecast-test boundary.
+Use the repository in applications and accept only verified maintenance fixes.
+Any optional expansion requires a new decision and must preserve the frozen
+forecast-test boundary.
 
 ## Current blockers
 

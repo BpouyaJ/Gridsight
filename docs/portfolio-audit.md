@@ -31,8 +31,9 @@ outputs, and six live PostgreSQL integration tests.
 
 GitHub Actions passed the earlier 92-test public-clone gate on Ubuntu with
 Python 3.13 at commit `11c0675`, confirming that the verification path is
-portable beyond Windows. The expanded hosted gate is pending the hardening
-push.
+portable beyond Windows. The expanded hosted gate also passed on Ubuntu and
+Python 3.13 at hardening commit `3a731b9`, covering Ruff and all 117
+public-clone tests.
 
 Generated-artifact and PostgreSQL tests remain opt-in through
 `--with-local-artifacts` and `--with-postgres` because a clean public clone has
@@ -72,7 +73,7 @@ Python syntax errors, or whitespace errors.
 4. Read `docs/final-forecast-evaluation.md` for the chronological test boundary.
 5. Run the one-command verifier to reproduce the public contracts and tests.
 
-## Final hosted gate
+## Hosted verification
 
 The repository is public with its MIT license, About text, topics, social
 preview, and profile pin configured. The final native checks opened and saved
@@ -81,8 +82,9 @@ PivotTable. The workbook retained 48 monthly rows, a 1,872.00 TWh PivotTable
 grand total, and `PASS` for every reconciliation row. The post-save structural
 audit removed local path metadata, restored full recalculation, and preserved
 the native query, PivotTable/cache, three tables, and two charts. The final
-Python 3.13 verifier then passed every local gate. Only the hardening push and
-expanded GitHub Actions confirmation remain.
+Python 3.13 verifier then passed every local gate. Two hosted runs for
+hardening commit `3a731b9` completed successfully, closing the final portfolio
+gate.
 
 Only `dist/GridSight-portfolio.zip`, produced by
 `python -m gridsight.package_portfolio`, is approved for direct sharing. An
